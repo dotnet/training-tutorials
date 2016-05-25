@@ -5,14 +5,14 @@ This repository holds the content used to build the .NET getting started tutoria
 ## Organization
 
 The content is broken up into high level groups by topic, initially covering
-- [C#](content/csharp/readme.md)
-- [ASP.NET](content/asp.net/readme.md)
+- [C#](content/csharp/README.md)
+- [ASP.NET](content/asp.net/README.md)
 
 Within each content area, there are one or more *tutorials*.
 
 Each tutorial consists of *lessons*. Each lesson should be a page detailing the concept being taught, along with sample code. Lesson and page may be used interchangeably when describing the tutorials. Lessons may be broken up into several *steps*. Each step and lesson should end with working code the user can run using a REPL, Visual Studio, or Visual Studio Code.
 
-You can view the C# content as a model for other content areas. Note that URLs/links should use 'csharp' in place of C# because GitHub will convert the latter to C%23 resulting in broken links.
+You can view the C# content as a model for other content areas. Note that URLs/links should use 'csharp' in place of C# because GitHub will convert the latter to C%23 resulting in broken links. Also note, links to README.md files are case-sensitive within GitHub's web view.
 
 Lessons will include *tips* that will be tagged according to reader background, and eventually these will be displayed to readers who have indicated they have that background. For example:
 
