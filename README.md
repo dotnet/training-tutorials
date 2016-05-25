@@ -15,9 +15,17 @@ Each tutorial consists of *lessons*. Each lesson should be a page detailing the 
 Lessons will include *tips* that will be tagged according to reader background, and eventually these will be displayed to readers who have indicated they have that background. For example:
 
 ### Tip (tags: vb)
-The *static* keyword in C# is equivalent to *Shared* in Visual Basic .NET
+> The *static* keyword in C# is equivalent to *Shared* in Visual Basic .NET
 
-Lessons will be written using markdown (Github variant). Lessons should link to other documents for specific tasks and API references. These should focus on helping the user follow through and understand the tutorial.
+Lessons will be written using [markdown (Github variant)](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). Lessons should link to other documents for specific tasks and API references. These should focus on helping the user follow through and understand the tutorial.
+
+## Includes / Shared Elements
+
+The ultimately publishing platform capabilities and requirements aren't yet known. Until they are, we don't have a system in place for includes or for sharing common elements across tutorials/pages. For now, we'll need to copy/paste.
+
+## Branching Strategy
+
+The *master* branch will contain the latest approved content. In the short term, approved content authors will be permitted to push directly to master. However, once there is a significant amount of content, authors will be expected to work on their content in their own feature branch, and then submit a pull request and await a :shipit: from another team member.
 
 
 
