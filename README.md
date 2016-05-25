@@ -5,8 +5,8 @@ This repository holds the content used to build the .NET getting started tutoria
 ## Organization
 
 The content is broken up into high level groups by topic, initially covering
-- [C#](c#/readme.md)
-- [ASP.NET](asp.net/readme.md)
+- [C#](content/c#/readme.md)
+- [ASP.NET](content/asp.net/readme.md)
 
 Within each content area, there are one or more *tutorials*.
 
