@@ -10,7 +10,7 @@ This tutorial is aimed at people who are learning C# for the first time. No prio
 This tutorial will cover the following topics:
 
 - [Writing Your First C# Program](lesson-01.md)
-- Understanding C# Files and Projects
+- [Understanding C# Files and Projects](lesson-02.md)
 - Learning about built-in Types and Variables
 - Working with Strings
 - Working with Dates and Times
