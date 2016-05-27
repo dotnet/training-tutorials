@@ -70,7 +70,40 @@ You can also build your application using ``dotnet build``. Calling ``dotnet run
 ## Creating an Application Using Visual Studio
 
 To create your first C# application in Visual Studio, start by creating a new project. You can do this from the Start screen, or use the menu and select File -> New -> Project.
-![File-New Project](images/vs-new-project-menu.jpg)
+
+![File-New Project](images/vs-file-new-project.png)
+
+The *New Project* dialog appears. In the left menu, select Templates, Visual C#, .NET Core. Then choose to create a Console Application (.NET Core):
+![New Project Dialog](images/vs-new-project-dialog-console.png)
+
+Once the project loads, the editor will open *Program.cs*, which contains an empty program. Inside the { } braces,
+![Add Code Here](images/add-code-here.png)
+
+add a line that reads ``Console.WriteLine("Hello World!");``
+
+Remember that C# is a case sensitive language, so make sure you capitalize the 'C' in Console and the 'W' and 'L' in 'WriteLine'. Now you can build the project by selecting Build -> Build Solution from the main menu, or using the Ctrl+Shift+B shortcut. To run the program, use the Ctrl+F5 shortcut (or Debug -> Start Without Debugging) to start the program without debugging. You should see a new console dialog appear, with the following text:
+
+![Hello World Output](images/hello-world-output.png)
+
+If you just see a window flash and disappear, you may be Debugging the application, which currently exits immediately after it displays the text. Make sure you're choosing Start Without Debugging from the menu. You can add code to make the program wait before exiting, but we're not ready to cover that yet. You can also run your new program from the command line. Open a new command prompt (right-click on your project in Solution Explorer and choose Open Command Line -> Developer Command Prompt).
+
+![Open Command Prompt](images/open-command-line-menu.png)
+
+From the window that appears, type
+> dotnet run
+
+You should see the following output:
+
+![Command Line Output](images/vs-command-line-output.png)
 
 ## Creating an Application Using Visual Studio Code
 
+To get start using Visual Studio Code, the simple approach is to create the new application using the command prompt. Follow the instructions above in the *Creating an Application Using the Command Line Interface (CLI)* section. Then, open Visual Studio Code and in the menu select File -> Open Folder.
+
+![VS Code Open Folder](images/vs-code-open-folder.png)
+
+Click on *Program.cs* in the Explorer tab to edit it:
+
+![VS Code Program.cs](images/vs-code-program.png)
+
+You can configure tasks to debug or run your program in Visual Studio Code, but that's beyond this lesson. For now, to run the application after you make changes (and save them) in Visual Studio Code, simply use ``dotnet run`` from the command line.
