@@ -12,7 +12,7 @@ This tutorial will cover the following topics:
 - [Writing Your First C# Program](lesson-01.md)
 - [Understanding C# Files and Projects](lesson-02.md)
 - [Learning about built-in Types and Variables](lesson-03.md)
-- Working with Strings
+- [Working with Strings](lesson-04.md)
 - Working with Dates and Times
 - Making Decisions in Your Program
 - Implementing Logical Expressions
