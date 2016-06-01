@@ -13,7 +13,7 @@ This tutorial will cover the following topics:
 - [Understanding C# Files and Projects](lesson-02.md)
 - [Learning about built-in Types and Variables](lesson-03.md)
 - [Working with Strings](lesson-04.md)
-- Working with Dates and Times
+- [Working with Dates and Times](lesson-05.md)
 - Making Decisions in Your Program
 - Implementing Logical Expressions
 - Looping Based on a Logical Expression

@@ -92,11 +92,19 @@ A frequent scenario when working with strings it the construction of a string th
 
 ```c#
 string name = "Steve";
-string greet1 = "Hello " + name + "!"; // Hello Steve!
-string greet2 = $"Hello {name}!"; // Hello Steve!
+string greet1 = $"Hello {name}!"; // Hello Steve!
+string greet2 = "Hello " + name + "!"; // Hello Steve!
 string greet3 = String.Format("Hello {0}!", name); // Hello Steve!
 string greetTemplate = "Hello **NAME**!";
 string greet4 = greetTemplate.Replace("**NAME**", name); // Hello Steve!
 ```
 
-Of all of the above, the string interpolation approach is recommended. It's clean, readable, and has better performance than the other approaches.
+Of all of the above, the string interpolation approach (``greet1``) is recommended. It's clean, readable, and has better performance than the other approaches, generally. Using format strings or templates is a good option if you need to store the template separate from the scope of the variables that will be used during runtime value replacement, however.
+
+## Next Steps
+
+Now it's your turn. Create a new console application that will take in two string arguments and build a greeting from them. The first argument should be the greeting and the second argument should be the name to be greeted. Make sure your greeting includes punctuation at the end, after the position where the name will be inserted!
+
+Note that you can pass multi-word arguments on the command line by wrapping them in quotes. For example, ``dotnet run "Hello **NAME**!" Steve``.
+
+For a little extra credit, accept an optional third parameter than can be set to either 'loud' or 'quiet'. When loud, change whatever the greeting is to all UPPERCASE. If quiet, change it to all lowercase.
