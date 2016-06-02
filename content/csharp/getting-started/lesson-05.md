@@ -33,21 +33,29 @@ There are many ways to display dates and times. Different countries and regions 
 DateTime types have many properties you can use to access different individual components of the date or time, such as the month, day, year, hour, minute, etc. The following sample demonstrates some of these properties:
 
 ```c#
-var someTime = new DateTime(2016,7,1,11,10,9); // 1 July 2016 11:10.009 AM
+var someTime = new DateTime(2016,7,1,11,10,9); // 1 July 2016 11:10:09 AM
 int year = someTime.Year; // 2016
 int month = someTime.Month; // 7
 int day = someTime.Day; // 1
 int hour = someTime.Hour; // 11
 int minute = someTime.Minute; // 10
-int milliseconds = someTime.Milliseconds; // 9
+int second = someTime.Second; // 9
 ```
 
 ## Calculating Durations Between DateTimes
 
-Show how to calculate the duration between two different Dates or Times.
+Sometimes it can be useful to think about the difference between two times, or the duration of an event. For instance, you could calculate how many days are left in the year. To do so, you would need to determine the first day of the next year, and then compare that to today. The following code shows how to do this:
 
-Introduce TimeSpan type.
+```c#
+DateTime nextYear = new DateTime(DateTime.Today.Year+1, 1, 1);
+TimeSpan duration = nextYear - DateTime.Today;
+Console.WriteLine($"There are {duration.TotalDays} days left in the year");
+```
 
+The first line of code creates a new ``DateTime`` instance for January 1st of the current year, plus one. The second line takes this instance and *subtracts* the current date from it. This produces a new type called a ``TimeSpan``, which is used to represent a span of time, or a duration. ``TimeSpan`` provides a bunch of ways to represent its value, depending on the units you want to use. In this case, the ``TotalDays`` property will show how many days the ``TimeSpan`` includes.
+ 
 ## Next Steps
 
-To do.
+Write a simple program that will ask the user for their date of birth and will let them know how many days old they are. 
+
+For extra credit, let them know the date of their next 10,000 day (about 27 years) anniversary. Note: once you figure out their age in days, you can calculate the days until the next anniversary using ``int daysToNextAnniversary = 10000 - (days % 10000);``
