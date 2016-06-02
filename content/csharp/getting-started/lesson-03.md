@@ -57,3 +57,17 @@ Console.WriteLine($"Hello {name}!");
 ```
 
 This is a common pattern in programming. You're setting the default value of the variable when you declare it (to "World"). Then, you're letting the user override this default value. If they don't, it will remain. To test this program, run it both with and without passing any additional arguments. From the command prompt, run ``dotnet run`` as usual. You should see "Hello World!". Then try adding your name to the end of the command: ``dotnet run Steve``. You should see "Hello Steve!" (where Steve is replaced with your name).
+
+### Reading from the Console
+
+Another way to accept user input is to read it from the console. Just like there is a ``Console.WriteLine`` method, there is also a ``Console.ReadLine`` method. The ``ReadLine`` method returns a string holding whatever the user typed in before pressing *Enter*. You can modify your program to ask the user to enter their name, and then display it based on whatever they typed:
+
+```c#
+Console.WriteLine("What is your name?");
+var name = Console.ReadLine();
+Console.WriteLine($"Hello {name}!");
+```
+
+## Next Steps
+
+Using just the ``ReadLine`` and ``WriteLine`` methods and your current knowledge of variables, you can have the user pass in quite a few bits of information. Using this approach, create a console application that asks the user a few questions and then generates some custom output for them. For instance, your program could generate their "hacker name" by asking them their favorite color, their astrology sign, and their street address number. The result might be something like "Your hacker name is RedGemini480."

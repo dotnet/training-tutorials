@@ -107,3 +107,7 @@ Click on *Program.cs* in the Explorer tab to edit it:
 ![VS Code Program.cs](images/vs-code-program.png)
 
 You can configure tasks to debug or run your program in Visual Studio Code, but that's beyond this lesson. For now, to run the application after you make changes (and save them) in Visual Studio Code, simply use ``dotnet run`` from the command line.
+
+## Next Steps
+
+Using the editor of your choice, create a new Console Application and confirm you're able to run it. Congratulations! You just wrote your own program! We'll look at how to make it start doing something interesting in [the next lesson](lesson-02.md).

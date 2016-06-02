@@ -161,3 +161,6 @@ If you try to call the method ``Writeline`` instead of ``WriteLine`` (note capit
 
 This error should provide you with the context you need to realize you've mis-spelled (or capitalized) the name of the method you're trying to call.
 
+## Next Steps
+
+Modify your console application to display a different message. Go ahead and intentionally add some mistakes to your program, so you can see what kinds of error messages you get from the compiler. The more familiar you are with these messages, and what causes them, the better you'll be at diagnosing problems in your programs that you *didn't* intend to add!

@@ -47,3 +47,7 @@ int milliseconds = someTime.Milliseconds; // 9
 Show how to calculate the duration between two different Dates or Times.
 
 Introduce TimeSpan type.
+
+## Next Steps
+
+To do.
