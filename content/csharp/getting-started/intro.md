@@ -14,20 +14,20 @@ This tutorial will cover the following topics:
 - [Learning about built-in Types and Variables](lesson-03.md)
 - [Working with Strings](lesson-04.md)
 - [Working with Dates and Times](lesson-05.md)
-- Making Decisions in Your Program
-- Implementing Logical Expressions
-- Looping Based on a Logical Expression
-- Looping a Known Number of Times
-- Working with Arrays and Collections
-- Looping Through Members of a Collection
-- Defining and Calling Methods
-- Understanding Classes and Objects
-- Encapsulation and Object-Oriented Design
-- Working with Scope and Accessibility Modifiers
-- Understanding Namespaces, Projects, and Assemblies
-- Working with Collections
-- Introducing LINQ
-- When and How to use Exceptions
-- Understanding Events and Event-Driven Programming
-- Common Patterns and Anti-Patterns
+- [Making Decisions in Your Program](lesson-06.md)
+- [Implementing Logical Expressions](lesson-07.md)
+- [Looping Based on a Logical Expression](lesson-08.md)
+- [Looping a Known Number of Times](lesson-09.md)
+- [Working with Arrays and Collections](lesson-10.md)
+- [Looping Through Members of a Collection](lesson-11.md)
+- [Defining and Calling Methods](lesson-12.md)
+- [Understanding Classes and Objects](lesson-13.md)
+- [Encapsulation and Object-Oriented Design](lesson-14.md)
+- [Working with Scope and Accessibility Modifiers](lesson-15.md)
+- [Understanding Namespaces, Projects, and Assemblies](lesson-16.md)
+- [Working with Collections](lesson-17.md)
+- [Introducing LINQ](lesson-18.md)
+- [When and How to use Exceptions](lesson-19.md)
+- [Understanding Events and Event-Driven Programming](lesson-20.md)
+- [Common Patterns and Anti-Patterns](lesson-21.md)
 
