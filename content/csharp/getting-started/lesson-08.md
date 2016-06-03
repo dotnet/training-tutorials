@@ -6,8 +6,6 @@ Download a ZIP containing this tutorial's sample files:
 - [Initial Version] - Use this as a starting point when following along with the tutorial yourself
 - [Completed Version] - Includes the completed versions of all samples
 
-See the [Issue](https://github.com/dotnet/training-tutorials/issues/6) to claim this lesson and/or view what should be included in it.
-
 ## Expression-Based Loops
 
 You can execute the same statement multiple times in your program by using a *loop*. There are several different kinds of loops in C#. In this lession, you're going to learn about the *while loop*, which is created with the ``while`` keyword. A ``while`` loop in C# looks identical to an ``if`` statement, except that instead of executing the contents of the associated block just once, the ``while`` loop will execute them again and again as long as the logical expression associated with the loop evaluates to ``true``.
@@ -17,7 +15,7 @@ In previous lessons, you were asked to write some guessing games in which the us
 ```c#
 public static void Main(string[] args)
 {
-    int numberToGuess = new Random().Next(101); // a number from 1 to 100
+    int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
     int currentGuess = 0; // start with an incorrect guess
     while (currentGuess != numberToGuess)
     {
@@ -59,7 +57,7 @@ You can modify the guessing game shown above to use an infinite loop and the ``b
 ```c#
 public static void Main(string[] args)
 {
-    int numberToGuess = new Random().Next(101); // a number from 1 to 100
+    int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
     int currentGuess = 0; // start with an incorrect guess
     while (true) // this sets up an infinite loop, since true will always evaluate to true
     {
