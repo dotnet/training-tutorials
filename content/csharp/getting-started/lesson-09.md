@@ -49,8 +49,10 @@ public static void Main(string[] args)
 {
     Console.WriteLine("Enter a starting number: ");
     int startingNumber = int.Parse(Console.ReadLine());
+    
     Console.WriteLine("Enter an ending number: ");
     int endingNumber = int.Parse(Console.ReadLine());
+    
     for (int i = startingNumber; i <= endingNumber; i++)
     {
         Console.WriteLine(i);
@@ -58,8 +60,10 @@ public static void Main(string[] args)
 }
 ```
 
-## Counting up by different increments
+These first two expressions you have been learning about in the ``for`` loop are called the *initialization* and the *condition*. The first initializes the starting point, and the second is the condition that must be true in order to continue looping.
 
+## Counting up by different increments
+The third expression in the ``for`` loop declaration, the *afterthough*, executes after each time through the loop. 
 
 ## Counting down
 
