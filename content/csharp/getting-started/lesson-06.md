@@ -90,7 +90,7 @@ if(x < y)
 {
     return -1;
 }
-else if (x == y)
+else if (x == y) // == checks for equality between two values
 {
     return 0;
 }
