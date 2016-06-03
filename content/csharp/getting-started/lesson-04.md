@@ -8,7 +8,7 @@ Download a ZIP containing this tutorial's sample files:
 
 ## Strings in C#
 
-Strings in C# are a built-in type, as well as a standard .NET type. The ``string`` keyword in C# is the same as the ``System.String`` type, and you can declare variables using either version without any impact on your program's behavior. When a string is instantiated in C#, a sequence of bytes in memory is allocated to it. This allocation cannot be modified after-the-fact; it can only be erased once the string is no longer in use by the program. To change a string, or to create a new string out of an one or more others, a new memory allocation is required. Because string values cannot be changed once they are created, strings are said to be *immutable*. This aspect of strings can have performance implications in your programs, so it's helpful to understand.
+Strings in C# are a built-in type, as well as a standard .NET type. The ``string`` keyword in C# is the same as the ``System.String`` type, and you can declare variables using either version without any impact on your program's behavior. When a string is instantiated in C#, a sequence of bytes in memory is allocated to it. This allocation cannot be modified after-the-fact; it can only be erased once the string is no longer in use by the program. To change a string, or to create a new string out of one or more others, a new memory allocation is required. Because string values cannot be changed once they are created, strings are said to be *immutable*. This aspect of strings can have performance implications in your programs, so it's helpful to understand.
 
 ## Creating Strings
 
@@ -32,7 +32,7 @@ string empty2 = String.Empty;
 
 ## Empty or null
 
-It's important to understand the difference between an *empty* string and a *null* string (or other reference type). In C#, a variable's value is null if it is not set, or if it has been explicitly set to null. A null value typically means the value is not known, or has not yet been set, and is frequently a source of errors in programs, because methods cannot be invoked on null instances of variables. An empty string is simply a string with a length of zero. It's a valid instance of a string, but one that currently has no characters in it. Take care when working with nulls in your programs, especially if they may be passed to other methods, and be sure to confirm that arguments your methods work with are not null before working with their members.
+It's important to understand the difference between an *empty* string and a *null* string (or other reference type). In C#, a variable's value is null if it is not set, or if it has been explicitly set to null. A null value typically means the value is not known, or has not yet been set, and is frequently a source of errors in programs, because methods cannot be invoked on null instances of types. An empty string is simply a string with a length of zero. It's a valid instance of a string, but one that currently has no characters in it. Take care when working with nulls in your programs, especially if they may be passed to other methods, and be sure to confirm that arguments your methods work with are not null before working with their members.
 
 A simple example should help demonstrate the difference between empty and null strings.
 
@@ -88,7 +88,7 @@ Note in the last example that multiple methods are chained together, such that t
 
 ## Replacing Parts of Strings
 
-A frequent scenario when working with strings it the construction of a string that is comprised of some fixed parts, and a part that is variable. You saw in the last lesson how you could construct such a string using ``$"Hello {name}!`` syntax. This is known as *string interpolation*, and is a new feature in C# 6. The same string can also be constructed using concatenation (`` "Hello " + name + "!"``). Strings also support rich formatting, which at its simplest allows for this kind of replacement. To use string formatting, you specify a format string, which includes special placeholder values, and pass the format string and the replacement values to the ``Format`` method. Finally, you can use the ``Replace`` function to a substring with another substring. Consider the following examples:
+A frequent scenario when working with strings is the construction of a string that is composed of some fixed parts, and a part that is variable. You saw in the last lesson how you could construct such a string using ``$"Hello {name}!`` syntax. This is known as *string interpolation*, and is a new feature in C# 6. The same string can also be constructed using concatenation (`` "Hello " + name + "!"``). Strings also support rich formatting, which at its simplest allows for this kind of replacement. To use string formatting, you specify a format string, which includes special placeholder values, and pass the format string and the replacement values to the ``Format`` method. Finally, you can use the ``Replace`` function to a substring with another substring. Consider the following examples:
 
 ```c#
 string name = "Steve";
@@ -99,7 +99,7 @@ string greetTemplate = "Hello **NAME**!";
 string greet4 = greetTemplate.Replace("**NAME**", name); // Hello Steve!
 ```
 
-Of all of the above, the string interpolation approach (``greet1``) is recommended. It's clean, readable, and has better performance than the other approaches, generally. Using format strings or templates is a good option if you need to store the template separate from the scope of the variables that will be used during runtime value replacement, however.
+Of all of the above, the string interpolation approach (``greet1``) is recommended. It's clean, readable, and generally has better performance than the other approaches, however, using format strings or templates is a good option if you need to store the template separately from the scope of the variables that will be used during runtime value replacement.
 
 ## Next Steps
 
