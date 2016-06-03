@@ -8,7 +8,7 @@ Download a ZIP containing this tutorial's sample files:
 
 ## The Hello World Project
 
-In [lesson one](lesson-01.md) you created a "Hello World" console application. In this lesson, you're going to learn about the different parts of that program, so that you understand how they work together. You'll also learn what happens when you build and run the application, and you'll learn about some common errors you may encounter and how to correct them.
+In [lesson one](lesson-01.md), you created a "Hello World" console application. In this lesson, you're going to learn about the different parts of that program, so that you understand how they work together. You'll also learn what happens when you build and run the application, and you'll learn about some common errors you may encounter and how to correct them.
 
 To review, the project you created has the following files:
 
@@ -29,7 +29,7 @@ using System;
 
 The ``using`` statement is a programmer convenience. It allows us to refer to elements that exist within the listed *namespace* (in this case, ``System``) without prefixing them with the namespace name. What's a namespace? A namespace is a way of organizing programming constructs. They're similar to folders or directories in your file system. You don't have to use them, but they make it much easier to find and organize things. The reason this program includes the ``System`` namespace is that the ``Console`` type (used to print "Hello World!") is in that namespace. If the ``using`` statement were removed, the ``Console.WriteLine`` statement would need to include the namespace, becoming ``System.Console.WriteLine". Using statements must end with a semicolon (``;``). In C#, most statements that aren't defining a scope end with a semicolon.
 
-After ``using`` statements, the code includes a namespace:
+After the ``using`` statements, the code declares its namespace:
 ```c#
 namespace ConsoleApplication
 ```
@@ -41,7 +41,7 @@ Inside the namespace's scope (defined by its curly braces), a ``class`` called "
 public class Program
 ```
 
-This line includes two keywords and one identifier. The ``public`` keyword describes the class's [accessibility level](https://msdn.microsoft.com/en-us/library/ba0a1yw2.aspx). This defines how the class may be accessed by other parts of the program, and ``public`` means there are no restrictions to its access. The ``class`` keyword is used to define classes in C#, one the primary *types* you will work with. C# is a *strongy typed* language, meaning that most of the time you'll need to explicitly define a type in your source code before it can be referenced from a program.
+This line includes two keywords and one identifier. The ``public`` keyword describes the class's [accessibility level](https://msdn.microsoft.com/en-us/library/ba0a1yw2.aspx). This defines how the class may be accessed by other parts of the program, and ``public`` means there are no restrictions to its access. The ``class`` keyword is used to define classes in C#, one of the primary constructs used to define *types* you will work with. C# is a *strongly typed* language, meaning that most of the time you'll need to explicitly define a type in your source code before it can be referenced from a program.
 
 Inside the class's scope, a *method* called "Main" is defined:
 ```c#
@@ -63,9 +63,9 @@ Within the method's scope, there is one line:
 Console.WriteLine("Hello World!");
 ```
 
-You've already learned that ``Console`` is a type inside of the ``System`` namespace. It's worth noting that this code does not create any *instance* of the ``Console`` type - it is simply calling the ``WriteLine`` method on the type directly. This tells you that ``WriteLine``, like the ``Main`` method in this program, is declared as a ``static`` method. This means that any part of the application that calls this method will be calling the same method, doing the same thing. The program won't, for instance, open several different console windows and write to them separately. Every call to ``Console.WriteLine`` is going to write to the same console window. 
+You've already learned that ``Console`` is a type inside of the ``System`` namespace. It's worth noting that this code does not create an *instance* of the ``Console`` type - it is simply calling the ``WriteLine`` method on the type directly. This tells you that ``WriteLine``, like the ``Main`` method in this program, is declared as a ``static`` method. This means that any part of the application that calls this method will be calling the same method, doing the same thing. The program won't, for instance, open several different console windows and write to them separately. Every call to ``Console.WriteLine`` is going to write to the same console window. 
 
-Inside of the parentheses, the program is passing in "Hello World!" to the method. This is an *argument*, and will be used by the ``WriteLine`` method internally. C# defines a number of built-in types, one of which is a *string*. A string is a series of text characters. In this case, the program is passing the string "Hello World!" as an argument to the ``WriteLine`` method, which has defined a string parameter type. At the end of the line, the statement ends with a semicolon.
+Inside of the parentheses, the program is passing in "Hello World!" to the method. This is an *argument*, and will be used by the ``WriteLine`` method internally. C# defines a number of built-in types, one of which is a *string*. A string is a series of text characters. In this case, the program is passing the string ``"Hello World!"`` as an argument to the ``WriteLine`` method, which has defined a string parameter type. At the end of the line, the statement ends with a semicolon.
 
 After the ``Console.WriteLine`` statement, there are three closing curly braces ``}``. These close the scopes for the ``Main`` method, the ``Program`` class, and the ``ConsoleApplication`` namespace, respectively. Note that the program uses indentation to make it easy to see which elements of the code belong to which scope. This is a good practice to follow, and will make it much easier for you (or others) to quickly read and understand the code you write.
 
@@ -106,7 +106,7 @@ This file is created each time you restore (``dotnet restore``) your application
 
 ## Troubleshooting
 
-In software development, attention to detail is critical. Small mistakes can cause an otherwise correct program to fail to build, much less run. The rules of a programming language, like the keywords it uses, the order in which they can appear, whether or not they're case sensitive, and how to define scopes and statements are collectively referred to as the language's *syntax*. Syntax errors are usually caught when you build the program, and will result in errors that you'll need to understand in order to correct. To demonstrate some of these errors, so you will know how to address them when you see them in later programs you write, you can intentionally introduce problems in your *Program.cs* file.
+In software development, attention to detail is critical. Small mistakes can cause an otherwise correct program to fail to build, much less run. The rules of a programming language like: the keywords it uses, the order in which they can appear, whether or not they're case sensitive, and how to define scopes and statements are collectively referred to as the language's *syntax*. Syntax errors are usually caught when you build the program, and will result in errors that you'll need to understand in order to correct. To demonstrate some of these errors, so you will know how to address them when you see them in later programs you write, you can intentionally introduce problems in your *Program.cs* file.
 
 ### No closing }
 
@@ -128,7 +128,7 @@ What if you accidentally capitalize the ``using`` keyword? In that case you'll g
 > Program.cs(1,7): error CS0116: A namespace cannot directly contain members such as fields or methods
 > Program.cs(1,7): error CS0246: The type or namespace 'Using' could not be found (are you missing a using directive or an assembly reference?)
 
-The first error occurs because the compiler doesn't recognize ``Using`` as a keyword, so it treats it as a name you're providing for a member (like a method). However, members must be defined inside of classes or other types, not directly within namespaces, which is why this error occurs.
+The first error occurs because the compiler doesn't recognize ``Using`` as a keyword, so it treats it as the name of a member you're providing (like a method). Members, however, must be defined inside of classes or other types, not directly within namespaces, which is why this error occurs.
 
 The second error is the same one we saw when we tried to use the ``system`` namespace above. The compiler simply doesn't recognize was ``Using`` is, because it's not a known keyword or a name that our program has defined.
 
@@ -159,7 +159,7 @@ This error should point out to you where the problem lies, at which point you wi
 If you try to call the method ``Writeline`` instead of ``WriteLine`` (note capital ``L``), you will get an error:
 > Program.cs(9,21): error CS0117: 'Console' does not contain a definition for 'Writeline'
 
-This error should provide you with the context you need to realize you've mis-spelled (or capitalized) the name of the method you're trying to call.
+This error should provide you with the context you need to realize you've misspelled (or capitalized) the name of the method you're trying to call.
 
 ## Next Steps
 
