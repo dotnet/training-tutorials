@@ -6,11 +6,9 @@ Download a ZIP containing this tutorial's sample files:
 - [Initial Version] - Use this as a starting point when following along with the tutorial yourself
 - [Completed Version] - Includes the completed versions of all samples
 
-See the [Issue](https://github.com/dotnet/training-tutorials/issues/5) to claim this lesson and/or view what should be included in it.
-
 ## Logical Operators
 
-Logical *expressions* are comprised of *operators* and *operands*. You can define your own operators in C#, but that's a more advanced topic. C# provides many built-in operators that you can use to create logical expressions, which are useful when implementing conditional statements, as you saw in the [previous lesson](lesson-06.md). Logical expressions evaluate to ``true`` or ``false``, and as such they are often called ``boolean`` expressions, since they are evaluated as ``bool`` types (and can be assigned to boolean variables).
+Logical *expressions* are composed of *operators* and *operands*. You can define your own operators in C#, but that's a more advanced topic. C# provides many built-in operators that you can use to create logical expressions, which are useful when implementing conditional statements, as you saw in the [previous lesson](lesson-06.md). Logical expressions evaluate to ``true`` or ``false``, and as such they are often called ``boolean`` expressions, since they are evaluated as ``bool`` types (and can be assigned to boolean variables).
 
 ### Comparison Operators
 
@@ -72,9 +70,9 @@ false ^ false   // false
 
 **Note:** C# also includes *bitwise* logical operators, ``&`` (AND), ``|`` (OR). These are used to perform binary comparisons of numeric values, and generally aren't used directly for conditional expressions. The ``^`` (XOR) operator can be used with both boolean and integral operands.
 
-Logical operations are applied left to right, and will short-circuit. That is, if the left operand of an ``&&`` operator is false, the right operand will not be evaluated. This is often important, since the operands themselves may be method calls, not variables. You'll learn more about methods in [lesson 12](lesson-12.md).
+Logical operations are applied left to right, and will *short-circuit*. That is, if the left operand of an ``&&`` operator is false, the right operand will not be evaluated. This is often important, since the operands themselves may be method calls, not variables. You'll learn more about methods in [lesson 12](lesson-12.md).
 
-Logical expressions are grouped using parentheses. For example:
+Logical expressions are grouped using parentheses, which modify their order of operations just as in algebra. For example:
 
 ```c#
 int a = 5;
