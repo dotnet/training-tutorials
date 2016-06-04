@@ -123,6 +123,7 @@ colors.ForEach(Console.WriteLine); // equivalent to ForEach(c => Console.WriteLi
 ```
 
 The above sample will loop through the entire list and execute the expression provided once for each element. In this case, it will output to the console:
+
 > blue
 > green
 > yellow
@@ -137,14 +138,15 @@ Console.WriteLine(String.Join(",", colors));
 This will display:
 > blue,green,yellow
 
-Finally, if you need to create an array from a list, you can call the ``ToArray`` method. This produces an array with a length equal to the list's ``Count``, containing the list elements in the same order. It can sometimes be useful when you need to provide an array as an argument to another method, but you don't know up front how many elements you need, to first create and populate a list, and then call ``ToArray`` to produce the array.
+Finally, if you need to create an array from a list, you can call the ``ToArray`` method. This produces an array with a length equal to the list's ``Count``, containing the list elements in the same order. It can sometimes be useful when you need to provide an array as an argument to another method. If you don't know up front how many elements you need, you can first create and populate a list, and then call ``ToArray`` to produce the array.
 
 ## Next Steps
 
 Write a simple program that lets the user manage a list of elements. It can be a grocery list, "to do" list, etc. Refer to [lesson 8](lesson-08.md) if necessary to see how to implement an infinite loop. Each time through the loop, ask the user to perform an operation, and then show the current contents of their list. The operations available should be Add, Remove, and Clear. The syntax should be as follows:
-> + some item
-> - some item
-> --
+
+> \+ some item
+> \- some item
+> \--
 
 Your program should read in the user's input and determine if it begins with a "+" or "-", or if it is simply "--". In the first two cases, your program should add or remove the string given ("some item" in the example). If the user enters just "--" then the program should clear the current list. Your program can start each iteration through its loop with the following instruction:
 ``Console.WriteLine("Enter command (+ item, - item, or -- to clear)):");``
