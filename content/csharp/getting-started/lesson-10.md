@@ -24,9 +24,9 @@ When declared, arrays do not need to specify a size, but when assigned, they mus
 int[] someIntegers = new int[3]; // holds 3 elements, with indexes of 0, 1, and 2.
 // uninitialized elements of a declared array hold the default value for the type (in this case 0).
 
-int[] moreIntegers = new int[] { 1, 2, 3, 4, 5}; // initializes the values of the array
+int[] moreIntegers = new int[] { 1, 2, 3, 4, 5 }; // initializes the values of the array
 
-int[] otherIntegers = new { 1, 3, 5, 7, 9}; // you can omit int[]; it will be inferred in this case.
+int[] otherIntegers = new { 1, 3, 5, 7, 9 }; // you can omit int[]; it will be inferred in this case.
 ```
 
 Arrays can have more than one *dimension*. All of the arrays declared above are single-dimensional. A multi-dimensional array can store multiple values for each element. Two-dimensional arrays are often thought of like a grid; three-dimensional arrays like a cube.
@@ -34,14 +34,14 @@ Arrays can have more than one *dimension*. All of the arrays declared above are 
 ```c#
 int[,] eggCarton = new int[2,6]; // a typical egg carton can be thought of as a 2x6 array
 
-int[,] someTable = { { 1, 2, 3 }, { 4, 5, 6} }; // you can fill a multi-dimensional array on assignment as well
+int[,] someTable = { { 1, 2, 3 }, { 4, 5, 6 } }; // you can fill a multi-dimensional array on assignment as well
 ```
 
 C# also supports *jagged* arrays, which are multi-dimensional arrays in which each element is itself an array of variable length.
 
 ```c#
 int[][] jaggedArray = new int[4][]; // define first dimension
-jaggedArray[0] = new int[2] { 1, 2}; // set values of first array
+jaggedArray[0] = new int[2] { 1, 2 }; // set values of first array
 ```
 
 Unlike some other collection types you'll learn about, the number of dimensions and size of an array are fixed for the lifetime of the instance. All uninitialized elements of arrays are set to the default value for the type: 0 for numeric types, null for reference types, etc.
@@ -51,7 +51,7 @@ Unlike some other collection types you'll learn about, the number of dimensions 
 C# arrays are zero indexed, meaning the first element has an index of 0. In an array of *n* elements, the last element's index will be *n-1*. Arrays implement the ``IEnumerable`` interface, which you'll learn is important in the next lesson. To access the value of an array element, whether to read it or set it, you refer to the array by name and specify the index using square braces (``[`` ``]``). For example:
 
 ```c#
-int[] someIntegers = { 1, 2, 3};
+int[] someIntegers = { 1, 2, 3 };
 
 int x = 1 + someIntegers[0]; // x = 2
 int y = 2 * someIntegers[2]; // y = 6
@@ -84,7 +84,7 @@ Arrays are a built-in C# type with a lot of utility, but with certain limitation
 
 ## Lists
 
-.NET includes support for a variety of collection types, including the most commonly used ``List`` type. Typically, you'll want to work with a list of a particular type of items, so you'll declare a generic ``List<T>``, where ``T`` in this case is the type of objects the list will hold. When you refer to a ``List<T>`` verbally, you'll say "a list of T", which makes sense since that really is what it represents. A ``List<int>`` is a list of ints. A ``List<Customer>`` is a list of customers. When working with a ``List<T>``, your program will raise an exception if you try to add an element to the list that isn't of the declared type.
+.NET includes support for a variety of collection types, including the most commonly used ``List`` type. Typically, you'll want to work with a list of a particular type of item, so you'll declare a generic ``List<T>``, where ``T`` in this case is the type of objects the list will hold. When you refer to a ``List<T>`` verbally, you'll say "a list of T", which makes sense since that really is what it represents. A ``List<int>`` is a list of ints. A ``List<Customer>`` is a list of customers. When working with a ``List<T>``, your program will raise an exception if you try to add an element to the list that isn't of the declared type.
 
 Lists do not have a fixed size. Unless the computer running your code runs out of memory, you can always add another element to a ``List``. This makes them more flexible than arrays. Generic lists are defined in the ``System.Collections.Generic`` namespace; you may need to add a ``using`` statement for the samples below to work in your application.
 
@@ -92,9 +92,9 @@ Lists do not have a fixed size. Unless the computer running your code runs out o
 
 ```c#
 List<int> someInts = new List<int>(); // declares an empty list
-someInts.Add(2);  // the list now has one item in it
+someInts.Add(2);  // the list now has one item in it: {2}
 
-List<int> moreInts = new List<int>() { 2, 3, 4}; // you can initialize a list when you create it
+List<int> moreInts = new List<int>() { 2, 3, 4 }; // you can initialize a list when you create it
 
 string[] colors = "red,blue,yellow,green".Split(','); // an array of 4 strings
 List<string> colorList = new List<string>(colors); // initialize the list from an array
