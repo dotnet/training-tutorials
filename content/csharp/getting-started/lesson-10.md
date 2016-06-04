@@ -78,7 +78,7 @@ Console.WriteLine(output);
 ```
 
 When run, this sample displays:
-> red | blue | yellow | green
+    red | blue | yellow | green
 
 Arrays are a built-in C# type with a lot of utility, but with certain limitations. Often, you won't know how many elements you'll need to store when you first create a collection, or there may be other behavior available to other collection types that you would like to take advantage of. One last very common extension method you can apply to arrays is ``ToList``. This method does just what you would expect - it creates a new ``List`` type and initializes it with the current contents of the array.
 
@@ -136,7 +136,7 @@ Console.WriteLine(String.Join(",", colors));
 ```
 
 This will display:
-> blue,green,yellow
+    blue,green,yellow
 
 Finally, if you need to create an array from a list, you can call the ``ToArray`` method. This produces an array with a length equal to the list's ``Count``, containing the list elements in the same order. It can sometimes be useful when you need to provide an array as an argument to another method. If you don't know up front how many elements you need, you can first create and populate a list, and then call ``ToArray`` to produce the array.
 
