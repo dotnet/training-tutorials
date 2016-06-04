@@ -124,9 +124,9 @@ colors.ForEach(Console.WriteLine); // equivalent to ForEach(c => Console.WriteLi
 
 The above sample will loop through the entire list and execute the expression provided once for each element. In this case, it will output to the console:
 
-> blue
-> green
-> yellow
+    blue
+    green
+    yellow
 
 To quickly create a string from a list of values, you can use the ``String.Join`` method:
 
