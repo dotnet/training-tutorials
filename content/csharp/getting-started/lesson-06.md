@@ -143,4 +143,5 @@ Write a program that generates a random number between 1 and 3 and asks the user
 ```c#
 int guessedNumber = int.Parse(Console.ReadLine());
 ```
- 
+
+Note that the above code will crash the program if the user doesn't type an integer value. For this exercise, assume the user will only enter valid guesses.
