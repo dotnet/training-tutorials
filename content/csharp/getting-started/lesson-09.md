@@ -9,7 +9,7 @@ Download a ZIP containing this tutorial's sample files:
 
 ## For Loops
 
-When you know the number of times you want to execute the code inside of your loop, or it is easily calculated, the ``for`` loop in C# is often the best available option. It looks and works like the ``while`` loop you used in the previous lesson, however, it has some additional features that you'll use in this lesson. For the simple case of looping over an operation a known-in-advance number of times, the ``for`` loop is the preferred loop.
+When you know the number of times you want to execute the code inside of your loop, or it is easily calculated, the ``for`` loop in C# is often the best available option. It looks and works like the ``while`` loop you used in the [previous lesson](lesson-08.md), however, it has some additional features that you'll use in this lesson. For the simple case of looping over an operation a known-in-advance number of times, the ``for`` loop is the preferred loop.
 
 Using a ``for`` loop, you can easily write a loop that will print a list of numbers to the screen:
 
@@ -25,25 +25,25 @@ public static void Main(string[] args)
 
 This loop will write the numbers 0 through 9 to the console, executing a total of 10 times. Let's look at how the ``for`` loop does this for us.
 
-Unlike the single, boolean expression in the ``while`` loops you've seen, there are three *expressions* in the first line of a ``for`` loop. The first expression in the example loop declares an integer variable, ``i``. This variable is being used inside the loop, and its value increases by 1 each time through the loop. Because the ``int i = 0;`` creates a new variable with an initial value of 0, the first time through the loop, the value of that variable, ``i``, is 0. The last time the loop executes, the value of ``i`` is 9, because the conditional expression ``i < 10`` says to continue only if the value of ``i`` is less than 10.
+Unlike the single, boolean expression in the ``while`` loops you've seen, there are three *expressions* in the first line of a ``for`` loop. The first expression in the example loop declares an integer variable, ``i``. The ``int i = 0;`` creates a new variable with an initial value of 0, the first time through the loop, the value of that variable, ``i``, is 0. The last time the loop executes, the value of ``i`` is 9, because the conditional expression ``i < 10`` says to continue only if the value of ``i`` is less than 10. In a moment, we'll discuss how and why the value of ``i`` is changing.
 
-**Note:** The *loop control variable* used most often is and integer variable with the name ``i``. This is a common convention used across languages in programming.
+**Note:** The *loop control variable* used most often is an integer variable with the name ``i``. This is a common convention used across languages in programming.
 
-## Starting from different values
+## Starting From Different Values
 
 In the previous example, the first value in the loop is 0. If you care about the number of times a loop executes, but not about the value, that might be fine. If you do care about the value of the variable, you can start it wherever you like. If you adjust the ``for`` loop to count like most people do, you will want to have it start at one. And when you change it, you will have code like this:
 
 ```c#
 public static void Main(string[] args)
 {
-    for (int i = 1; i < 6; i++)
+    for (int i = 1; i < 10; i++)
     {
         Console.WriteLine(i);
     }
 }
 ```
 
-This code will count from 1 to 5 instead of starting at 0. In fact, you can put in any values you like into that loop. Go ahead and give it a try.
+This code will count from 1 to 9 instead of starting at 0. In fact, you can choose many other values as the starting number for that loop (even negative numbers). Go ahead and give it a try.
 
 You can use variables to set the initial value of ``i`` or in your *conditional*, so your loop becomes dynamic:
 
@@ -65,8 +65,8 @@ public static void Main(string[] args)
 
 These first two expressions you have been learning about in the ``for`` loop are called the *initialization* and the *condition*. The first initializes the starting point, and the second is the condition that must be true in order to continue looping.
 
-## Counting up by different increments
-Sometimes you will want to increment your for loop by something other than 1 each time. The third expression in the ``for`` loop declaration, the *afterthough*, executes after each time through the loop. In the examples you've seen so far, the loops have used ``i++`` to increase the value of ``i`` by 1 after each time through the loop.  By convention, it simply updates the loop control variable. It doesn't need to be followed by a ``;`` because it's already at the end of the ``for`` construct. The ++ operator is shorthand for "increment by 1". The statement ``i++`` is equivalent to ``i = i + 1``.
+## Counting Up By Different Increments
+Sometimes you will want to increment your for loop by something other than 1 each time. The third expression in the ``for`` loop declaration, the *afterthought*, executes after each time through the loop. In the examples you've seen so far, the loops have used ``i++`` to increase the value of ``i`` by 1 after each time through the loop.  By convention, it simply updates the loop control variable. It doesn't need to be followed by a ``;`` because it's already at the end of the ``for`` construct. The ++ operator is shorthand for "increment by 1". The statement ``i++`` is equivalent to ``i = i + 1``.
 
 The following example shows how you can create a loop that includes only odd numbers and prints them to the screen:
 
@@ -80,7 +80,7 @@ for (int i = 1; i < 50; i+=2)
 
 In the example, instead of using the ``i++`` operation, a new operator, ``+=``, is shown. This operator is shorthand for "add a value to this variable and assign the sum back to the variable itself", So ``i+=2`` is equivalent to ``i = i + 2``. And, of course, ``i+=1`` would be equivalent to ``i++``.
 
-## Counting down
+## Counting Down
 
 Although most ``for`` loops start from a known value and increment by one until they reach a maximum, there's nothing in the syntax that requires this. You can use ``for`` loops to count down as easily as to count up. For example, the following loop will count down from 10:
 
@@ -127,7 +127,7 @@ Althought many developers would find the above example acceptable given its use 
 
 Write a program that prints the result of counting up to 24 using four different increments. First, count by 1s, then by 2s, by 3s, and finally by 4s. 
 
-Use nested for loops with that your outer loop counting from 1 to 4. You inner loop will increase the value of its *loop control variable* by the value of the *loop control variable* from the outer loop. This means your incrementing in the *afterthought* expression will be based on a variable.
+Use nested ``for`` loops with your outer loop counting from 1 to 4. You inner loop should count from 0 to 24, but increase the value of its *loop control variable* by the value of the *loop control variable* from the outer loop. This means the incrementing in the *afterthought* expression will be based on a variable.
 
 Your output should look something like this:
 
