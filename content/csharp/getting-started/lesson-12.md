@@ -16,11 +16,58 @@ There are two main kinds of methods in C#: *static* methods and *instance* metho
 
 If you're writing a method that will only operate on the parameters being passed into it, you can typically declare it as a ``static`` method. Otherwise, your methods should be instance methods (which is the default if you don't add the ``static`` keyword).
 
+```c#
+static int Add(int operand1, int operand2)
+{
+    // only works with its own parameters; works well as static method
+    return operand1 + operand2;
+}
+string FullName()
+{
+    // FirstName and LastName would be Properties of the class
+    // this method appears on
+    return $"{FirstName} {LastName}";
+}
+```
+
 ## Naming Methods
 
 Of course, [naming things](http://deviq.com/naming-things/) is one of the hardest problems in computer science. It's worth putting a little thought into what you name methods, as they're one of the key building blocks you'll use to build larger software applications. Methods *do* things, so typically their names should include verbs that describe the action they perform. Methods should be small and focused. If you give the method a name that describes what it does, and the name includes "and", the method might be larger than it needs to be. Most of the time, methods should do one thing. However, if you do have methods that do multiple things, it's better to have a long, descriptive name than to give it a shorter, less descriptive method that doesn't cover everything it does. Your methods shouldn't surprise programmers who call them with unexpected behavior.
 
 Frequently, you can create methods within your program by taking existing code (for instance, from your ``Main`` method), and moving it into a method, and replacing the original code with a call to the new method. This is especially important when you find that you're writing the same code in multiple places - you should try to follow the [Don't Repeat Yourself (DRY) principle](http://deviq.com/don-t-repeat-yourself/) in your code whenever you can. However, it can also be useful even for code that only exists in one place, as a way to help keep your code modular and easy to understand. If you have a part of your program that is getting long and complex, to the point where you want to start adding comments that describe what different sections are doing, it's almost always a better choice to move blocks of codes into their own methods, and give the methods good names that make it clear what's being done in them.
+
+As an example, consider this long block of code, which could appear in the program's ``Main`` method:
+
+```c#
+// display header
+Console.WriteLine("-----------------------------------------");
+Console.WriteLine("**** My Super Program *******************");
+Console.WriteLine("-----------------------------------------");
+
+// display the menu
+Console.WriteLine("What do you want to do?");
+Console.WriteLine("1 - View the Menu");
+Console.WriteLine("2 - Exit the Program");
+
+// read command
+string command = Console.ReadLine();
+int menuOption = int.Parse(command);
+
+switch(menuOption)
+// additional code omitted
+```
+
+The above code could be greatly simplified by using methods:
+
+```c#
+DisplayHeader();
+DisplayMenu();
+
+switch(ReadCommand())
+// additional code omitted
+```
+
+The first two methods do not return anything, and would simply contain the ``Console.WriteLine`` statements that previously were in the main method. The ``ReadCommand`` method would return an ``int``. Learn more about return types in the next section.
 
 ## Return Types
 
@@ -58,7 +105,7 @@ int GetValue(string versionNumber)
 {}
 ```
 
-It is possible to repeat the same name for a method, but when doing so each *signature* must be unique. These are referred to as *method overlads* and you'll learn more about this technique in the next section.
+It is possible to repeat the same name for a method, but when doing so each *signature* must be unique. These are referred to as *method overloads* and you'll learn more about this technique in the next section.
 
 It's a good idea to limit the number of parameters a method accepts, since a large number of parameters often indicates a method is doing too much and should be broken up into smaller methods. As with the recommendation to use specialized objects for *Result* types, you may sometimes find that it makes sense to create objects to represent parameters as well, or even to create a new type for a method to live on that eliminates the need to pass it many parameters.
 
@@ -111,4 +158,4 @@ Ultimately, all of the methods end up calling the last one, which takes a ``Time
 
 ## Next Steps
 
-In (lesson) you wrote a program to manage a list of items, responding to different commands the user typed. Use what you've learned about methods to break up that program into several methods, each responsible for a different part of the program. You might create methods to determine the action to take based on the user's input, and to perform each action. Don't worry if your methods are very short (even one line) - the point is for you to get comfortable taking code from one long method and moving it into smaller methods, while still keeping your code working.
+In [lesson 10](lesson-10.md) you wrote a program to manage a list of items, responding to different commands the user typed. Use what you've learned about methods to break up that program into several methods, each responsible for a different part of the program. You might create methods to determine the action to take based on the user's input, and to perform each action. Don't worry if your methods are very short (even one line) - the point is for you to get comfortable taking code from one long method and moving it into smaller methods, while still keeping your code working.
