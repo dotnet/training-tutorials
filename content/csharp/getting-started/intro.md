@@ -1,4 +1,4 @@
-# Getting Started with C#
+# Getting Started with C# 
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
 ## Who Should Read This
