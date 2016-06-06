@@ -10,7 +10,7 @@ Download a ZIP containing this tutorial's sample files:
 
 As you've already learned, C# depends heavily on types. It's known as a *strongly-typed* language, because it enforces type definitions and constraints. So, for instance, if a method has a parameter of type ``string``, you can't just pass it a variable (or literal) defined as an ``int``. C# will generate a compile error. The types you work with, both the built-in ones and your own custom types that you'll create, are defined (usually) by *classes*. 
 
-You can think of a class as a definition or design of an *object*. **In C#, an object is an instance of a class.** The class definition specifies what kinds of state the object will contain, and how it will expose that state to other objects. In this way, you can think of a class as simply a data structure. But classes are often much more than just dumb containers of data. They also include methods that define behavior, and the combination of data or state with behavior that can operate on that state is a powerful concept in object-oriented programming.
+You can think of a class as a definition or design of an *object*. **In C#, an an instance of a class is called an object.** The class definition specifies what kinds of state the object will contain, and how it will expose that state to other objects. In this way, you can think of a class as simply a data structure. But classes are often much more than just dumb containers of data. They also include methods that define behavior, and the combination of data or state with behavior that can operate on that state is a powerful concept in object-oriented programming.
 
 In your C# programs, just about every file that ends in ".cs" will be a class definition. You may also have some *interfaces*, *structs*, *enums*, or other elements, but classes usually make up the vast majority of C# applications. You've seen quite a few versions of the standard console application class, typically called "Program.cs", already. Its definition looks like this:
 
@@ -44,6 +44,7 @@ public class Program
 By default, all classes *inherit* from the ``System.Object`` type in .NET, which provides some behavior that all classes can use or modify. For example, ``System.Object`` defines a method ``ToString``, which means you can call this method on any object in all of .NET and expect a string result representing the object in some fashion. Working from the example above, you can display the default ``ToString`` output of your ``Program`` class with:
 
 ```c#
+var myProgram = new Program();
 Console.WriteLine(myProgram.ToString());
 // or
 Console.WriteLine(myProgram); // WriteLine will automatically call ToString for you internally
@@ -58,7 +59,7 @@ The default implementation of ``ToString`` is to simply display the full name of
 
 ## Properties and Fields
 
-Classes have *members*, which consist of methods, properties, and fields. You learned about methods in the [previous lesson](lesson-12.md). You saw an example of a field in the previous section, in which a ``versionNumber`` integer was added to the ``Program`` class. Fields are types that are attached to a class. They track the state of the class, and separate instances of the same class will each track the data of their fields independently. *Properties* provide a way for other objects to access state from an object in a controller manner. Unlike fields, which are essentially just variables, properties are methods and can add additional behavior around manipulating the state of an object.
+Classes have *members*, which consist of methods, properties, and fields. You learned about methods in the [previous lesson](lesson-12.md). You saw an example of a field in the previous section, in which a ``versionNumber`` integer was added to the ``Program`` class. Fields are types that are attached to a class. They track the state of the class, and separate instances of the same class will each track the data of their fields independently. *Properties* provide a way for other objects to access state from an object in a controlled manner. Unlike *fields*, which are essentially just variables, properties are methods and can add additional behavior around manipulating the state of an object.
 
 For example, suppose you have a class representing a speedometer, which can display values from 0 to 120. You implement the class using a field to represent the current speed:
 ```c#
@@ -96,12 +97,17 @@ public class Speedometer
     private int _currentSpeed;
     public int CurrentSpeed
     {
-        get;
+        get
+        {
+            return _currentSpeed;
+        }
         set 
         {
             if(newSpeed < 0) return;
             if(newSpeed > 120) return;
-            _currentSpeed = value; // value is a keyword used in setters representing the new value
+            
+            // value is a keyword used in setters representing the new value
+            _currentSpeed = value; 
         }
 }
 ```
@@ -172,7 +178,9 @@ Another approach to share this state between two different classes would be to u
 
 ## Inheritance
 
-In object-oriented languages like C#, classes can *inherit* from other classes. You've already learned that all classes in C# inherit from ``System.Object``, but they don't necessarily do so directly. Just as you inherit from your grandparents, but through your parents, so too can your classes inherit from other classes before ultimately inheriting from ``System.Object``. Inheritance provides a form of reuse, because common state and behavior characteristics of objects can be defined in *base* or *parent* classes and then used by *child* classes, either directly or with further refinement. In some languages, classes can inherit from multiple base classes, pulling in behavior from multiple parents. However, C# supports *single inheritance*, meaning that a class can only inherit from one base class. This simplifies many aspects of the language, but does mean that you need to be careful with how you use inheritance in your application design, because if you choose to have a class inherit from another class, you can't later choose to have it *also* inherit from another class. This is another reason to favor composition over inheritance, since there's no limit to how many other classes you can reference in your classes via fields or properties.
+In object-oriented languages like C#, classes can *inherit* from other classes. You've already learned that all classes in C# inherit from ``System.Object``, but they don't necessarily do so directly. Just as you inherit from your grandparents, but through your parents, so too can your classes inherit from other classes before ultimately inheriting from ``System.Object``. Inheritance provides a form of reuse, because common state and behavior characteristics of objects can be defined in *base* or *parent* classes and then used by *child* classes, either directly or with further refinement. 
+
+In some languages, classes can inherit from multiple base classes, pulling in behavior from multiple parents. However, C# supports *single inheritance*, meaning that a class can only inherit from one base class. This simplifies many aspects of the language, but does mean that you need to be careful with how you use inheritance in your application design, because if you choose to have a class inherit from one class, you can't later choose to have it *also* inherit from another class. This is another reason to favor composition over inheritance, since there's no limit to how many other classes you can reference in your classes via fields or properties.
 
 A simple example to demonstrate inheritance is one that uses geometric shapes. You can define a class, ``Shape``, that includes methods for calculating values like Perimeter. Then, you can inherit from ``Shape`` with various specific kinds of shapes, implementing the methods as you do so.
 
@@ -191,7 +199,7 @@ public class Rectangle : Shape
     
     public override int Perimeter()
     {
-        return Height * Width * 2;
+        return (Height + Width) * 2;
     }
 }
 public class Triangle : Shape
@@ -207,7 +215,7 @@ public class Triangle : Shape
 }    
 ```
 
-You'll notice two new keywords in the example above: ``virtual`` and ``override``, as well as some new syntax in the class defiition lines. You specify the class your class inherits from by specifying it after a colon (``:``) following the class's name. You can actually add ``: System.Object`` to any class that doesn't have another base class without changing its behavior - this is implied within .NET. Classes that inherit from other classes expose the base class's methods to their collaborators. Any code that refers to a ``Shape`` will be able to call the ``Perimeter`` method. By declaring that method as ``virtual``, child classes can modify the behavior of the method; by default methods cannot be changed by child class implementations. When changing base class behavior, the child class defines the method with the same return type, name, and signature, as well as the ``override`` keyword. Requiring the use of the ``override`` keyword ensures that developers do not accidentally override base class behavior.
+You'll notice two new keywords in the example above: ``virtual`` and ``override``, as well as some new syntax in the class definition lines. You specify the class your class inherits from by specifying it after a colon (``:``) following the class's name. You can actually add ``: System.Object`` to any class that doesn't have another base class without changing its behavior - this is implied within .NET. Classes that inherit from other classes expose the base class's methods to their collaborators. Any code that refers to a ``Shape`` will be able to call the ``Perimeter`` method. By declaring that method as ``virtual``, child classes can modify the behavior of the method; by default methods cannot be changed by child class implementations. When changing base class behavior, the child class defines the method with the same return type, name, and signature, as well as the ``override`` keyword. Requiring the use of the ``override`` keyword ensures that developers do not accidentally override base class behavior.
 
 Note that you can override the ``ToString`` method on any class where it will make sense to display string data related to an instance of the class. Returning the first example in this lesson, you could display the version of the program along with its name by overriding ``ToString``, like so:
 
