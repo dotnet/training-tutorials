@@ -20,7 +20,7 @@ foreach(var item in myList)
 
 The ``foreach`` statement begins with the ``foreach`` keyword, followed by an expression in parantheses. This expression includes the declaration of a local variable that will have scope within the loop block (``var item``). Then, the ``in`` keyword is specified, followed by the collection to be iterated over (``myList``). Like other loop statements, it's acceptable to follow the loop with a single statement (without curly braces), but it's recommended to always use the braces for greater clarity.
 
-You may recall from the [previous lesson](lesson-10.md) that the ``List`` type includes a similarly-named method, ``ForEach``, that works very similarly to this loop. If you do find yourself working with a ``List`` and needing to only execute a single statement per item in the list, the ``ForEach`` method may be a good choice. However, the ``foreach`` loop statement works on other collection types, not justs lists. In fact, you can use the ``foreach`` loop on any type that implements ``IEnumerable`` (or its generic equivalent), which includes a wide variety of collection types (and arrays).
+You may recall from the [previous lesson](lesson-10.md) that the ``List`` type includes a similarly-named method, ``ForEach``, that works very similarly to this loop. If you do find yourself working with a ``List`` and needing to only execute a single statement per item in the list, the ``ForEach`` method may be a good choice. However, the ``foreach`` loop statement works on other collection types, not justs lists. In fact, you can use the ``foreach`` loop on any type that implements ``IEnumerable`` (or its generic equivalent, or, more accurately, has a ``GetEnumerator()`` method), which includes a wide variety of collection types (and arrays).
 
 For example, to echo back to the user the arguments they passed to a console application, you could use ``foreach`` over the ``args`` array:
 
@@ -45,7 +45,7 @@ The ``for`` loop can be used to iterate over an array or list, using its length 
 var myList = new List<int>() { 43, 55, 100 };
 for(int i = 0; i < myList.Count; i++)
 {
-    // access current element of list with index of i
+    // access current element of the list with index of i
     Console.WriteLine(myList[i]);
 }
 
@@ -53,7 +53,7 @@ for(int i = 0; i < myList.Count; i++)
 int[] numbers = new[] { 2, 3, 5, 7 };
 for(int i = 0; i < numbers.Length; i++)
 {
-    // access current element of list with index of i
+    // access current element of the array with index of i
     Console.WriteLine(numbers[i]);
 }
 ```
@@ -73,4 +73,10 @@ while(index < myList.Count)
 
 ## Next Steps
 
-Reviewer/Editor: Any ideas?
+Write a program that allows the user to pass in a series of integer numbers as arguments, and will print the sum of the numbers. For example:
+
+```
+> dotnet run 1 2 3
+
+6
+```
