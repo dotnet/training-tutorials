@@ -7,7 +7,7 @@ Download a ZIP containing this tutorial's sample files:
 - [Completed Version] - Includes the completed versions of all samples
 
 ## For Loops
-When you know the number of times you want to execute the code inside of your loop, or it is easily calculated, the ``for`` loop in C# is often the best available option. It looks and works like the ``while`` loop you used in the previous lesson, however, it has some additional features that we'll use in this lesson. For the simple case of looping over an operation a known-in-advance number of times, the ``for`` loop is the preferred way of doing this.
+When you know the number of times you want to execute the code inside of your loop, or it is easily calculated, the ``for`` loop in C# is often the best available option. It looks and works like the ``while`` loop you used in the previous lesson, however, it has some additional features that you'll use in this lesson. For the simple case of looping over an operation a known-in-advance number of times, the ``for`` loop is the preferred loop.
 
 Using a ``for`` loop, you can easily write a loop that will print a list of numbers to the screen:
 
@@ -121,4 +121,15 @@ Althought many developers would find the above example acceptable given its use 
 
 ## Next Steps
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+Write a program that prints the result of counting up to 24 using four different increments. First, count by 1s, then by 2s, by 3s, and finally by 4s. 
+
+Use nested for loops with that your outer loop counting from 1 to 4. You inner loop will increase the value of its *loop control variable* by the value of the *loop control variable* from the outer loop. This means your incrementing in the *afterthought* expression will be based on a variable.
+
+Your output should look something like this:
+
+```
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24
+0,2,4,6,8,10,12,14,16,18,20,22,24
+0,3,6,9,12,15,18,21,24
+0,4,8,12,16,20,24
+```
