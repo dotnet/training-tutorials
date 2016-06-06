@@ -90,7 +90,8 @@ The *project.json* file includes information about your program, which is used t
       "imports": "dnxcore50"
     }
   }
-}```
+}
+```
 
 This file is formatted using [JavaScript Object Notation (JSON)](http://www.json.org/). It includes four root-level properties, *version*, *buildOptions*, *dependencies*, and *frameworks*. 
 
