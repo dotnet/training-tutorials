@@ -6,9 +6,11 @@ Download a ZIP containing this tutorial's sample files:
 - [Initial Version] - Use this as a starting point when following along with the tutorial yourself
 - [Completed Version] - Includes the completed versions of all samples
 
-## Classes in C#
+## Classes in C# 
 
-As you've already learned, C# depends heavily on types. It's known as a *strongly-typed* language, because it enforces type definitions and constraints. So, for instance, if a method has a parameter of type ``string``, you can't just pass it a variable (or literal) defined as an ``int``. C# will generate a compile error. The types you work with, both the built-in ones and your own custom types that you'll create, are defined (usually) by *classes*. You can think of a class as a definition or design of an *object*. **In C#, an object is an instance of a class.** The class definition specifies what kinds of state the object will contain, and how it will expose that state to other objects. In this way, you can think of a class as simply a data structure. But classes are often much more than just dumb containers of data. They also include methods that define behavior, and the combination of data or state with behavior that can operate on that state is a powerful concept in object-oriented programming.
+As you've already learned, C# depends heavily on types. It's known as a *strongly-typed* language, because it enforces type definitions and constraints. So, for instance, if a method has a parameter of type ``string``, you can't just pass it a variable (or literal) defined as an ``int``. C# will generate a compile error. The types you work with, both the built-in ones and your own custom types that you'll create, are defined (usually) by *classes*. 
+
+You can think of a class as a definition or design of an *object*. **In C#, an object is an instance of a class.** The class definition specifies what kinds of state the object will contain, and how it will expose that state to other objects. In this way, you can think of a class as simply a data structure. But classes are often much more than just dumb containers of data. They also include methods that define behavior, and the combination of data or state with behavior that can operate on that state is a powerful concept in object-oriented programming.
 
 In your C# programs, just about every file that ends in ".cs" will be a class definition. You may also have some *interfaces*, *structs*, *enums*, or other elements, but classes usually make up the vast majority of C# applications. You've seen quite a few versions of the standard console application class, typically called "Program.cs", already. Its definition looks like this:
 
