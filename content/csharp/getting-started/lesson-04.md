@@ -88,7 +88,7 @@ Note in the last example that multiple methods are chained together, such that t
 
 ## Replacing Parts of Strings
 
-A frequent scenario when working with strings is the construction of a string that is composed of some fixed parts, and a part that is variable. You saw in the last lesson how you could construct such a string using ``$"Hello {name}!`` syntax. This is known as *string interpolation*, and is a new feature in C# 6. The same string can also be constructed using concatenation (`` "Hello " + name + "!"``). Strings also support rich formatting, which at its simplest allows for this kind of replacement. To use string formatting, you specify a format string, which includes special placeholder values, and pass the format string and the replacement values to the ``Format`` method. Finally, you can use the ``Replace`` function to a substring with another substring. Consider the following examples:
+A frequent scenario when working with strings is the construction of a string that is composed of some fixed parts, and a part that is variable. You saw in the last lesson how you could construct such a string using ``$"Hello {name}!`` syntax. This is known as *string interpolation*, and is a new feature in C# 6. The same string can also be constructed using concatenation (`` "Hello " + name + "!"``). Strings also support rich formatting, which at its simplest allows for this kind of replacement. To use string formatting, you specify a format string, which includes special placeholder values, and pass the format string and the replacement values to the ``Format`` method. Finally, you can use the ``Replace`` function to replace part of a string with another string. Consider the following examples:
 
 ```c#
 string name = "Steve";
@@ -99,7 +99,7 @@ string greetTemplate = "Hello **NAME**!";
 string greet4 = greetTemplate.Replace("**NAME**", name); // Hello Steve!
 ```
 
-Of all of the above, the string interpolation approach (``greet1``) is recommended. It's clean, readable, and generally has better performance than the other approaches, however, using format strings or templates is a good option if you need to store the template separately from the scope of the variables that will be used during runtime value replacement.
+Of all of the above, the string interpolation approach (``greet1``) is recommended. It's clean, readable, and generally has better performance than the other approaches. However, using format strings or templates is a good option if you need to store the template separately from the scope of the variables that will be used during runtime value replacement.
 
 ## Next Steps
 
