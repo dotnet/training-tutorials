@@ -2,11 +2,13 @@
 by [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 
 #### Sample Files
+
 Download a ZIP containing this tutorial's sample files:
 - [Initial Version] - Use this as a starting point when following along with the tutorial yourself
 - [Completed Version] - Includes the completed versions of all samples
 
 ## For Loops
+
 When you know the number of times you want to execute the code inside of your loop, or it is easily calculated, the ``for`` loop in C# is often the best available option. It looks and works like the ``while`` loop you used in the previous lesson, however, it has some additional features that you'll use in this lesson. For the simple case of looping over an operation a known-in-advance number of times, the ``for`` loop is the preferred loop.
 
 Using a ``for`` loop, you can easily write a loop that will print a list of numbers to the screen:
@@ -25,9 +27,10 @@ This loop will write the numbers 0 through 9 to the console, executing a total o
 
 Unlike the single, boolean expression in the ``while`` loops you've seen, there are three *expressions* in the first line of a ``for`` loop. The first expression in the example loop declares an integer variable, ``i``. This variable is being used inside the loop, and its value increases by 1 each time through the loop. Because the ``int i = 0;`` creates a new variable with an initial value of 0, the first time through the loop, the value of that variable, ``i``, is 0. The last time the loop executes, the value of ``i`` is 9, because the conditional expression ``i < 10`` says to continue only if the value of ``i`` is less than 10.
 
-Note: The *loop control variable* used most often is and integer variable with the name ``i``. This is a common convention used across languages in programming.
+**Note:** The *loop control variable* used most often is and integer variable with the name ``i``. This is a common convention used across languages in programming.
 
 ## Starting from different values
+
 In the previous example, the first value in the loop is 0. If you care about the number of times a loop executes, but not about the value, that might be fine. If you do care about the value of the variable, you can start it wherever you like. If you adjust the ``for`` loop to count like most people do, you will want to have it start at one. And when you change it, you will have code like this:
 
 ```c#
@@ -75,9 +78,10 @@ for (int i = 1; i < 50; i+=2)
 }
 ```
 
-Note that this time, instead of using the ``i++`` operation, a new operator, ``+=``, is shown. This operator is shorthand for "add a value to this variable and assign the sum back to the variable itself", So ``i+=2`` is equivalent to ``i = i + 2``. And, of course, ``i+=1`` would be equivalent to ``i++``.
+In the example, instead of using the ``i++`` operation, a new operator, ``+=``, is shown. This operator is shorthand for "add a value to this variable and assign the sum back to the variable itself", So ``i+=2`` is equivalent to ``i = i + 2``. And, of course, ``i+=1`` would be equivalent to ``i++``.
 
 ## Counting down
+
 Although most ``for`` loops start from a known value and increment by one until they reach a maximum, there's nothing in the syntax that requires this. You can use ``for`` loops to count down as easily as to count up. For example, the following loop will count down from 10:
 
 ```c#
