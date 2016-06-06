@@ -59,7 +59,7 @@ The default implementation of ``ToString`` is to simply display the full name of
 
 ## Properties and Fields
 
-Classes have *members*, which consist of methods, properties, and fields. You learned about methods in the [previous lesson](lesson-12.md). You saw an example of a field in the previous section, in which a ``versionNumber`` integer was added to the ``Program`` class. Fields are types that are attached to a class. They track the state of the class, and separate instances of the same class will each track the data of their fields independently. *Properties* provide a way for other objects to access state from an object in a controlled manner. Unlike *fields*, which are essentially just variables, properties are methods and can add additional behavior around manipulating the state of an object.
+Classes have *members*, which consist of methods, properties, and fields. You learned about methods in the [previous lesson](lesson-12.md). You saw an example of a field in the previous section, in which a ``versionNumber`` integer was added to the ``Program`` class. *Fields* are types that are attached to a class. They track the state of the class, and separate instances of the same class will each track the data of their fields independently. *Properties* provide a way for other objects to access state from an object in a controlled manner. Unlike fields, which are essentially just variables, properties are methods and can add additional behavior around manipulating the state of an object.
 
 For example, suppose you have a class representing a speedometer, which can display values from 0 to 120. You implement the class using a field to represent the current speed:
 ```c#
@@ -242,11 +242,11 @@ public abstract class Shape
 }
 ```
 
-Note that ``abstract`` methods do not require the ``virtual`` keyword, since they *must* be overridden in child class implementations.
+Note that ``abstract`` methods do not require the ``virtual`` keyword, since they *must* be overridden in child class implementations (the code will not compile otherwise).
 
 ## Polymorphism
 
-Polymorphism means, literally, "occurring in several different forms". In programming, polymorphism refers to the ability to have code that can work with objects of different forms as if they were the same. Polymorphism and inheritance are related, because you should be able to substitute child types for their base types anywhere you need to work with them (known as the [Liskov Substitution Principle](http://deviq.com/liskov-substitution-principle/)). This means that you can write methods that accept a base type as a parameter, and they can work with that base type's methods and properties, regardless of what *actual* child implementation of that base class is passed as an argument. For instance, to display the perimeter of a shape, you could write a method like this one:
+Polymorphism means, "occurring in several different forms". In programming, polymorphism refers to the ability to have code that can work with objects of different forms as if they were the same. Polymorphism and inheritance are related, because you should be able to substitute child types for their base types anywhere you need to work with them (known as the [Liskov Substitution Principle](http://deviq.com/liskov-substitution-principle/)). This means that you can write methods that accept a base type as a parameter, and they can work with that base type's methods and properties, regardless of what *actual* child implementation of that base class is passed as an argument. For instance, to display the perimeter of a shape, you could write a method like this one:
 
 ```c#
 public void DisplayShape(Shape shape)
@@ -257,9 +257,26 @@ public void DisplayShape(Shape shape)
 
 The ability to have the ``DisplayShape`` method work correctly with many different ``Shape`` implementations is an example of polymorphism. This allows the calling code and the specific implementation of ``Shape`` to evolve independently from one another, resulting in a more maintainable program.
 
+To see an example of this in action, consider the following code block:
+
+```c#
+var rectangle = new Rectangle();
+rectangle.Height = 5;
+rectangle.Width = 6;
+DisplayShape(rectangle);
+
+var triangle = new Triangle();
+triangle.Side1 = 3;
+triangle.Side2 = 4;
+triangle.Side3 = 5;
+DisplayShape(triangle);
+```
+
+Both ``Rectangle`` and ``Triangle`` object instances can be passed as arguments to ``DisplayShape``, since it expects a ``Shape`` instance, and both of these types inherit from ``Shape``.
+
 ## Next Steps
 
-Write a program that prints out address for people and companies. You can use the sample ``Person``, ``Company``, and ``Address`` classes from the lesson. Create several instances of ``Person`` and ``Company``, and add them to collections. Loop through these collections, printing out the address for each company or person, like so:
+Write a program that prints out addresses for people and companies. You can use the sample ``Person``, ``Company``, and ``Address`` classes from the lesson. Create several instances of ``Person`` and ``Company``, and add them to collections. Loop through these collections, printing out the address for each company or person, like so:
 
 ```
 John Doe
