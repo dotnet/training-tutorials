@@ -80,15 +80,35 @@ C# has always supported the concept of method overloads, which are multiple decl
 The following example demonstrates how method overloads might be used for a case where default parameters might also work:
 
 ```c#
-// demo here
+string CreateGreeting()
+{
+    return CreateGreeting("You"); // call version with more parameters, passing a default value
+}
+string CreateGreeting(string name)
+{
+    return $"Hi {name}!";
+}
 ```
 
-Sometimes, you want to help programmers who might use your method by eliminating the need for them to convert whatever type they have into the type your method expects as a parameter. Thus, you create multiple overloads that will perform the type conversion internally. This makes your method easier to use, and reduces the complexity of the code that calls it. For example:
+Sometimes, you want to help programmers who might use your method by eliminating the need for them to convert whatever type they have into the type your method expects as a parameter. Thus, you create multiple overloads that will perform the type conversion internally. This makes your method easier to use, and reduces the complexity of the code that calls it. For example, consider these methods that will display how many seconds remain until a deadline, or based on a given ``TimeSpan``:
 
 ```c#
-// demo here
+int SecondsRemaining(DateTime endTime)
+{
+    return SecondsRemaining(endTime - DateTime.Now);
+}
+int SecondsRemaining(string endTime)
+{
+    return SecondsRemaining(DateTime.Parse(endTime));
+}
+int SecondsRemaining(TimeSpan duration)
+{
+    return (int)duration.TotalSeconds;
+}
 ```
+
+Ultimately, all of the methods end up calling the last one, which takes a ``TimeSpan``, but they perform different calculations and/or conversions along the way to make working with the method easier for the calling code. This kind of simplification is a key benefit your programs can get from the method overloading feature in C#.
 
 ## Next Steps
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+In (lesson) you wrote a program to manage a list of items, responding to different commands the user typed. Use what you've learned about methods to break up that program into several methods, each responsible for a different part of the program. You might create methods to determine the action to take based on the user's input, and to perform each action. Don't worry if your methods are very short (even one line) - the point is for you to get comfortable taking code from one long method and moving it into smaller methods, while still keeping your code working.
