@@ -59,11 +59,11 @@ namespace ConsoleApplication
 
 It's tradition in programming to have your first program in a new language or platform display "Hello World!". You can run your new C# application by typing ``dotnet restore``, which will bring in any dependencies it has via [NuGet](http://nuget.org), and then type ``dotnet run``:
 
-> dotnet restore
-> (packages are restored)
-> dotnet run
-> (builds the app)
-> Hello World!
+    dotnet restore
+    (packages are restored)
+    dotnet run
+    (builds the app)
+    Hello World!
 
 You can also build your application using ``dotnet build``. Calling ``dotnet run`` will automatically build the application if necessary (or if all files are up to date, it will just run the application).
 
