@@ -153,7 +153,11 @@ This approach is simple and effective, though it can be circumvented if the prop
 orders = (List<Order>)customer.Orders; // cast from IEnumerable to List
 ```
 
-The ``ReadOnlyCollection`` approach is the safest one to use if you have collections you need to protect.
+The ``ReadOnlyCollection`` approach is the safest one to use if you have collections you need to protect. Using this approach, the original code can only force the ``Orders`` property into the ``orders`` local variable by copying the collection:
+
+```c#
+orders = customer.Orders.ToList(); // ToList creates a new list and populates it
+```
 
 In all of these cases, in order for the original program code that adds orders to customers to work, the ``Customer`` type must expose an ``AddOrder`` method:
 
@@ -166,14 +170,105 @@ public void AddOrder(Order order)
 
 ### Encapsulating Infrastructure
 
+Another area in which encapsulation can greatly benefit program maintainability is when it comes to *infrastructure*. Infrastructure refers to all of the things outside of your code that your program must interact with, such as the file system, databases, the system clock, email servers, etc. Working with these systems requires certain implementation-specific code that is generally at a lower level of abstraction than your programming model (assuming you're not writing device drivers or something similar). Failure to encapsuate infrastructure properly can result in code that is tightly coupled to a particular implementation, making it hard to evolve as requirements change, and likely hard to test in isolation from its infrastructure, as well.
+
+Infrastructure can be encapsulated by ensuring implementation details are kept within certain implementation classes, and these classes expose abstractions that are independent of the infrastructure they use. For instance, if the program needs to store a record in a database, it's a more flexible design to encapsulate the database-specific code in a class separate from the business logic that determines something needs to be persisted.
+
+One approach to creating abstractions for infrastructure-based operations that do not expose their implementation details is to define the available operations as *interfaces*.
+
+## Interfaces
+
+C# defines another type called an *interface*, using the keyword ``interface``. An interface is equivalent to an abstract base class with no implementation, with one key difference: classes an implement multiple interfaces (a class can only inherit from one other class). The syntax to declare an interface is similar to that of a ``class``, but property and method definitions cannot have accessibility modifiers or statement blocks (instead, method declarations end with a ``;``).
+
+```c#
+public interface IProductRepository
+{
+    List<Product> List();
+}
+```
+
+Implementing an interface from a class is done just like inheriting from a class. However, if the class being defined inherits from a base class, that base class must be listed first before any interfaces after the ``:``. For example:
+
+```c#
+public class InMemoryProductRepository : BaseRepository, IProductRepository
+```
+
+A class that lists an interface in its definition must implement all of that interface's members or a compile error will occur.
+
+You can use interfaces anywhere you would define, but not instantiate, a type. Thus, you can specify an interface name as a parameter to a method or as the type of a local variable, field, or property. Only an instance of a class that implements the interface can be assigned to variable or member defined to be of the interface's type.
+
+```c#
+IProductRepository repository; // field definition
+
+// use for return or parameter type
+public IProductRepository Foo(IProductRepository repo)
+{
+    IProductRepository anotherRepo = repo; // use as local
+
+    var doNotDoThis = new IProductRepository(); // compilation error - interfaces cannot be instantiated
+}
+```
+
+Interfaces provide a lightweight way to achieve encapsulation by explicitly defining how your program's components will interact. When designing your application, consider defining and specifying interfaces anywhere you want to constrain how much of your objects' structure you want to expose to collaborators.
+
 ## Single Responsibility
+
+When considering how to break up your program's functionality into classes, the [Single Responsibility Principle (SRP)](http://deviq.com/single-responsibility-principle/) can help. This principle states that classes and methods should do only one thing, and when your design follows this principle you will tend to have many small, focused classes that are easy to understand and test. When you see a class or method is getting long, consider whether it has too many responsibilities, and whether it makes sense to split it up into multiple, smaller classes and/or methods.
 
 ## Tell, Don't Ask
 
-## Composition over Inheritance
+The [Tell, Don't Ask Principle](http://deviq.com/tell-dont-ask/) relates to where behavior belongs in an object-oriented application. Systems that have poor encapsulation often violate this principle, because any code in the system can interrogate any object's state in order to make a decision or perform some operation on it. Ideally, you want state and behavior to be encapsulated together as objects, so that invariants and business rules can be maintained for the object in one place in your code. If you find examples in your code where you take an existing instance of a class, read several of its properties, and perform some conditional logic based on them, think about whether you could instead move that conditional logic (and property access) into a method on the class in question.
+
+The following method shows an example of violating Tell, Don't Ask. This method could be moved onto the ``Customer`` class described here, eliminating the need for the first null check and ensuring this logic lives in only one place in the application.
+
+```c#
+string ConstructCustomerName(Customer customer)
+{
+    if(customer == null) return;
+    string name = "";
+    if(!String.IsNullOrEmpty(customer.Title)
+    {
+        name += customer.Title + " ";
+    }
+    if(!String.IsNullOrEmpty(customer.FirstName)
+    {
+        name += customer.FirstName + " ";
+    }
+    if(!String.IsNullOrEmpty(customer.MiddleName)
+    {
+        name += customer.MiddleName + " ";
+    }
+    if(!String.IsNullOrEmpty(customer.LastName)
+    {
+        name += customer.LastName + " ";
+    }    
+    if(!String.IsNullOrEmpty(customer.Suffix)
+    {
+        name += customer.Suffix;
+    }
+    return name.Trim();
+}
+```
+
+## New is Glue
+
+Remember when you're instantiating collaborators that it's often better to request them as method or constructor parameters than to use ``new`` directly in your code. Choosing which implementation to work with, as opposed to just which interface you need, is a responsibility in itself. If you're following SRP, you may not want to take on the responsibility of choosing your collaborators. This isn't to say that you should never use ``new``; just be conscious of the fact that when you do, you're *gluing* your code to a particular implementation. An easy way to keep this in mind is to remember the phrase, [New is Glue](http://ardalis.com/new-is-glue).
 
 ## Explicit Dependencies
 
+As you design your program to follow the above principles, it's likely you'll move toward a design with many small, focused classes that interact with one another through interfaces. Often, these interfaces will be passed into the classes or methods as parameters, so that instantiation of specific implementations is left as a decision to be made higher up in the program's execution. Another principle that can help you follow these guidelines is the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/). This principle states that methods and classes should explicitly require as parameters any collaborating objects they need to function. If your have classes that you can instantiate without error, but which you can't work with unless certain conditions are in place (for instance, a configuration file exists with a valid connection string, the connection string points to a valid database, etc.), you're violating this principle.
+
+Your classes should communicate what they need to perform their actions by requesting any dependencies through their constructor (or, alternately, as method parameters). Classes that have *hidden dependencies* (dependencies not explicitly requested as parameters) are *dishonest*. They can trick developers into thinking the classes can simply be instantiated and use, but the classes fail when their hidden dependencies are not set up as required. 
+
 ## Next Steps
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+Start with the Customer and Order code shown above. Write a program that demonstrates the following requirements:
+
+ - Customers have a property exposing their historic Orders
+ - Customers expose a method for adding an Order
+ - Trying to add a null Order should do nothing
+ - Trying to add an Order with an existing OrderNumber should replace the existing Order (not add a duplicate)
+ - Orders should expose an OrderDate (which can be read/write)
+ - Trying to add an order with an OrderDate in the future should do nothing
+
+When finished, you should have a console application that demonstrates (via ``Console.WriteLine``) that each of these requirements is working correctly.
