@@ -27,7 +27,7 @@ The ultimately publishing platform capabilities and requirements aren't yet know
 
 ## Branching Strategy
 
-The *master* branch will contain the latest approved content. In the short term, approved content authors will be permitted to push directly to master. However, once there is a significant amount of content, authors will be expected to work on their content in their own feature branch, and then submit a pull request and await a :shipit: from another team member.
+The *master* branch will contain the latest approved content. In the short term, approved content authors will be permitted to push directly to master. Once there is a significant amount of content, however, authors will be expected to work in their own feature branch before submitting a pull request and awaiting a :shipit: from another team member.
 
 
 
