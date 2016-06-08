@@ -8,9 +8,11 @@ Download a ZIP containing this tutorial's sample files:
 
 ## What is Encapsulation? 
 
-*Encapsulation* is a fundamental concept in computer science and programming. At its core, encapsulation is simply "information hiding", but that doesn't convey the reasoning behind the practice. By hiding information about the inner workings of a software construct, you force collaborators to work only with the construct's exposed interface. How work is done withing the construct is a "black box", and as a result, the inner workings are free to change without disrupting collaborators provided the external interface (and associated behavior) are not changed.
+*Encapsulation* is a fundamental concept in computer science and programming. At its core, encapsulation is simply "information hiding", but that doesn't convey the reasoning behind the practice. By hiding information about the inner workings of a software construct, you force collaborators to work only with the construct's exposed interface. How work is done within the construct is a "black box", and as a result, the inner workings are free to change without disrupting collaborators, provided the external interface (and associated behavior) is not changed.
 
 You achieve encapsulation in your object-oriented programs primarily through the use of object design and accessibility modifiers, which you learned about in the [previous lession](lesson-14.md). Your program would have no encapsulation if the entire thing resided in a single method. By breaking functionality out into separate, focused methods and classes, and controlling how these methods access their classes' state through accessibility modifiers, you can achieve good encapsulation in your program's design.
+
+### Example of Poor Encapsulation
 
 A very common example of poor encapsulation is the overuse of properties, especially for collection types. Usually, these types expose a great deal more functionality than any client code should be able to access, which can result in program bugs. Consider the following program, which prints customers and their orders:
 
@@ -71,13 +73,13 @@ There are a variety of ways this can be addressed, the simplest of which is to c
 
 ## Using Encapsulation To Constrain Operations
 
-The classes you create to model the problem you're trying to solve should be designed so that they can collaborate with one another without relying on implementation details. This produces a loosely-coupled, modular design that is easier to maintain and less likely to have bugs. Each class can be responsible for its own state, and can control how that state is changed so that it can maintain certain business rules. In the example above, there are no business rules protecting the ``Customer`` class against inadvertent changes to its ``Order`` history. Presumably, once a customer's order has been completed, the history of that order should never change. Certainly, it should be trivial for the application to wipe out the history completely.
+The classes you create to model the problem you're trying to solve should be designed so that they can collaborate with one another without relying on implementation details. This produces a loosely-coupled, modular design that is easier to maintain and less likely to have bugs. Each class can be responsible for its own state, and can control how that state is changed so that it can maintain certain business rules. In the example above, there are no business rules protecting the ``Customer`` class against inadvertent changes to its ``Order`` history. Presumably, once a customer's order has been completed, the history of that order should never change. Certainly, it shouldn't be trivial for the application to wipe out the history completely (perhaps unintentionally).
 
 When you create a software model, which is what your classes are, you should constrain the ways in which the components of that model can interact. By default, certain programming constructs may offer a wealth of functionality, but part of designing your program is restricting those operations to just the ones that should be available within a given context. In the case of printing out customers and their orders, there's no reason why that should include the ability to remove orders, for example. Look at the example program above and consider what operations are actually needed for the program to print the necessary information before continuing.
 
 ### Read Only Properties
 
-One way in which we can improve encapsulation is through the use of read-only properties. These help to protect primitive types (int, string, DateTime, etc) from unwanted direct manipulation by collaborators. Unforunately, collection types frequently expose methods for manipulating their contents even if the collection type itself is read only.
+You can provide access to an object's state while maintaining some encapsulation by using read-only properties. These help to protect primitive types (int, string, DateTime, etc) from unwanted direct manipulation by collaborators. Unforunately, collection types frequently expose methods for manipulating their contents even if the collection type itself is read only.
 
 Updating ``Customer`` and ``Order`` to use read only properties for their string properties improves their encapsulation, though, and the ``set`` can safely be removed from the ``Orders`` property, as well:
 
@@ -106,11 +108,12 @@ With this change, customers must have a name when they are created, which is a r
 
 ### Encapsulating Collections
 
-When it comes to collections, sometimes the best way to protect them is to only expose a copy of the collection's contents. This can sometimes have performance implications, so you must be careful with such design decisions. Using this approach a ``private`` collection is used by the object internally, and the property it exposes simply is a copy of this private collection:
+When it comes to collections, sometimes the best way to protect them is to only expose a copy of the collection's contents. This can sometimes have performance implications, so you must be careful with such design decisions. Using this approach, a ``private`` collection is used by the object internally, and the property it exposes simply is a copy of this private collection:
 
 ```c#
 private List<Order> _orders = new List<Order>();
-public List<Order> Orders { 
+public List<Order> Orders 
+{ 
     get
     {
         return new List<Order>(_orders);
@@ -123,7 +126,8 @@ The [``ReadOnlyCollection``](https://msdn.microsoft.com/en-us/library/ms132474(v
 ```c#
 private List<Order> _orders = new List<Order>();
 private ReadOnlyCollection<Order> _ordersView;
-public ReadOnlyCollection<Order> Orders { 
+public ReadOnlyCollection<Order> Orders 
+{ 
     get
     {
         if(_ordersView == null)
@@ -139,7 +143,8 @@ Another approach is to expose the collection as a type with limited capabilities
 
 ```c#
 private List<Order> _orders = new List<Order>();
-public IEnumerable<Order> Orders2 {
+public IEnumerable<Order> Orders
+{
     get
     {
         return _orders.AsEnumerable(); // in System.Linq namespace
