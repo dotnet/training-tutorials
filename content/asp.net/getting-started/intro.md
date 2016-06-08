@@ -21,4 +21,11 @@ This tutorial will cover the following topics:
 - [Building Your Own Middleware](lesson-10.md)
 - [Introducing Routing](lesson-11.md)
 - [Introducing ASP.NET Core MVC](lesson-12.md)
-
+- [Understanding Controllers and Actions](lesson-13.md)
+- [Returning Data or Views from Controllers](lesson-14.md)
+- [Sending Data to Controllers](lesson-15.md)
+- [Injecting Dependencies into Controllers](lesson-16.md)
+- [Testing ASP.NET Core Apps](lesson-17.md)
+- [Working with ASP.NET Core MVC Views](lesson-18.md)
+- [Understanding ASP.NET Core MVC Filters](lesson-19.md)
+- [Working with Data in your ASP.NET Core App](lesson-20.md)
