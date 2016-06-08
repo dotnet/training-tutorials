@@ -183,7 +183,7 @@ One approach to creating abstractions for infrastructure-based operations that d
 
 ## Interfaces
 
-C# defines another type called an *interface*, using the keyword ``interface``. An interface is equivalent to an abstract base class with no implementation, with one key difference: classes an implement multiple interfaces (a class can only inherit from one other class). The syntax to declare an interface is similar to that of a ``class``, but property and method definitions cannot have accessibility modifiers or statement blocks (instead, method declarations end with a ``;``).
+C# defines another type called an *interface*, using the keyword ``interface``. An interface is equivalent to an abstract base class with no implementation, with one key difference: classes can implement multiple interfaces (a class can only inherit from one other class). The syntax to declare an interface is similar to that of a ``class``, but property and method definitions cannot have accessibility modifiers or statement blocks (instead, method declarations end with a ``;``).
 
 ```c#
 public interface IProductRepository
@@ -227,7 +227,7 @@ The [Tell, Don't Ask Principle](http://deviq.com/tell-dont-ask/) relates to wher
 The following method shows an example of violating Tell, Don't Ask. This method could be moved onto the ``Customer`` class described here, eliminating the need for the first null check and ensuring this logic lives in only one place in the application.
 
 ```c#
-string ConstructCustomerName(Customer customer)
+public string ConstructCustomerName(Customer customer)
 {
     if(customer == null) return;
     string name = "";
