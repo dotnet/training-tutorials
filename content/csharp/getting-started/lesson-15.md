@@ -198,7 +198,7 @@ Implementing an interface from a class is done just like inheriting from a class
 public class InMemoryProductRepository : BaseRepository, IProductRepository
 ```
 
-A class that lists an interface in its definition must implement all of that interface's members or a compile error will occur.
+A class that lists an interface in its definition must implement all of that interface's members or a compilation error will occur.
 
 You can use interfaces anywhere you would define, but not instantiate, a type. Thus, you can specify an interface name as a parameter to a method or as the type of a local variable, field, or property. Only an instance of a class that implements the interface can be assigned to variable or member defined to be of the interface's type.
 
