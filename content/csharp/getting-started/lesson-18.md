@@ -173,7 +173,7 @@ catch (System.Exception)
 }
 ```
 
-**Note:** the order of the catch blocks is important; each catch block will try to handle the exception. Once a catch block is chosen the lower ones are skipped.
+**Note:** The order of the catch blocks is important; only one catch block can catch an exception. The first catch block that can handle the exception will execute; any others are ignored.
 
 In some instances you may want to handle more than one type of specific exception the same way and their common exception ancestor class is only ``System.Exception``. In order to that, you use the ``when`` clause followed by a condition explaining when you want to use that catch block. It looks like this:
 
