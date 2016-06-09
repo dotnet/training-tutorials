@@ -62,10 +62,11 @@ The default implementation of ``ToString`` is to simply display the full name of
 Classes have *members*, which consist of methods, properties, and fields. You learned about methods in the [previous lesson](lesson-12.md). You saw an example of a field in the previous section, in which a ``versionNumber`` integer was added to the ``Program`` class. *Fields* are types that are attached to a class. They track the state of the class, and separate instances of the same class will each track the data of their fields independently. *Properties* provide a way for other objects to access state from an object in a controlled manner. Unlike fields, which are essentially just variables, properties are methods and can add additional behavior around manipulating the state of an object.
 
 For example, suppose you have a class representing a speedometer, which can display values from 0 to 120. You implement the class using a field to represent the current speed:
+
 ```c#
 public class Speedometer
 {
-    public int CurrentSpeed;    
+    public int CurrentSpeed; // uninitialized ints start out with value of 0
 }
 ```
 
@@ -121,6 +122,48 @@ public class Person
     public string LastName { get; set; }
     public DateTime DateOfBirth { get; set; }
     public string TaxPayerId { get; set; }
+}
+```
+
+### Constructors and Property Initializers
+
+Note that in the above example, ``Person``'s properties all start out uninitialized. Thus, the ``string`` properties will be ``null``, and the ``DateOfBirth`` property will initially be ``DateTime.MinValue``, which probably isn't what's desired. You can specify default values for a class's members in its *constructor*. The constructor is run when an instance of the class is created, before any code can interact with the new instance. You should avoid putting complex logic into constructors, but they're a good place to ensure fields and properties are initialized. You can see an example of a ``Person`` constructor below:
+
+```c#
+public Person() // this is a method within the Person class
+{
+    FirstName = string.Empty;
+    LastName = string.Empty;
+    TaxPayerId = string.Empty;
+}
+```
+
+Constructors can also take parameters. By default, all classes have a default constructor that takes no parameters. If you add a constructor, the default constructor will no longer be created, so you can control whether or not a class can be constructed without parameters. In this case, pretend you want to require a ``DateOfBirth`` when creating a ``Person``. In that case, change the above ``Person`` constructor as follows:
+
+```c#
+public Person(DateTime dateOfBirth)
+{
+    DateOfBirth = dateOfBirth;
+    FirstName = string.Empty;
+    LastName = string.Empty;
+    TaxPayerId = string.Empty;
+}
+``` 
+
+Putting property initialization code into constructors can result in a lot of extra code, and for larger classes there can be a lot of separation between where the property is declared and where its value is initialized. That's why C# recently added support for *property initializers*. Property initializers can be used to set the default value of properties at the same time they're declared. The syntax is straightforward: after the automatic property declaration, add an ``= initialValue;`` where *initialValue* is what you want the property to be. For example, setting the string properties to default to empty strings (instead of null), while still requiring ``DateOfBirth`` in the constructor would be done as follows:
+
+```c#
+public class Person
+{
+    public Person(DateTime dateOfBirth)
+    {
+        DateOfBirth = dateOfBirth;
+    }
+
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public DateTime DateOfBirth { get; set; }
+    public string TaxPayerId { get; set; } = string.Empty;
 }
 ```
 
