@@ -1,4 +1,4 @@
-# Understanding ASP.NET Core MVC Filters
+# Working with Data in your ASP.NET Core App
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
 #### Sample Files
@@ -6,7 +6,7 @@ Download a ZIP containing this tutorial's sample files:
 - [Initial Version] - Use this as a starting point when following along with the tutorial yourself
 - [Completed Version] - Includes the completed versions of all samples
 
-See the [Issue](https://github.com/dotnet/training-tutorials/issues/66) to claim this lesson and/or view what should be included in it.
+See the [Issue](https://github.com/dotnet/training-tutorials/issues/67) to claim this lesson and/or view what should be included in it.
 
 ## First Header
 
