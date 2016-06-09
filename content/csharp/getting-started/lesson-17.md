@@ -10,8 +10,6 @@ Download a ZIP containing this tutorial's sample files:
 
 Language Integrated Query, or LINQ, is a way to query a set of data with the use of extension methods. In order to provide you with some examples of these LINQ extension methods, I'll be using a list of people. This is combining ideas from (lesson with lists and arrays) and (lesson about classes and objects). Here is the list of people I'll be using along with the type they are modeled after.
 
-Person class
-
 ```c#
 public class Person
 {
@@ -22,7 +20,7 @@ public class Person
 }
 ```
 
-List of People we will use throughout this lesson.
+Below is the list of People we will use throughout this lesson.
 
 ```c#
 var people = new List<Person>();
@@ -42,7 +40,7 @@ The LINQ `Where` extension method is probably the most commonly used. This can b
 var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30);
 ``` 
 
-As you can see, the Where method takes in a lamda expression which is performed on each item in the list of people. In this scenario, we check every Person's Age property, to see if it is greater than 30. If the result of the expression comes back as true, the current item is added to an `IEnumerable<T>`. This new `IEnumerable<T>` will be an `IEnumerable` of people,
+As you can see, the `Where` method takes in a lamda expression which is performed on each item in the list of people. In this scenario, we check every Person's Age property, to see if it is greater than 30. If the result of the expression comes back as true, the current item is added to an `IEnumerable<T>`. This new `IEnumerable<T>` will be an `IEnumerable` of people,
 
 ```c#
 new IEnumerable<Person>();
@@ -55,16 +53,28 @@ The LINQ `Select` extension method will select certain properties on an object f
 IEnumerable<string> listOfFirstNames = people.Select(x => x.FirstName);
 ```
 
-The contents of listOfFirstNames will now hold the strings "Eric", "Steve", "Brendan", "Jane", "Samantha".
+The contents of listOfFirstNames will now contain the strings "Eric", "Steve", "Brendan", "Jane", "Samantha".
 
 ###FirstOrDefault
-The LINQ `FirstOrDefault` extension method will take in an expression to query the data by, and then return the **first** element of the list. In our example, calling `FirstOrDefault` will return the first the `Person` in the list.
+The LINQ `FirstOrDefault` extension method will return the first element of a list.
 
 ```c#
 Person firstOrDefault = people.FirstOrDefault();
+Console.WriteLine(firstOrDefault.FirstName); //Will output "Eric"
 ```
 
-This will result in returning `Person { FirstName = "Eric", LastName = "Fleming", Occupation = "Dev", Age = 24 });`
+The `FirstOrDefault` method can also be used to filter the list to return the first element that matches your expression's criteria.
+
+```c#
+var firstThirtyYearOld = people.FirstOrDefault(x => x.Age == 30);
+Console.WriteLine(firstThirtyYearOld.FirstName); //Will output "Brendan"
+```
+
+The above expression is the same as chaining together a `Where` and a `FirstOrDefault`. It is much more simple to pass your expression straight into the `FirstOrDefault` method from the beginning. 
+```c#
+var firstThirtyYearOld = people.Where(x => x.Age == 30).FirstOrDefault();
+Console.WriteLine(firstThirtyYearOld.FirstName); //Will also output "Brendan"
+```
 
 One item to note about FirstOrDefault is, if there is not an item that matches the criteria for FirstOrDefault, whether the list was empty, or the expression has no results then the item returned will be null. 
 
