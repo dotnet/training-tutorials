@@ -26,9 +26,9 @@ Below is the list of People we will use throughout this lesson.
 var people = new List<Person>();
 
 people.Add(new Person { FirstName = "Eric", LastName = "Fleming", Occupation = "Dev", Age = 24 });
-people.Add(new Person { FirstName = "Steve", LastName = "Smith", Occupation = "Manager", Age = 40 });
+people.Add(new Person { FirstName = "Steve", LastName = "Smith", Occupation = "Manager", Age = 40 }); //Steve Person - how to refer to these whole objects later in article?
 people.Add(new Person { FirstName = "Brendan", LastName = "Enrick", Occupation = "Dev", Age = 30 });
-people.Add(new Person { FirstName = "Jane", LastName = "Doe", Occupation = "Dev", Age = 35 });
+people.Add(new Person { FirstName = "Jane", LastName = "Doe", Occupation = "Dev", Age = 35 }); //Jane Person
 people.Add(new Person { FirstName = "Samantha", LastName = "Jones", Occupation = "Dev", Age = 24 });
 ```
 
@@ -37,14 +37,10 @@ people.Add(new Person { FirstName = "Samantha", LastName = "Jones", Occupation =
 The LINQ `Where` extension method is probably the most commonly used. This can be used to filter elements from a collection based on certain criteria. For example, say we wanted to filter our list of people based on whether or not they are above the age of 30, it would look something like this:
 
 ```c#
-var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30);
+var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30); //There will be two Persons in this variable: the "Steve" Person and the "Jane" Person (need better way to describe this)
 ``` 
 
-As you can see, the `Where` method takes in a lamda expression which is performed on each item in the list of people. In this scenario, we check every Person's Age property, to see if it is greater than 30. If the result of the expression comes back as true, the current item is added to an `IEnumerable<T>`. This new `IEnumerable<T>` will be an `IEnumerable` of people,
-
-```c#
-new IEnumerable<Person>();
-```
+As you can see, the `Where` method takes in a lamda expression which is performed on each item in the list of people. In this scenario, we check every Person's Age property, to see if it is greater than 30. If the result of the expression comes back as true, the current item is added to an `IEnumerable<T>`. This new `IEnumerable<T>` will be an `IEnumerable` of Person `(IEnumerable<Person>)`.
 
 ###Select
 The LINQ `Select` extension method will select certain properties on an object from the list in which you're interating over. In the example below, we are going to "select" the first names of all the people in the list. In using the `Select` extension method, an `IEnumerable<T>` will be the result.
@@ -70,7 +66,7 @@ var firstThirtyYearOld = people.FirstOrDefault(x => x.Age == 30);
 Console.WriteLine(firstThirtyYearOld.FirstName); //Will output "Brendan"
 ```
 
-The above expression is the same as chaining together a `Where` and a `FirstOrDefault`. It is much more simple to pass your expression straight into the `FirstOrDefault` method from the beginning. 
+The above expression is the same as chaining together a `Where` and a `FirstOrDefault`. It is much more simple as well as more performant to pass your expression straight into the `FirstOrDefault` method from the beginning. 
 ```c#
 var firstThirtyYearOld = people.Where(x => x.Age == 30).FirstOrDefault();
 Console.WriteLine(firstThirtyYearOld.FirstName); //Will also output "Brendan"
@@ -117,7 +113,11 @@ List<Person> listOfDevs = people.Where(x => x.Occupation == "Dev").ToList(); //T
 ```
 
 ###ToArray
-WIP
+The LINQ `ToArray` extension method is very similar to the previously described `ToList` method, except instead of creating a list, the result will be an Array.
+
+```c#
+Person[] arrayOfDevs = people.Where(x => x.Occupation == "Dev").ToArray(); //This will return a Person[] array
+```
 
 ## Next Steps
 
