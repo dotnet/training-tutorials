@@ -7,8 +7,9 @@ Download a ZIP containing this tutorial's sample files:
 - [Completed Version] - Includes the completed versions of all samples
 
 ## What is LINQ?
+Language Integrated Query, or LINQ, is a way to query a set of data with the use of extension methods. These extension methods can only be accessed when adding the `System.Linq` using statement. In the following examples, you'll see how to use LINQ on a ``List`` of people. This lesson will combine ideas from [lesson 10](lesson-10.md) and [lesson 13](lesson-13.md). 
 
-Language Integrated Query, or LINQ, is a way to query a set of data with the use of extension methods. In order to provide you with some examples of these LINQ extension methods, I'll be using a list of people. This is combining ideas from (lesson with lists and arrays) and (lesson about classes and objects). Here is the list of people I'll be using along with the type they are modeled after.
+As you follow along in these examples, use this ``Person`` class.
 
 ```c#
 public class Person
@@ -20,7 +21,7 @@ public class Person
 }
 ```
 
-Below is the list of People we will use throughout this lesson.
+Below is the list of people you will use throughout this lesson.
 
 ```c#
 var people = new List<Person>();
@@ -34,22 +35,22 @@ people.Add(new Person { FirstName = "Samantha", LastName = "Jones", Occupation =
 
 ###Where
 
-The LINQ `Where` extension method is probably the most commonly used. This can be used to filter elements from a collection based on certain criteria. For example, say we wanted to filter our list of people based on whether or not they are above the age of 30, it would look something like this:
+The LINQ `Where` extension method is probably the most commonly used. This can be used to filter elements from a collection based on certain criteria. For example, say you wanted to filter the list of people based on whether or not they are above the age of 30, it would look something like this:
 
 ```c#
 var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30); //There will be two Persons in this variable: the "Steve" Person and the "Jane" Person (need better way to describe this)
 ``` 
 
-As you can see, the `Where` method takes in a lamda expression which is performed on each item in the list of people. In this scenario, we check every Person's Age property, to see if it is greater than 30. If the result of the expression comes back as true, the current item is added to an `IEnumerable<T>`. This new `IEnumerable<T>` will be an `IEnumerable` of Person `(IEnumerable<Person>)`.
+As you can see, the `Where` method takes in a lamda expression which is performed on each item in the list of people. In this scenario, we check every person's Age property, to see if it is greater than 30. If the result of the expression comes back as true, the current item is added to an `IEnumerable<T>`. This new `IEnumerable<T>` will be an `IEnumerable` of Person `(IEnumerable<Person>)`.
 
 ###Select
-The LINQ `Select` extension method will select certain properties on an object from the list in which you're interating over. In the example below, we are going to "select" the first names of all the people in the list. In using the `Select` extension method, an `IEnumerable<T>` will be the result.
+The LINQ `Select` extension method will select certain properties on an object from the list in which you're iterating over. In the example below, we are going to "select" the first names of all people in the list. In using the `Select` extension method, an `IEnumerable<T>` will be the result.
 
 ```c#
 IEnumerable<string> listOfFirstNames = people.Select(x => x.FirstName);
 ```
 
-The contents of listOfFirstNames will now contain the strings "Eric", "Steve", "Brendan", "Jane", "Samantha".
+The contents of `listOfFirstNames` will now contain the strings `"Eric", "Steve", "Brendan", "Jane", "Samantha"`.
 
 ###FirstOrDefault
 The LINQ `FirstOrDefault` extension method will return the first element of a list.
@@ -66,13 +67,13 @@ var firstThirtyYearOld = people.FirstOrDefault(x => x.Age == 30);
 Console.WriteLine(firstThirtyYearOld.FirstName); //Will output "Brendan"
 ```
 
-The above expression is the same as chaining together a `Where` and a `FirstOrDefault`. It is much more simple as well as more performant to pass your expression straight into the `FirstOrDefault` method from the beginning. 
+The above expression is the same as chaining together a `Where` and a `FirstOrDefault`. It is much more simple, as well as more performant, to pass your expression straight into the `FirstOrDefault` method from the beginning. 
 ```c#
 var firstThirtyYearOld = people.Where(x => x.Age == 30).FirstOrDefault();
 Console.WriteLine(firstThirtyYearOld.FirstName); //Will also output "Brendan"
 ```
 
-One item to note about FirstOrDefault is, if there is not an item that matches the criteria for FirstOrDefault, whether the list was empty, or the expression has no results then the item returned will be null. 
+One item to note is, if no elements in the queried data match the expression passed into the method, the returning object will be `null`.
 
 ```c#
 List<Person> emptyList = new List<Person>(); //Creating an empty list
@@ -85,7 +86,7 @@ Console.WriteLine(willAlsoBeNull.FirstName); //This will also cause an exception
 ```
 
 ###Any
-The LINQ `Any` extension method will query a set of data and return a boolean value based on whether or not your criteria was met. One common way this is used is when checking if a list has any elements in it before performing some other action on the list.
+The LINQ `Any` extension method will query a set of data and return a boolean value based on whether or not your criteria was met. One common way this is used is when checking if a list has any elements before performing some other action on the list.
 
 ```c#
 bool thereArePeople = people.Any(); //This will return true
@@ -106,7 +107,7 @@ if (people.Any()) //The better way
 ```
 
 ###ToList
-The LINQ `ToList` extension method allows you to convert a result of another extension method to a list of the same type. When you filter a list by using the `Where` extension method we talked about above, the result is an `IEnumerable<T>` which is readonly and  cannot be modified. So, what if you need to modify the results of your query? This is where the `ToList` extension method comes in to play.
+The LINQ `ToList` extension method allows you to convert a result of another extension method to a list of the same type. When you filter a list by using the `Where` extension method, the result is an `IEnumerable<T>` which is readonly and  cannot be modified. What if you need to modify the results of your query? This is where the `ToList` extension method comes in to play.
 
 ```c#
 List<Person> listOfDevs = people.Where(x => x.Occupation == "Dev").ToList(); //This will return a List<Person>
