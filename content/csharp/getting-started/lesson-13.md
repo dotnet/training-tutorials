@@ -20,7 +20,7 @@ public class Program
 }
 ```
 
-Defining classes in C# is very straightforward. You'll usually want the class to be accessible anywhere, so you'll declare it as ``public``. You'll learn more about how these modifiers work in the next lesson. Next, the ``class`` keyword is specified, followed by a valid C# name for the class. That's all that's required to define a simple class.
+Defining classes in C# is very straightforward. You'll usually want the class to be accessible anywhere, so you'll declare it as ``public``. You'll learn more about how these modifiers work in the [next lesson](lesson-14.md). Next, the ``class`` keyword is specified, followed by a valid C# name for the class. That's all that's required to define a simple class.
 
 To instantiate, or create an instance of, a class, you use the ``new`` keyword. Within a console application's ``static`` main method, you don't have access the ``Program``'s non-static members (if any). However, you can create an instance of ``Program`` from within the ``Main`` method, and then work with that instance and its members. For example:
 
