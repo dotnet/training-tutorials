@@ -34,7 +34,6 @@ people.Add(new Person { FirstName = "Samantha", LastName = "Jones", Occupation =
 ```
 
 ###Where
-
 The LINQ `Where` extension method is the most commonly used. This can be used to filter elements from a collection based on certain criteria. For example, say you wanted to filter the list of people based on whether or not they are above the age of 30, it would look something like this:
 
 ```c#
@@ -42,6 +41,20 @@ var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30); //There will be two Pe
 ``` 
 
 As you can see, the `Where` method takes in a lamda expression which is performed on each item in the list of people. In this scenario, every person's Age property is checked to see if it is greater than 30. If the result of the expression comes back as true, the current item is added to an `IEnumerable<T>`. This new `IEnumerable<T>` will be an `IEnumerable` of Person `(IEnumerable<Person>)`.
+
+###Skip
+The `Skip` extension method will return only the set of elements after a ingoring the number of elements specified in the method.
+
+```c#
+IEnumerable<Person> skipTwo = people.Skip(2); //Will ignore Eric and Steve in the list of people
+```
+
+###Take
+The `Take` extension method will returns the sequential number of elements from a set of data specified in the method.
+
+```c#
+IEnumerable<Person> takeTwo = people.Take(2); //Will only return Eric and Steve from the list of people 
+```
 
 ###Select
 The LINQ `Select` extension method allows you to project the objects you're iterating over into your required structure, transforming them by selecting from each object. In the example below, we are going to "select" the first names of all people in the list. In using the `Select` extension method, an `IEnumerable<T>` will be the result.
@@ -86,16 +99,23 @@ Console.WriteLine(willAlsoBeNull.FirstName); //This will also cause an exception
 ```
 
 ###Count
-The LINQ `Count` extension method will query your set 
+The LINQ `Count` extension method will return the number of items in the data over which you're iterating as an `int`.
+
+```c#
+int numberOfPeopleInList = people.Count(); //Will return 5
+```
+
+This method will also allow you to pass in an expression, and return the number of results as an `int`.
+
+```c#
+int peopleOverTwentyFive = people.Count(x => x.Age > 25); //Will return 3
+```
 
 ###Any
 The LINQ `Any` extension method will query a set of data and return a boolean value based on whether or not your criteria was met. One common way this is used is when checking if a list has any elements before performing some other action on the list.
 
 ```c#
 bool thereArePeople = people.Any(); //This will return true
-```
-
-```c#
 bool thereArePeople = emptyList.Any(); //This will return false
 ```
 
@@ -109,6 +129,15 @@ if (people.Any()) //This is better
     //perform some action(s)
 ```
 
+###All
+The `All` extension method will return a boolean based on whether or not all elements in the data satisfy your expression.
+
+```c#
+var allDevs = people.All(x => x.Occupation == "Dev"); //Will return false
+
+var everyoneAtLeastTwentyFour = people.All(x => x.Age >= 24); //Will return true
+```
+
 ###ToList
 The LINQ `ToList` extension method allows you to convert an `IEnumerable<T>` to a `List<T>`, where `T` will be the same type received, and this includes the results of most other LINQ Extension Methods. When you filter a list by using the `Where` extension method, the result is an `IEnumerable<T>` which is readonly and  cannot be modified. What if you need to modify the results of your query? This is where the `ToList` extension method comes in to play.
 
@@ -116,12 +145,13 @@ The LINQ `ToList` extension method allows you to convert an `IEnumerable<T>` to 
 List<Person> listOfDevs = people.Where(x => x.Occupation == "Dev").ToList(); //This will return a List<Person>
 ```
 
-###ToArray
-The LINQ `ToArray` extension method is very similar to the previously described `ToList` method, except instead of creating a list, the result will be an Array.
+Similar to `ToList`, there is also a `ToArray` extension method that will result in an array rather than a list.
 
 ```c#
 Person[] arrayOfDevs = people.Where(x => x.Occupation == "Dev").ToArray(); //This will return a Person[] array
 ```
+
+Along with `ToList` and `ToArray`, a less commonly used extension method is `ToDictionary`, which will result in a `Dictionary<TKey, TValue>`.
 
 ## Next Steps
 
