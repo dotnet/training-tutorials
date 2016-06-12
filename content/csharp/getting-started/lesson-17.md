@@ -66,7 +66,7 @@ IEnumerable<string> listOfFirstNames = people.Select(x => x.FirstName);
 The contents of `listOfFirstNames` will now contain the strings `"Eric", "Steve", "Brendan", "Jane", "Samantha"`.
 
 ###FirstOrDefault
-The LINQ `FirstOrDefault` extension method will return the first element of a list.
+The LINQ `FirstOrDefault` extension method will return the first element of a set of data. If there are no elements that match your criteria, the result will be the default value type for the object. 
 
 ```c#
 Person firstOrDefault = people.FirstOrDefault();
@@ -97,6 +97,18 @@ Person willAlsoBeNull = people.FirstOrDefault(x => x.FirstName == "John"); //The
 Console.WriteLine(willBeNull.FirstName); //This will cause an exception
 Console.WriteLine(willAlsoBeNull.FirstName); //This will also cause an exception
 ```
+
+Similarly, there is a `First` extension method that will function the same as `FirstOrDefault` but will return a `System.InvalidOperationException` if there are no elements that match your criteria.
+
+###SingleOrDefault
+The `SingleOrDefault` extension method will result in the one and only occurance of your expression. If no elements match your criteria, the default value of your type will be returned. `SingleOrDefault` functions much like `FirstOrDefault`, but if there are more than one occurance of your expression a `System.InvalidOperationException` will be thrown.
+
+```c#
+Person single = people.SingleOrDefault(x => x.FirstName == "Eric"); //Will return the Eric Person obejct
+Person singleDev = people.SingleOrDefault(x => x.Occupation == "Dev"); //Will throw the System.InvalidOperationException
+```
+
+The `Single` extension method will function the same as `SingleOrDefault` but if there are no elements or a list, or there are more than one occurance of your expression, a `System.InvalidOperationException` will be thrown.
 
 ###Count
 The LINQ `Count` extension method will return the number of items in the data over which you're iterating as an `int`.
