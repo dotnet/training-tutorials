@@ -166,5 +166,12 @@ Person[] arrayOfDevs = people.Where(x => x.Occupation == "Dev").ToArray(); //Thi
 Along with `ToList` and `ToArray`, a less commonly used extension method is `ToDictionary`, which will result in a `Dictionary<TKey, TValue>`.
 
 ## Next Steps
+For the next steps I would encourage you to first create a model, like our `Person` class we used in this lesson. Then, try some of the extension methods we described above. Query the results and output the results to the console so you can confirm everything is as expected.
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+```c#
+var devs = people.Where(x => x.Occupation == "Dev");
+foreach(var dev in devs)
+{
+    Console.WriteLine(dev.FirstName);
+}
+```
