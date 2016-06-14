@@ -156,6 +156,14 @@ int SecondsRemaining(TimeSpan duration)
 
 Ultimately, all of the methods end up calling the last one, which takes a ``TimeSpan``, but they perform different calculations and/or conversions along the way to make working with the method easier for the calling code. This kind of simplification is a key benefit your programs can get from the method overloading feature in C#.
 
+## Lambda Expressions
+
+So far in this lesson, you've created methods as members of classes. While those comprise the majority of all methods you'll see in C#, you will also want to learn about *lambda expressions*. Lambda expressions allow you to create methods in-line in your code. Most often, you will pass them as a parameter to other methods. In C#, you're allowed to store methods inside of variables, however, that is not covered in detail here. This lesson only covers the basics. This is a simple lambda expression:
+
+```c#
+(x) => x + 1
+```
+
 ## Next Steps
 
 In [lesson 10](lesson-10.md) you wrote a program to manage a list of items, responding to different commands the user typed. Use what you've learned about methods to break up that program into several methods, each responsible for a different part of the program. You might create methods to determine the action to take based on the user's input, and to perform each action. Don't worry if your methods are very short (even one line) - the point is for you to get comfortable taking code from one long method and moving it into smaller methods, while still keeping your code working.
