@@ -23,9 +23,7 @@ public static void Main(string[] args)
 }
 ```
 
-This loop will write the numbers 0 through 9 to the console, executing a total of 10 times. Let's look at how the ``for`` loop does this for us.
-
-Unlike the single, boolean expression in the ``while`` loops you've seen, there are three *expressions* in the first line of a ``for`` loop. The first expression in the example loop declares an integer variable, ``i``. The ``int i = 0;`` creates a new variable with an initial value of 0, the first time through the loop, the value of that variable, ``i``, is 0. The last time the loop executes, the value of ``i`` is 9, because the conditional expression ``i < 10`` says to continue only if the value of ``i`` is less than 10. In a moment, we'll discuss how and why the value of ``i`` is changing.
+This loop will write the numbers 0 through 9 to the console, executing a total of 10 times. Unlike the single, boolean expression in the ``while`` loops you've seen, there are three *expressions* in the first line of a ``for`` loop. The first expression in the example loop declares an integer variable, ``i``. The ``int i = 0;`` creates a new variable with an initial value of 0, the first time through the loop, the value of that variable, ``i``, is 0. The last time the loop executes, the value of ``i`` is 9, because the conditional expression ``i < 10`` says to continue only if the value of ``i`` is less than 10. In a moment, you'll see how and why the value of ``i`` is changing.
 
 **Note:** The *loop control variable* used most often is an integer variable with the name ``i``. This is a common convention used across languages in programming.
 
