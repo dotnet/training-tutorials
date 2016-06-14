@@ -85,7 +85,7 @@ Remember that C# is a case-sensitive language, so make sure you capitalize the '
 
 ![Hello World Output](images/hello-world-output.png)
 
-If you just see a window flash and disappear, you may be Debugging the application, which exits immediately after it displays the text. Make sure you're choosing Start Without Debugging from the menu. You can add code to make the program wait before exiting, but we're not ready to cover that yet. You can also run your new program from the command line. Open a new command prompt (right-click on your project in Solution Explorer and choose Open Command Line -> Developer Command Prompt).
+If you just see a window flash and disappear, you may be Debugging the application, which exits immediately after it displays the text. Make sure you're choosing Start Without Debugging from the menu. You can add code to make the program wait before exiting, but you'll learn about that later. You can also run your new program from the command line. Open a new command prompt (right-click on your project in Solution Explorer and choose Open Command Line -> Developer Command Prompt).
 
 ![Open Command Prompt](images/open-command-line-menu.png)
 
@@ -110,4 +110,4 @@ You can configure tasks to debug or run your program in Visual Studio Code, but 
 
 ## Next Steps
 
-Using the editor of your choice, create a new Console Application and confirm you're able to run it. Congratulations! You just wrote your own program! We'll look at how to make it start doing something interesting in [the next lesson](lesson-02.md).
+Using the editor of your choice, create a new Console Application and confirm you're able to run it. Congratulations! You just wrote your own program! You'll learn how to make it start doing something interesting in [the next lesson](lesson-02.md).
