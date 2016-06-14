@@ -158,11 +158,34 @@ Ultimately, all of the methods end up calling the last one, which takes a ``Time
 
 ## Lambda Expressions
 
-So far in this lesson, you've created methods as members of classes. While those comprise the majority of all methods you'll see in C#, you will also want to learn about *lambda expressions*. Lambda expressions allow you to create methods in-line in your code. Most often, you will pass them as a parameter to other methods. In C#, you're allowed to store methods inside of variables, however, that is not covered in detail here. This lesson only covers the basics. This is a simple lambda expression:
+So far in this lesson, you've created methods as members of classes. While those comprise the majority of all methods you'll see in C#, you will also want to learn about *lambda expressions*, a very special type of method.
+
+Lambda expressions are a type of method created in-line in your code. Most often, you will pass them as a parameter to other methods. In C#, you're allowed to store methods inside of variables, however, that is not covered in detail here. This lesson only covers the basics, so please consider this example expression:
 
 ```c#
-(x) => x + 1
+public static void Main(string[] args)
+{
+    Func<int, int> addOne = x => x + 1; // this is the lambda expression
+    Console.WriteLine(addOne(4));
+}
 ```
+
+The expression in this example is being assigned to a variable of type ``Func<int, int>``. Everything to the right of the ``=`` is the lambda expression, which has two parts. The (``=>``) is a special operator for lambda expressions splitting the method parameters from the code to execute. In the example above, the ``4`` is passed into the lambda expression and assigned to ``x``. Since the lambda expression is only one line, the result of that one line is the return value.
+
+The following are some examples of lambda expressions:
+
+```c#
+public static void Main(string[] args)
+{
+    const int four = 4;
+    Func<int, int> addOne = x => x + 1;
+    Func<int, int, int> calcArea = (x,y) => x * y; // two parameters
+    Func<int> twentyFive = () => calcArea(addOne(four), addOne(four)); // no parameters
+    Console.WriteLine(twentyFive());
+}
+```
+
+Notice that the expression method, ``twentyFive``, is able to use the other variables in its expression. 
 
 ## Next Steps
 
