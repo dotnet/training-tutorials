@@ -35,7 +35,7 @@ Console.WriteLine($"Hello {name}!");
 
 Run the program (from a command prompt in the project folder, type ``dotnet run``). You should see the output that includes your name (or "Steve" if you decided to just copy the code above).
 
-This is somewhat useful, in that we've extracted out an important part of the output into a variable, but currently there is no way for this value to ever change. Whatever it's set to in the code when it's declared is what will be displayed. What would be even more powerful would be if we could let the end user of the program specify *their* name, and then use that in the output. You'll learn how to do just that in the next section.
+This is somewhat useful, in that you've extracted out an important part of the output into a variable, but currently there is no way for this value to ever change. Whatever it's set to in the code when it's declared is what will be displayed. What would be even more powerful would be if you could let the end user of the program specify *their* name, and then use that in the output. You'll learn how to do just that in the next section.
 
 ## Accepting User Input
 
@@ -45,7 +45,7 @@ To determine if the user has passed an argument, you need to check and see how m
 
 To have your program do one thing under one circumstance, and another otherwise, requires the use of a conditional statement. In this case, you're going to use the ``if`` statement, which is the most common conditional statement. The syntax for an ``if`` statement is the ``if`` keyword, followed by a *boolean* expression, surrounded by parentheses (``(`` ``)`` ). A boolean expression is anything that evaluates to ``true`` or ``false``, which could be a variable or some kind of equality statement. In this case, you're going to test whether ``args.Length > 0``.
 
-When the expression inside of the parentheses is true, the program block immediately following the ``if`` statement will execute. Otherwise, it is skipped (we'll look at the ``else`` keyword soon, which adds more behavior). To set the value of the ``name`` variable if arguments have been passed to the program, you will need to write the following code:
+When the expression inside of the parentheses is true, the program block immediately following the ``if`` statement will execute. Otherwise, it is skipped (you'll learn about the ``else`` keyword soon, which adds more behavior). To set the value of the ``name`` variable if arguments have been passed to the program, you will need to write the following code:
 
 ```c#
 var name = "World";
