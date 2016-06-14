@@ -8,7 +8,7 @@ Download a ZIP containing this tutorial's sample files:
 
 ## What are Methods?
 
-So far in this tutorial, you've only been working within one method of your own, the ``Main`` method of a console application. However, you've called many other methods in the course of completing the lessons so far and the associated exercises. A method is a function that is associated with a class. A function is a named series of statements in a program. Functions (and therefore methods) can optionally accept parameters, and they can optionally return a result. In this lession, we'll generally refer to methods and functions interchangeably.
+So far in this tutorial, you've only been working within one method of your own, the ``Main`` method of a console application. However, you've called many other methods in the course of completing the lessons so far and the associated exercises. A method is a function that is associated with a class. A function is a named series of statements in a program. Functions (and therefore methods) can optionally accept parameters, and they can optionally return a result. In this lesson, you'll see methods and functions generally referred to interchangeably.
 
 ## Declaring Methods
 
