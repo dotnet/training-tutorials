@@ -12,6 +12,8 @@ If you don't already have it installed, make sure you have .NET Core installed a
 
 ## Create a New Console Application
 
+In this lesson, you'll create a new ASP.NET Core web app from a standard .NET Core console application. Along the way, you'll work with a few command line tools and some files that may be new to you. For now, just follow along. You'll learn more about how these things work in subsequent lessons.
+
 Open a command prompt and create a new folder for your first ASP.NET Core application. Navigate to that folder and type:
 
     > dotnet new
@@ -53,7 +55,7 @@ To modify this program to be an ASP.NET Core app, you need to add a dependency. 
 }
 ```
 
-One more, restore the project's dependencies (so that this new dependency is downloaded):
+Once more, restore the project's dependencies (so that this new dependency is downloaded):
 
     > dotnet restore
 
