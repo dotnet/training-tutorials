@@ -1,5 +1,5 @@
 # Defining and Calling Methods
-by [Steve Smith](http://deviq.com/me/steve-smith)
+by [Steve Smith](http://deviq.com/me/steve-smith), [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 
 #### Sample Files
 Download a ZIP containing this tutorial's sample files:
@@ -155,6 +155,39 @@ int SecondsRemaining(TimeSpan duration)
 ```
 
 Ultimately, all of the methods end up calling the last one, which takes a ``TimeSpan``, but they perform different calculations and/or conversions along the way to make working with the method easier for the calling code. This kind of simplification is a key benefit your programs can get from the method overloading feature in C#.
+
+## Lambda Expressions
+
+So far in this lesson, you've created methods as members of classes. While those comprise the majority of all methods you'll see in C#, you will also want to learn about *lambda expressions*, a very special type of method.
+
+Lambda expressions are a type of method created in-line in your code. Most often, you will pass them as a parameter to other methods. In C#, you're allowed to store methods inside of variables, however, that is not covered in detail here. This lesson only covers the basics, so please consider this example expression:
+
+```c#
+public static void Main(string[] args)
+{
+    Func<int, int> addOne = x => x + 1; // this is the lambda expression
+    Console.WriteLine(addOne(4));
+}
+```
+
+The expression in this example is being assigned to a variable of type ``Func<int, int>``. Everything to the right of the ``=`` is the lambda expression, which has two parts. The (``=>``) is a special operator for lambda expressions splitting the method parameters from the code to execute. In the example above, on the second line when addOne is called, the 4 is passed into the lambda expression and assigned to ``x``. Since the lambda expression is only one line, the result of that one line is the return value (there is no need for an explicit return statement).
+
+The following are some examples of lambda expressions:
+
+```c#
+public static void Main(string[] args)
+{
+    const int four = 4;
+    Func<int, int> addOne = x => x + 1;
+    Func<int, int, int> calcArea = (x,y) => x * y; // two parameters
+    Func<int> twentyFive = () => calcArea(addOne(four), addOne(four)); // no parameters
+    Console.WriteLine(twentyFive());
+}
+```
+
+Notice that the expression method, ``twentyFive``, is able to use the other variables in its expression. 
+
+Lambda expressions can be very useful in describing simple functions. Two ways in which they are commonly used is for *predicates* and *selectors*, which return a bool and an object respectively. You'll see these in action in [Introducing LINQ](lesson-17.md), the lesson covering language integrated queries (LINQ).
 
 ## Next Steps
 
