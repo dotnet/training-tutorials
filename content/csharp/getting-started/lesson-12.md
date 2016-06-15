@@ -170,7 +170,7 @@ public static void Main(string[] args)
 }
 ```
 
-The expression in this example is being assigned to a variable of type ``Func<int, int>``. Everything to the right of the ``=`` is the lambda expression, which has two parts. The (``=>``) is a special operator for lambda expressions splitting the method parameters from the code to execute. In the example above, the ``4`` is passed into the lambda expression and assigned to ``x``. Since the lambda expression is only one line, the result of that one line is the return value.
+The expression in this example is being assigned to a variable of type ``Func<int, int>``. Everything to the right of the ``=`` is the lambda expression, which has two parts. The (``=>``) is a special operator for lambda expressions splitting the method parameters from the code to execute. In the example above, on the second line when addOne is called, the 4 is passed into the lambda expression and assigned to ``x``. Since the lambda expression is only one line, the result of that one line is the return value (there is no need for an explicit return statement).
 
 The following are some examples of lambda expressions:
 
@@ -186,6 +186,8 @@ public static void Main(string[] args)
 ```
 
 Notice that the expression method, ``twentyFive``, is able to use the other variables in its expression. 
+
+Lambda expressions can be very useful in describing simple functions. Two ways in which they are commonly used is for *predicates* and *selectors*, which return a bool and an object respectively. You'll see these in action in [Introducing LINQ](lesson-17.md), the lesson covering language integrated queries (LINQ).
 
 ## Next Steps
 
