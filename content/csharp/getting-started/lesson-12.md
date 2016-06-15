@@ -1,5 +1,5 @@
 # Defining and Calling Methods
-by [Steve Smith](http://deviq.com/me/steve-smith)
+by [Steve Smith](http://deviq.com/me/steve-smith), [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 
 #### Sample Files
 Download a ZIP containing this tutorial's sample files:
