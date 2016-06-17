@@ -154,7 +154,22 @@ You can run a compiled assembly by simply running ``dotnet path/to/assemblyname.
 
 If you have compiled binaries you want to run, this is a quick way to execute them.
 
+## dotnet publish
+
+The *publish* command will pack up the project into a folder, ready for publishing. It will compile the application and read the project file, then publish the resulting set of files to a directory. The resulting directory's contents will depend on the project type, but could include a portable IL application with its dependencies, a portable application with subfolders for each *native* platform it targets, or a self-contained application which includes the full runtime for the targeted platform.
+
+## dotnet pack
+
+The *pack* command builds the project and creates NuGet packages. The operation produces two NuGet packages:
+- One containing the code
+- One containing the debug symbols
+
+Any NuGet dependencies of the project being packed are added to the *nuspec* file. Project-to-project references are not packaged by default, but this can be modified by changing the dependency *type* to *build* in the project file.
+
+## dotnet test
+
+The *test* command is used to run a suite of tests defined in the project, using the configured test runner.
 
 ## Next Steps
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+TODO
