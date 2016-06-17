@@ -172,7 +172,7 @@ Now the responsibility for creating the correct adapter (which could require muc
 
 ### The Repository Design Pattern
 
-Of course, when an order is placed and payment succeed, the order needs to be stored somewhere. The ``Store`` itself could include logic for connecting to a database and executing commands against it to perform this logic, but once more that's an additional responsibility the store shouldn't take on for itself. Rather, some other class should have the responsibility of persistence (of ``Orders`` in this case). There is a design pattern for encapsulating persistence operations behind a class with a collection-like interface, and it is called the *Repository pattern*.
+Of course, when an order is placed and payment succeed, the order needs to be stored somewhere. The ``Store`` itself could include logic for connecting to a database and executing commands against it to perform this logic, but once more that's an additional responsibility the store shouldn't take on for itself. Rather, some other class should have the responsibility of persistence (of ``Orders`` in this case). There is a design pattern for encapsulating persistence operations behind a class with a collection-like interface, and it is called the [*Repository pattern*](http://deviq.com/repository-pattern/).
 
 The goal of this pattern is to make working with external persistence mechanisms, like databases, as simple for the application code as working with a built-in collection would be. Thus, when you define an interface for a repository, it will typically accept parameters like *Add* and *Remove* and *Get*, but usually this similarity stops short of having the repository type implement *ICollection* or *IEnumerable* directly.
 
@@ -231,12 +231,80 @@ public interface IOrderRepository
 }
 ```
 
+With such an abstraction in place, you can perform most data access operations from your business-level code without coupling it directly to any particular persistence implementation. This also helps your business classes remain [persistence ignorant](http://deviq.com/persistence-ignorance/) (again, keeping them from being coupled to a particular persistence implementation).
+
+Once you've defined an interface to encapsulate your persistence operations, you can write the code that works with this interface. However, before you can run it, you need to write an implementation of the interface, and use this implementation from your code. If you simply instantiate it, you're still gluing your code to that implementation. A better approach that results in a more modular design is to take in the interface as a parameter, as you'll learn in the next section.
+
 ### The Strategy Design Pattern
+
+The [*Strategy* design pattern](http://deviq.com/strategy-design-pattern/) allows an object to have some of the details of its behavior encapsulated in another type, which is then provided to it as a parameter. This pattern is closely related to [dependency injection](http://deviq.com/dependency-injection), which refers to the technique of passing dependencies (or *injecting* them) into classes, usually through their constructor.
+
+Returning to the example from the previous section, how does the ``CompleteOrder`` method get an instance of ``IOrderRepository``? One approach that will cause coupling problems is to simply instantiate an instance directly in the method:
+
+```c#
+public void CompleteOrder()
+{
+    // other logic omitted
+    IOrderRepository orderRepository = new EntityFrameworkOrderRepository();
+    orderRepository.Add(order);
+}
+```
+
+This approach is inflexible, and violates the [Open-Closed Principle](http://deviq.com/open-closed-principle/), because the only way to change the persistence behavior in the future is to modify this code. Following the strategy pattern, you would identify the ``IOrderRepository`` as a *strategy* for persistence operations. You would then pass in the implementation of this strategy as a parameter to the class (or, less commonly, as a property or method parameter). The updated design using this pattern would be:
+
+```c#
+public class Order
+{
+    private readonly IOrderRepository _orderRepository;
+    public Order(IOrderRepository orderRepository)
+    {
+        _orderRepository = orderRepository;
+    }
+    public void CompleteOrder()
+    {
+        // other logic omitted
+        _orderRepository.Add(order);
+    }
+}
+```
+
+This class now follows the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/), because it clearly states in its constructor what its needed collaborators are. It also better follows SRP, because it is no longer responsible for choosing the specific implementations it will collaborate with. That decision can be made elsewhere, perhaps in a class whose sole responsibility is constructing the collaborators that the program will use.
 
 ### The Singleton Antipattern
 
+The [*Singleton*]() design pattern, which is found in the Gang of Four book, is commonly considered an antipattern. The pattern's intent is that a particular type should exist only once within an application, and the pattern implements this by having the type itself take responsibility for ensuring this is the case. There's nothing wrong with having different lifetime behaviors for different types, but it violates SRP to add lifetime management responsibility to a class that already does something else. Further, this design tends to introduce tight coupling within the application between the Singleton types and those that refer to them.
+
+A typical example of the Singleton pattern:
+
+```c#
+public sealed class OrderProcessor
+{
+    // constructor is private; class cannot be instantiated externally
+    private OrderProcessor() {}
+    private static OrderProcessor _instance; // a static instance; only one exists within the application
+    public OrderProcessor Instance
+    {
+        get
+        {
+            // bad code - do not do this
+            if(_instance == null)
+            {
+                _instance = new OrderProcessor();
+            }
+            return _instance;
+        }
+    }
+}
+```
+
+In addition to the design problems this pattern can introduce, the naive implementation shown above can have problems in multi-threaded applications. Learn more about [implementing the Singleton pattern in C#](http://csharpindepth.com/Articles/General/Singleton.aspx), to see some different approaches to this pattern that can address some of its deficiencies (but not the coupling it creates).
+
+To avoid tightly coupling your code to static implementations, favor the use of dependency injection and the Strategy design pattern. Then, your code that is responsible for instantiating the types your application uses at runtime can determine the objects' lifetimes. For some, a new instance may be used by every type that requests one. For others, the same instance may be used for the life of the application - the same behavior the Singleton pattern achieves, but without its negative consequences.
+
 ### The Static Cling Antipattern
+
+The [*Static Cling*](http://deviq.com/static-cling/) antipattern gets its name from the *static* keyword in C#, which makes code constructs global within an application. Similar to the Singleton, references to these global types, properties, and methods results in tight coupling, hence the use of the term *static cling* referring to how this use makes parts of the application stick together. As with the Singleton, the preferred approach is to have types be explicit about their dependencies and to inject them in using the Strategy pattern. Existing code that leverages static resources can be wrapped in Adapter implementations to achieve this same result.
 
 ## Next Steps
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+Review some of the code you've written in previous lessons in this tutorial. Look for places where you are tightly coupling some implementation logic within a higher-level method or program. See if you can apply some of the patterns you've learned in this lesson to separate low-level implementation details into their own classes. Note that in these simple console applications, if you use the Strategy pattern, it's perfectly acceptable for the *Main* method to instantiate specific implementation types to provide to those classes that require them.
