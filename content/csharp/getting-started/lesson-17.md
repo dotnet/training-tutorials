@@ -129,7 +129,7 @@ Person singleDev = people.SingleOrDefault(x => x.Occupation == "Dev"); //Will th
 The `Single` extension method will function the same as `SingleOrDefault` but if there are no elements or a list, or there are more than one occurance of your expression, a `System.InvalidOperationException` will be thrown.
 
 ## Finding Data About Collections
-Explain what types of data that the reader wants to learn about a collection and mention the operations that will be explained below.
+There are extension methods that will allow you to determine if and how many items satisfy an expression. 
 
 ###Count
 The `Count` extension method will return the number of items in the data over which you're iterating as an `int`.
@@ -172,7 +172,7 @@ var everyoneAtLeastTwentyFour = people.All(x => x.Age >= 24); //Will return true
 ```
 
 ## Converting Results to Collections
-Explain why someone might want to change from an Enumerable or other collection to a specific collection type and mention them and the operations you'll explain below.
+LINQ provides you with extension methods that will allow you to convert readonly Enumerable collections to other collection types (Lists, Arrays, Dictionarys).
 
 ### ToList
 The `ToList` extension method allows you to convert an `IEnumerable<T>` to a `List<T>`, where `T` will be the same type received, and this includes the results of most other LINQ Extension Methods. When you filter a list by using the `Where` extension method, the result is an `IEnumerable<T>` which is readonly and  cannot be modified. What if you need to modify the results of your query? This is where the `ToList` extension method comes in to play.
