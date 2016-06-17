@@ -164,12 +164,12 @@ The *pack* command builds the project and creates NuGet packages. The operation 
 - One containing the code
 - One containing the debug symbols
 
-Any NuGet dependencies of the project being packed are added to the *nuspec* file. Project-to-project references are not packaged by default, but this can be modified by changing the dependency *type* to *build* in the project file.
+Any NuGet dependencies of the project being packed are added to the *nuspec* file produced by this command. Project-to-project references are not packaged by default, but this can be modified by changing the dependency *type* to *build* in the project file.
 
 ## dotnet test
 
-The *test* command is used to run a suite of tests defined in the project, using the configured test runner.
+The *test* command is used to run a suite of tests defined in the project, using the configured test runner. You'll learn more about this command in future lessons.
 
 ## Next Steps
 
-TODO
+Using the commands you already learned in the previous lesson, create, restore, build, and run a new C# console application. Next, use ``dotnet [assemblyname]`` to run the program using its produced output (which you'll find in a subfolder).
