@@ -65,7 +65,7 @@ As you can see, you can use this command to create a number of different kinds o
 
 ### dotnet restore
 
-The ``restore`` command uses NuGet to restore dependencies and project-specific tools that are defined in the project file.
+The ``restore`` command uses [NuGet](https://www.nuget.org/) to restore dependencies and project-specific tools that are defined in the project file.
 
     > dotnet restore --help
 
@@ -88,13 +88,13 @@ The ``restore`` command uses NuGet to restore dependencies and project-specific 
     Warning, Error.
     --ignore-failed-sources         Only warning failed sources if there are packages meeting version requirement
 
-As you can see from the "Usage:" line above, the ``restore`` command is simply calling out to the ``nuget`` executable, which has the options shown here. Typically, you won't need to modify these options. However, if you're using a custom package source, either because you're working with pre-release versions of Microsoft libraries or your organization is using its own package source, you may need to specify a package source using the ``-s`` argument.
+As you can see from the "Usage:" line above, the ``restore`` command is simply calling out to the ``nuget`` executable, which has the options shown here. Typically, you won't need to modify these options, however, if you're using a custom package source, either because you're working with pre-release versions of Microsoft libraries or your organization is using its own package source, you may need to specify a package source using the ``-s`` argument.
 
 Running ``dotnet restore`` produces a lock file (*project.json.lock*) which includes detailed information about all of the packages that were restored.
 
 ### dotnet build
 
-The ``build`` command will build a project and all of its dependencies into a binary. By default, the binary will be in Intermediate Language (IL) and will have a ``.dll`` file extension. Building requires the existence of a lock file (produced by the ``restore`` command, above).
+The ``build`` command will build a project and all of its dependencies into a binary. By default, the binary will be in [Intermediate Language (IL)](https://msdn.microsoft.com/en-us/library/c5tkafs1(VS.71).aspx) and will have a ``.dll`` file extension. Building requires the existence of a lock file (produced by the ``restore`` command, above).
 
 In order to build an executable application, you need to ensure the project is configured with ``buildOptions`` set to emit an entry point:
 
