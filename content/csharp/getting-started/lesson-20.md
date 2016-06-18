@@ -1,4 +1,4 @@
-# Common Patterns and Anti-Patterns
+# Common Patterns and Antipatterns
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
 #### Sample Files
@@ -6,13 +6,13 @@ Download a ZIP containing this tutorial's sample files:
 - [Initial Version] - Use this as a starting point when following along with the tutorial yourself
 - [Completed Version] - Includes the completed versions of all samples
 
-## Common C# Patterns and Anti-Patterns
+## Common C# Patterns and Antipatterns
 
-Common approaches to solving similar problems are referred to as *design patterns*. Common approaches to solving similar problems that often end up causing more problems than they solve are called *anti-patterns* (or *antipatterns*). As you continue learning C#, there are a few of each to keep in mind.
+Common approaches to solving similar problems are referred to as *design patterns*. Common approaches to solving similar problems that often end up causing more problems than they solve are called *antipatterns* (or *anti-patterns*). As you continue learning C#, there are a few of each to keep in mind.
 
 **Note:** Learn more about [design patterns](http://deviq.com/design-patterns/) and [antipatterns](http://deviq.com/antipatterns/).
 
-In this lesson, you're going to learn about *adapter*, *factory*, *repository*, and *strategy* design patterns. You'll also learn about two related antipatterns: *Singleton* and *Static Cling*, which also relate [new is glue](http://ardalis.com/new-is-glue), which you learned about in a previous lesson.
+In this lesson, you're going to learn about the *adapter*, *factory*, *repository*, and *strategy* design patterns. You'll also learn about two closely-related antipatterns: *Singleton* and *Static Cling*. As you complete this lesson, keep in mind the [new is glue](http://ardalis.com/new-is-glue) tip you learned about earlier in this tutorial.
 
 ### The Adapter Design Pattern
 
@@ -71,7 +71,7 @@ public PaySalAdapter : IPaymentProcessorAdapter
         try
         {
             var cardInfo = new CreditCardDetails(cardNumber, expiration);
-            provider.Pay(cardNumber, expiration, amount);
+            provider.ProcessPayment(merchantId, cardInfo, amount);
             return true;
         }
         catch
@@ -86,7 +86,7 @@ With this design in place, you could accept an IPaymentProcessorAdapter anywhere
 
 ### The Factory Design Pattern
 
-The factory design pattern is actually a combination of a few different patterns, but with the same intent: to simplify construction of object instances and encapsulate decisions about which specific type to instantiate. For building on the example above, let's say the payment providers are used by different stores that all run on your platform. Each store must choose a particular payment provider they're going to use from the ones the platform supports. This is stored as part of the ``Store``'s properties:
+The factory design pattern is actually a combination of a few different patterns, but with the same intent: to simplify construction of object instances and [encapsulate](lesson-15.md) decisions about which specific type to instantiate. For building on the example above, let's say the payment providers are used by different stores that all run on your platform. Each store must choose a particular payment provider they're going to use from the ones the platform supports. This is stored as part of the ``Store``'s properties:
 
 ```c#
 public class Store
@@ -168,11 +168,11 @@ public PaymentProcessorAdapterFactory : IPaymentProcessorAdapterFactory
 }
 ```
 
-Now the responsibility for creating the correct adapter (which could require much more complexity than we see here, and which might have far more than two valid options) has been moved into its own class. As it stands now, the ``ProcessCard`` method would probably need to directly instantiate the factory class in order to use it, but you'll see below how the *Strategy* pattern can address this.
+Now the responsibility for creating the correct adapter (which could require much more complexity than is shown here, and which might have far more than two valid options) has been moved into its own class. As it stands now, the ``ProcessCard`` method would probably need to directly instantiate the factory class in order to use it, but you'll see below how the *Strategy* pattern can address this.
 
 ### The Repository Design Pattern
 
-Of course, when an order is placed and payment succeed, the order needs to be stored somewhere. The ``Store`` itself could include logic for connecting to a database and executing commands against it to perform this logic, but once more that's an additional responsibility the store shouldn't take on for itself. Rather, some other class should have the responsibility of persistence (of ``Orders`` in this case). There is a design pattern for encapsulating persistence operations behind a class with a collection-like interface, and it is called the [*Repository pattern*](http://deviq.com/repository-pattern/).
+Of course, when an order is placed and payment succeeds, the order needs to be stored somewhere. The ``Store`` itself could include logic for connecting to a database and executing commands against it to perform this logic, but, once more, that's an additional responsibility the store shouldn't take on for itself. Rather, some other class should have the responsibility of persistence (of ``Orders`` in this case). There is a design pattern for encapsulating persistence operations behind a class with a collection-like interface, and it is called the [*Repository pattern*](http://deviq.com/repository-pattern/).
 
 The goal of this pattern is to make working with external persistence mechanisms, like databases, as simple for the application code as working with a built-in collection would be. Thus, when you define an interface for a repository, it will typically accept parameters like *Add* and *Remove* and *Get*, but usually this similarity stops short of having the repository type implement *ICollection* or *IEnumerable* directly.
 
@@ -268,11 +268,11 @@ public class Order
 }
 ```
 
-This class now follows the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/), because it clearly states in its constructor what its needed collaborators are. It also better follows SRP, because it is no longer responsible for choosing the specific implementations it will collaborate with. That decision can be made elsewhere, perhaps in a class whose sole responsibility is constructing the collaborators that the program will use.
+This class now follows the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/), because it clearly states in its constructor what its needed collaborators are. It also better follows SRP (discussed in [lesson 15](lesson-15.md)), because it is no longer responsible for choosing the specific implementations it will collaborate with. That decision can be made elsewhere, perhaps in a class whose sole responsibility is constructing the collaborators that the program will use.
 
 ### The Singleton Antipattern
 
-The [*Singleton*]() design pattern, which is found in the Gang of Four book, is commonly considered an antipattern. The pattern's intent is that a particular type should exist only once within an application, and the pattern implements this by having the type itself take responsibility for ensuring this is the case. There's nothing wrong with having different lifetime behaviors for different types, but it violates SRP to add lifetime management responsibility to a class that already does something else. Further, this design tends to introduce tight coupling within the application between the Singleton types and those that refer to them.
+The [*Singleton*](http://deviq.com/singleton/) design pattern is commonly considered an antipattern. For some types, having more than one instance of the type within an application could result in adverse effects. The pattern addresses this by having the type itself take responsibility for ensuring this behavior. There's nothing wrong with having different lifetime behaviors for different types, but it violates SRP to add lifetime management responsibility to a class that already does something else. Further, this design tends to introduce tight coupling within the application between the Singleton types and those that refer to them.
 
 A typical example of the Singleton pattern:
 
@@ -299,11 +299,13 @@ public sealed class OrderProcessor
 
 In addition to the design problems this pattern can introduce, the naive implementation shown above can have problems in multi-threaded applications. Learn more about [implementing the Singleton pattern in C#](http://csharpindepth.com/Articles/General/Singleton.aspx), to see some different approaches to this pattern that can address some of its deficiencies (but not the coupling it creates).
 
-To avoid tightly coupling your code to static implementations, favor the use of dependency injection and the Strategy design pattern. Then, your code that is responsible for instantiating the types your application uses at runtime can determine the objects' lifetimes. For some, a new instance may be used by every type that requests one. For others, the same instance may be used for the life of the application - the same behavior the Singleton pattern achieves, but without its negative consequences.
+**Tip:* To avoid tightly coupling your code to static implementations, favor the use of dependency injection and the Strategy design pattern. Then, your code that is responsible for instantiating the types your application uses at runtime can determine the objects' lifetimes. For some, a new instance may be used by every type that requests one. For others, the same instance may be used for the life of the application - the same behavior the Singleton pattern achieves, but without its negative consequences.
 
 ### The Static Cling Antipattern
 
-The [*Static Cling*](http://deviq.com/static-cling/) antipattern gets its name from the *static* keyword in C#, which makes code constructs global within an application. Similar to the Singleton, references to these global types, properties, and methods results in tight coupling, hence the use of the term *static cling* referring to how this use makes parts of the application stick together. As with the Singleton, the preferred approach is to have types be explicit about their dependencies and to inject them in using the Strategy pattern. Existing code that leverages static resources can be wrapped in Adapter implementations to achieve this same result.
+The [*Static Cling*](http://deviq.com/static-cling/) antipattern gets its name from the *static* keyword in C#, which makes code constructs global within an application. Similar to the Singleton, references to these global types, properties, and methods results in tight coupling, hence the use of the term *static cling* referring to how this use makes parts of the application stick together. 
+
+**Tip:** As with the Singleton, the preferred approach is to have types be explicit about their dependencies and to inject them in using the Strategy pattern. Existing code that leverages static resources can be wrapped in Adapter implementations to achieve this same result.
 
 ## Next Steps
 
