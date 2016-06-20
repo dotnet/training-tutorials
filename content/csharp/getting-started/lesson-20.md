@@ -299,7 +299,7 @@ public sealed class OrderProcessor
 
 In addition to the design problems this pattern can introduce, the naive implementation shown above can have problems in multi-threaded applications. Learn more about [implementing the Singleton pattern in C#](http://csharpindepth.com/Articles/General/Singleton.aspx), to see some different approaches to this pattern that can address some of its deficiencies (but not the coupling it creates).
 
-**Tip:* To avoid tightly coupling your code to static implementations, favor the use of dependency injection and the Strategy design pattern. Then, your code that is responsible for instantiating the types your application uses at runtime can determine the objects' lifetimes. For some, a new instance may be used by every type that requests one. For others, the same instance may be used for the life of the application - the same behavior the Singleton pattern achieves, but without its negative consequences.
+**Tip:** To avoid tightly coupling your code to static implementations, favor the use of dependency injection and the Strategy design pattern. Then, your code that is responsible for instantiating the types your application uses at runtime can determine the objects' lifetimes. For some, a new instance may be used by every type that requests one. For others, the same instance may be used for the life of the application - the same behavior the Singleton pattern achieves, but without its negative consequences.
 
 ### The Static Cling Antipattern
 
