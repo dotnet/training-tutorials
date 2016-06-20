@@ -132,7 +132,7 @@ The ``-c`` option lets you specify a configuration to use. It defaults to ``Debu
 
 ### dotnet run
 
-Most of the time, you can skip explicitly building your application, and just use ``dotnet run`` to run it. This will build the application if changes have occurred since it was last built, and either way will run the application. Note that ``dotnet run`` can only be used in the context of projects, not assemblies.
+Most of the time, you can skip explicitly building your application, and just use ``dotnet run`` to run it. This will build the application if changes have occurred since it was last built and, either way, will run the application.
 
     > dotnet run --help
     .NET Run Command
@@ -145,9 +145,11 @@ Most of the time, you can skip explicitly building your application, and just us
     -c|--configuration  Configuration under which to build
     -p|--project        The path to the project to run (defaults to the current directory). Can be a path to a project.json or a project directory
 
+**Note:** ``dotnet run`` can only be used in the context of projects, not assemblies.
+
 ### dotnet [assemblyname]
 
-You can run a compiled assembly by simply running ``dotnet path/to/assemblyname.dll`` (no need for the ``run`` command).
+If you already have a compiled assembly you would like to run, you can do so by passing its path as an argument to the ``dotnet`` command (with no other command specified).
 
     > dotnet .\bin\Debug\netcoreapp1.0\lesson2.dll
     Hello World!
@@ -156,19 +158,19 @@ If you have compiled binaries you want to run, this is a quick way to execute th
 
 ## dotnet publish
 
-The *publish* command will pack up the project into a folder, ready for publishing. It will compile the application and read the project file, then publish the resulting set of files to a directory. The resulting directory's contents will depend on the project type, but could include a portable IL application with its dependencies, a portable application with subfolders for each *native* platform it targets, or a self-contained application which includes the full runtime for the targeted platform.
+The *publish* command will compile the application and read the project file, then publish the resulting set of files to a directory. The resulting directory's contents will depend on the project type, but could include a portable IL application with its dependencies, a portable application with subfolders for each *native* platform it targets, or a self-contained application which includes the full runtime for the targeted platform.
 
 ## dotnet pack
 
 The *pack* command builds the project and creates NuGet packages. The operation produces two NuGet packages:
-- One containing the code
-- One containing the debug symbols
+- One containing the compiled code in assembly files
+- One containing the debug symbols, in addition to the compiled code
 
 Any NuGet dependencies of the project being packed are added to the *nuspec* file produced by this command. Project-to-project references are not packaged by default, but this can be modified by changing the dependency *type* to *build* in the project file.
 
 ## dotnet test
 
-The *test* command is used to run a suite of tests defined in the project, using the configured test runner. You'll learn more about this command in future lessons.
+The *test* command is used to run a suite of tests defined in the project, using the configured test runner. You'll learn more about this command in [lesson 18](lesson-18.md) of this tutorial.
 
 ## Next Steps
 
