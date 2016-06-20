@@ -46,7 +46,7 @@ var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30); //There will be two Pe
 As you can see, the `Where` method takes in a lambda expression as a *predicate* to be applied to each item in the list of people. In this scenario, every person's Age property is checked to see if it is greater than 30. If the result of the expression is true, the current item is added to an an object of type `IEnumerable<T>`. This new `IEnumerable<T>` will be an "IEnumerable of Person" `IEnumerable<Person>`, because the `List` it came from was made of `Person` objects.
 
 ###Skip
-The `Skip` extension method will return only the set of elements after a ingoring the number of elements specified in the method.
+You can also ignore a specified number of elements by using the `Skip` extension method.
 
 ```c#
 IEnumerable<Person> skipTwo = people.Skip(2); //Will ignore Eric and Steve in the list of people
@@ -129,7 +129,7 @@ Person singleDev = people.SingleOrDefault(x => x.Occupation == "Dev"); //Will th
 The `Single` extension method will function the same as `SingleOrDefault` but if there are no elements or a list, or there are more than one occurance of your expression, a `System.InvalidOperationException` will be thrown.
 
 ## Finding Data About Collections
-There are extension methods that will allow you to determine if and how many items satisfy an expression. 
+There are extension methods that will allow you to determine if or how many items will satisfy an expression. 
 
 ###Count
 The `Count` extension method will return the number of items in the data over which you're iterating as an `int`.
