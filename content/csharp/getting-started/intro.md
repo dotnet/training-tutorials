@@ -28,5 +28,5 @@ This tutorial will cover the following topics:
 - [Introducing LINQ](lesson-17.md)
 - [When and How to use Exceptions](lesson-18.md)
 - [Understanding Events and Event-Driven Programming](lesson-19.md)
-- [Common Patterns and Anti-Patterns](lesson-20.md)
+- [Common Patterns and Antipatterns](lesson-20.md)
 
