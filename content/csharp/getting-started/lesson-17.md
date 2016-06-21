@@ -62,34 +62,35 @@ The opposite of the `Skip` extension method is the `Take` extension method. `Tak
 IEnumerable<Person> takeTwo = people.Take(2); //Will only return Eric and Steve from the list of people 
 ```
 
-## Changing Objects in Collections
-You may want to retrieve specific properties of an object, and either return an `IEnumerable<T>` where T is the source type or create and return an entirely new object based on multiple properties. LINQ provides you with the `Select` extension method to make this easy. In the below example, we are going to return the first names of all the people in the `people` list as an `IEnumerable<string>`.
+## Changing Each Item in Collections
+Sometimes the items in your collections will have too many or not enough properties; at other times those items will just be of the wrong type. Using the `Select` method from LINQ, you can change the *type* of the items in your collections by creating new items or selecting one member of the items. In the following example, `Select` is used to select the `FirstName` from each `Person` in the  `List<Person>` collection. This will return a collection of `string` objects in the form of an `IEnumerable<string>`.
 
 ```c#
-IEnumerable<string> listOfFirstNames = people.Select(x => x.FirstName);
+IEnumerable<string> allFirstNames = people.Select(x => x.FirstName);
 ```
 
-The contents of `listOfFirstNames` will now contain the strings `"Eric", "Steve", "Brendan", "Jane", "Samantha"`.
+The contents of `allFirstNames` will now contain the strings `"Eric", "Steve", "Brendan", "Jane", "Samantha"`.
 
-You can also create a brand new object based on properties you select. For this example, I'll create another model `Name` and set the `First` and `Last` properties based on the `FirstName` and `LastName` properties of the `Person` model.
+You can also create a brand new object based on properties you select. For this example, I'll create another model `FullName` and set the `First` and `Last` properties based on the `FirstName` and `LastName` properties of the `Person` model.
 
 ```c#
-public class Name
+public class FullName
 {
     public string First { get; set; }
     public string Last { get; set; }
 }
 ```
 
-The below line is how we can create a new `Name` object for each `Person` in the `people` list.
+The below line is how we can create a new `FullName` object for each `Person` in the `people` list.
 ```c#
-IEnumerable<Name> listOfFirstAndLastNames = people.Select(x => new Name { First = x.FirstName, Last = x.LastName });
+IEnumerable<FullName> allFullNames = people.Select(x => new FullName { First = x.FirstName, Last = x.LastName });
 ```
 
 ## Finding One Item in Collections
+Up to this point, our results are always collections of objects. While useful, there will be times you will want to get just one object from the collection. In this lesson, you will see the `FirstOrDefault`, `LastOrDefault`, and `SingleOrDefault` extension methods from LINQ. These are three of the more commonly used LINQ methods for obtaining one item from a collection.
 
 ###FirstOrDefault
-The `FirstOrDefault` extension method will return the first element of a set of data. If there are no elements that match your criteria, the result will be the default value type for the object. 
+The `FirstOrDefault` extension method will return the first element of a set of data. If there are no elements that match your criteria, the result will be the default value type for the object (usually `null`). 
 
 ```c#
 Person firstOrDefault = people.FirstOrDefault();
@@ -121,41 +122,53 @@ Console.WriteLine(willAlsoBeNull.FirstName); //This will also cause an exception
 
 Similarly, there is a `First` extension method that will function the same as `FirstOrDefault` but will return a `System.InvalidOperationException` if there are no elements that match your criteria.
 
+### LastOrDefault
+The `LastOrDefault` extension method works the same way that `FirstOrDefault` does, however, as the name suggests, instead of returning the first item of the collection, it returns the last.
+
+```c#
+Person lastOrDefault = people.LastOrDefault();
+Console.WriteLine(lastOrDefault.FirstName); //Will output "Samantha"
+Person lastThirtyYearOld = people.LastOrDefault(x => x.Age == 30);
+Console.WriteLine(lastThirtyYearOld.FirstName); //Will output "Brendan"
+```
+
+As `First` is to `FirstOrDefault`, there is also a `Last` method, which will return a `System.InvalidOperationException` if there are no elements that match your criteria.
+
 ###SingleOrDefault
-The `SingleOrDefault` extension method will result in the one and only occurance of your expression. If no elements match your criteria, the default value of your type will be returned. `SingleOrDefault` functions much like `FirstOrDefault`, but if there are more than one occurance of your expression a `System.InvalidOperationException` will be thrown.
+The `SingleOrDefault` extension method will return the only occurrence of an item matching your expression. If none match your criteria, the default value of your type will be returned. `SingleOrDefault` functions much like `FirstOrDefault`, but if more than one item matches your predicate, a `System.InvalidOperationException` will be thrown.
 
 ```c#
 Person single = people.SingleOrDefault(x => x.FirstName == "Eric"); //Will return the Eric Person obejct
 Person singleDev = people.SingleOrDefault(x => x.Occupation == "Dev"); //Will throw the System.InvalidOperationException
 ```
 
-The `Single` extension method will function the same as `SingleOrDefault` but if there are no elements or a list, or there are more than one occurance of your expression, a `System.InvalidOperationException` will be thrown.
+The `Single` extension method functions the same as `SingleOrDefault`, however, in addition to throwing an exception for too many items matching the expression, it will also throw a `System.InvalidOperationException` if there are no items matching.
 
 ## Finding Data About Collections
-There are extension methods that will allow you to determine if or how many items will satisfy an expression. 
+There are extension methods that allow you to determine if or how many items will satisfy an expression. 
 
 ###Count
-The `Count` extension method will return the number of items in the data over which you're iterating as an `int`.
+The `Count` extension method returns the number of items in the data over which you're iterating as an `int`.
 
 ```c#
 int numberOfPeopleInList = people.Count(); //Will return 5
 ```
 
-This method will also allow you to pass in a predicate expression, and return the number of results as an `int`.
+This method will also allow you to pass in a predicate expression, and return the number of matching items as an `int`.
 
 ```c#
 int peopleOverTwentyFive = people.Count(x => x.Age > 25); //Will return 3
 ```
 
 ###Any
-The `Any` extension method will query a set of data and return a boolean value based on whether or not your criteria was met. One common way this is used is when checking if a list has any elements before performing some other action on the list.
+The `Any` extension method checks a set of data and return a boolean value indicating whether any items in the collection match your predicate. This is commonly used when checking if a list has any elements before performing some other action on the list.
 
 ```c#
 bool thereArePeople = people.Any(); //This will return true
 bool thereArePeople = emptyList.Any(); //This will return false
 ```
 
-The above query is a better way of checking if elements exist rather than checking if the count of a list is greater than 0 like this:
+Using `Any` is a clearer way of checking if elements exist than checking if the count of a list is greater than 0 as shown in this example:
 
 ```c#
 if (people.Count() > 0) //This works
@@ -166,19 +179,19 @@ if (people.Any()) //This is better
 ```
 
 ###All
-The `All` extension method will return a boolean based on whether or not all elements in the data satisfy your expression.
+The `All` extension method is similar to `Any`, but it returns a boolean only when all elements in the collection satisfy your expression.
 
 ```c#
-var allDevs = people.All(x => x.Occupation == "Dev"); //Will return false
+bool allDevs = people.All(x => x.Occupation == "Dev"); //Will return false
 
-var everyoneAtLeastTwentyFour = people.All(x => x.Age >= 24); //Will return true
+bool everyoneAtLeastTwentyFour = people.All(x => x.Age >= 24); //Will return true
 ```
 
 ## Converting Results to Collections
-LINQ provides you with extension methods that will allow you to convert readonly Enumerable collections to other collection types (Lists, Arrays, Dictionarys).
+The results of many of the LINQ queries so far has been `IEnumerable<T>`, however, you sometimes want a different type than that. LINQ provides you with extension methods that allow you to convert collections to other collection types, and these methods work with any type implementing an `IEnumerable` interface.
 
 ### ToList
-The `ToList` extension method allows you to convert an `IEnumerable<T>` to a `List<T>`, where `T` will be the same type received, and this includes the results of most other LINQ Extension Methods. When you filter a list by using the `Where` extension method, the result is an `IEnumerable<T>` which is readonly and  cannot be modified. What if you need to modify the results of your query? This is where the `ToList` extension method comes in to play.
+The `ToList` extension method allows you to convert an `IEnumerable<T>` to a `List<T>`, where `T` will be the same type received. When you filter a list using the `Where` extension method, the result is an `IEnumerable<T>`. This is fine if you just want to iterate over the items once, however, you will often need to manipulate those items. This is where the `ToList` extension method comes in to play.
 
 ```c#
 List<Person> listOfDevs = people.Where(x => x.Occupation == "Dev").ToList(); //This will return a List<Person>
@@ -191,15 +204,7 @@ Similar to `ToList`, there is also a `ToArray` extension method that will result
 Person[] arrayOfDevs = people.Where(x => x.Occupation == "Dev").ToArray(); //This will return a Person[] array
 ```
 
-Along with `ToList` and `ToArray`, a less commonly used extension method is `ToDictionary`, which will result in a `Dictionary<TKey, TValue>`.
-
 ## Next Steps
-For the next steps I would encourage you to first create a model, like our `Person` class we used in this lesson. Then, try some of the extension methods we described above. Query the results and output the results to the console so you can confirm everything is as expected.
+Starting with the `Person` class and the collection you used in this lesson, create a program that prints the name of each developer older than a specified age. Prompt the user with the `Console.ReadLine()` method to determine the age to use for filtering the collection. 
 
-```c#
-var devs = people.Where(x => x.Occupation == "Dev");
-foreach(var dev in devs)
-{
-    Console.WriteLine(dev.FirstName);
-}
-```
+Once you get that working, try adding more people to the collection and filtering based on names instead of ages.
