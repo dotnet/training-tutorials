@@ -24,7 +24,7 @@ This tutorial will cover the following topics:
 - [Understanding Classes and Objects](lesson-13.md)
 - [Working with Scope and Accessibility Modifiers](lesson-14.md)
 - [Encapsulation and Object-Oriented Design](lesson-15.md)
-- [Understanding Namespaces, Projects, and Assemblies](lesson-16.md)
+- [Understanding Namespaces](lesson-16.md)
 - [Introducing LINQ](lesson-17.md)
 - [When and How to use Exceptions](lesson-18.md)
 - [Understanding Events and Event-Driven Programming](lesson-19.md)
