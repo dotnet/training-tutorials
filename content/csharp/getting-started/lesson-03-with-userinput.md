@@ -73,7 +73,38 @@ class Program
 
 Run the program (from a command prompt in the project folder, type ``dotnet run``). You should see the output that includes your name (or "Steve" if you decided to just copy the code above).
 
-This is somewhat useful, in that you've extracted out an important part of the output into a variable, but currently there is no way for this value to ever change. Whatever it's set to in the code when it's declared is what will be displayed.
+This is somewhat useful, in that you've extracted out an important part of the output into a variable, but currently there is no way for this value to ever change. Whatever it's set to in the code when it's declared is what will be displayed. What would be even more powerful would be if you could let the end user of the program specify *their* name, and then use that in the output. You'll learn how to do just that in the next section.
+
+## Accepting User Input
+
+Since this is a console application, the easiest way to take in user input is as arguments when they run the application. Recall that the ``Main`` method accepts a parameter of ``string[] args``. You'll modify your program so that if no arguments are passed when the program is run, it prints out "Hello World!", but if they pass an argument, you'll display it instead of "World".
+
+To determine if the user has passed an argument, you need to check and see how many arguments there are in the incoming *array*. Remember, an array is a built-in type for holding a collection of variables of the same type. Arrays have some built-in functionality, like checking how many elements are in the array. For the current requirement, you don't care exactly how many arguments there are; you just care if there are any. You can determine that by seeing if the ``Length`` of the array is greater than zero.
+
+To have your program do one thing under one circumstance, and another otherwise, requires the use of a conditional statement. In this case, you're going to use the ``if`` statement, which is the most common conditional statement. The syntax for an ``if`` statement is the ``if`` keyword, followed by a *boolean* expression, surrounded by parentheses (``(`` ``)`` ). A boolean expression is anything that evaluates to ``true`` or ``false``, which could be a variable or some kind of equality statement. In this case, you're going to test whether ``args.Length > 0``.
+
+When the expression inside of the parentheses is true, the program block immediately following the ``if`` statement will execute. Otherwise, it is skipped (you'll learn about the ``else`` keyword soon, which adds more behavior). To set the value of the ``name`` variable if arguments have been passed to the program, you will need to write the following code:
+
+```c#
+var name = "World";
+if(args.Length > 0)
+{
+    name = args[0];
+}
+Console.WriteLine($"Hello {name}!");
+```
+
+This is a common pattern in programming. You're setting the default value of the variable when you declare it (to "World"). Then, you're letting the user override this default value. If they don't, it will remain. To test this program, run it both with and without passing any additional arguments. From the command prompt, run ``dotnet run`` as usual. You should see "Hello World!". Then try adding your name to the end of the command: ``dotnet run Steve``. You should see "Hello Steve!" (where Steve is replaced with your name).
+
+### Reading from the Console
+
+Another way to accept user input is to read it from the console. Just like there is a ``Console.WriteLine`` method, there is also a ``Console.ReadLine`` method. The ``ReadLine`` method returns a string holding whatever the user typed in before pressing *Enter*. You can modify your program to ask the user to enter their name, and then display it based on whatever they typed:
+
+```c#
+Console.WriteLine("What is your name?");
+var name = Console.ReadLine();
+Console.WriteLine($"Hello {name}!");
+```
 
 ## Next Steps
 
