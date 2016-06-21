@@ -1,5 +1,5 @@
 # Defining and Calling Methods
-by [Steve Smith](http://deviq.com/me/steve-smith), [Brendan Enrick](http://deviq.com/me/brendan-enrick)
+by [Steve Smith](http://deviq.com/me/steve-smith), [Brendan Enrick](http://deviq.com/me/brendan-enrick), [Eric Fleming](http://deviq.com/me/eric-fleming)
 
 #### Sample Files
 Download a ZIP containing this tutorial's sample files:
@@ -191,31 +191,32 @@ Lambda expressions can be very useful in describing simple functions. Two ways i
 
 ##Extension Methods
 
-Finally, there is a special kind of static method which allows you to extend your existing type with new functionality without having to re-compile. These types of methods are called `Extension Methods` and you'll get to see them used extensively in [Introducing LINQ](lesson-17.md). `Extension Methods` are very similar to `static` methods with the key difference of `extension methods` use the `this` parameter to extend a type. In the following example, we will create an `extension method` that will add five to the value of any integer.
+There is a special kind of static method which allows you to extend your existing type with new functionality without modifying the class itself. This is often useful when dealing with classes provided by other assemblies. These types of methods are called *Extension Methods*, and you'll get to see them used extensively in the [Introducing LINQ](lesson-17.md) lesson. Extension Methods are *static* methods of one class that behave like *instance* methods of another class. The key difference between extension methods and other static methods is using a special `this` parameter whose type is the class to be extended. In the following example, an extension method is created that will add five to the value of an integer and return the result:
 
 ```c#
 public static class ExtensionMethods
 {
-    public static int AddFive(this int input)
+    public static int PlusFive(this int input)
     {
-        return input += 5;
+        return input + 5;
     }
 }
 ```
 
-Since the first paramater is `this` and we expect the source type be an `int`, you can apply this `extension method` to any variable that is of the type `int`.
+Since the initial `int` parameter of the static method is preceded by the `this` modifier, you know this method is an extension method. Since the parameter is an `int`, it means the code may be used as a method on any `int` variable you have.
 
 ```c#
-var val = 10;
-Console.WriteLine(val); //Will output 10
-var result = val.AddFive();
-Console.WriteLine(result); //Will output 15
+int luckyNumber = 10;
+Console.WriteLine(luckyNumber); // Will output 10
+int result = luckyNumber.PlusFive();
+Console.WriteLine(result); // Will output 15
 ```
 
-If you attempt to use this `extension method` on a non-integer type, you will receive an error when compiling. For example, trying to call this `extension method` on a `string` type you will cause the following.
-```c#
-error CS1929: 'string' does not contain a definition for 'AddFive' and the best extension method overload 'ExtensionMethods.AddFive(int)' requires a receiver of type 'int'
-```
+If you attempt to use this extension method on a non-integer type, you will receive an error when compiling. For example, trying to call this `extension method` on a `string` type you will cause the following.
+
+    error CS1929: 'string' does not contain a definition for 'PlusFive' and the best extension method overload 'ExtensionMethods.PlusFive(int)' requires a receiver of type 'int'
+
+**Note:** Before using an extension method, your code will require a `using` statement for the namespace of your static class containing the extension method (if different from where you're accessing the extension method). You will learn more about these in the lesson on [Understanding Namespaces, Projects, and Assemblies](lesson-16.md).
 
 ## Next Steps
 
