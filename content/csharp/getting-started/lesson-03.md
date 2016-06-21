@@ -8,18 +8,44 @@ Download a ZIP containing this tutorial's sample files:
 
 ## Adding Variables
 
-In this lesson, you'll build on the simple Hello World program you've seen in the last two lessons. First, you'll learn how you can customize the behavior of a program by adding variables to it.
+In this lesson, you'll create a simple Hello World program, and then you'll learn how you can customize the behavior of the program by adding variables to it.
 
-The current program just prints "Hello World!" with the following line of code:
+This simple program just prints "Hello World!" to the console:
 
-```c#
+```{class=snippet}
 Console.WriteLine("Hello World!");
 ```
+```{class=REPL}
+using System;
+
+class Program
+{
+    static void Main()
+    {
+		Console.WriteLine("Hello World!");
+    }
+}
+```
+
+### Tip {.tip .newLanguage }
+> It's programming tradition that the first program one writes in a new language print out the phrase, "Hello World".
 
 You can change this greeting to be more personalized by using a variable. On the line above this one, you can add a variable that holds your name, like this:
 
-```c#
+```{class=snippet}
 var name = "Steve"; // use your name here
+```
+```{class=REPL}
+using System;
+
+class Program
+{
+    static void Main()
+    {
+		var name = "Steve"; // use your name here
+		Console.WriteLine("Hello World!");
+    }
+}
 ```
 
 There are a few new elements to this line of code. First, you're using a C# keyword, ``var``, which you can think of as *variable*. The ``var`` keyword is shorthand for whatever the type on the other side of the assignment operator (``=``) might be. In this case, the value in double quotes (``"Steve"`` in the example above) is a *string*. Strings are one of the built-in types in C#, and are used to represent text values. You can also declare a variable by specifying its type explicitly. In this example, the equivalent statement would be ``string name = "Steve";``.
@@ -28,9 +54,21 @@ The ``//`` on the line represents a single-line comment. Everything on the line 
 
 Now that you have a variable representing your name, you can use it in the next line so that the program greets you, rather than the world. To do that, remove the word *World* and replace it with ``{name}``. Note that these are curly braces around the name of the variable. By using this convention, you're letting C# know that you want it to substitute the value of the variable ``name`` in that location. The last thing you need to do for this convention to work is prefix the string with a ``$`` sign. When completed, the two lines of code should look like this:
 
-```c#
+```{.snippet}
 var name = "Steve"; // use your name here
 Console.WriteLine($"Hello {name}!");
+```
+```{.REPL}
+using System;
+
+class Program
+{
+    static void Main()
+    {
+		var name = "Steve"; // use your name here
+		Console.WriteLine($"Hello {name}!");
+    }
+}
 ```
 
 Run the program (from a command prompt in the project folder, type ``dotnet run``). You should see the output that includes your name (or "Steve" if you decided to just copy the code above).
