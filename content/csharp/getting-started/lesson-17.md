@@ -7,11 +7,26 @@ Download a ZIP containing this tutorial's sample files:
 - [Completed Version] - Includes the completed versions of all samples
 
 ## What is LINQ?
-Language Integrated Query, or LINQ, is a way to query a set of data with the use of extension methods. These extension methods can only be accessed by adding the `System.Linq` using statement. In the following examples, you'll see how to use LINQ on a ``List`` of people. This lesson will combine ideas from [lesson 10](lesson-10.md) and [lesson 13](lesson-13.md). 
+Language-Integrated Query, or LINQ, is a way to query a set of data with the use of *extension methods*. These extension methods can only be accessed by adding the `using System.Linq;` statement. In the following examples, you'll see how to use LINQ on a ``List`` of `Person` objects. The following material builds upon the [Working with Arrays and Collections](lesson-10.md) lesson and the [Extension Methods](lesson-12.md#extension-methods) section of the [Defining and Calling Methods](lesson-12.md) lesson. 
 
-As you follow along in these examples, use this ``Person`` class.
+As you follow along in these examples, use this `List<Person>` collection and `Person` class:
 
 ```c#
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var people = new List<Person>();
+
+        people.Add(new Person { FirstName = "Eric", LastName = "Fleming", Occupation = "Dev", Age = 24 });
+        people.Add(new Person { FirstName = "Steve", LastName = "Smith", Occupation = "Manager", Age = 40 });
+        people.Add(new Person { FirstName = "Brendan", LastName = "Enrick", Occupation = "Dev", Age = 30 });
+        people.Add(new Person { FirstName = "Jane", LastName = "Doe", Occupation = "Dev", Age = 35 });
+        people.Add(new Person { FirstName = "Samantha", LastName = "Jones", Occupation = "Dev", Age = 24 });
+        
+        // Write your code here
+    }
+}
 public class Person
 {
     public string FirstName { get; set; }
@@ -21,39 +36,27 @@ public class Person
 }
 ```
 
-Below is the list of people you will use throughout this lesson.
-
-```c#
-var people = new List<Person>();
-
-people.Add(new Person { FirstName = "Eric", LastName = "Fleming", Occupation = "Dev", Age = 24 });
-people.Add(new Person { FirstName = "Steve", LastName = "Smith", Occupation = "Manager", Age = 40 });
-people.Add(new Person { FirstName = "Brendan", LastName = "Enrick", Occupation = "Dev", Age = 30 });
-people.Add(new Person { FirstName = "Jane", LastName = "Doe", Occupation = "Dev", Age = 35 }); //Jane Person
-people.Add(new Person { FirstName = "Samantha", LastName = "Jones", Occupation = "Dev", Age = 24 });
-```
-
 ## Finding Items in Collections
-At some point, you're going to need to find items in a collection that meet specific criteria. LINQ provides you with extension methods like `Where`, `Skip`, and `Take` to make this easy, and here's how you use them.
+At some point, you're going to need to find items in a collection that meet specific criteria. LINQ provides you with extension methods like `Where`, `Skip`, and `Take` to make this easy.
 
 ###Where
-The `Where` extension method is the most commonly used. This can be used to filter elements from a collection based on certain criteria. For example, say you wanted to filter the list of people based on whether or not they are above the age of 30, it would look something like this:
+The `Where` extension method is the most commonly used. It can be used to filter elements from a collection based on certain criteria. For example, say you wanted to filter the list of people based on whether or not they are above the age of 30, it would look something like this:
 
 ```c#
 var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30); //There will be two Persons in this variable: the "Steve" Person and the "Jane" Person
 ``` 
 
-As you can see, the `Where` method takes in a lambda expression as a *predicate* to be applied to each item in the list of people. In this scenario, every person's Age property is checked to see if it is greater than 30. If the result of the expression is true, the current item is added to an an object of type `IEnumerable<T>`. This new `IEnumerable<T>` will be an "IEnumerable of Person" `IEnumerable<Person>`, because the `List` it came from was made of `Person` objects.
+As you can see, the `Where` method takes in a lambda expression as a *predicate* (a statement evaluating to either `true` or `false`) to be applied to each item in the list of people. In this scenario, every person's `Age` property is checked to see if it is greater than 30. If the result of the expression is `true`, the current item is added to an an object of type `IEnumerable<T>`. This new `IEnumerable<T>` will be an "IEnumerable of Person" `IEnumerable<Person>`, because the `List` it came from was made of `Person` objects.
 
 ###Skip
-You can also ignore a specified number of elements by using the `Skip` extension method.
+Sometimes you will want to ignore the first items in a collection and include only what remains. You can do this by using the aptly-named `Skip` method.
 
 ```c#
-IEnumerable<Person> skipTwo = people.Skip(2); //Will ignore Eric and Steve in the list of people
+IEnumerable<Person> afterTwo = people.Skip(2); //Will ignore Eric and Steve in the list of people
 ```
 
 ###Take
-The `Take` extension method will returns the sequential number of elements from a set of data specified in the method.
+The opposite of the `Skip` extension method is the `Take` extension method. `Take` will return the first items in the collection including a number of items equal to the number passed as an argument to the method.
 
 ```c#
 IEnumerable<Person> takeTwo = people.Take(2); //Will only return Eric and Steve from the list of people 
