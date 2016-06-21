@@ -189,6 +189,34 @@ Notice that the expression method, ``twentyFive``, is able to use the other vari
 
 Lambda expressions can be very useful in describing simple functions. Two ways in which they are commonly used is for *predicates* and *selectors*, which return a bool and an object respectively. You'll see these in action in [Introducing LINQ](lesson-17.md), the lesson covering language integrated queries (LINQ).
 
+##Extension Methods
+
+Finally, there is a special kind of static method which allows you to extend your existing type with new functionality without having to re-compile. These types of methods are called `Extension Methods` and you'll get to see them used extensively in [Introducing LINQ](lesson-17.md). `Extension Methods` are very similar to `static` methods with the key difference of `extension methods` use the `this` parameter to extend a type. In the following example, we will create an `extension method` that will add five to the value of any integer.
+
+```c#
+public static class ExtensionMethods
+{
+    public static int AddFive(this int input)
+    {
+        return input += 5;
+    }
+}
+```
+
+Since the first paramater is `this` and we expect the source type be an `int`, you can apply this `extension method` to any variable that is of the type `int`.
+
+```c#
+var val = 10;
+Console.WriteLine(val); //Will output 10
+var result = val.AddFive();
+Console.WriteLine(result); //Will output 15
+```
+
+If you attempt to use this `extension method` on a non-integer type, you will receive an error when compiling. For example, trying to call this `extension method` on a `string` type you will cause the following.
+```c#
+error CS1929: 'string' does not contain a definition for 'AddFive' and the best extension method overload 'ExtensionMethods.AddFive(int)' requires a receiver of type 'int'
+```
+
 ## Next Steps
 
 In [lesson 10](lesson-10.md) you wrote a program to manage a list of items, responding to different commands the user typed. Use what you've learned about methods to break up that program into several methods, each responsible for a different part of the program. You might create methods to determine the action to take based on the user's input, and to perform each action. Don't worry if your methods are very short (even one line) - the point is for you to get comfortable taking code from one long method and moving it into smaller methods, while still keeping your code working.
