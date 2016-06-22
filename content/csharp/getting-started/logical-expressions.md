@@ -9,7 +9,7 @@ Logical *expressions* are composed of *operators* and *operands*. You can define
 
 You've already seen several comparison operators. Below are many of the built-in operators:
 
-```c#
+```{.snippet}
 ==  // equal
 !=  // not equal
 >   // greater than
@@ -20,14 +20,31 @@ You've already seen several comparison operators. Below are many of the built-in
 
 Each of the comparison operators requires two operands, one on each side of the expression. For example:
 
-```c#
+```{.snippet}
 x < 10
 y >= 0
+```
+```{.REPL}
+using System;
+
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int x = 15;
+            int y = 10
+            Console.WriteLine(x < 10);
+            Console.WriteLine(y >= 0);
+        }
+    }
+}
 ```
 
 To test if a value is between two numbers, you need to check the two conditions separately. The following is not a legal C# expression:
 
-```c#
+```{.snippet}
 1 <= x <= 10 // x between 1 and 10 inclusive - DOES NOT COMPILE
 ```
 
@@ -37,7 +54,7 @@ To combine multiple expression, you use logical operators.
 
 Conditional logical operators are used to combine multiple logical expressions. The most common logical operators are *and*, *or*, and *not*, which are represented as follows:
 
-```c#
+```{.snippet}
 &&  // logical AND
 ||  // logical OR
 !   // logical NOT (often read as 'bang')
@@ -46,7 +63,7 @@ Conditional logical operators are used to combine multiple logical expressions. 
 
 The ``&&``, ``||``, and ``^`` operators require two operands; the ``!`` operator takes only one, and is applied as a prefix. For example:
 
-```c#
+```{.snippet}
 true && true    // true
 true && false   // false
 false && false  // false
@@ -62,6 +79,33 @@ false ^ false   // false
 !true           // false
 !false          // true
 ```
+```{.REPL}
+using System;
+
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Console.WriteLine(true && true);    // true
+            Console.WriteLine(true && false);   // false
+            Console.WriteLine(false && false);  // false
+
+            Console.WriteLine(true || true);    // true
+            Console.WriteLine(true || false);   // true
+            Console.WriteLine(false || false);  // false
+
+            Console.WriteLine(true ^ true);     // false
+            Console.WriteLine(true ^ false);    // true
+            Console.WriteLine(false ^ false);   // false
+
+            Console.WriteLine(!true);           // false
+            Console.WriteLine(!false);          // true
+        }
+    }
+}
+```
 
 **Note:** C# also includes *bitwise* logical operators, ``&`` (AND), ``|`` (OR). These are used to perform binary comparisons of numeric values, and generally aren't used directly for conditional expressions. The ``^`` (XOR) operator can be used with both boolean and integral operands.
 
@@ -69,12 +113,31 @@ Logical operations are applied left to right, and will *short-circuit*. That is,
 
 Logical expressions are grouped using parentheses, which modify their order of operations just as in algebra. For example:
 
-```c#
+```{.snippet}
 int a = 5;
 int b = 10;
 if((a < b) && (b < 20))
 {
     // do something
+}
+```
+```{.REPL}
+using System;
+
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int a = 5;
+            int b = 10;
+            if((a < b) && (b < 20))
+            {
+                Console.WriteLine("I'm in here!");
+            }
+        }
+    }
 }
 ```
 
@@ -84,12 +147,31 @@ Be careful with parentheses in logical expression - it's easy to forget to close
 
 A boolean (``bool``) variable is often referred to as a *flag*. Flags can be useful as a means giving a name to a particular condition. For example:
 
-```c#
+```{.snippet}
 int x = 10;
 bool isPositive = x > 0;
 if(isPositive)
 {
     // do something
+}
+```
+```{.REPL}
+using System;
+
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int x = 10;
+            bool isPositive = x > 0;
+            if(isPositive)
+            {
+                Console.WriteLine("I'm in here!");
+            }
+        }
+    }
 }
 ```
 
