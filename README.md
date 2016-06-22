@@ -29,5 +29,22 @@ The ultimately publishing platform capabilities and requirements aren't yet know
 
 The *master* branch will contain the latest approved content. In the short term, approved content authors will be permitted to push directly to master. Once there is a significant amount of content, however, authors will be expected to work in their own feature branch before submitting a pull request and awaiting a :shipit: from another team member.
 
+## Contributing
+We welcome contributions and corrections to these tutorials. We will build out a roadmap shortly on the areas that we are looking to address next but send us your ideas. When contributing the steps are:
+
+ 1. Fork this repo and clone your fork locally
+ 2. Create a new branch for your contribution
+ 3. Do your awesomeness, commit and push to your fork
+ 4. Create a pull request from it to the master branch of https://github.com/dotnet/training-tutorials
+ 5. Leave some handy comments
+
+We ask that authors of significant changes sign the [.NET Foundation Contribution License Agreement](http://cla2.dotnetfoundation.org). This project has adopted the code of conduct defined by the [Contributor Covenant](http://contributor-covenant.org/)
+to clarify expected behavior in our community.
+For more information see the [.NET Foundation Code of Conduct](http://www.dotnetfoundation.org/code-of-conduct).
+
+### .NET Foundation
+This project is supported by the [.NET Foundation](http://www.dotnetfoundation.org).
+
+
 
 
