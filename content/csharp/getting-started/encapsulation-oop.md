@@ -5,7 +5,7 @@ by [Steve Smith](http://deviq.com/me/steve-smith)
 
 *Encapsulation* is a fundamental concept in computer science and programming. At its core, encapsulation is simply "information hiding", but that doesn't convey the reasoning behind the practice. By hiding information about the inner workings of a software construct, you force collaborators to work only with the construct's exposed interface. How work is done within the construct is a "black box", and as a result, the inner workings are free to change without disrupting collaborators, provided the external interface (and associated behavior) is not changed.
 
-You achieve encapsulation in your object-oriented programs primarily through the use of object design and accessibility modifiers, which you learned about in the [previous lession](lesson-14.md). Your program would have no encapsulation if the entire thing resided in a single method. By breaking functionality out into separate, focused methods and classes, and controlling how these methods access their classes' state through accessibility modifiers, you can achieve good encapsulation in your program's design.
+You achieve encapsulation in your object-oriented programs primarily through the use of object design and accessibility modifiers, which you learned about in the [previous lession](scope-accessibility.md). Your program would have no encapsulation if the entire thing resided in a single method. By breaking functionality out into separate, focused methods and classes, and controlling how these methods access their classes' state through accessibility modifiers, you can achieve good encapsulation in your program's design.
 
 ### Example of Poor Encapsulation
 

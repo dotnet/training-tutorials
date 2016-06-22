@@ -105,4 +105,4 @@ You can configure tasks to debug or run your program in Visual Studio Code, but 
 
 ## Next Steps
 
-Using the editor of your choice, create a new Console Application and confirm you're able to run it. Congratulations! You just wrote your own program! You'll learn how to make it start doing something interesting in [the next lesson](lesson-02.md).
+Using the editor of your choice, create a new Console Application and confirm you're able to run it. Congratulations! You just wrote your own program! You'll learn how to make it start doing something interesting in [the next lesson](types-variables.md).

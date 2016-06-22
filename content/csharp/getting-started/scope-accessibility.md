@@ -106,7 +106,7 @@ When an object of this type is created, a variable is created to store the value
 ## Access Modifiers
 As your programs grow and become more complex, there will be times when you need to limit access to some of your code. These limitations you impose determine which other code is allowed to access the code you're restricting. You impose these restrictions using *access modifiers*, which you may have noticed affecting namespaces, classes, methods, properties, and fields in earlier examples. 
 
-In this lesson, you'll learn what access modifiers are and how to use them. You'll learn when and why to use these modifiers to effectively limit access to information and behavior in your programs in the [Encapsulation and Object-Oriented Design](lesson-15.md) lesson. Consider this example:
+In this lesson, you'll learn what access modifiers are and how to use them. You'll learn when and why to use these modifiers to effectively limit access to information and behavior in your programs in the [Encapsulation and Object-Oriented Design](encapsulation-oop.md) lesson. Consider this example:
 
 ```c#
 public class Person
@@ -142,7 +142,7 @@ public class Student : Person
 }
 ```
 
-The access modifiers used in this example are `public`, `private`, and `protected`. This lesson will also explain the `internal` modifier, but that's more related to the [Understanding Namespaces, Projects, and Assemblies](lesson-16.md) lesson. 
+The access modifiers used in this example are `public`, `private`, and `protected`. This lesson will also explain the `internal` modifier, but that's more related to the [Understanding Namespaces](namespaces.md) lesson. 
 
 Notice that the access modifiers are the first word in the declaration of the classes, methods, and prtoperties. This holds for most cases, however, you'll notice one exception to this in the example:
 
