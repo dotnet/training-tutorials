@@ -18,6 +18,9 @@ You've already seen several comparison operators. Below are many of the built-in
 <=  // less than or equal
 ```
 
+### Tip {.tip .javascript}
+> Unlike in JavaScript, C# uses strict comparison rules, so its equality comparisons will work like `===` and `!==` by default.
+
 Each of the comparison operators requires two operands, one on each side of the expression. For example:
 
 ```{.snippet}
@@ -141,7 +144,8 @@ namespace ConsoleApplication
 }
 ```
 
-Be careful with parentheses in logical expression - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
+### Tip {.tip .newLanguage}
+> Be careful with parentheses in logical expression - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
 
 ### Flags
 
@@ -175,9 +179,10 @@ namespace ConsoleApplication
 }
 ```
 
-Often, programs will include complex conditional logic, and it can be helpful to simplify some or all of this complexity into named variables. Flags can be attached to objects as *properties*, such that you can test for their value as part of the object itself (example: ``if(x.IsPositive)``. However, when writing *object-oriented* programs, it's often better to avoid using flags, since they can lead to program designs that are more procedural and don't encapsulate behavior effectively within objects. You'll learn more about object design in [lesson 15](encapsulation-oop.md).
+Often, programs will include complex conditional logic, and it can be helpful to simplify some or all of this complexity into named variables. Flags can be attached to objects as *properties*, such that you can test for their value as part of the object itself (example: ``if(x.IsPositive)``. However, when writing *object-oriented* programs, it's often better to avoid using flags, since they can lead to program designs that are more procedural and don't encapsulate behavior effectively within objects. You'll learn more about object design in the [Encapsulation and Object-Oriented Design](encapsulation-oop.md) lesson.
 
-It's a typical convention to name boolean variables with an "Is" or "is" prefix, since this makes it clear the variable is a boolean and also makes reading conditional statements more clear as well. Avoid naming flags negatively (example: "IsNotPositive"), since this can become confusing, especially when the flag is negated with the ``!`` operator.
+### Tip {.tip .newLanguage}
+> It's a typical convention to name boolean variables with an "Is" or "is" prefix, since this makes it clear the variable is a boolean and also makes reading conditional statements more clear as well. Avoid naming flags negatively (example: "IsNotPositive"), since this can become confusing, especially when the flag is negated with the ``!`` operator.
 
 ## Next Steps
 
