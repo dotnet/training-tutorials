@@ -5,21 +5,31 @@ by [Steve Smith](http://deviq.com/me/steve-smith)
 
 Programs that always do the same thing aren't nearly as powerful or interesting as those that can make decisions. These decisions can be based on any number of things, from user input to the current state of the program. Based on some kind of *condition*, the program can choose a different set of instructions to run. The most common C# keyword used to make decisions like this is the ``if`` statement. Because the ``if`` statement depends on a condition, the statement is sometimes referred to as a *conditional* statement.
 
-You can use ``if`` statements for all kinds of things in your programs. One common use for these statements is validating user input, such as checking to see if any arguments have been passed to a program or method. When you write an ``if`` statement, it consists of the ``if`` keyword, a logical expression inside of parentheses, and then one or more statements. It's generally considered a best practice to always wrap the statement(s) after an ``if`` statement in curly braces (``{`` ``}``), unless it's a very short statement that can fit on the same line as the ``if`` statement. For example, you can exit a console application by *returning* from the ``Main`` method. For a program that requires arguments, you could immediately return if no arguments are supplied, using an ``if`` statement like this one:
+You can use ``if`` statements for all kinds of things in your programs. One common use for these statements is validating user input, such as checking to see if any arguments have been passed to a program or method. When you write an ``if`` statement, it consists of the ``if`` keyword, a logical expression inside of parentheses, and then one or more statements. It's generally considered a best practice to always wrap the statement(s) after an ``if`` statement in curly braces (``{`` ``}``), unless it's a very short statement that can fit on the same line as the ``if`` statement. For example, you can exit a method by *returning* from it if a required argument is not specified:
 
 ```{class=snippet}
-if(args.Length == 0) return;
+static void Greet(string name)
+{
+    if(String.IsNullOrEmpty(name)) return;
+
+    Console.WriteLine($"Hello, {name}!");
+}
 ```
 ```{class=REPL}
 using System;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        if(args.Length == 0) return;
-		
-		Console.WriteLine("This line only shows if arguments were passed into the program.");
+        Greet(""); // try calling this with "", null, and your name as arguments
+    }
+
+    static void Greet(string name)
+    {
+        if(String.IsNullOrEmpty(name)) return;
+
+        Console.WriteLine($"Hello, {name}!");
     }
 }
 ```
@@ -41,7 +51,7 @@ class Program
 {
     static void Main()
     {
-        bool someCondition;
+        bool someCondition = false; // try it with both true and false values
 
         var sum = 10;
         if(someCondition)
@@ -72,7 +82,7 @@ class Program
 {
     static void Main()
     {
-        bool someCondition;
+        bool someCondition = false;
 
         var sum = 10;
         if(someCondition)
@@ -92,7 +102,7 @@ Now the above code will print a sum of 30 when the if condition evaluates to tru
 > It's a good idea to follow a standard code formatting convention when programming. Such conventions often vary, even between similar languages. In C#, for instance, it's recommended that opening curly braces always start on their own line, indented to match their associated keyword. Closing curly braces should also appear on their own line, indented to match their opening brace.
 
 ### Tip {.tip .vb}
-> In VB, there's no possibility for confusion, since all ``If-Then`` statements must end with an ``End If`` statement.
+> Unlike in VB, C# allows statements on the same line as ``if`` statements. Be aware, too, that unlike VB's ``If-Then`` statements that must end with an ``End If`` statement, C# uses curly braces to end many kinds of blocks, not just ``if`` statements.
 
 ## Or Else!
 
@@ -181,7 +191,7 @@ The ``switch`` keyword is used to have your program execute a different *section
 The following example shows a simple ``switch`` statement based on an integer variable:
 
 ```{class=snippet}
-int guessedNumber = 1;
+uint guessedNumber = 1;
 switch (guessedNumber)
 {
     case 0:
@@ -207,7 +217,7 @@ class Program
 {
     static void Main()
     {
-        int guessedNumber = 1; // try different numbers to see resulting behavior
+        uint guessedNumber = 1; // try different numbers to see resulting behavior
         switch (guessedNumber)
         {
             case 0:
@@ -229,7 +239,9 @@ class Program
 }
 ```
 
-In the example above, you can see how multiple different ``case`` labels (in this case, 1, 2, and 3) can be applied to a single switch section ("You guessed low"). 
+In the example above, you can see how multiple different ``case`` labels (in this case, 1, 2, and 3) can be applied to a single switch section ("You guessed low").
+
+**Note:** ``uint`` is an *unsigned* integer type, which cannot hold negative values.
 
 ## Next Steps
 
