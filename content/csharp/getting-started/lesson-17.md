@@ -1,11 +1,6 @@
 # Introducing LINQ
 by [Eric Fleming](http://deviq.com/me/eric-fleming)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## What is LINQ?
 Language-Integrated Query, or LINQ, is a way to query a set of data with the use of *extension methods*. These extension methods can only be accessed by adding the `using System.Linq;` statement. In the following examples, you'll see how to use LINQ on a ``List`` of `Person` objects. The following material builds upon the [Working with Arrays and Collections](lesson-10.md) lesson and the [Extension Methods](lesson-12.md#extension-methods) section of the [Defining and Calling Methods](lesson-12.md) lesson. 
 

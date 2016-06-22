@@ -1,11 +1,6 @@
 # Common Patterns and Antipatterns
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## Common C# Patterns and Antipatterns
 
 Common approaches to solving similar problems are referred to as *design patterns*. Common approaches to solving similar problems that often end up causing more problems than they solve are called *antipatterns* (or *anti-patterns*). As you continue learning C#, there are a few of each to keep in mind.

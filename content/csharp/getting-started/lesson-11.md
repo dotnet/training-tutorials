@@ -1,11 +1,6 @@
 # Looping Through Members of a Collection
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## Using the ``foreach`` Loop
 
 In earlier lessons, you learned about ``while`` loops and ``for`` loops. Although you can use these loop statements to loop through the contents of an array or other collection, the ``foreach`` loop statment is designed specifically for this purpose. The ``foreach`` loop uses the following syntax:

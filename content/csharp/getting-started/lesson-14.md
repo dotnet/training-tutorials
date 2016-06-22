@@ -1,11 +1,6 @@
 # Working with Scope and Accessibility Modifiers
 by [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## Scope of Variables
 The *scope* of any variable is a way of describing the timeframe in which the variable exists as well as where it can be accessed. This timeframe is based on where in your program you declare the variable. While a variable is in scope, you are able to use it. In this lesson, you will learn about three different levels of scoping in C#: method-level, block-level, and class-level.
 

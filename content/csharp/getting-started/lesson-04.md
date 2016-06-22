@@ -1,11 +1,6 @@
 # Working with Strings
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## Strings in C#
 
 Strings in C# are a built-in type, as well as a standard .NET type. The ``string`` keyword in C# is the same as the ``System.String`` type, and you can declare variables using either version without any impact on your program's behavior. When a string is instantiated in C#, a sequence of bytes in memory is allocated to it. This allocation cannot be modified after-the-fact; it can only be erased once the string is no longer in use by the program. To change a string, or to create a new string out of one or more others, a new memory allocation is required. Because string values cannot be changed once they are created, strings are said to be *immutable*. This aspect of strings can have performance implications in your programs, so it's helpful to understand.
