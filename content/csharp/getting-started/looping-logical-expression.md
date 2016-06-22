@@ -63,7 +63,8 @@ Using ``int.Parse(Console.ReadLine())`` can easily crash the program if the user
 
 You can think of a ``while`` loop as being just like an ``if`` statement that keeps running, again and again, until the expression is evaluated as ``false``. Note that the expression is only evaluated when the end of the loop block is reached. It's possible for the expression to evaluate to false at some point during the block's execution, but for the loop to continue as long as the expression is true again the next time it is evaluated.
 
-When a loop is based on the value of a particular variable, this variable is called the *loop control variable*. It's often critical that you remember to update the value of the loop control variable within the loop, or risk an infinite loop (see below).
+### Tip {.tip .newLanguage}
+> When a loop is based on the value of a particular variable, this variable is called the *loop control variable*. It's often critical that you remember to update the value of the loop control variable within the loop, or risk an infinite loop (see below).
 
 ### Exiting a Loop
 
