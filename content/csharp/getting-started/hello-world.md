@@ -36,7 +36,6 @@ namespace ConsoleApplication
 }
 ```
 
-
 ### Program.cs
 
 *Program.cs* is a (usually small) text file. Its file extension is "cs" because it contains C# source code. When you build the program from a command prompt, the ``dotnet build`` tool will build all of the files that end in ".cs" using the C# compiler. Although it's a small program, there are a number of important bits of syntax in it that you should understand. First, remember that C# is case-sensitive, so keywords won't work unless they're lowercase, and other named elements within the source code must exactly match the case of the element being referenced.
