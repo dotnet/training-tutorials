@@ -102,7 +102,7 @@ class Program
 
 If you try to work with the members of an object that isn't set (one that is null), your program will throw a ``NullReferenceException``. These are very common, and often very frustrating, errors in C# applications. You can mitigate them by ensuring you're always setting a default value to your instances rather than allowing them to remain null.
 
-You can check to see if a string value is null by comparing it to null (for instance, ``(nullstring == null)`` would evaluate to ``true``). There are also some built-in helper functions for detecting whether a string is either null or empty. Both ``(String.IsNullOrEmpty(emptyString))`` and ``(String.IsNullOrEmpty(nullString))`` would return ``true`` as well. This demonstrates another common pattern in C#, which is the use of static *extension methods* on a type for functionality that is useful to apply to null instances of the type. You will learn more about extension methods in [Defining and Calling Methods](lesson-12.md).
+You can check to see if a string value is null by comparing it to null (for instance, ``(nullstring == null)`` would evaluate to ``true``). There are also some built-in helper functions for detecting whether a string is either null or empty. Both ``(String.IsNullOrEmpty(emptyString))`` and ``(String.IsNullOrEmpty(nullString))`` would return ``true`` as well. This demonstrates another common pattern in C#, which is the use of static *extension methods* on a type for functionality that is useful to apply to null instances of the type. You will learn more about extension methods in [Defining and Calling Methods](methods.md).
 
 ## String Operations
 

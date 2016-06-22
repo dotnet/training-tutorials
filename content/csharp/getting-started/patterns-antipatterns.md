@@ -81,7 +81,7 @@ With this design in place, you could accept an IPaymentProcessorAdapter anywhere
 
 ### The Factory Design Pattern
 
-The factory design pattern is actually a combination of a few different patterns, but with the same intent: to simplify construction of object instances and [encapsulate](lesson-15.md) decisions about which specific type to instantiate. For building on the example above, let's say the payment providers are used by different stores that all run on your platform. Each store must choose a particular payment provider they're going to use from the ones the platform supports. This is stored as part of the ``Store``'s properties:
+The factory design pattern is actually a combination of a few different patterns, but with the same intent: to simplify construction of object instances and [encapsulate](encapsulation-oop.md) decisions about which specific type to instantiate. For building on the example above, let's say the payment providers are used by different stores that all run on your platform. Each store must choose a particular payment provider they're going to use from the ones the platform supports. This is stored as part of the ``Store``'s properties:
 
 ```c#
 public class Store
@@ -263,7 +263,7 @@ public class Order
 }
 ```
 
-This class now follows the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/), because it clearly states in its constructor what its needed collaborators are. It also better follows SRP (discussed in [lesson 15](lesson-15.md)), because it is no longer responsible for choosing the specific implementations it will collaborate with. That decision can be made elsewhere, perhaps in a class whose sole responsibility is constructing the collaborators that the program will use.
+This class now follows the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/), because it clearly states in its constructor what its needed collaborators are. It also better follows SRP (discussed in the [encapsulation lesson](encapsulation-oop.md)), because it is no longer responsible for choosing the specific implementations it will collaborate with. That decision can be made elsewhere, perhaps in a class whose sole responsibility is constructing the collaborators that the program will use.
 
 ### The Singleton Antipattern
 
