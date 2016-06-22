@@ -1,11 +1,6 @@
 # When and How to use Exceptions
 by [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## Basics of Exceptions
 In programming, *exceptions* are errors your programs *throw* in response to circumstances that are not intended and require special processing. You use the special ``throw`` command to interrupt the normal execution of the program when error ocurrs. This is donewhen an error has ocurred and needs to be handled by your program. In previous lessons, you've seen places where code you are calling throws an exception. One exception that you may have tried already happens when you typed in anything that wasn't a number during the guessing game. Doing this would result in ``Unhandled Exception: System.FormatException: Input string was not in a correct format.`` being displayed and your program would crash.
 

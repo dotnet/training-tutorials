@@ -1,11 +1,6 @@
 # Working with Arrays and Collections
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## Arrays
 
 You can store multiple variables of a particulare type in an *array* data structure. 

@@ -1,11 +1,6 @@
 # Working with Dates and Times
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## The DateTime Type
 
 C# has built-in support for dates and times in the form of the ``System.DateTime`` type. This type can be used to represent a date and time, and it provides static access to the system clock which can be used to get the current time and/or date. The type also supports many operations that can make it easy to work with and manipulate dates and times.

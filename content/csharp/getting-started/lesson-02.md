@@ -1,11 +1,6 @@
 # Understanding C# Files and Projects
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## The Hello World Project
 
 In [lesson one](lesson-01.md), you created a "Hello World" console application. In this lesson, you're going to learn about the different parts of that program, so that you understand how they work together. You'll also learn what happens when you build and run the application, and you'll learn about some common errors you may encounter and how to correct them.
