@@ -15,10 +15,10 @@ using System;
 
 class Program
 {
-  static void Main()
-  {
-    Console.WriteLine("Hello World!");
-  }
+    static void Main()
+    {
+        Console.WriteLine("Hello World!");
+    }
 }
 ```
 
@@ -35,11 +35,11 @@ using System;
 
 class Program
 {
-  static void Main()
-  {
-    var name = "Steve"; // use your name here
-    Console.WriteLine("Hello World!");
-  }
+    static void Main()
+    {
+        var name = "Steve"; // use your name here
+        Console.WriteLine("Hello World!");
+    }
 }
 ```
 
@@ -61,11 +61,11 @@ using System;
 
 class Program
 {
-  static void Main()
-  {
-    var name = "Steve"; // use your name here
-    Console.WriteLine($"Hello {name}!");
-  }
+    static void Main()
+    {
+        var name = "Steve"; // use your name here
+        Console.WriteLine($"Hello {name}!");
+    }
 }
 ```
 
