@@ -7,6 +7,7 @@ Download a ZIP containing this tutorial's sample files:
 - [Completed Version] - Includes the completed versions of all samples
 
 ## What Namespaces Are
+
 In C#, a `namespace` is a scope in which developers organize their code, and you've been using them throughout the previous lessons.
 
 ```c#
@@ -27,6 +28,7 @@ namespace GettingStartedWithCSharp
 In the example above, there are two namespaces mentioned `System` and `GettingStartedWithCSharp`.
 
 ## Creating Namespaces
+
 When you create a program in C#, the first class you create will be inside of a namespace. Naming your namespace clearly is important; finding your code later will be much easier with a clear name. In the previous example, the `Program` class was inside of the `GettingStartedWithCSharp` namespace. Since it is not being used elsewhere, you can change that namespace to something like this:
 
 ```c#
@@ -45,6 +47,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 Notice the `.` characters are used to create nested namespaces. By using this namespace, you are effectively creating three namespaces: `GettingStartedTutorials`, `GettingStartedTutorials.CSharp`, and `GettingStartedTutorials.CSharp.NamespaceLesson`. For now, the first two only contain the next, more specific namespace, and `GettingStartedTutorials.CSharp.NamespaceLesson` contains your class, `Program`.
 
 ## Using Code from Other Namespaces
+
 You may have noticed in previous lessons `System.` was sometimes a prefix for various *classes*, and also sometimes appeared as `using System;`. This is how developers are able to access code from other namespaces. Both `System.Console` and `System.Exception` have been used previously, and, as you may have guessed based on how you create namespaces, these are from the `System` namespace.
 
 Consider a class `Person` in a namespace `GettingStartedTutorials.CSharp.NamespaceLesson.Models` like this example:
@@ -62,6 +65,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
 If you wanted to create an instance of this class inside of your program, you could do it in one of these two ways.
 
 ### Namespace as a Class Prefix
+
 When using a class from outside the current scope, you can prefix the class name using the namespace. Place a `.` between the two using this format `Namespace.Class`.
 
 ```c#
@@ -81,6 +85,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 The `GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person` tells C# that you want to use the `Person` class declared in the `GettingStartedTutorials.CSharp.NamespaceLesson.Models` namespace.
 
 ### Declaring Namespace to be in Scope
+
 Sometimes you want to make a namespace available in your code by adding it to the current scope. You do this by declaring that intent at the top of your file in a *using statement*. Just type the `using` keyword followed by the namespace name you want to include in the current scope.
 
 ```c#
