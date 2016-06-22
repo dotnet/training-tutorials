@@ -344,4 +344,5 @@ Write a simple program that lets the user manage a list of elements. It can be a
 Your program should read in the user's input and determine if it begins with a "+" or "-", or if it is simply "--". In the first two cases, your program should add or remove the string given ("some item" in the example). If the user enters just "--" then the program should clear the current list. Your program can start each iteration through its loop with the following instruction:
 ``Console.WriteLine("Enter command (+ item, - item, or -- to clear)):");``
 
-**Tip:** You can get the contents of a string, minus the first 2 characters, by using ``Substring(2)`` on the string.
+### Note { .note }
+> You can get the contents of a string, minus the first 2 characters, by using ``Substring(2)`` on the string.
