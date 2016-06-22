@@ -91,7 +91,7 @@ For this test, you will need to define an input variable and set up an expected 
 The method you are testing against is the `PlusFive` extension method, so this will be the method/action for your `Act` section.
 Once you have the result from the `Act` section, you can finally assert that the `expectedResult` matches the `actualResult`.
 
-Initially, it is a good idea to Assert something you don't expect to be true becuase sometimes your test will pass under incorrect conditions, revealing a problem in the test, or in the code. Before you run a passing test set your `expectedResult` to be `0`, a value we know is incorrect.
+Initially, it is a good idea to Assert something you don't expect to be true becuase sometimes your test will pass under incorrect conditions, revealing a problem in the test, or in the code. Before you run a passing test set your `expectedResult` to be `0`, a value you know is incorrect.
 
 ```c#
 using System;
@@ -115,7 +115,7 @@ public class ExtensionMethodsPlusFiveShould
 }
 ```
 
-**NOTE**: Xunit, like most testing frameworks, has many built in assertion methods for you to use. I used `Assert.Equal` above, but there are many more assertions available to you that you can check out [here](http://xunit.github.io/docs/comparisons.html).
+**NOTE**: Xunit, like most testing frameworks, has many built in assertion methods for you to use. You can see `Assert.Equal` used above, but there are many more assertions available to you that you can check out [here](http://xunit.github.io/docs/comparisons.html).
 Once the test is written you can run the `test` command from the dotnet CLI (`dotnet test`). This will produce output like the following.
 
 ```c#
@@ -135,7 +135,7 @@ xUnit.net .NET CLI test runner (64-bit .NET Core win10-x64)
 SUMMARY: Total: 1 targets, Passed: 0, Failed: 1.
 ```
 
-Now that you have seen the test fail you can update the `expectedResult` to be 15, which we know is the correct result, and rerun the test.
+Now that you have seen the test fail you can update the `expectedResult` to be 15, which you know is the correct result, and rerun the test.
 
 ```c#
 using System;
