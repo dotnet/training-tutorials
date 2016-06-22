@@ -22,12 +22,12 @@ class Program
 {
     static void Main()
     {
-        string string1; // current value is null
-        string1 = "Hello";
+    string string1; // current value is null
+    string1 = "Hello";
 
-        string string2 = "Hello";
-		Console.WriteLine(string1);
-		Console.WriteLine(string2);
+    string string2 = "Hello";
+    Console.WriteLine(string1);
+    Console.WriteLine(string2);
     }
 }
 ```
@@ -48,8 +48,8 @@ class Program
         string empty1 = "";
         string empty2 = String.Empty;
 
-		Console.WriteLine(empty1.Length);
-		Console.WriteLine(empty2.Length);
+        Console.WriteLine(empty1.Length);
+        Console.WriteLine(empty2.Length);
     }
 }
 ```
@@ -94,7 +94,7 @@ class Program
         // this line will print 0
         Console.WriteLine($"1st string is {emptyString.Length} characters long.");
 
-        // this line will throw an exception
+        // this line will throw an exception (uncomment it to confirm)
         // Console.WriteLine($"2nd string is {nullString.Length} characters long.");
     }
 }       
