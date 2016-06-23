@@ -11,10 +11,10 @@ You achieve encapsulation in your object-oriented programs primarily through the
 
 A very common example of poor encapsulation is the overuse of properties, especially for collection types. Usually, these types expose a great deal more functionality than any client code should be able to access, which can result in program bugs. Consider the following program, which prints customers and their orders:
 
-```c#
+```{.snippet}
 public class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
         var customer1 = new Customer() { Name = "Steve"};
         customer1.Orders.Add(new Order("123"));
@@ -38,7 +38,59 @@ public class Program
             while(orders.Count > 0)
             {
                 Console.WriteLine(orders[0].OrderNumber);
-                orders.RemoveAt(0);
+                orders.RemoveAt(0); // don't write code like this
+            }
+        }
+        Console.WriteLine($"Customer 1 Order Count: {customer1.Orders.Count}");
+        Console.WriteLine($"Customer 2 Order Count: {customer2.Orders.Count}");
+    }
+}
+
+public class Customer
+{
+    public string Name { get; set; }
+    public List<Order> Orders { get; set;} = new List<Order>();
+}
+
+public class Order 
+{
+    public Order(string orderNumber)
+    {
+        OrderNumber = orderNumber;
+    }
+    public string OrderNumber {get; set;}
+}
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        var customer1 = new Customer() { Name = "Steve"};
+        customer1.Orders.Add(new Order("123"));
+        customer1.Orders.Add(new Order("234"));
+        customer1.Orders.Add(new Order("345"));
+
+        var customer2= new Customer() { Name = "Eric"};
+        customer2.Orders.Add(new Order("100"));
+        customer2.Orders.Add(new Order("200"));
+        customer2.Orders.Add(new Order("300"));
+
+        var customers = new List<Customer>() { customer1, customer2};
+
+        // print customers
+        var orders = new List<Order>();
+        foreach (var customer in customers)
+        {
+            Console.WriteLine(customer.Name);
+            Console.WriteLine("Orders:");
+            orders = customer.Orders;
+            while(orders.Count > 0)
+            {
+                Console.WriteLine(orders[0].OrderNumber);
+                orders.RemoveAt(0); // don't write code like this
             }
         }
         Console.WriteLine($"Customer 1 Order Count: {customer1.Orders.Count}");
@@ -62,7 +114,7 @@ public class Order
 }
 ```
 
-Notice that in this example, the technique used to print the orders is a ``while`` loop that throws away each record as it prints it. This is an implementation detail, and if the collection this loop was working with were properly encapsulated, it wouldn't cause any issues. Unfortunately, even though a locally scoped ``orders`` variable is used to represent the collection, the calls to ``RemoveAt`` are actually removing records from the underlying ``Customer`` object. At the end of the program, both customers have 0 orders.
+Notice that in this example, the technique used to print the orders is a ``while`` loop that throws away each record as it prints it. This is an implementation detail, and if the collection this loop was working with were properly encapsulated, it wouldn't cause any issues. Unfortunately, even though a locally scoped ``orders`` variable is used to represent the collection, the calls to ``RemoveAt`` are **actually removing records from the underlying ``Customer`` object**. At the end of the program, both customers have 0 orders. This is not the intended behavior.
 
 There are a variety of ways this can be addressed, the simplest of which is to change the ``while`` loop to a ``foreach``, but the underlying problem is that ``Customer`` isn't encapsulating its ``Orders`` property in any way. Even if it didn't allow other classes to set the property, the ``List<Order>`` type it exposes is itself breaking encapsulation, and allowing collaborators to arbitrarily ``Remove`` or even ``Clear`` the contents of the collection.
 
@@ -99,7 +151,7 @@ public class Order
 }
 ```
 
-With this change, customers must have a name when they are created, which is a reasonable expectation in most cases.
+With this change, customers must have a name when they are created, which is a reasonable expectation in most cases. Making these changes requires some slight changes to how these classes are used (initial values must be passed in as constructor parameters, not properties).
 
 ### Encapsulating Collections
 
@@ -168,6 +220,9 @@ public void AddOrder(Order order)
 }
 ```
 
+### Tip {.tip .newLanguage}
+> Encapsulating collections is difficult because even if the collection is readonly, its contents often aren't. If client code can change the collection's elements, it breaks encapsulation, and often you want the objects in the collection to also be readonly. Sometimes the only way to achieve this is to use a custom type for this purpose (which may not be worth the effort).
+
 ### Encapsulating Infrastructure
 
 Another area in which encapsulation can greatly benefit program maintainability is when it comes to *infrastructure*. Infrastructure refers to all of the things outside of your code that your program must interact with, such as the file system, databases, the system clock, email servers, etc. Working with these systems requires certain implementation-specific code that is generally at a lower level of abstraction than your programming model (assuming you're not writing device drivers or something similar). Failure to encapsuate infrastructure properly can result in code that is tightly coupled to a particular implementation, making it hard to evolve as requirements change, and likely hard to test in isolation from its infrastructure, as well.
@@ -192,6 +247,9 @@ Implementing an interface from a class is done just like inheriting from a class
 ```c#
 public class InMemoryProductRepository : BaseRepository, IProductRepository
 ```
+
+### Tip {.tip .java}
+> C# interfaces function identically to Java interfaces. However, C# uses the ``:`` operator instead of Java's ``implements`` keyword.
 
 A class that lists an interface in its definition must implement all of that interface's members or a compilation error will occur.
 
@@ -258,7 +316,7 @@ Remember when you're instantiating collaborators that it's often better to reque
 
 As you design your program to follow the above principles, it's likely you'll move toward a design with many small, focused classes that interact with one another through interfaces. Often, these interfaces will be passed into the classes or methods as parameters, so that instantiation of specific implementations is left as a decision to be made higher up in the program's execution. Another principle that can help you follow these guidelines is the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/). This principle states that methods and classes should explicitly require as parameters any collaborating objects they need to function. If your have classes that you can instantiate without error, but which you can't work with unless certain conditions are in place (for instance, a configuration file exists with a valid connection string, the connection string points to a valid database, etc.), you're violating this principle.
 
-Your classes should communicate what they need to perform their actions by requesting any dependencies through their constructor (or, alternately, as method parameters). Classes that have *hidden dependencies* (dependencies not explicitly requested as parameters) are *dishonest*. They can trick developers into thinking the classes can simply be instantiated and use, but the classes fail when their hidden dependencies are not set up as required. 
+Your classes should communicate what they need to perform their actions by requesting any dependencies through their constructor (or, alternately, as method parameters). Classes that have *hidden dependencies* (dependencies not explicitly requested as parameters) are *dishonest*. They can trick developers into thinking the classes can simply be instantiated and use, but the classes fail when their hidden dependencies are not set up as required.
 
 ## Next Steps
 
