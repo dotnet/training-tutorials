@@ -45,7 +45,10 @@ You can also exit a loop by throwing an *exception*. You'll learn more about tho
 
 ### Infinite Loops
 
-An infinite loop is a loop that never ends. Often, these are a programming bug caused by broken logic that includes a loop conditional expression that never evaluates to ``false``. Sometimes, an infinite loop is intentional. Many programs, especially games, will keep running, waiting for user input, until the user takes some action to exit them. If you suspect that your console program has entered an infinite loop, you can force it to end by pressing \[Ctrl\]+c.
+Many programs, especially games, will keep running, waiting for user input, until the user takes some action to exit them. If you suspect that your console program has entered an infinite loop, you can force it to end by pressing \[Ctrl\]+c.
+
+### Tip {.tip .newLanguage}
+> An infinite loop is a loop that never ends. Often, these are a programming bug caused by broken logic that includes a loop conditional expression that never evaluates to ``false``. Sometimes, an infinite loop is intentional.
 
 You can modify the guessing game shown above to use an infinite loop and the ``break`` keyword (and at the same time, making it a bit shorter):
 
@@ -107,4 +110,4 @@ public static void Main()
     }
     Console.WriteLine();
 }
-``` 
+```
