@@ -9,7 +9,7 @@ Logical *expressions* are composed of *operators* and *operands*. You can define
 
 You've already seen several comparison operators. Below are many of the built-in operators:
 
-```c#
+```{.snippet}
 ==  // equal
 !=  // not equal
 >   // greater than
@@ -18,16 +18,36 @@ You've already seen several comparison operators. Below are many of the built-in
 <=  // less than or equal
 ```
 
+### Tip {.tip .javascript}
+> Unlike in JavaScript, C# uses strict comparison rules, so its equality comparisons will work like `===` and `!==` by default.
+
 Each of the comparison operators requires two operands, one on each side of the expression. For example:
 
-```c#
+```{.snippet}
 x < 10
 y >= 0
+```
+```{.REPL}
+using System;
+
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int x = 15;
+            int y = 10
+            Console.WriteLine(x < 10);
+            Console.WriteLine(y >= 0);
+        }
+    }
+}
 ```
 
 To test if a value is between two numbers, you need to check the two conditions separately. The following is not a legal C# expression:
 
-```c#
+```{.snippet}
 1 <= x <= 10 // x between 1 and 10 inclusive - DOES NOT COMPILE
 ```
 
@@ -37,7 +57,7 @@ To combine multiple expression, you use logical operators.
 
 Conditional logical operators are used to combine multiple logical expressions. The most common logical operators are *and*, *or*, and *not*, which are represented as follows:
 
-```c#
+```{.snippet}
 &&  // logical AND
 ||  // logical OR
 !   // logical NOT (often read as 'bang')
@@ -46,7 +66,7 @@ Conditional logical operators are used to combine multiple logical expressions. 
 
 The ``&&``, ``||``, and ``^`` operators require two operands; the ``!`` operator takes only one, and is applied as a prefix. For example:
 
-```c#
+```{.snippet}
 true && true    // true
 true && false   // false
 false && false  // false
@@ -62,14 +82,42 @@ false ^ false   // false
 !true           // false
 !false          // true
 ```
+```{.REPL}
+using System;
 
-**Note:** C# also includes *bitwise* logical operators, ``&`` (AND), ``|`` (OR). These are used to perform binary comparisons of numeric values, and generally aren't used directly for conditional expressions. The ``^`` (XOR) operator can be used with both boolean and integral operands.
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            Console.WriteLine(true && true);    // true
+            Console.WriteLine(true && false);   // false
+            Console.WriteLine(false && false);  // false
+
+            Console.WriteLine(true || true);    // true
+            Console.WriteLine(true || false);   // true
+            Console.WriteLine(false || false);  // false
+
+            Console.WriteLine(true ^ true);     // false
+            Console.WriteLine(true ^ false);    // true
+            Console.WriteLine(false ^ false);   // false
+
+            Console.WriteLine(!true);           // false
+            Console.WriteLine(!false);          // true
+        }
+    }
+}
+```
+
+### Note {.note}
+> C# also includes *bitwise* logical operators, ``&`` (AND), ``|`` (OR). These are used to perform binary comparisons of numeric values, and generally aren't used directly for conditional expressions. The ``^`` (XOR) operator can be used with both boolean and integral operands.
 
 Logical operations are applied left to right, and will *short-circuit*. That is, if the left operand of an ``&&`` operator is false, the right operand will not be evaluated. This is often important, since the operands themselves may be method calls, not variables. You'll learn more about methods in [lesson 12](methods.md).
 
 Logical expressions are grouped using parentheses, which modify their order of operations just as in algebra. For example:
 
-```c#
+```{.snippet}
 int a = 5;
 int b = 10;
 if((a < b) && (b < 20))
@@ -77,14 +125,34 @@ if((a < b) && (b < 20))
     // do something
 }
 ```
+```{.REPL}
+using System;
 
-Be careful with parentheses in logical expression - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int a = 5;
+            int b = 10;
+            if((a < b) && (b < 20))
+            {
+                Console.WriteLine("I'm in here!");
+            }
+        }
+    }
+}
+```
+
+### Tip {.tip .newLanguage}
+> Be careful with parentheses in logical expression - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
 
 ### Flags
 
 A boolean (``bool``) variable is often referred to as a *flag*. Flags can be useful as a means giving a name to a particular condition. For example:
 
-```c#
+```{.snippet}
 int x = 10;
 bool isPositive = x > 0;
 if(isPositive)
@@ -92,10 +160,30 @@ if(isPositive)
     // do something
 }
 ```
+```{.REPL}
+using System;
 
-Often, programs will include complex conditional logic, and it can be helpful to simplify some or all of this complexity into named variables. Flags can be attached to objects as *properties*, such that you can test for their value as part of the object itself (example: ``if(x.IsPositive)``. However, when writing *object-oriented* programs, it's often better to avoid using flags, since they can lead to program designs that are more procedural and don't encapsulate behavior effectively within objects. You'll learn more about object design in [lesson 15](encapsulation-oop.md).
+namespace ConsoleApplication
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            int x = 10;
+            bool isPositive = x > 0;
+            if(isPositive)
+            {
+                Console.WriteLine("I'm in here!");
+            }
+        }
+    }
+}
+```
 
-It's a typical convention to name boolean variables with an "Is" or "is" prefix, since this makes it clear the variable is a boolean and also makes reading conditional statements more clear as well. Avoid naming flags negatively (example: "IsNotPositive"), since this can become confusing, especially when the flag is negated with the ``!`` operator.
+Often, programs will include complex conditional logic, and it can be helpful to simplify some or all of this complexity into named variables. Flags can be attached to objects as *properties*, such that you can test for their value as part of the object itself (example: ``if(x.IsPositive)``. However, when writing *object-oriented* programs, it's often better to [avoid using flags](http://deviq.com/flags-over-objects/), since they can lead to program designs that are more procedural and don't encapsulate behavior effectively within objects. You'll learn more about object design in the [Encapsulation and Object-Oriented Design](encapsulation-oop.md) lesson.
+
+### Tip {.tip .newLanguage}
+> It's a typical convention to name boolean variables with an "Is" or "is" prefix, since this makes it clear the variable is a boolean and also makes reading conditional statements more clear as well. Avoid naming flags negatively (example: "IsNotPositive"), since this can become confusing, especially when the flag is negated with the ``!`` operator.
 
 ## Next Steps
 
