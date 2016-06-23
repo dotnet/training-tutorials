@@ -4,8 +4,8 @@ by [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 ## Basics of Exceptions
 In programming, *exceptions* are errors your programs *throw* in response to circumstances that are not intended and require special processing. You use the special ``throw`` command to interrupt the normal execution of the program when error ocurrs. This is donewhen an error has ocurred and needs to be handled by your program. In previous lessons, you've seen places where code you are calling throws an exception. One exception that you may have tried already happens when you typed in anything that wasn't a number during the guessing game. Doing this would result in ``Unhandled Exception: System.FormatException: Input string was not in a correct format.`` being displayed and your program would crash.
 
-```c#
-public static void Main(string[] args)
+```{.snippet}
+public static void Main()
 {
     try
     {
@@ -26,6 +26,37 @@ public static int SumNumberStrings(List<string> numbers)
         total += int.Parse(numberString);
     }
     return total;
+}
+```
+```{.REPL}
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            // To see the error, try changing to or adding invalid numbers
+            int sum = SumNumberStrings(new List<string> {"5", "4"});
+            Console.WriteLine(sum);
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("List of numbers contained an invalid entry.");
+        } 
+    }
+
+    public static int SumNumberStrings(List<string> numbers)
+    {
+        int total = 0;
+        foreach (string numberString in numbers)
+        {
+            total += int.Parse(numberString);
+        }
+        return total;
+    }
 }
 ```
 
@@ -59,11 +90,13 @@ catch (System.FormatException ex)
 }
 ```
 
-**Note:** If your code isn't going to respond to or log the exception in any way, don't catch the exception in the first place.
+### Tip {.tip .newLanguage} 
+> If your code isn't going to respond to or log the exception in any way, don't catch the exception in the first place.
 
 Throwing a new exception will replace the previous exception, so only do this if you're using an exception specific to your application (and make sure to set the ``InnerException`` property of your new exception to the previous exception.
 
-**Note:** It is common to log exceptions that occur, so that you can review them later and improve the program to avoid them, if possible.
+### Tip {.tip .newLanguage} 
+> It is common to log exceptions that occur, so that you can review them later and improve the program to avoid them, if possible.
 
 ### Throwing Exceptions
 When you're in one of those unexpected situations and your code cannot (or should not) handle this situation itself, it's time to throw an exception.
@@ -80,12 +113,13 @@ public List<People> GetAllCustomersByAge(int age)
 
 When throwing exceptions, you use the ``throw`` keyword to indicate that you're throwing an exception followed by the ``Exception`` object you're throwing. In the example above, the exception object is being created on the same line on which it's thrown. Also notice that a specific type was used here, the ``ArgumentOutOfRangeException``. This means that anyone catching the exception knows that an argument received was not within the expected range. Some exception types, like the ``ArgumentOutOfRangeException``, take additional arguments in their constructors. For the various exceptions that derive from the ``System.ArgumentException``, like this example, the constructor takes an error message and the name of the argument containing the invalid value.
 
-**Note:** Never throw ``System.Exception``, ``System.SystemException``, or ``ApplicationException`` directly; use more specific standard exceptions or custom exceptions. This allows callers to choose which exceptions they can handle instead of needing to respond to all exceptions.
+### Note {.note}
+>Never throw ``System.Exception``, ``System.SystemException``, or ``ApplicationException`` directly; use more specific standard exceptions or custom exceptions. This allows callers to choose which exceptions they can handle instead of needing to respond to all exceptions.
 
 ### The Finally Block
 In your code, you may need to ensure you've cleaned up and released any resources you had allocated, whether you threw an exception or not. In these circumstances, the *finally* block is what you're looking for. 
 
-```c#
+```{.snippet}
 try
 {
 }
@@ -98,6 +132,32 @@ finally
     // even if your catch block re-throws
 }
 // Code here will run only if catch doesn't re-throw
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            throw new Exception("Let's play catch!");
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            // This code will always run
+            // even if your catch block re-throws
+            Console.WriteLine("FINALLY!");
+        }
+        // Code here will run only if catch doesn't re-throw
+        Console.WriteLine("Still ran.");
+    }
+}
 ```
 
 Most people ask why they need to use a finally block, since the code after the try-catch runs anyway. If the catch block handles the exception and allows your code to keep running, it will be functionally equivalent. If the catch block re-throws or throws a new exception (intentionally or not), your finally will still run. This means you can depend on the finally block executing, but be careful to not throw an exception in the finally block.
@@ -117,7 +177,8 @@ finally
 // Code here will run only if no exceptions are thrown
 ```
 
-**Note:** In most cases, resources that need to be cleaned up will use .NET's ``IDisposable`` interface, and can be wrapped in a [using block](https://msdn.microsoft.com/en-us/library/yh598w02.aspx).
+### Note {.note}
+>In most cases, resources that need to be cleaned up will use .NET's ``IDisposable`` interface, and can be wrapped in a [using block](https://msdn.microsoft.com/en-us/library/yh598w02.aspx).
 
 ### Throwing From Catch Blocks
 Your catch blocks can include any code statements, including code that directly throws an exception or calls to other methods that could throw exceptions. If an exception is thrown from inside of your catch block, the details of the original exception will be lost, so it's important to use caution. If you want to catch a low-level exception and throw one more relevant to your program, make sure to assign the low-level one to the ``InnerException`` property of the new exception. This will keep the information available should an investigation be necessary.
@@ -136,7 +197,7 @@ Most exception classes will take another exception as a constructor parameter al
 
 If you're not handling the exceptions at the time that you've caught it, you generally want to just rethrow it like this:
 
-```c#
+```{.snippet}
 try
 {
 }
@@ -144,6 +205,49 @@ catch (ArgumentNullException ex)
 {
     Logger.LogError(ex); // log the error before rethrowing
     throw; 
+}
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            DoWork();
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("We encountered an error. Please try again.");
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public static void DoWork()
+    {
+        try
+        {
+            FindStudentId(null);
+        }
+        catch (ArgumentNullException ex)
+        {
+            // You would do some safe clean up work or logging here
+            // Logger.LogError(ex);
+            throw; 
+        }
+    }
+
+    public static int FindStudentId(string studentName)
+    {
+        if (string.IsNullOrEmpty(studentName))
+        {
+            throw new ArgumentNullException(nameof(studentName));
+        }
+
+        return 0; // we didn't really implement this
+    }
 }
 ```
 
@@ -154,7 +258,7 @@ In the previous examples, you usually saw ``catch (System.Exception)``, which us
 
 When you catch a specific exception, it will only catch the exceptions of that specific type (or ones that inherit from it). That means that catching ``System.FormatException`` will not catch any ``System.Exception`` exceptions that are thrown. If you want to handle both, differently, you would do this:
 
-```c#
+```{.snippet}
 try
 {
 }
@@ -167,8 +271,33 @@ catch (System.Exception)
     // Handle all other exceptions here
 }
 ```
+```{.REPL}
+using System;
 
-**Note:** The order of the catch blocks is important; only one catch block can catch an exception. The first catch block that can handle the exception will execute; any others are ignored.
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            // uncomment either line to see an error
+            //int.Parse("A");
+            //throw new Exception();
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("This is a System.FormatException");
+        }
+        catch (System.Exception)
+        {
+            Console.WriteLine("This is a different System.Exception");
+        }
+    }
+}
+```
+
+### Note {.note}
+>The order of the catch blocks is important; only one catch block can catch an exception. The first catch block that can handle the exception will execute; any others are ignored.
 
 In some instances you may want to handle more than one type of specific exception the same way and their common exception ancestor class is only ``System.Exception``. In order to that, you use the ``when`` clause followed by a condition explaining when you want to use that catch block. It looks like this:
 
@@ -215,7 +344,8 @@ public bool SetMemberBirthday(int memberId, DateTime birthday)
 }
 ```
 
-**Note:** When you throw an exception, there is always the chance that the exception will go unhandled, so be careful to throw only exceptions when it feels appropriate.
+### Tip {.tip .newLanguage}
+> When you throw an exception, there is always the chance that the exception will go unhandled, so be careful to throw exceptions only when it feels appropriate.
 
 ## Creating Your Own Exceptions
 When you are going to throw an exception in your code, it's important that you use the correct exception. This makes it easier for you, and others who call your code, to catch the specific exception that you're throwing. 
