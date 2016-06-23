@@ -139,7 +139,7 @@ Note that the ``%`` operator used below is the [modulus operator](https://msdn.m
 Run the program as-is before modifying it. It should display "2" if you enter an even number, or nothing otherwise. 
 
 ```c#
-public static void Main(string[] args)
+public static void Main()
 {
     Console.WriteLine("Enter a number:");
     int number = int.Parse(Console.ReadLine());
