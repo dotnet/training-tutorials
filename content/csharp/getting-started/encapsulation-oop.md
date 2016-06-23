@@ -242,14 +242,14 @@ public interface IProductRepository
 }
 ```
 
-Implementing an interface from a class is done just like inheriting from a class. However, if the class being defined inherits from a base class, that base class must be listed first before any interfaces after the ``:``. For example:
+Implementing an interface from a class is done just like inheriting from a class, however, if the class being defined inherits from a base class, that base class must be listed first before any interfaces after the ``:``. For example:
 
 ```c#
 public class InMemoryProductRepository : BaseRepository, IProductRepository
 ```
 
 ### Tip {.tip .java}
-> C# interfaces function identically to Java interfaces. However, C# uses the ``:`` operator instead of Java's ``implements`` keyword.
+> C# interfaces function identically to Java interfaces, however, C# uses the ``:`` operator instead of Java's ``implements`` keyword.
 
 A class that lists an interface in its definition must implement all of that interface's members or a compilation error will occur.
 
