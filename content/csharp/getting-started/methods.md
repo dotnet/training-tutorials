@@ -19,8 +19,7 @@ static int Add(int operand1, int operand2)
 }
 string FullName()
 {
-    // FirstName and LastName would be Properties of the class
-    // this method appears on - shouldn't be static
+    // FirstName and LastName are Properties of this class - shouldn't be static
     return $"{FirstName} {LastName}";
 }
 ```
