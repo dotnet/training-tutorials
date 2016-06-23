@@ -17,7 +17,7 @@ namespace GettingStartedWithCSharp
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             System.Console.WriteLine("Hello World!");
         }
@@ -31,7 +31,7 @@ namespace GettingStartedWithCSharp
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             System.Console.WriteLine("Hello World!");
         }
@@ -50,7 +50,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             System.Console.WriteLine("Hello World!");
         }
@@ -64,7 +64,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             System.Console.WriteLine("Hello World!");
         }
@@ -96,7 +96,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             System.Console.WriteLine("Hello World!");
         }
@@ -123,7 +123,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var brendan = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
@@ -138,7 +138,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var brendan = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
@@ -168,7 +168,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var brendan = Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
@@ -184,7 +184,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var brendan = Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
