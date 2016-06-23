@@ -20,7 +20,7 @@ static int Add(int operand1, int operand2)
 string FullName()
 {
     // FirstName and LastName would be Properties of the class
-    // this method appears on
+    // this method appears on - shouldn't be static
     return $"{FirstName} {LastName}";
 }
 ```
@@ -33,7 +33,7 @@ Frequently, you can create methods within your program by taking existing code (
 
 As an example, consider this long block of code, which could appear in the program's ``Main`` method:
 
-```c#
+```{.snippet}
 // display header
 Console.WriteLine("-----------------------------------------");
 Console.WriteLine("**** My Super Program *******************");
@@ -44,31 +44,76 @@ Console.WriteLine("What do you want to do?");
 Console.WriteLine("1 - View the Menu");
 Console.WriteLine("2 - Exit the Program");
 
-// read command
-string command = Console.ReadLine();
-int menuOption = int.Parse(command);
-
-switch(menuOption)
 // additional code omitted
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        // display header
+        Console.WriteLine("-----------------------------------------");
+        Console.WriteLine("**** My Super Program *******************");
+        Console.WriteLine("-----------------------------------------");
+
+        // display the menu
+        Console.WriteLine("What do you want to do?");
+        Console.WriteLine("1 - View the Menu");
+        Console.WriteLine("2 - Exit the Program");
+        
+        // additional code omitted
+    }
+}
 ```
 
 The above code could be greatly simplified by using methods:
 
-```c#
+```{.snippet}
 DisplayHeader();
 DisplayMenu();
 
 switch(ReadCommand())
 // additional code omitted
 ```
+```{.REPL}
+using System;
 
-The first two methods do not return anything, and would simply contain the ``Console.WriteLine`` statements that previously were in the main method. The ``ReadCommand`` method would return an ``int``. Learn more about return types in the next section.
+public class Program
+{
+    public static void Main()
+    {
+        DisplayHeader();
+        DisplayMenu();
+        
+        // additional code omitted
+
+    }
+    
+    static void DisplayHeader()
+    {
+        Console.WriteLine("-----------------------------------------");
+        Console.WriteLine("**** My Super Program *******************");
+        Console.WriteLine("-----------------------------------------");
+    }
+
+    static void DisplayMenu()
+    {
+        Console.WriteLine("What do you want to do?");
+        Console.WriteLine("1 - View the Menu");
+        Console.WriteLine("2 - Exit the Program");
+    }
+}
+```
+
+The two methods do not return anything; they simply contain the ``Console.WriteLine`` statements that previously were in the main method. You'll learn how to return results from methods in the next section.
 
 ## Return Types
 
 Methods are either declared as ``void``, meaning they don't return a result, or they must declare a type they will return. You can see two examples of simple methods below:
 
-```c#
+```{.snippet}
 string CreateGreeting(string name)
 {
     return $"Hi {name}!";
@@ -79,9 +124,31 @@ void DisplayGreeting()
     Console.WriteLine(CreateGreeting("Steve"));
 }
 ```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        DisplayGreeting();
+    }
+    
+    string CreateGreeting(string name)
+    {
+        return $"Hi {name}!";
+    }
+
+    void DisplayGreeting()
+    {
+        Console.WriteLine(CreateGreeting("Steve"));
+    }
+}
+```
+
 The first method returns a ``string`` type; the second one simply performs some action, without returning anything.
 
-Methods can only return a single result, which sometimes presents a challenge when designing how a program will work, especially when considering edge cases. For example, some programs might return an integer representing the ID of a record that was created, but return a negative number to represent an error code. This kind of program design, which changes the meaning of a return type based on what its value might be based on some convention, is extremely error-prone. In .NET programming, it's recommend you avoid returning error codes from your methods, and instead raise *exceptions* if necessary when errors occur.
+Methods can only return a single result, which sometimes presents a challenge when designing how a program will work, especially when considering edge cases. For example, some programs might return an integer representing the ID of a record that was created, but return a negative number to represent an error code. This kind of program design, which changes the meaning of a return type based on what its value might be based on some convention, is extremely error-prone. In .NET programming, it's recommended you avoid returning error codes from your methods, and instead raise *exceptions* if necessary when errors occur.
 
 At other times, a method may need to return more than one value in certain circumstances. For example, parsing a string into a type might be an operation for which failure is not an error, but instead should just be represented by a ``false`` return type. However, when the parsing operation is successful, a value of ``true`` should be returned, along with the actual type created by the parsing operation. One approach to this problem is to use a parameter than can return the value (called an *out parameter*). You'll learn more about these in the next section.
 
@@ -93,23 +160,64 @@ Methods can accept parameters, which can be used to modify their behavior. Param
 
 The name of a method, combined with the types of its parameters, must be unique within the class to which the method belongs. This is known as as the method's *signature*. You will see an error when you build your program if you have two methods with the same name and set of parameter types, even if the return types are different or the parameers have different names. For example, having the following two methods within the same class would generate an error at compile time:
 
-```c#
+```{.snippet}
 string GetValue(string fileName)
 {}
 int GetValue(string versionNumber)
 {}
 ```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        // this program won't compile
+    }
+    
+    string GetValue(string fileName)
+    {
+        return "";
+    }
+    
+    int GetValue(string versionNumber)
+    {
+        return 0;
+    }
+}
+```
 
 It is possible to repeat the same name for a method, but when doing so each *signature* must be unique. These are referred to as *method overloads* and you'll learn more about this technique in the next section.
 
-It's a good idea to limit the number of parameters a method accepts, since a large number of parameters often indicates a method is doing too much and should be broken up into smaller methods. As with the recommendation to use specialized objects for *Result* types, you may sometimes find that it makes sense to create objects to represent parameters as well, or even to create a new type for a method to live on that eliminates the need to pass it many parameters.
+It's a good idea to limit the number of parameters a method accepts, since a large number of parameters often indicates a method is doing too much and should be broken up into smaller methods. As with the recommendation to use specialized objects for *Result* types, you may sometimes find that it makes sense to create objects to represent parameters as well, or even to create a new type for a method to live on that eliminates the need to pass it many parameters (in such cases, the type's properties would typically be used instead of parameters).
 
 Parameters can be made optional by supplying them with default values. The syntax for this is simply to supply the value with the parameter declaration as an assignment:
 
-```c#
+```{.snippet}
 string CreateGreeting(string name = "You")
 {
     return $"Hi {name}!";
+}
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string greeting = CreateGreeting();
+        Console.WriteLine($"Default Greeting: {greeting}");
+        
+        string customGreeting = CreateGreeting("Steve");
+        Console.WriteLine($"Custom Greeting: {customGreeting}");
+    }
+    
+    string CreateGreeting(string name = "You")
+    {
+        return $"Hi {name}!";
+    }
 }
 ```
 
@@ -121,35 +229,99 @@ C# has always supported the concept of method overloads, which are multiple decl
 
 The following example demonstrates how method overloads might be used for a case where default parameters might also work:
 
-```c#
+```{.snippet}
 string CreateGreeting()
 {
-    return CreateGreeting("You"); // call version with more parameters, passing a default value
+    // call version with more parameters, passing a default value
+    return CreateGreeting("You"); 
 }
 string CreateGreeting(string name)
 {
     return $"Hi {name}!";
 }
 ```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string greeting = CreateGreeting();
+        Console.WriteLine($"Default Greeting: {greeting}");
+        
+        string customGreeting = CreateGreeting("Steve");
+        Console.WriteLine($"Custom Greeting: {customGreeting}");
+    }
+    
+    string CreateGreeting()
+    {
+        // call version with more parameters, passing a default value
+        return CreateGreeting("You"); 
+    }
+    
+    string CreateGreeting(string name)
+    {
+        return $"Hi {name}!";
+    }
+}
+```
 
 Sometimes, you want to help programmers who might use your method by eliminating the need for them to convert whatever type they have into the type your method expects as a parameter. Thus, you create multiple overloads that will perform the type conversion internally. This makes your method easier to use, and reduces the complexity of the code that calls it. For example, consider these methods that will display how many seconds remain until a deadline, or based on a given ``TimeSpan``:
 
-```c#
+```{.snippet}
 int SecondsRemaining(DateTime endTime)
 {
     return SecondsRemaining(endTime - DateTime.Now);
 }
+
 int SecondsRemaining(string endTime)
 {
     return SecondsRemaining(DateTime.Parse(endTime));
 }
+
 int SecondsRemaining(TimeSpan duration)
 {
     return (int)duration.TotalSeconds;
 }
 ```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        DateTime end = DateTime.Now.AddSeconds(10);
+        string endTimeString = end.ToString();
+        TimeSpan timeLeft = end - DateTime.Now;
+        
+        Console.WriteLine($"Seconds: {SecondsRemaining(end)});
+        Console.WriteLine($"Seconds: {SecondsRemaining(endTimeString)});
+        Console.WriteLine($"Seconds: {SecondsRemaining(timeLeft)});
+    }
+    
+    int SecondsRemaining(DateTime endTime)
+    {
+        return SecondsRemaining(endTime - DateTime.Now);
+    }
+    
+    int SecondsRemaining(string endTime)
+    {
+        return SecondsRemaining(DateTime.Parse(endTime));
+    }
+    
+    int SecondsRemaining(TimeSpan duration)
+    {
+        return (int)duration.TotalSeconds;
+    }
+}
+```
 
 Ultimately, all of the methods end up calling the last one, which takes a ``TimeSpan``, but they perform different calculations and/or conversions along the way to make working with the method easier for the calling code. This kind of simplification is a key benefit your programs can get from the method overloading feature in C#.
+
+### Tip {.tip .newLanguage}
+> Remember to think about how you or other developers will use the methods you write. Try to write them so they're simple and easy to use and understand.
 
 ## Lambda Expressions
 
@@ -157,20 +329,33 @@ So far in this lesson, you've created methods as members of classes. While those
 
 Lambda expressions are a type of method created in-line in your code. Most often, you will pass them as a parameter to other methods. In C#, you're allowed to store methods inside of variables, however, that is not covered in detail here. This lesson only covers the basics, so please consider this example expression:
 
-```c#
-public static void Main(string[] args)
+```{.snippet}
+public static void Main()
 {
     Func<int, int> addOne = x => x + 1; // this is the lambda expression
     Console.WriteLine(addOne(4));
 }
 ```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Func<int, int> addOne; = x => x + 1; // this is the lambda expression
+        Console.WriteLine(addOne(4));
+    }
+}
+```
+
 
 The expression in this example is being assigned to a variable of type ``Func<int, int>``. Everything to the right of the ``=`` is the lambda expression, which has two parts. The (``=>``) is a special operator for lambda expressions splitting the method parameters from the code to execute. In the example above, on the second line when addOne is called, the 4 is passed into the lambda expression and assigned to ``x``. Since the lambda expression is only one line, the result of that one line is the return value (there is no need for an explicit return statement).
 
 The following are some examples of lambda expressions:
 
-```c#
-public static void Main(string[] args)
+```{.snippet}
+public static void Main()
 {
     const int four = 4;
     Func<int, int> addOne = x => x + 1;
@@ -179,16 +364,51 @@ public static void Main(string[] args)
     Console.WriteLine(twentyFive());
 }
 ```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        const int four = 4;
+        Func<int, int> addOne = x => x + 1;
+        Func<int, int, int> calcArea = (x,y) => x * y; // two parameters
+        Func<int> twentyFive = () => calcArea(addOne(four), addOne(four)); // no parameters
+        Console.WriteLine(twentyFive());
+    }
+}
+```
 
 Notice that the expression method, ``twentyFive``, is able to use the other variables in its expression. 
 
 Lambda expressions can be very useful in describing simple functions. Two ways in which they are commonly used is for *predicates* and *selectors*, which return a bool and an object respectively. You'll see these in action in [Introducing LINQ](linq.md), the lesson covering language integrated queries (LINQ).
 
-##Extension Methods
+## Extension Methods
 
 There is a special kind of static method which allows you to extend your existing type with new functionality without modifying the class itself. This is often useful when dealing with classes provided by other assemblies. These types of methods are called *Extension Methods*, and you'll get to see them used extensively in the [Introducing LINQ](linq.md) lesson. Extension Methods are *static* methods of one class that behave like *instance* methods of another class. The key difference between extension methods and other static methods is using a special `this` parameter whose type is the class to be extended. In the following example, an extension method is created that will add five to the value of an integer and return the result:
 
-```c#
+```{.snippet}
+public static class ExtensionMethods
+{
+    public static int PlusFive(this int input)
+    {
+        return input + 5;
+    }
+}
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int ten = 5.PlusFive();
+        Console.WriteLine(ten);
+    }
+}
+
 public static class ExtensionMethods
 {
     public static int PlusFive(this int input)
@@ -198,20 +418,43 @@ public static class ExtensionMethods
 }
 ```
 
-Since the initial `int` parameter of the static method is preceded by the `this` modifier, you know this method is an extension method. Since the parameter is an `int`, it means the code may be used as a method on any `int` variable you have.
+Since the initial `int` parameter of the static method is preceded by the `this` modifier, you know this method is an extension method. Since the parameter is an `int`, it means the code may be used as a method on any `int` variable (or literal) you have.
 
-```c#
+```{.snippet}
 int luckyNumber = 10;
 Console.WriteLine(luckyNumber); // Will output 10
 int result = luckyNumber.PlusFive();
 Console.WriteLine(result); // Will output 15
 ```
+```{.REPL}
+using System;
 
-If you attempt to use this extension method on a non-integer type, you will receive an error when compiling. For example, trying to call this `extension method` on a `string` type you will cause the following.
+public class Program
+{
+    public static void Main()
+    {
+        int luckyNumber = 10;
+        Console.WriteLine(luckyNumber); // Will output 10
+        int result = luckyNumber.PlusFive();
+        Console.WriteLine(result); // Will output 15
+    }
+}
+
+public static class ExtensionMethods
+{
+    public static int PlusFive(this int input)
+    {
+        return input + 5;
+    }
+}
+```
+
+If you attempt to use this extension method on a non-integer type, you will receive an error when compiling. For example, trying to call this `extension method` on a `string` type will cause the following.
 
     error CS1929: 'string' does not contain a definition for 'PlusFive' and the best extension method overload 'ExtensionMethods.PlusFive(int)' requires a receiver of type 'int'
 
-**Note:** Before using an extension method, your code will require a `using` statement for the namespace of your static class containing the extension method (if different from where you're accessing the extension method). You will learn more about these in the lesson on [Understanding Namespaces](namespaces.md).
+### Tip {.note}
+> Before using an extension method, your code will require a `using` statement for the namespace of your static class containing the extension method (if different from where you're accessing the extension method). You will learn more about these in the lesson on [Understanding Namespaces](namespaces.md).
 
 ## Next Steps
 
