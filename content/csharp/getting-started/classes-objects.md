@@ -143,6 +143,9 @@ public class Speedometer
 }
 ```
 
+### Tip {.tip .java}
+> Java uses conventions for its accessor and mutator methods; C# uses ``get`` and ``set`` to achieve this purpose, with properties as a dedicated language construct.
+
 You should rarely expose fields from your classes, and instead use properties to control external access to your object's state. Even then, you should limit such access, so that your object's collaborators do not become too tightly coupled to your object's internal implementation. In cases where you don't need to perform any additional behavior, your property definitions can be very simple:
 
 ```c#
@@ -289,6 +292,12 @@ public class Triangle : Shape
 ```
 
 You'll notice two new keywords in the example above: ``virtual`` and ``override``, as well as some new syntax in the class definition lines. You specify the class your class inherits from by specifying it after a colon (``:``) following the class's name. You can actually add ``: System.Object`` to any class that doesn't have another base class without changing its behavior - this is implied within .NET. Classes that inherit from other classes expose the base class's methods to their collaborators. Any code that refers to a ``Shape`` will be able to call the ``Perimeter`` method. By declaring that method as ``virtual``, child classes can modify the behavior of the method; by default methods cannot be changed by child class implementations. When changing base class behavior, the child class defines the method with the same return type, name, and signature, as well as the ``override`` keyword. Requiring the use of the ``override`` keyword ensures that developers do not accidentally override base class behavior.
+
+### Tip {.tip .java}
+> The C# ``:`` operator is equivalent to ``extends`` and ``implements`` in Java. Like Java, C# does not support multiple inheritance.
+
+### Tip { .tip .java}
+> Unlike Java, C# methods are not virtual by default - you must explicitly mark as virtual those members that can be overridden by child types.
 
 Note that you can override the ``ToString`` method on any class where it will make sense to display string data related to an instance of the class. Returning the first example in this lesson, you could display the version of the program along with its name by overriding ``ToString``, like so:
 
