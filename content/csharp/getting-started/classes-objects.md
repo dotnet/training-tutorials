@@ -140,6 +140,7 @@ public class Speedometer
             // value is a keyword used in setters representing the new value
             _currentSpeed = value; 
         }
+    }
 }
 ```
 
@@ -296,7 +297,7 @@ You'll notice two new keywords in the example above: ``virtual`` and ``override`
 ### Tip {.tip .java}
 > The C# ``:`` operator is equivalent to ``extends`` and ``implements`` in Java. Like Java, C# does not support multiple inheritance.
 
-### Tip { .tip .java}
+### Tip {.tip .java}
 > Unlike Java, C# methods are not virtual by default - you must explicitly mark as virtual those members that can be overridden by child types.
 
 Note that you can override the ``ToString`` method on any class where it will make sense to display string data related to an instance of the class. Returning the first example in this lesson, you could display the version of the program along with its name by overriding ``ToString``, like so:
