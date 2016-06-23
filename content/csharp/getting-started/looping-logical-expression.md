@@ -8,32 +8,30 @@ You can execute the same statement multiple times in your program by using a *lo
 In previous lessons, you were asked to write some guessing games in which the user could type in a guess, and your program would let them know if they were correct, or not. Unfortunately, the user only got to make one guess, and then the program ended. If they weren't correct, they didn't get another chance. Using a ``while`` loop, you can easily create a game that continues until the user guesses correctly:
 
 ```c#
-public static void Main(string[] args)
+int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
+int currentGuess = 0; // start with an incorrect guess
+while (currentGuess != numberToGuess)
 {
-    int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
-    int currentGuess = 0; // start with an incorrect guess
-    while (currentGuess != numberToGuess)
+    Console.WriteLine("Guess the number (1 to 100): ");
+    currentGuess = int.Parse(Console.ReadLine());
+    if(currentGuess < numberToGuess)
     {
-        Console.WriteLine("Guess the number (1 to 100): ");
-        currentGuess = int.Parse(Console.ReadLine());
-        if(currentGuess < numberToGuess)
-        {
-            Console.WriteLine("You guessed too low! Try again!");
-        }
-        if(currentGuess > numberToGuess)
-        {
-            Console.WriteLine("You guessed too high! Try again!");
-        }
+        Console.WriteLine("You guessed too low! Try again!");
     }
-    Console.WriteLine("You got it! Good job!");
+    if(currentGuess > numberToGuess)
+    {
+        Console.WriteLine("You guessed too high! Try again!");
+    }
 }
+Console.WriteLine("You got it! Good job!");
 ```
 
 Using ``int.Parse(Console.ReadLine())`` can easily crash the program if the user enters a non-integer value (try it!). You'll learn how to validate user input and avoid such issues later in this tutorial.
 
 You can think of a ``while`` loop as being just like an ``if`` statement that keeps running, again and again, until the expression is evaluated as ``false``. Note that the expression is only evaluated when the end of the loop block is reached. It's possible for the expression to evaluate to false at some point during the block's execution, but for the loop to continue as long as the expression is true again the next time it is evaluated.
 
-When a loop is based on the value of a particular variable, this variable is called the *loop control variable*. It's often critical that you remember to update the value of the loop control variable within the loop, or risk an infinite loop (see below).
+### Tip {.tip .newLanguage}
+> When a loop is based on the value of a particular variable, this variable is called the *loop control variable*. It's often critical that you remember to update the value of the loop control variable within the loop, or risk an infinite loop (see below).
 
 ### Exiting a Loop
 
@@ -47,30 +45,30 @@ You can also exit a loop by throwing an *exception*. You'll learn more about tho
 
 ### Infinite Loops
 
-An infinite loop is a loop that never ends. Often, these are a programming bug caused by broken logic that includes a loop conditional expression that never evaluates to ``false``. Sometimes, an infinite loop is intentional. Many programs, especially games, will keep running, waiting for user input, until the user takes some action to exit them. If you suspect that your console program has entered an infinite loop, you can force it to end by pressing \[Ctrl\]+c.
+Many programs, especially games, will keep running, waiting for user input, until the user takes some action to exit them. If you suspect that your console program has entered an infinite loop, you can force it to end by pressing \[Ctrl\]+c.
+
+### Tip {.tip .newLanguage}
+> An infinite loop is a loop that never ends. Often, these are a programming bug caused by broken logic that includes a loop conditional expression that never evaluates to ``false``. Sometimes, an infinite loop is intentional.
 
 You can modify the guessing game shown above to use an infinite loop and the ``break`` keyword (and at the same time, making it a bit shorter):
 
 ```c#
-public static void Main(string[] args)
+int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
+while (true) // this sets up an infinite loop, since true will always evaluate to true
 {
-    int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
-    while (true) // this sets up an infinite loop, since true will always evaluate to true
+    Console.WriteLine("Guess the number (1 to 100): ");
+    int currentGuess = int.Parse(Console.ReadLine());
+    if(currentGuess==numberToGuess) break;
+    if(currentGuess < numberToGuess)
     {
-        Console.WriteLine("Guess the number (1 to 100): ");
-        int currentGuess = int.Parse(Console.ReadLine());
-        if(currentGuess==numberToGuess) break;
-        if(currentGuess < numberToGuess)
-        {
-            Console.WriteLine("You guessed too low! Try again!");
-        }
-        if(currentGuess > numberToGuess)
-        {
-            Console.WriteLine("You guessed too high! Try again!");
-        }
+        Console.WriteLine("You guessed too low! Try again!");
     }
-    Console.WriteLine("You got it! Good job!");
+    if(currentGuess > numberToGuess)
+    {
+        Console.WriteLine("You guessed too high! Try again!");
+    }
 }
+Console.WriteLine("You got it! Good job!");
 ```
 
 ## Designing Conditional Loops
@@ -91,7 +89,7 @@ Note that the ``%`` operator used below is the [modulus operator](https://msdn.m
 Run the program as-is before modifying it. It should display "2" if you enter an even number, or nothing otherwise. 
 
 ```c#
-public static void Main(string[] args)
+public static void Main()
 {
     Console.WriteLine("Enter a number:");
     int number = int.Parse(Console.ReadLine());
@@ -112,4 +110,4 @@ public static void Main(string[] args)
     }
     Console.WriteLine();
 }
-``` 
+```
