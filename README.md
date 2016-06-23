@@ -16,8 +16,13 @@ You can view the C# content as a model for other content areas. Note that URLs/l
 
 Lessons will include *tips* that will be tagged according to reader background, and eventually these will be displayed to readers who have indicated they have that background. For example:
 
-### Tip (tags: vb)
+### Tip {.tip .vb}
 > The *static* keyword in C# is equivalent to *Shared* in Visual Basic .NET
+
+Lessons will also include *notes*, which will receive special formatting when displayed to readers. For example:
+
+### Note {.note}
+> It is common to log exceptions that occur, so that you can review them later and improve the program to avoid them, if possible.
 
 Lessons will be written using [markdown (Github variant)](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). Lessons should link to other documents for specific tasks and API references. These should focus on helping the user follow through and understand the tutorial.
 
