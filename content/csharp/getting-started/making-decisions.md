@@ -98,10 +98,10 @@ class Program
 
 Now the above code will print a sum of 30 when the if condition evaluates to true, or the original sum value of 10 otherwise.
 
-### Tip {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}
 > It's a good idea to follow a standard code formatting convention when programming. Such conventions often vary, even between similar languages. In C#, for instance, it's recommended that opening curly braces always start on their own line, indented to match their associated keyword. Closing curly braces should also appear on their own line, indented to match their opening brace.
 
-### Tip {.tip .vb}
+> **Tip** {.tip .vb}
 > Unlike in VB, C# allows statements on the same line as ``if`` statements. Be aware, too, that unlike VB's ``If-Then`` statements that must end with an ``End If`` statement, C# uses curly braces to end many kinds of blocks, not just ``if`` statements.
 
 ## Or Else!

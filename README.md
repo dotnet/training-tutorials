@@ -16,7 +16,7 @@ You can view the C# content as a model for other content areas. Note that URLs/l
 
 Lessons will include *tips* that will be tagged according to reader background, and eventually these will be displayed to readers who have indicated they have that background. For example:
 
-### Tip {.tip .vb}
+> **Tip** {.tip .vb}
 > The *static* keyword in C# is equivalent to *Shared* in Visual Basic .NET
 
 Lessons will also include *notes*, which will receive special formatting when displayed to readers. For example:

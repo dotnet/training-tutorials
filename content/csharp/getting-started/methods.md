@@ -319,7 +319,7 @@ public class Program
 
 Ultimately, all of the methods end up calling the last one, which takes a ``TimeSpan``, but they perform different calculations and/or conversions along the way to make working with the method easier for the calling code. This kind of simplification is a key benefit your programs can get from the method overloading feature in C#.
 
-### Tip {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}
 > Remember to think about how you or other developers will use the methods you write. Try to write them so they're simple and easy to use and understand.
 
 ## Lambda Expressions
@@ -452,7 +452,7 @@ If you attempt to use this extension method on a non-integer type, you will rece
 
     error CS1929: 'string' does not contain a definition for 'PlusFive' and the best extension method overload 'ExtensionMethods.PlusFive(int)' requires a receiver of type 'int'
 
-### Tip {.note}
+> **Tip** {.note}
 > Before using an extension method, your code will require a `using` statement for the namespace of your static class containing the extension method (if different from where you're accessing the extension method). You will learn more about these in the lesson on [Understanding Namespaces](namespaces.md).
 
 ## Next Steps

@@ -128,10 +128,10 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
 
 The `GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person` tells C# that you want to use the `Person` class declared in the `GettingStartedTutorials.CSharp.NamespaceLesson.Models` namespace.
 
-### Tip {.tip .visualstudio}
+> **Tip** {.tip .visualstudio}
 > If you run this code in Visual Studio, the `using System;` line will appear somewhat faded, since it is not used in this code.
 
-### Tip {.tip .visualstudiocode}
+> **Tip** {.tip .visualstudiocode}
 > If you run this code in Visual Studio Code, it will underline the `using System;`, since it is not used in this code.
 
 ### Declaring Namespace to be in Scope
@@ -186,5 +186,5 @@ By declaring the namespace to be in scope, C# knows that the `Person` class used
 > You can specify a special name to use for one of your duplicately named classes in the current scope with a special type of using statement. `using NamespacePerson = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person;` will let you use `NamespacePerson` in your program, so C# knows which `Person` class you intend to use.
     
 
-### Tip {.tip .c}
+> **Tip** {.tip .c}
 > The `using` statement locally renaming a type should feel similar to how `typedef` works in c++.
