@@ -8,52 +8,46 @@ You can execute the same statement multiple times in your program by using a *lo
 In previous lessons, you were asked to write some guessing games in which the user could type in a guess, and your program would let them know if they were correct, or not. Unfortunately, the user only got to make one guess, and then the program ended. If they weren't correct, they didn't get another chance. Using a ``while`` loop, you can easily create a game that continues until the user guesses correctly:
 
 ```{.snippet}
-public static void Main()
+int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
+int currentGuess = 0; // start with an incorrect guess
+while (currentGuess != numberToGuess)
 {
-    int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
-    int currentGuess = 0; // start with an incorrect guess
-    while (currentGuess != numberToGuess)
+    Console.WriteLine("Guess the number (1 to 100): ");
+    currentGuess = int.Parse(Console.ReadLine());
+    if(currentGuess < numberToGuess)
     {
-        Console.WriteLine("Guess the number (1 to 100): ");
-        currentGuess = int.Parse(Console.ReadLine());
-        if(currentGuess < numberToGuess)
-        {
-            Console.WriteLine("You guessed too low! Try again!");
-        }
-        if(currentGuess > numberToGuess)
-        {
-            Console.WriteLine("You guessed too high! Try again!");
-        }
+        Console.WriteLine("You guessed too low! Try again!");
     }
-    Console.WriteLine("You got it! Good job!");
+    if(currentGuess > numberToGuess)
+    {
+        Console.WriteLine("You guessed too high! Try again!");
+    }
 }
+Console.WriteLine("You got it! Good job!");
 ```
 ```{.REPL}
 using System;
 
-namespace ConsoleApplication
+public class Program
 {
-    public class Program
+    public static void Main()
     {
-        public static void Main()
+        int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
+        int currentGuess = 0; // start with an incorrect guess
+        while (currentGuess != numberToGuess)
         {
-            int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
-            int currentGuess = 0; // start with an incorrect guess
-            while (currentGuess != numberToGuess)
+            Console.WriteLine("Guess the number (1 to 100): ");
+            currentGuess = int.Parse(Console.ReadLine());
+            if(currentGuess < numberToGuess)
             {
-                Console.WriteLine("Guess the number (1 to 100): ");
-                currentGuess = int.Parse(Console.ReadLine());
-                if(currentGuess < numberToGuess)
-                {
-                    Console.WriteLine("You guessed too low! Try again!");
-                }
-                if(currentGuess > numberToGuess)
-                {
-                    Console.WriteLine("You guessed too high! Try again!");
-                }
+                Console.WriteLine("You guessed too low! Try again!");
             }
-            Console.WriteLine("You got it! Good job!");
+            if(currentGuess > numberToGuess)
+            {
+                Console.WriteLine("You guessed too high! Try again!");
+            }
         }
+        Console.WriteLine("You got it! Good job!");
     }
 }
 ```
@@ -103,29 +97,26 @@ Console.WriteLine("You got it! Good job!");
 ```{.REPL}
 using System;
 
-namespace ConsoleApplication
+public class Program
 {
-    public class Program
+    public static void Main()
     {
-        public static void Main()
+        int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
+        while (true) // this sets up an infinite loop, since true will always evaluate to true
         {
-            int numberToGuess = new Random().Next(1,101); // a number from 1 to 100
-            while (true) // this sets up an infinite loop, since true will always evaluate to true
+            Console.WriteLine("Guess the number (1 to 100): ");
+            int currentGuess = int.Parse(Console.ReadLine());
+            if(currentGuess==numberToGuess) break;
+            if(currentGuess < numberToGuess)
             {
-                Console.WriteLine("Guess the number (1 to 100): ");
-                int currentGuess = int.Parse(Console.ReadLine());
-                if(currentGuess==numberToGuess) break;
-                if(currentGuess < numberToGuess)
-                {
-                    Console.WriteLine("You guessed too low! Try again!");
-                }
-                if(currentGuess > numberToGuess)
-                {
-                    Console.WriteLine("You guessed too high! Try again!");
-                }
+                Console.WriteLine("You guessed too low! Try again!");
             }
-            Console.WriteLine("You got it! Good job!");
+            if(currentGuess > numberToGuess)
+            {
+                Console.WriteLine("You guessed too high! Try again!");
+            }
         }
+        Console.WriteLine("You got it! Good job!");
     }
 }
 ```
@@ -140,14 +131,14 @@ The following program uses an ``if`` statement to determine whether a given numb
 
 Note that the ``%`` operator used below is the [modulus operator](https://msdn.microsoft.com/en-us/library/0w4e0fzs.aspx). It returns the remainder of an integer division operation. Examples: 
 
-```{.snippet}
+```c#
 3 % 2 // 1
 10 % 2 // 0
 ```
 
 Run the program as-is before modifying it. It should display "2" if you enter an even number, or nothing otherwise. 
 
-```{.snippet}
+```c#
 public static void Main(string[] args)
 {
     Console.WriteLine("Enter a number:");
