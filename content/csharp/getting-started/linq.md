@@ -698,7 +698,7 @@ public class Person
 }
 ```
 
-
+###Tip {.tip .newLanguage}
 Using `Any` is a clearer way of checking if elements exist than checking if the count of a list is greater than 0 as shown in this example:
 
 ```c#
