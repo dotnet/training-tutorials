@@ -80,29 +80,7 @@ You may have noticed in previous lessons `System.` was sometimes a prefix for va
 
 Consider a class `Person` in a namespace `GettingStartedTutorials.CSharp.NamespaceLesson.Models` like this example:
 
-```{.snippet}
-namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
-{
-    public class Person
-    {
-        public string Name { get; set; }
-    }
-}
-```
-```{.REPL}
-using System;
-
-namespace GettingStartedTutorials.CSharp.NamespaceLesson
-{
-    public class Program
-    {
-        public static void Main()
-        {
-            System.Console.WriteLine("Hello World!");
-        }
-    }
-}
-
+```c#
 namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
 {
     public class Person
@@ -125,7 +103,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
     {
         public static void Main()
         {
-            var brendan = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
+            var brendan = new GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
         }
     }
@@ -140,7 +118,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
     {
         public static void Main()
         {
-            var brendan = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
+            var brendan = new GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
         }
     }
@@ -170,14 +148,13 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
     {
         public static void Main()
         {
-            var brendan = Person { Name = "Brendan" };
+            var brendan = new Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
         }
     }
 }
 ```
 ```{.REPL}
-using System;
 using GettingStartedTutorials.CSharp.NamespaceLesson.Models;
 
 namespace GettingStartedTutorials.CSharp.NamespaceLesson
@@ -186,7 +163,7 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
     {
         public static void Main()
         {
-            var brendan = Person { Name = "Brendan" };
+            var brendan = new Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
         }
     }
