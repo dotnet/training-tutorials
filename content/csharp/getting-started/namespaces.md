@@ -58,8 +58,6 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson
 }
 ```
 ```{.REPL}
-using System;
-
 namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
