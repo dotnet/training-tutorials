@@ -221,7 +221,7 @@ public void AddOrder(Order order)
 ```
 
 ### Tip {.tip .newLanguage}
-> Encapsulating collections is difficult because even if the collection is readonly, its contents often aren't. If client code can change the collection's elements, it breaks encapsulation, and often you want the objects in the collection to also be readonly. Sometimes the only way to achieve this is to use a custom type for this purpose (which may not be worth the effort).
+> Encapsulating collections is difficult, because even if the collection is readonly, its contents often aren't. If client code can change the collection's elements, it breaks encapsulation, and often you want the objects in the collection to also be readonly. Sometimes the only way to achieve this is to use a custom type for this purpose (which may not be worth the effort).
 
 ### Encapsulating Infrastructure
 
