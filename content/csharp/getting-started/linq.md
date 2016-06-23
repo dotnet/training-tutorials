@@ -12,7 +12,7 @@ public class Program
     public static void Main(string[] args)
     {
         var people = GenerateListOfPeople();
-        
+
         // Write your code here
     }
 
@@ -29,6 +29,7 @@ public class Program
         return people;
     }
 }
+
 public class Person
 {
     public string FirstName { get; set; }
@@ -47,7 +48,7 @@ public class Program
     public static void Main(string[] args)
     {
         var people = GenerateListOfPeople();
-        
+
         // Write your code here
     }
 
@@ -64,6 +65,7 @@ public class Program
         return people;
     }
 }
+
 public class Person
 {
     public string FirstName { get; set; }
@@ -80,7 +82,8 @@ At some point, you're going to need to find items in a collection that meet spec
 The `Where` extension method is the most commonly used. It can be used to filter elements from a collection based on certain criteria. For example, say you wanted to filter the list of people based on whether or not they are above the age of 30, it would look something like this:
 
 ```{.snippet}
-var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30); //There will be two Persons in this variable: the "Steve" Person and the "Jane" Person
+//There will be two Persons in this variable: the "Steve" Person and the "Jane" Person
+var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30);
 ``` 
 ```{.REPL}
 using System;
@@ -92,8 +95,9 @@ public class Program
     public static void Main(string[] args)
     {
         var people = GenerateListOfPeople();
-        
-        var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30); //There will be two Persons in this variable: the "Steve" Person and the "Jane" Person
+
+        //There will be two Persons in this variable: the "Steve" Person and the "Jane" Person
+        var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30);
         foreach(var person in peopleOverTheAgeOf30)
         {
             Console.WriteLine(person.FirstName);
@@ -129,7 +133,8 @@ As you can see, the `Where` method takes in a lambda expression as a *predicate*
 Sometimes you will want to ignore the first items in a collection and include only what remains. You can do this by using the aptly-named `Skip` method.
 
 ```{.snippet}
-IEnumerable<Person> afterTwo = people.Skip(2); //Will ignore Eric and Steve in the list of people
+//Will ignore Eric and Steve in the list of people
+IEnumerable<Person> afterTwo = people.Skip(2);
 ```
 ```{.REPL}
 using System;
@@ -141,7 +146,8 @@ public class Program
     public static void Main(string[] args)
     {
         var people = GenerateListOfPeople();
-        
+
+        //Will ignore Eric and Steve in the list of people
         IEnumerable<Person> afterTwo = people.Skip(2);
         foreach(var person in afterTwo)
         {
@@ -176,7 +182,8 @@ public class Person
 The opposite of the `Skip` extension method is the `Take` extension method. `Take` will return the first items in the collection including a number of items equal to the number passed as an argument to the method.
 
 ```{.snippet}
-IEnumerable<Person> takeTwo = people.Take(2); //Will only return Eric and Steve from the list of people 
+//Will only return Eric and Steve from the list of people
+IEnumerable<Person> takeTwo = people.Take(2); 
 ```
 ```{.REPL}
 using System;
@@ -188,7 +195,8 @@ public class Program
     public static void Main(string[] args)
     {
         var people = GenerateListOfPeople();
-        
+
+        //Will only return Eric and Steve from the list of people
         IEnumerable<Person> takeTwo = people.Take(2);
         foreach(var person in takeTwo)
         {
@@ -218,6 +226,9 @@ public class Person
     public int Age { get; set; }
 }
 ```
+
+### Note {.note}
+> You can *chain* the `Skip` and `Take` methods to skip one or more items and take the next ones.
 
 ## Changing Each Item in Collections
 Sometimes the items in your collections will have too many or not enough properties; at other times those items will just be of the wrong type. Using the `Select` method from LINQ, you can change the *type* of the items in your collections by creating new items or selecting one member of the items. In the following example, `Select` is used to select the `FirstName` from each `Person` in the  `List<Person>` collection. This will return a collection of `string` objects in the form of an `IEnumerable<string>`.
@@ -279,6 +290,7 @@ public class FullName
 ```
 
 The below line is how we can create a new `FullName` object for each `Person` in the `people` list.
+
 ```{.snippet}
 IEnumerable<FullName> allFullNames = people.Select(x => new FullName { First = x.FirstName, Last = x.LastName });
 ```
@@ -296,7 +308,7 @@ public class Program
         IEnumerable<FullName> allFullNames = people.Select(x => new FullName { First = x.FirstName, Last = x.LastName });
         foreach(var fullName in allFullNames)
         {
-            Console.WriteLine(fullName.First);
+            Console.WriteLine($"{fullName.Last}, {fullName.First}");
         }
     }
 
@@ -399,7 +411,7 @@ public class Program
         var firstThirtyYearOld1 = people.FirstOrDefault(x => x.Age == 30);
         var firstThirtyYearOld2 = people.Where(x => x.Age == 30).FirstOrDefault();
         Console.WriteLine(firstThirtyYearOld1.FirstName); //Will output "Brendan"
-        Console.WriteLine(firstThirtyYearOld2.FirstName);
+        Console.WriteLine(firstThirtyYearOld2.FirstName); //Will also output "Brendan"
     }
 
     public static List<Person> GenerateListOfPeople()
@@ -431,13 +443,14 @@ The two expressions above return the same item whether the predicate is in the `
 > The "OrDefault" means, if no elements in the queried data match the expression passed into the method, the returning object will be `null`.
 
 ```{.snippet}
-List<Person> emptyList = new List<Person>(); //Creating an empty list
-Person willBeNull = emptyList.FirstOrDefault(); //The result of the FirstOrDefault call will be null
+List<Person> emptyList = new List<Person>(); // Empty collection
+Person willBeNull = emptyList.FirstOrDefault(); // None - default of null used
 
-Person willAlsoBeNull = people.FirstOrDefault(x => x.FirstName == "John"); //The result of the FirstOfDefault call will be null
+List<Person> people = GenerateListOfPeople();
+Person willAlsoBeNull = people.FirstOrDefault(x => x.FirstName == "John");  No John - default of null used
 
-Console.WriteLine(willBeNull.FirstName); //This will cause an exception
-Console.WriteLine(willAlsoBeNull.FirstName); //This will also cause an exception
+Console.WriteLine(willBeNull == null); // true
+Console.WriteLine(willAlsoBeNull == null); //true
 ```
 ```{.REPL}
 using System;
@@ -451,15 +464,38 @@ public class Program
         List<Person> emptyList = new List<Person>();
         Person willBeNull = emptyList.FirstOrDefault();
 
+        List<Person> people = GenerateListOfPeople();
         Person willAlsoBeNull = people.FirstOrDefault(x => x.FirstName == "John"); 
 
-        Console.WriteLine(willBeNull.FirstName);
-        Console.WriteLine(willAlsoBeNull.FirstName);
+        Console.WriteLine(willBeNull == null); // true
+        Console.WriteLine(willAlsoBeNull == null); //true
     }
+
+    public static List<Person> GenerateListOfPeople()
+    {
+        var people = new List<Person>();
+
+        people.Add(new Person { FirstName = "Eric", LastName = "Fleming", Occupation = "Dev", Age = 24 });
+        people.Add(new Person { FirstName = "Steve", LastName = "Smith", Occupation = "Manager", Age = 40 });
+        people.Add(new Person { FirstName = "Brendan", LastName = "Enrick", Occupation = "Dev", Age = 30 });
+        people.Add(new Person { FirstName = "Jane", LastName = "Doe", Occupation = "Dev", Age = 35 });
+        people.Add(new Person { FirstName = "Samantha", LastName = "Jones", Occupation = "Dev", Age = 24 });
+
+        return people;
+    }
+}
+
+public class Person
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Occupation { get; set; }
+    public int Age { get; set; }
 }
 ```
 
-Similarly, there is a `First` extension method that will function the same as `FirstOrDefault` but will return a `System.InvalidOperationException` if there are no elements that match your criteria.
+### Note {.note}
+> There is a `First` extension method that will function the same as `FirstOrDefault` but will return a `System.InvalidOperationException` if there are no elements that match your criteria.
 
 ### LastOrDefault
 The `LastOrDefault` extension method works the same way that `FirstOrDefault` does, however, as the name suggests, instead of returning the first item of the collection, it returns the last.
@@ -511,7 +547,8 @@ public class Person
 ```
 
 
-As `First` is to `FirstOrDefault`, there is also a `Last` method, which will return a `System.InvalidOperationException` if there are no elements that match your criteria.
+### Note {.note}
+> As `First` is to `FirstOrDefault`, there is also a `Last` method, which will return a `System.InvalidOperationException` if there are no elements that match your criteria.
 
 ###SingleOrDefault
 The `SingleOrDefault` extension method will return the only occurrence of an item matching your expression. If none match your criteria, the default value of your type will be returned. `SingleOrDefault` functions much like `FirstOrDefault`, but if more than one item matches your predicate, a `System.InvalidOperationException` will be thrown.
@@ -533,7 +570,8 @@ public class Program
         
         Person single = people.SingleOrDefault(x => x.FirstName == "Eric"); 
         Console.WriteLine(single.FirstName);
-        Person singleDev = people.SingleOrDefault(x => x.Occupation == "Dev"); //Will throw an exception
+        // Uncomment the next line to see it throw an exception
+        // Person singleDev = people.SingleOrDefault(x => x.Occupation == "Dev");
     }
 
     public static List<Person> GenerateListOfPeople()
@@ -559,7 +597,8 @@ public class Person
 }
 ```
 
-The `Single` extension method functions the same as `SingleOrDefault`, however, in addition to throwing an exception for too many items matching the expression, it will also throw a `System.InvalidOperationException` if there are no items matching.
+### Note {.note}
+> The `Single` extension method functions the same as `SingleOrDefault`, however, in addition to throwing an exception for too many items matching the expression, it will also throw a `System.InvalidOperationException` if there are no items matching.
 
 ## Finding Data About Collections
 There are extension methods that allow you to determine if or how many items will satisfy an expression. 
@@ -704,10 +743,13 @@ public class Person
 
 ```c#
 if (people.Count() > 0) //This works
+{
     //perform some action(s)
-	
+}
 if (people.Any()) //This is better
+{
     //perform some action(s)
+}
 ```
 
 ###All
