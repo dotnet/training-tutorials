@@ -427,7 +427,8 @@ public class Person
 
 The two expressions above return the same item whether the predicate is in the `Where` or the `FirstOrDefault`. Skipping the `Where` is more concise, and can improve readability of your code.
 
-**Note:** The "OrDefault" means, if no elements in the queried data match the expression passed into the method, the returning object will be `null`.
+###Note {.note}
+> The "OrDefault" means, if no elements in the queried data match the expression passed into the method, the returning object will be `null`.
 
 ```{.snippet}
 List<Person> emptyList = new List<Person>(); //Creating an empty list
@@ -699,7 +700,7 @@ public class Person
 ```
 
 ###Note {.note }
-Using `Any` is a clearer way of checking if elements exist than checking if the count of a list is greater than 0 as shown in this example:
+> Using `Any` is a clearer way of checking if elements exist than checking if the count of a list is greater than 0 as shown in this example:
 
 ```c#
 if (people.Count() > 0) //This works
