@@ -1,23 +1,32 @@
 # Understanding Namespaces
 by [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## What Namespaces Are
 
 In C#, a `namespace` is a scope in which developers organize their code, and you've been using them throughout the previous lessons.
 
-```c#
+```{.snippet}
 using System;
 
 namespace GettingStartedWithCSharp
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
+        {
+            System.Console.WriteLine("Hello World!");
+        }
+    }
+}
+```
+```{.REPL}
+using System;
+
+namespace GettingStartedWithCSharp
+{
+    public class Program
+    {
+        public static void Main()
         {
             System.Console.WriteLine("Hello World!");
         }
@@ -31,12 +40,24 @@ In the example above, there are two namespaces mentioned `System` and `GettingSt
 
 When you create a program in C#, the first class you create will be inside of a namespace. Naming your namespace clearly is important; finding your code later will be much easier with a clear name. In the previous example, the `Program` class was inside of the `GettingStartedWithCSharp` namespace. Since it is not being used elsewhere, you can change that namespace to something like this:
 
-```c#
+```{.snippet}
 namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
+        {
+            System.Console.WriteLine("Hello World!");
+        }
+    }
+}
+```
+```{.REPL}
+namespace GettingStartedTutorials.CSharp.NamespaceLesson
+{
+    public class Program
+    {
+        public static void Main()
         {
             System.Console.WriteLine("Hello World!");
         }
@@ -68,16 +89,39 @@ If you wanted to create an instance of this class inside of your program, you co
 
 When using a class from outside the current scope, you can prefix the class name using the namespace. Place a `.` between the two using this format `Namespace.Class`.
 
-```c#
+```{.snippet}
 namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            var brendan = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
+            var brendan = new GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
         }
+    }
+}
+```
+```{.REPL}
+using System;
+
+namespace GettingStartedTutorials.CSharp.NamespaceLesson
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            var brendan = new GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person { Name = "Brendan" };
+            System.Console.WriteLine($"Hello {brendan.Name}!");
+        }
+    }
+}
+
+namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
+{
+    public class Person
+    {
+        public string Name { get; set; }
     }
 }
 ```
@@ -88,24 +132,53 @@ The `GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person` tells C# that
 
 Sometimes you want to make a namespace available in your code by adding it to the current scope. You do this by declaring that intent at the top of your file in a *using statement*. Just type the `using` keyword followed by the namespace name you want to include in the current scope.
 
-```c#
+```{.snippet}
 using GettingStartedTutorials.CSharp.NamespaceLesson.Models;
 
 namespace GettingStartedTutorials.CSharp.NamespaceLesson
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            var brendan = Person { Name = "Brendan" };
+            var brendan = new Person { Name = "Brendan" };
             System.Console.WriteLine($"Hello {brendan.Name}!");
         }
+    }
+}
+```
+```{.REPL}
+using GettingStartedTutorials.CSharp.NamespaceLesson.Models;
+
+namespace GettingStartedTutorials.CSharp.NamespaceLesson
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            var brendan = new Person { Name = "Brendan" };
+            System.Console.WriteLine($"Hello {brendan.Name}!");
+        }
+    }
+}
+
+namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
+{
+    public class Person
+    {
+        public string Name { get; set; }
     }
 }
 ```
 
 By declaring the namespace to be in scope, C# knows that the `Person` class used in the example is the one from the `GettingStartedTutorials.CSharp.NamespaceLesson.Models` namespace.
 
-**Note:** If more than one class of the same name is included in the same scope, you will need to disambiguate the scenario by specifying all or part of the namespace. In our example, `NamespaceLesson.Models.Person` would be enough. 
+### Note { .note }
+> If more than one class of the same name is included in the same scope, you will need to disambiguate the scenario by specifying all or part of the namespace. In our example, `NamespaceLesson.Models.Person` would be enough. 
 
-**Note:** You can specify a special name to use for one of your duplicately named classes in the current scope with a special type of using statement. `using NamespacePerson = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person;` will let you use `NamespacePerson` in your program, so C# knows which `Person` class you intend to use.
+### Note { .note }
+> You can specify a special name to use for one of your duplicately named classes in the current scope with a special type of using statement. `using NamespacePerson = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person;` will let you use `NamespacePerson` in your program, so C# knows which `Person` class you intend to use.
+    
+
+### Tip {.tip .c}
+> The `using` statement locally renaming a type should feel similar to how `typedef` works in c++.
