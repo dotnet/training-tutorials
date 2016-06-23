@@ -305,7 +305,7 @@ In addition to the design problems this pattern can introduce, the naive impleme
 
 ### The Static Cling Antipattern
 
-The [*Static Cling*](http://deviq.com/static-cling/) antipattern gets its name from the *static* keyword in C#, which makes code constructs global within an application. Similar to the Singleton, references to these global types, properties, and methods results in tight coupling, hence the use of the term *static cling* referring to how this use makes parts of the application stick together. 
+The [*Static Cling*](http://deviq.com/static-cling/) antipattern gets its name from the *static* keyword in C#, which makes code constructs global within an application. Similar to the Singleton, references to these global types, properties, and methods result in tight coupling, hence the use of the term *static cling* referring to how this use makes parts of the application stick together. 
 
 ### Note {.note}
 > As with the Singleton, the preferred approach is to have types be explicit about their dependencies and to inject them in using the Strategy pattern. Existing code that leverages static resources can be wrapped in Adapter implementations to achieve this same result.
