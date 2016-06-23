@@ -105,7 +105,9 @@ public void ProcessCard(string cardNumber, string expiration, decimal amount)
     else if(PaymentProvider = "PaySal")
     {
         adapter = new PaySalAdapter();
-    } else {
+    } 
+    else 
+    {
         throw new InvalidPaymentProviderException(PaymentProvider);
     }
     adapter.Pay(MerchantId, cardNumber, expiration, amount);
@@ -131,7 +133,9 @@ private IPaymentProcessorAdapter GetPaymentAdapter()
     else if(PaymentProvider = "PaySal")
     {
         adapter = new PaySalAdapter();
-    } else {
+    } 
+    else
+    {
         throw new InvalidPaymentProviderException(PaymentProvider);
     }
 }
@@ -156,7 +160,9 @@ public PaymentProcessorAdapterFactory : IPaymentProcessorAdapterFactory
         else if(PaymentProvider = "PaySal")
         {
             adapter = new PaySalAdapter();
-        } else {
+        } 
+        else
+        {
             throw new InvalidPaymentProviderException(PaymentProvider);
         }
     }
@@ -294,13 +300,15 @@ public sealed class OrderProcessor
 
 In addition to the design problems this pattern can introduce, the naive implementation shown above can have problems in multi-threaded applications. Learn more about [implementing the Singleton pattern in C#](http://csharpindepth.com/Articles/General/Singleton.aspx), to see some different approaches to this pattern that can address some of its deficiencies (but not the coupling it creates).
 
-**Tip:** To avoid tightly coupling your code to static implementations, favor the use of dependency injection and the Strategy design pattern. Then, your code that is responsible for instantiating the types your application uses at runtime can determine the objects' lifetimes. For some, a new instance may be used by every type that requests one. For others, the same instance may be used for the life of the application - the same behavior the Singleton pattern achieves, but without its negative consequences.
+### Note {.note}
+> To avoid tightly coupling your code to static implementations, favor the use of dependency injection and the Strategy design pattern. Then, your code that is responsible for instantiating the types your application uses at runtime can determine the objects' lifetimes. For some, a new instance may be used by every type that requests one. For others, the same instance may be used for the life of the application - the same behavior the Singleton pattern achieves, but without its negative consequences.
 
 ### The Static Cling Antipattern
 
-The [*Static Cling*](http://deviq.com/static-cling/) antipattern gets its name from the *static* keyword in C#, which makes code constructs global within an application. Similar to the Singleton, references to these global types, properties, and methods results in tight coupling, hence the use of the term *static cling* referring to how this use makes parts of the application stick together. 
+The [*Static Cling*](http://deviq.com/static-cling/) antipattern gets its name from the *static* keyword in C#, which makes code constructs global within an application. Similar to the Singleton, references to these global types, properties, and methods result in tight coupling, hence the use of the term *static cling* referring to how this use makes parts of the application stick together. 
 
-**Tip:** As with the Singleton, the preferred approach is to have types be explicit about their dependencies and to inject them in using the Strategy pattern. Existing code that leverages static resources can be wrapped in Adapter implementations to achieve this same result.
+### Note {.note}
+> As with the Singleton, the preferred approach is to have types be explicit about their dependencies and to inject them in using the Strategy pattern. Existing code that leverages static resources can be wrapped in Adapter implementations to achieve this same result.
 
 ## Next Steps
 
