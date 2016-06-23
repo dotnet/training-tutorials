@@ -4,8 +4,8 @@ by [Brendan Enrick](http://deviq.com/me/brendan-enrick)
 ## Basics of Exceptions
 In programming, *exceptions* are errors your programs *throw* in response to circumstances that are not intended and require special processing. You use the special ``throw`` command to interrupt the normal execution of the program when error ocurrs. This is donewhen an error has ocurred and needs to be handled by your program. In previous lessons, you've seen places where code you are calling throws an exception. One exception that you may have tried already happens when you typed in anything that wasn't a number during the guessing game. Doing this would result in ``Unhandled Exception: System.FormatException: Input string was not in a correct format.`` being displayed and your program would crash.
 
-```c#
-public static void Main(string[] args)
+```{.snippet}
+public static void Main()
 {
     try
     {
@@ -26,6 +26,37 @@ public static int SumNumberStrings(List<string> numbers)
         total += int.Parse(numberString);
     }
     return total;
+}
+```
+```{.REPL}
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            // To see the error, try changing to or adding invalid numbers
+            int sum = SumNumberStrings(new List<string> {"5", "4"});
+            Console.WriteLine(sum);
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("List of numbers contained an invalid entry.");
+        } 
+    }
+
+    public static int SumNumberStrings(List<string> numbers)
+    {
+        int total = 0;
+        foreach (string numberString in numbers)
+        {
+            total += int.Parse(numberString);
+        }
+        return total;
+    }
 }
 ```
 
@@ -88,7 +119,7 @@ When throwing exceptions, you use the ``throw`` keyword to indicate that you're 
 ### The Finally Block
 In your code, you may need to ensure you've cleaned up and released any resources you had allocated, whether you threw an exception or not. In these circumstances, the *finally* block is what you're looking for. 
 
-```c#
+```{.snippet}
 try
 {
 }
@@ -101,6 +132,32 @@ finally
     // even if your catch block re-throws
 }
 // Code here will run only if catch doesn't re-throw
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            throw new Exception("Let's play catch!");
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            // This code will always run
+            // even if your catch block re-throws
+            Console.WriteLine("FINALLY!");
+        }
+        // Code here will run only if catch doesn't re-throw
+        Console.WriteLine("Still ran.");
+    }
+}
 ```
 
 Most people ask why they need to use a finally block, since the code after the try-catch runs anyway. If the catch block handles the exception and allows your code to keep running, it will be functionally equivalent. If the catch block re-throws or throws a new exception (intentionally or not), your finally will still run. This means you can depend on the finally block executing, but be careful to not throw an exception in the finally block.
@@ -140,7 +197,7 @@ Most exception classes will take another exception as a constructor parameter al
 
 If you're not handling the exceptions at the time that you've caught it, you generally want to just rethrow it like this:
 
-```c#
+```{.snippet}
 try
 {
 }
@@ -148,6 +205,49 @@ catch (ArgumentNullException ex)
 {
     Logger.LogError(ex); // log the error before rethrowing
     throw; 
+}
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            DoWork();
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine("We encountered an error. Please try again.");
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public static void DoWork()
+    {
+        try
+        {
+            FindStudentId(null);
+        }
+        catch (ArgumentNullException ex)
+        {
+            // You would do some safe clean up work or logging here
+            // Logger.LogError(ex);
+            throw; 
+        }
+    }
+
+    public static int FindStudentId(string studentName)
+    {
+        if (string.IsNullOrEmpty(studentName))
+        {
+            throw new ArgumentNullException(nameof(studentName));
+        }
+
+        return 0; // we didn't really implement this
+    }
 }
 ```
 
@@ -158,7 +258,7 @@ In the previous examples, you usually saw ``catch (System.Exception)``, which us
 
 When you catch a specific exception, it will only catch the exceptions of that specific type (or ones that inherit from it). That means that catching ``System.FormatException`` will not catch any ``System.Exception`` exceptions that are thrown. If you want to handle both, differently, you would do this:
 
-```c#
+```{.snippet}
 try
 {
 }
@@ -169,6 +269,30 @@ catch (System.FormatException)
 catch (System.Exception)
 {
     // Handle all other exceptions here
+}
+```
+```{.REPL}
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            // uncomment either line to see an error
+            //int.Parse("A");
+            //throw new Exception();
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("This is a System.FormatException");
+        }
+        catch (System.Exception)
+        {
+            Console.WriteLine("This is a different System.Exception");
+        }
+    }
 }
 ```
 
