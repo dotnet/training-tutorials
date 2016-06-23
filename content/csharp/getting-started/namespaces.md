@@ -128,6 +128,12 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
 
 The `GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person` tells C# that you want to use the `Person` class declared in the `GettingStartedTutorials.CSharp.NamespaceLesson.Models` namespace.
 
+### Tip {.tip .visualstudio}
+> If you run this code in Visual Studio, the `using System;` line will appear somewhat faded, since it is not used in this code.
+
+### Tip {.tip .visualstudiocode}
+> If you run this code in Visual Studio Code, it will underline the `using System;`, since it is not used in this code.
+
 ### Declaring Namespace to be in Scope
 
 Sometimes you want to make a namespace available in your code by adding it to the current scope. You do this by declaring that intent at the top of your file in a *using statement*. Just type the `using` keyword followed by the namespace name you want to include in the current scope.
