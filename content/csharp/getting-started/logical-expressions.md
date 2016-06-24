@@ -146,7 +146,7 @@ namespace ConsoleApplication
 ```
 
 > **Tip** {.tip .newLanguage}
-> Be careful with parentheses in logical expression - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
+> Be careful with parentheses in logical expressions - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
 
 ### Flags
 
