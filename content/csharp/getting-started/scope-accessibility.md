@@ -40,7 +40,8 @@ public class Program
             Console.WriteLine(message);
         }
     }
-}```
+}
+```
 
 Notice that each loop has a variable named `message`. Since each variable exists within the scope of the loop it's declared in, we're allowed to use the same names for them. By the time we reach the second `for` loop, all variables declared in the first loop are gone. In fact, the scope of the variables declared in these loops is just one iteration through the loop. This means that each time through the loop, we're getting a new instance of `string` named `message`.
 
@@ -159,10 +160,10 @@ public class Program
     {
         for (int i = 0; i < 10; i++)
         {
-            Console.Writeline(i);
+            Console.WriteLine(i);
         }
         int i = 777; // Compiler error here
-        Console.Writeline(i);
+        Console.WriteLine(i);
     }
 }
 ```
