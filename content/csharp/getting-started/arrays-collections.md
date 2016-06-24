@@ -54,6 +54,9 @@ class Program
 > **Tip** {.tip .newLanguage }
 > You can think of an array as being like an egg carton or pill organizer. A weekly pill organizer typically has 7 spaces of equal size, while an egg carton has two rows of 6 spaces each. Array locations are often referred to as *cells*.
 
+> **Tip** {.tip .c}
+> Unlike in c++, arrays in C# aren't just pointers to an initial location in memory. These arrays a full objects in their own right, inheriting from System.Object and having members like `Length`. C# keeps handles those details behind the scenes.
+
 Array values are referenced by an *index*. C# array indexes start with 0, and values are accessed by passing the index to the array using square braces (``[`` ``]``).
 
 > **Tip** {.tip .vb }
