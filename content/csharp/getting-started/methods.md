@@ -113,7 +113,7 @@ The two methods do not return anything; they simply contain the ``Console.WriteL
 Methods are either declared as ``void``, meaning they don't return a result, or they must declare a type they will return. You can see two examples of simple methods below:
 
 ```{.snippet}
-string CreateGreeting(string name)
+static string CreateGreeting(string name)
 {
     return $"Hi {name}!";
 }
@@ -133,12 +133,12 @@ public class Program
         DisplayGreeting();
     }
     
-    string CreateGreeting(string name)
+    static string CreateGreeting(string name)
     {
         return $"Hi {name}!";
     }
 
-    void DisplayGreeting()
+    static void DisplayGreeting()
     {
         Console.WriteLine(CreateGreeting("Steve"));
     }
@@ -194,7 +194,7 @@ It's a good idea to limit the number of parameters a method accepts, since a lar
 Parameters can be made optional by supplying them with default values. The syntax for this is simply to supply the value with the parameter declaration as an assignment:
 
 ```{.snippet}
-string CreateGreeting(string name = "You")
+static string CreateGreeting(string name = "You")
 {
     return $"Hi {name}!";
 }
@@ -213,7 +213,7 @@ public class Program
         Console.WriteLine($"Custom Greeting: {customGreeting}");
     }
     
-    string CreateGreeting(string name = "You")
+    static string CreateGreeting(string name = "You")
     {
         return $"Hi {name}!";
     }
@@ -229,7 +229,7 @@ C# has always supported the concept of method overloads, which are multiple decl
 The following example demonstrates how method overloads might be used for a case where default parameters might also work:
 
 ```{.snippet}
-string CreateGreeting()
+static string CreateGreeting()
 {
     // call version with more parameters, passing a default value
     return CreateGreeting("You"); 
@@ -253,13 +253,13 @@ public class Program
         Console.WriteLine($"Custom Greeting: {customGreeting}");
     }
     
-    string CreateGreeting()
+    static string CreateGreeting()
     {
         // call version with more parameters, passing a default value
         return CreateGreeting("You"); 
     }
     
-    string CreateGreeting(string name)
+    static string CreateGreeting(string name)
     {
         return $"Hi {name}!";
     }
@@ -269,17 +269,17 @@ public class Program
 Sometimes, you want to help programmers who might use your method by eliminating the need for them to convert whatever type they have into the type your method expects as a parameter. Thus, you create multiple overloads that will perform the type conversion internally. This makes your method easier to use, and reduces the complexity of the code that calls it. For example, consider these methods that will display how many seconds remain until a deadline, or based on a given ``TimeSpan``:
 
 ```{.snippet}
-int SecondsRemaining(DateTime endTime)
+static int SecondsRemaining(DateTime endTime)
 {
     return SecondsRemaining(endTime - DateTime.Now);
 }
 
-int SecondsRemaining(string endTime)
+static int SecondsRemaining(string endTime)
 {
     return SecondsRemaining(DateTime.Parse(endTime));
 }
 
-int SecondsRemaining(TimeSpan duration)
+static int SecondsRemaining(TimeSpan duration)
 {
     return (int)duration.TotalSeconds;
 }
@@ -295,22 +295,22 @@ public class Program
         string endTimeString = end.ToString();
         TimeSpan timeLeft = end - DateTime.Now;
         
-        Console.WriteLine($"Seconds: {SecondsRemaining(end)});
-        Console.WriteLine($"Seconds: {SecondsRemaining(endTimeString)});
-        Console.WriteLine($"Seconds: {SecondsRemaining(timeLeft)});
+        Console.WriteLine($"Seconds: {SecondsRemaining(end)}");
+        Console.WriteLine($"Seconds: {SecondsRemaining(endTimeString)}");
+        Console.WriteLine($"Seconds: {SecondsRemaining(timeLeft)}");
     }
     
-    int SecondsRemaining(DateTime endTime)
+    static int SecondsRemaining(DateTime endTime)
     {
         return SecondsRemaining(endTime - DateTime.Now);
     }
     
-    int SecondsRemaining(string endTime)
+    static int SecondsRemaining(string endTime)
     {
         return SecondsRemaining(DateTime.Parse(endTime));
     }
     
-    int SecondsRemaining(TimeSpan duration)
+    static int SecondsRemaining(TimeSpan duration)
     {
         return (int)duration.TotalSeconds;
     }
@@ -342,7 +342,7 @@ public class Program
 {
     public static void Main()
     {
-        Func<int, int> addOne; = x => x + 1; // this is the lambda expression
+        Func<int, int> addOne = x => x + 1; // this is the lambda expression
         Console.WriteLine(addOne(4));
     }
 }
