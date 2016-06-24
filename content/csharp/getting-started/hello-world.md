@@ -16,7 +16,7 @@ namespace ConsoleApplication
     {
         public static void Main()
         {
-        Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
@@ -30,7 +30,7 @@ namespace ConsoleApplication
     {
         public static void Main()
         {
-        Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
