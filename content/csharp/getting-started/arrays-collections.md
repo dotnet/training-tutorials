@@ -208,8 +208,11 @@ Arrays are a built-in C# type with a lot of utility, but with certain limitation
 
 .NET includes support for a variety of collection types, including the most commonly used ``List`` type. Typically, you'll want to work with a list of a particular type of item, so you'll declare a generic ``List<T>``, where ``T`` in this case is the type of objects the list will hold. When you refer to a ``List<T>`` verbally, you'll say "a list of T", which makes sense since that really is what it represents. A ``List<int>`` is a list of ints. A ``List<Customer>`` is a list of customers. When working with a ``List<T>``, your program will raise an exception if you try to add an element to the list that isn't of the declared type.
 
-> **Tip** {.tip .java }
+> **Tip** {.tip .java}
 > Unlike in Java, behind the scenes, C# creates custom code for generics you use. This means that there is no behind-the-scenes casting like in Java. There is a custom list type create for your type `T`. In Java, it is just a wrapper around the `ArrayList` and casting the objects for you.
+
+> **Tip** {.tip .c}
+> Like c++ does for templates, behind the scenes, C# creates custom code for generics you use. Unlike c++ templates, C# is very strict about the types, so using any members of a `T` requires telling the compiler something about the type. 
 
 Lists do not have a fixed size. Unless the computer running your code runs out of memory, you can always add another element to a ``List``. This makes them more flexible than arrays. Generic lists are defined in the ``System.Collections.Generic`` namespace; you may need to add a ``using`` statement for the samples below to work in your application.
 
