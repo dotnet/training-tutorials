@@ -157,6 +157,9 @@ Frequently, methods that need to return complex results should be modified in on
 
 Methods can accept parameters, which can be used to modify their behavior. Parameters are declared inside of the parentheses in the method's declaration, as you've seen. Each parameter must specify a type and a name. C# supports optional parameters which will use default values when omitted. You can even create methods that take an arbitrary number of parameters by using a params array, but some of these behaviors are more advanced than you need to know for this lesson.
 
+> **Tip** {.tip .java}
+> The params array works the same way that *varargs* do in Java. Instead of `sum(int... list)`, just use `Sum(params int[] list)`.
+
 The name of a method, combined with the types of its parameters, must be unique within the class to which the method belongs. This is known as as the method's *signature*. You will see an error when you build your program if you have two methods with the same name and set of parameter types, even if the return types are different or the parameers have different names. For example, having the following two methods within the same class would generate an error at compile time:
 
 ```{.snippet}
