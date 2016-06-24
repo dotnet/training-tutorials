@@ -32,6 +32,9 @@ class Program
 }
 ```
 
+### Note {.note}
+> In C#, you can add a *line comment* to any line by using to forward slashes: ``//``. Any thing on that line following these characters will be ignored.
+
 If you need an *empty* string, you can create one in two different ways:
 
 ```{.snippet}
@@ -100,7 +103,7 @@ class Program
 }       
 ```
 
-If you try to work with the members of an object that isn't set (one that is null), your program will throw a ``NullReferenceException``. These are very common, and often very frustrating, errors in C# applications. You can mitigate them by ensuring you're always setting a default value to your instances rather than allowing them to remain null.
+If you try to work with the members of an object that isn't set (one that is null), your program will throw a ``NullReferenceException`` with a message "Object reference not set to an instance of an object". These are very common, and often very frustrating, errors in C# applications. You can mitigate them by ensuring you're always setting a default value to your instances rather than allowing them to remain null.
 
 You can check to see if a string value is null by comparing it to null (for instance, ``(nullstring == null)`` would evaluate to ``true``). There are also some built-in helper functions for detecting whether a string is either null or empty. Both ``(String.IsNullOrEmpty(emptyString))`` and ``(String.IsNullOrEmpty(nullString))`` would return ``true`` as well. This demonstrates another common pattern in C#, which is the use of static *extension methods* on a type for functionality that is useful to apply to null instances of the type. You will learn more about extension methods in [Defining and Calling Methods](methods.md).
 
@@ -166,7 +169,7 @@ string input = " Steve "; // has a space at the start and end.
 string clean1 = input.TrimStart(); // "Steve "
 string clean2 = input.TrimEnd(); // " Steve"
 string clean3 = input.Trim(); // "Steve"
-string short = input.Trim().SubString(0,3); // "Ste"
+string shortversion = input.Trim().Substring(0,3); // "Ste"
 ```
 ```{.REPL}
 using System;
@@ -179,13 +182,13 @@ class Program
         string clean1 = input.TrimStart(); // "Steve "
         string clean2 = input.TrimEnd(); // " Steve"
         string clean3 = input.Trim(); // "Steve"
-        string short = input.Trim().SubString(0,3); // "Ste"
+        string shortversion = input.Trim().Substring(0,3); // "Ste"
 
         Console.WriteLine($"*{input}*");
         Console.WriteLine($"*{clean1}*");
         Console.WriteLine($"*{clean2}*");
         Console.WriteLine($"*{clean3}*");
-        Console.WriteLine($"*{short}*");
+        Console.WriteLine($"*{shortversion}*");
     }
 }       
 ```
@@ -243,4 +246,5 @@ Now it's your turn. Create some code that will take two string variables and bui
 For a little extra credit, support an optional third variable than can be set to either 'loud' or 'quiet'. When loud, change whatever the greeting is to all UPPERCASE. If quiet, change it to all lowercase. If the third variable is null or empty, the greeting should remain unchanged.
 
 ### Tip {.tip .newLanguage }
-> Remember you don't have to define the greeting before the name; if you declare the name variable first, you can use string interpolation in your greeting (example greeting value: $"Hello, {name}!").
+> Remember you don't have to define the greeting before the name; if you declare the name variable first, you can use string interpolation in your greeting (example greeting value: 
+    $"Hello, {name}!"

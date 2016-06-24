@@ -31,13 +31,13 @@ class Program
         var yesterday = DateTime.Today.AddDays(-1);
         var someDay = DateTime.Parse("7/1/2016");
 
-        Console.WriteLine(currentTime);
-        Console.WriteLine(today);
-        Console.WriteLine(someDate);
-        Console.WriteLine(someMoment);
-        Console.WriteLine(tomorrow);
-        Console.WriteLine(yesterday);
-        Console.WriteLine(someDay);
+        Console.WriteLine($"{nameof(currentTime)}: {currentTime}");
+        Console.WriteLine($"{nameof(today)}: {today}");
+        Console.WriteLine($"{nameof(someDate)}: {someDate}");
+        Console.WriteLine($"{nameof(someMoment)}: {someMoment}");
+        Console.WriteLine($"{nameof(tomorrow)}: {tomorrow}");
+        Console.WriteLine($"{nameof(yesterday)}: {yesterday}");
+        Console.WriteLine($"{nameof(someDay)}: {someDay}");
     }
 }
 ```
@@ -46,6 +46,9 @@ Each of the above methods creates an instance of a ``DateTime``.
 
 ### Tip {.tip .newLanguage }
 > The ``DateTime.Now`` and ``DateTime.Today`` properties are *static*, which means you can access them without having an instance of a DateTime. No matter where you access these properties, their value will be read from the current time according to the machine's system clock.
+
+> **Tip** {.tip .REPL}
+> You can use the C# ``nameof`` function to get a string representing the name of a C# construct.
 
 ## Formatting Dates and Times
 
@@ -81,13 +84,13 @@ class Program
         int minute = someTime.Minute; // 10
         int second = someTime.Second; // 9
 
-        Console.WriteLine(someTime);
-        Console.WriteLine(year);
-        Console.WriteLine(month);
-        Console.WriteLine(day);
-        Console.WriteLine(hour);
-        Console.WriteLine(minute);
-        Console.WriteLine(second);
+        Console.WriteLine($"{nameof(someTime)}: {someTime}");
+        Console.WriteLine($"{nameof(year)}: {year}");
+        Console.WriteLine($"{nameof(month)}: {month}");
+        Console.WriteLine($"{nameof(day)}: {day}");
+        Console.WriteLine($"{nameof(hour)}: {hour}");
+        Console.WriteLine($"{nameof(minute)}: {minute}");
+        Console.WriteLine($"{nameof(second)}: {second}");
     }
 }
 ```
