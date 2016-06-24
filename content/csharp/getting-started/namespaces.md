@@ -138,6 +138,9 @@ The `GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person` tells C# that
 
 Sometimes you want to make a namespace available in your code by adding it to the current scope. You do this by declaring that intent at the top of your file in a *using statement*. Just type the `using` keyword followed by the namespace name you want to include in the current scope.
 
+> **Tip** {.tip .java}
+> In C#, the `using` keyword works similarly to how the `import` keyword from Java works.
+
 ```{.snippet}
 using GettingStartedTutorials.CSharp.NamespaceLesson.Models;
 
