@@ -212,6 +212,9 @@ Arrays are a built-in C# type with a lot of utility, but with certain limitation
 > Unlike in Java, behind the scenes, C# creates custom code for generics you use. This means that there is no behind-the-scenes casting like in Java. There is a custom list type create for your type `T`. In Java, it is just a wrapper around the `ArrayList` and casting the objects for you.
 
 > **Tip** {.tip .c}
+> Don't let the name confuse you, the C# `List<T>` is more closely related to the `vector<T>` from c++. The C# equivalent of `list<T>` is called `LinkedList<T>`. 
+
+> **Tip** {.tip .c}
 > Like c++ does for templates, behind the scenes, C# creates custom code for generics you use. Unlike c++ templates, C# is very strict about the types, so using any members of a `T` requires telling the compiler something about the type. 
 
 Lists do not have a fixed size. Unless the computer running your code runs out of memory, you can always add another element to a ``List``. This makes them more flexible than arrays. Generic lists are defined in the ``System.Collections.Generic`` namespace; you may need to add a ``using`` statement for the samples below to work in your application.
