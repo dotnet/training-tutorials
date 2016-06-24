@@ -3,7 +3,7 @@ by [Eric Fleming](http://deviq.com/me/eric-fleming)
 
 ## Unit Testing Your Code
 
-Testing the code you write is one of the most important and under-appreciated practices in programming. There are integration tests, web tests, performance/load tests; and the one covered in this lesson, unit tests. 
+Testing the code you write is one of the most important and underappreciated practices in programming. There are integration tests, web tests, performance/load tests, and, the one covered in this lesson, unit tests. 
 
 Unit Tests test individual methods, your most basic "unit" of code, for completeness and correctness. This type of test drives [Test Driven Development](http://deviq.com/test-driven-development), or TDD, and should be small and fast with descriptive names. To be clear, unit tests aren't limited only to TDD, they can and **should** be added at any time during development. Unit tests are a great way to prevent and catch bugs during feature development as well as general refactoring.
 
@@ -115,7 +115,8 @@ public class ExtensionMethodsPlusFiveShould
 }
 ```
 
-**NOTE**: Xunit, like most testing frameworks, has many built in assertion methods for you to use. You can see `Assert.Equal` used above, but there are many more assertions available to you that you can check out [here](http://xunit.github.io/docs/comparisons.html).
+### Note 
+> Xunit, like most testing frameworks, has many built in assertion methods for you to use. You can see `Assert.Equal` used above, but there are many more assertions available to you that you can check out [here](http://xunit.github.io/docs/comparisons.html).
 Once the test is written you can run the `test` command from the dotnet CLI (`dotnet test`). This will produce output like the following.
 
 ```c#
