@@ -213,7 +213,7 @@ public class Program
 
 Althought many developers would find the above example acceptable given its use of standard loop control variable names ``i`` and ``j``, it's often worth using more descriptive names when possible. In this case, since ``i`` represents the current row, it could be renamed ``rowIndex``. Likewise, ``j`` represents the current column, and so could be renamed ``columnIndex`` or ``colIndex``. Take care to choose good names for your variables, as this greatly improves the readability and maintainability of your programs.
 
-**Note:** The above program uses a couple of new ``string`` operations you may not be familiar with. First, ``ToString()`` can be called on any object to get string representation of it. In this case, the program is using it to convert an integer value into a string version of the same value (so, ``5`` becomes ``"5"``). Second, the ``PadLeft(3)`` method is used to add spaces to the beginning of a string until it reaches a certain length (in this case, 3). It's useful for working with fixed-width tables like the one this program is producing.
+**Note:** The above program uses a couple of new ``string`` operations you may not be familiar with. First, ``ToString()`` can be called on any object to get string representation of it. In this case, the program is using it to convert an integer value into a string version of the same value (so, ``5`` becomes ``"5"``). Second, the ``PadLeft(3)`` method is used to add spaces to the beginning of a string until it reaches a certain length (in this case, 3). It's useful for working with fixed-width tables like the one this program is producing (which lines up nicely as a grid in a console window, but isn't as pretty in a browser window).
 
 ## Next Steps
 

@@ -9,7 +9,7 @@ Logical *expressions* are composed of *operators* and *operands*. You can define
 
 You've already seen several comparison operators. Below are many of the built-in operators:
 
-```{.snippet}
+```c#
 ==  // equal
 !=  // not equal
 >   // greater than
@@ -37,7 +37,7 @@ namespace ConsoleApplication
         public static void Main()
         {
             int x = 15;
-            int y = 10
+            int y = 10;
             Console.WriteLine(x < 10);
             Console.WriteLine(y >= 0);
         }
@@ -47,7 +47,7 @@ namespace ConsoleApplication
 
 To test if a value is between two numbers, you need to check the two conditions separately. The following is not a legal C# expression:
 
-```{.snippet}
+```c#
 1 <= x <= 10 // x between 1 and 10 inclusive - DOES NOT COMPILE
 ```
 
@@ -57,7 +57,7 @@ To combine multiple expression, you use logical operators.
 
 Conditional logical operators are used to combine multiple logical expressions. The most common logical operators are *and*, *or*, and *not*, which are represented as follows:
 
-```{.snippet}
+```c#
 &&  // logical AND
 ||  // logical OR
 !   // logical NOT (often read as 'bang')
@@ -146,7 +146,7 @@ namespace ConsoleApplication
 ```
 
 ### Tip {.tip .newLanguage}
-> Be careful with parentheses in logical expression - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
+> Be careful with parentheses in logical expressions - it's easy to forget to close one. It can be a good practice, especially when you're getting started, to type all of the pairs of parentheses first, and then fill in the values and expressions.
 
 ### Flags
 
@@ -194,4 +194,4 @@ Write a program that greets the user using the appropriate greeting for the time
 - "Good Evening"
 - "Good Night"
 
-It's up to you which times should serve as the starting and ending ranges for each of the greetings. If you need a refresher on how to get the current time, see [Working with Dates and Times](datetimes.md). When testing your program, you'll probably want to use a ``DateTime`` variable you define, rather than the current time. Once you're confident the program works correctly, you can substitute ``DateTime.Now`` for your variable.
+It's up to you which times should serve as the starting and ending ranges for each of the greetings. If you need a refresher on how to get the current time, see [Working with Dates and Times](datetimes.md). When testing your program, you'll probably want to use a ``DateTime`` variable you define, rather than the current time. Once you're confident the program works correctly, you can substitute ``DateTime.Now`` for your variable (or keep your variable and just assign ``DateTime.Now`` as its value, which is often a better approach).

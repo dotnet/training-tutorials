@@ -21,7 +21,7 @@ int[] someIntegers = new int[3]; // holds 3 elements, with indexes of 0, 1, and 
 
 int[] moreIntegers = new int[] { 1, 2, 3, 4, 5 }; // initializes the values of the array
 
-int[] otherIntegers = new { 1, 3, 5, 7, 9 }; // you can omit int[]; it will be inferred in this case.
+int[] otherIntegers = new [] { 1, 3, 5, 7, 9 }; // you can omit `int` and just specify []; type is inferred
 ```
 ```{.REPL}
 using System;
@@ -42,7 +42,7 @@ class Program
         Console.WriteLine(moreIntegers[2]);
         // write out more if you like
 
-        int[] otherIntegers = new { 1, 3, 5, 7, 9 }; // you can omit int[]; it will be inferred in this case.
+        int[] otherIntegers = new [] { 1, 3, 5, 7, 9 }; // you can omit `int` and just specify []; type is inferred
         Console.WriteLine(otherIntegers[0]);
         Console.WriteLine(otherIntegers[1]);
         Console.WriteLine(otherIntegers[2]);
@@ -79,7 +79,7 @@ class Program
 
         int[,] someTable = { { 1, 2, 3 }, { 4, 5, 6 } }; // you can fill a multi-dimensional array on assignment as well
         Console.WriteLine(someTable[0,0]); // one "corner" of the array
-        Console.WriteLine(someTable[2,2]); // the opposite "corner"
+        Console.WriteLine(someTable[1,2]); // the opposite "corner"
     }
 }
 ```
@@ -99,11 +99,11 @@ class Program
     {
         int[][] jaggedArray = new int[4][]; // define first dimension
         jaggedArray[0] = new int[2] { 1, 2 }; // set values of first array
-        Console.WriteLine(jaggedArray[0,0]); // first element in first row
-        Console.WriteLine(jaggedArray[0,1]); // second element in first row
+        Console.WriteLine(jaggedArray[0][0]); // first element in first row
+        Console.WriteLine(jaggedArray[0][1]); // second element in first row
 
         // additional rows haven't yet been created/assigned
-        Console.WriteLine(jaggedArray[1]);
+        Console.WriteLine(jaggedArray[1]); // value is null
     }
 }
 ```
@@ -145,8 +145,8 @@ class Program
         Console.WriteLine(someIntegers[1]);
         Console.WriteLine(someIntegers[2]);
 
-        // uncomment the folloing line to see the exception
-        // someIntegers[3] = 3; // EXCEPTION
+        // following lines produces an exception
+        someIntegers[3] = 3; // EXCEPTION
     }
 }
 ```
@@ -223,6 +223,7 @@ List<string> colorList = new List<string>(colors); // initialize the list from a
 ```
 ```{.REPL}
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -258,6 +259,7 @@ colors.Clear(); // colors is now an empty list
 ```
 ```{.REPL}
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -292,6 +294,7 @@ colors.ForEach(Console.WriteLine); // equivalent to ForEach(c => Console.WriteLi
 ```
 ```{.REPL}
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -317,6 +320,7 @@ Console.WriteLine(String.Join(",", colors));
 ```
 ```{.REPL}
 using System;
+using System.Collections.Generic;
 
 class Program
 {
