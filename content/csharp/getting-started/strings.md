@@ -63,7 +63,7 @@ class Program
 
 It's important to understand the difference between an *empty* string and a *null* string (or other reference type). In C#, a variable's value is null if it is not set, or if it has been explicitly set to null. A null value typically means the value is not known, or has not yet been set, and is frequently a source of errors in programs, because methods cannot be invoked on null instances of types. An empty string is simply a string with a length of zero. It's a valid instance of a string, but one that currently has no characters in it. Take care when working with nulls in your programs, especially if they may be passed to other methods, and be sure to confirm that arguments your methods work with are not null before working with their members.
 
-### Tip {.tip .newLanguage }
+> **Tip** {.tip .newLanguage }
 > Null values are frequent sources of bugs even for experienced programmers. Be wary of assuming that variables are not null, especially when working with parameters or other variables you're not responsible for directly instantiating.
 
 A simple example should help demonstrate the difference between empty and null strings.
@@ -195,7 +195,7 @@ class Program
 
 Note in the last example that multiple methods are chained together, such that the ``input`` value is first trimmed, and then a substring consisting of the first three characters is extracted. ``SubString`` is a very useful String method that starts from a given position (where 0 is the start of the string) and returns a number of characters specified in the second argument (in this case 3).
 
-### Tip {.tip .vb }
+> **Tip** {.tip .vb }
 > Unlike VB, C# doesn't include methods like ``Left`` and ``Right`` that return a certain number of characters starting from the left or right side of a string. However, these methods are [available as part of the .NET Framework](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.strings_methods(v=vs.110).aspx).
 
 ## Replacing Parts of Strings
@@ -240,11 +240,10 @@ Of all of the above, the string interpolation approach (``greet1``) is recommend
 
 Now it's your turn. Create some code that will take two string variables and build a greeting from them. One variable should be the greeting and another variable should be the name to be greeted. Make sure your greeting includes punctuation at the end, after the position where the name will be inserted!
 
-### Tip {.tip .CLI }
+> **Tip** {.tip .CLI }
 > Note that you can pass multi-word arguments on the command line by wrapping them in quotes. For example, ``dotnet run "Hello **NAME**!" Steve``.
 
 For a little extra credit, support an optional third variable than can be set to either 'loud' or 'quiet'. When loud, change whatever the greeting is to all UPPERCASE. If quiet, change it to all lowercase. If the third variable is null or empty, the greeting should remain unchanged.
 
-### Tip {.tip .newLanguage }
-> Remember you don't have to define the greeting before the name; if you declare the name variable first, you can use string interpolation in your greeting (example greeting value: 
-    $"Hello, {name}!"
+> **Tip** {.tip .newLanguage }
+> Remember you don't have to define the greeting before the name; if you declare the name variable first, you can use string interpolation in your greeting (example greeting value: $"Hello, {name}!").

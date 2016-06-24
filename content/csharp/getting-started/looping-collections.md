@@ -49,7 +49,7 @@ public static void Main(string[] args)
 
 The ``foreach`` loop is a very simple way to work with every element in a collection. It doesn't require access to an indexer for the collection, making it applicable to many different collection types. However, in many cases you may want indexer-access to the collection within the loop. In that case, you should consider other techniques for looping over collections.
 
-### Tip {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}
 > If all you need to do is perform some operation on each item in a collection, the ``foreach`` loop should be your default choice.
 
 ## Other looping techniques
@@ -134,7 +134,7 @@ namespace ConsoleApplication
 }
 ```
 
-### Tip {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}
 > Be careful with this approach. If you forget to increment ``index``, you'll end up with an infinite loop.
 
 ## Next Steps

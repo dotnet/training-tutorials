@@ -51,12 +51,12 @@ class Program
 }
 ```
 
-### Tip {.tip .newLanguage }
+> **Tip** {.tip .newLanguage }
 > You can think of an array as being like an egg carton or pill organizer. A weekly pill organizer typically has 7 spaces of equal size, while an egg carton has two rows of 6 spaces each. Array locations are often referred to as *cells*.
 
 Array values are referenced by an *index*. C# array indexes start with 0, and values are accessed by passing the index to the array using square braces (``[`` ``]``).
 
-### Tip {.tip .vb }
+> **Tip** {.tip .vb }
 > In VB, parentheses are used for indexes as well as method invocation, and indexes start at 1. In C#, indexers always use square braces, and indexes start at 0.
 
 Arrays can have more than one *dimension*. All of the arrays declared above are single-dimensional. A multi-dimensional array can store multiple values for each element. Two-dimensional arrays are often thought of like a grid; three-dimensional arrays like a cube.
@@ -108,7 +108,7 @@ class Program
 }
 ```
 
-### Tip {.tip .java }
+> **Tip** {.tip .java }
 > Java has support for arrays of arrays, which are equivalent to C# jagged arrays, but doesn't have direct support for C#'s multi-dimensional array syntax. [Learn more](https://msdn.microsoft.com/en-us/library/ms228389(v=vs.90).aspx)
 
 Unlike some other collection types you'll learn about, the number of dimensions and size of an array are fixed for the lifetime of the instance. All uninitialized elements of arrays are set to the default value for the type: 0 for numeric types, null for reference types, etc.
