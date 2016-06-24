@@ -6,7 +6,7 @@ Language-Integrated Query, or LINQ, is a way to query a set of data with the use
 
 As you follow along in these examples, use this `List<Person>` collection and `Person` class:
 
-```{.snippet}
+```c#
 public class Program
 {
     public static void Main()
