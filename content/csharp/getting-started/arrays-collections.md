@@ -54,6 +54,9 @@ class Program
 > **Tip** {.tip .newLanguage }
 > You can think of an array as being like an egg carton or pill organizer. A weekly pill organizer typically has 7 spaces of equal size, while an egg carton has two rows of 6 spaces each. Array locations are often referred to as *cells*.
 
+> **Tip** {.tip .c}
+> Unlike in c++, arrays in C# aren't just pointers to an initial location in memory. These arrays are full objects in their own right, inheriting from System.Object and having members like `Length`. C# keeps handles those details behind the scenes.
+
 Array values are referenced by an *index*. C# array indexes start with 0, and values are accessed by passing the index to the array using square braces (``[`` ``]``).
 
 > **Tip** {.tip .vb }
@@ -208,8 +211,14 @@ Arrays are a built-in C# type with a lot of utility, but with certain limitation
 
 .NET includes support for a variety of collection types, including the most commonly used ``List`` type. Typically, you'll want to work with a list of a particular type of item, so you'll declare a generic ``List<T>``, where ``T`` in this case is the type of objects the list will hold. When you refer to a ``List<T>`` verbally, you'll say "a list of T", which makes sense since that really is what it represents. A ``List<int>`` is a list of ints. A ``List<Customer>`` is a list of customers. When working with a ``List<T>``, your program will raise an exception if you try to add an element to the list that isn't of the declared type.
 
-> **Tip** {.tip .java }
+> **Tip** {.tip .java}
 > Unlike in Java, behind the scenes, C# creates custom code for generics you use. This means that there is no behind-the-scenes casting like in Java. There is a custom list type create for your type `T`. In Java, it is just a wrapper around the `ArrayList` and casting the objects for you.
+
+> **Tip** {.tip .c}
+> Don't let the name confuse you, the C# `List<T>` is more closely related to the `vector<T>` from c++. The C# equivalent of `list<T>` is called `LinkedList<T>`. 
+
+> **Tip** {.tip .c}
+> Like c++ does for templates, behind the scenes, C# creates custom code for generics you use. Unlike c++ templates, C# is very strict about the types, so using any members of a `T` requires telling the compiler something about the type. 
 
 Lists do not have a fixed size. Unless the computer running your code runs out of memory, you can always add another element to a ``List``. This makes them more flexible than arrays. Generic lists are defined in the ``System.Collections.Generic`` namespace; you may need to add a ``using`` statement for the samples below to work in your application.
 
