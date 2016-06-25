@@ -306,7 +306,7 @@ public class Student : Person
 
 The access modifiers used in this example are `public`, `private`, and `protected`. This lesson will also explain the `internal` modifier, but that's more related to the [Understanding Namespaces](namespaces.md) lesson. 
 
-> **Tip:** {.tip .c}
+> **Tip** {.tip .c}    
 > Instead of grouping members of classes with the same access level, C# includes the access modifier for each member.
 
 Notice that the access modifiers are the first word in the declaration of the classes, methods, and prtoperties. This holds for most cases, however, you'll notice one exception to this in the example:
@@ -347,10 +347,10 @@ public string RosterName { get { return $"{this.LastName}, {this.FirstName}"; } 
 ### internal
 Like `protected`, `internal` is more accessible than `private`, but less than `public`. When using this access modifier, the code being modified may be used by any other code in the same assembly. These keep developers without access to your assembly's source code from using the `internal` code.
 
-> **Tip:** {.tip .java}
+> **Tip** {.tip .java}    
 > The `internal` access modifier is the C# equivalent of the `default` access modifier in Java.
 
-> **Tip:** {.tip .vb}
+> **Tip** {.tip .vb}    
 > The `internal` access modifier is the C# equivalent of the `Friend` access modifier in Visual Basic.
 
 ### Note {.note}

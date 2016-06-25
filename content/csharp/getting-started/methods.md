@@ -157,7 +157,7 @@ Frequently, methods that need to return complex results should be modified in on
 
 Methods can accept parameters, which can be used to modify their behavior. Parameters are declared inside of the parentheses in the method's declaration, as you've seen. Each parameter must specify a type and a name. C# supports optional parameters which will use default values when omitted. You can even create methods that take an arbitrary number of parameters by using a params array, but some of these behaviors are more advanced than you need to know for this lesson.
 
-> **Tip:** {.tip .java}
+> **Tip** {.tip .java}    
 > The params array works the same way that *varargs* do in Java. Instead of `sum(int... list)`, just use `Sum(params int[] list)`.
 
 The name of a method, combined with the types of its parameters, must be unique within the class to which the method belongs. This is known as as the method's *signature*. You will see an error when you build your program if you have two methods with the same name and set of parameter types, even if the return types are different or the parameers have different names. For example, having the following two methods within the same class would generate an error at compile time:
@@ -322,7 +322,7 @@ public class Program
 
 Ultimately, all of the methods end up calling the last one, which takes a ``TimeSpan``, but they perform different calculations and/or conversions along the way to make working with the method easier for the calling code. This kind of simplification is a key benefit your programs can get from the method overloading feature in C#.
 
-> **Tip:** {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}    
 > Remember to think about how you or other developers will use the methods you write. Try to write them so they're simple and easy to use and understand.
 
 ## Lambda Expressions
@@ -455,7 +455,7 @@ If you attempt to use this extension method on a non-integer type, you will rece
 
     error CS1929: 'string' does not contain a definition for 'PlusFive' and the best extension method overload 'ExtensionMethods.PlusFive(int)' requires a receiver of type 'int'
 
-> **Tip:** {.note}
+> **Tip** {.note}    
 > Before using an extension method, your code will require a `using` statement for the namespace of your static class containing the extension method (if different from where you're accessing the extension method). You will learn more about these in the lesson on [Understanding Namespaces](namespaces.md).
 
 ## Next Steps

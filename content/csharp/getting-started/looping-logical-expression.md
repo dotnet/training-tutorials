@@ -30,7 +30,7 @@ Using ``int.Parse(Console.ReadLine())`` can easily crash the program if the user
 
 You can think of a ``while`` loop as being just like an ``if`` statement that keeps running, again and again, until the expression is evaluated as ``false``. Note that the expression is only evaluated when the end of the loop block is reached. It's possible for the expression to evaluate to false at some point during the block's execution, but for the loop to continue as long as the expression is true again the next time it is evaluated.
 
-> **Tip:** {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}    
 > When a loop is based on the value of a particular variable, this variable is called the *loop control variable*. It's often critical that you remember to update the value of the loop control variable within the loop, or risk an infinite loop (see below).
 
 ### Exiting a Loop
@@ -47,7 +47,7 @@ You can also exit a loop by throwing an *exception*. You'll learn more about tho
 
 Many programs, especially games, will keep running, waiting for user input, until the user takes some action to exit them. If you suspect that your console program has entered an infinite loop, you can force it to end by pressing \[Ctrl\]+c.
 
-> **Tip:** {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}    
 > An infinite loop is a loop that never ends. Often, these are a programming bug caused by broken logic that includes a loop conditional expression that never evaluates to ``false``. Sometimes, an infinite loop is intentional.
 
 You can modify the guessing game shown above to use an infinite loop and the ``break`` keyword (and at the same time, making it a bit shorter):

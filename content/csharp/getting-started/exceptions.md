@@ -90,12 +90,12 @@ catch (System.FormatException ex)
 }
 ```
 
-> **Tip:** {.tip .newLanguage} 
+> **Tip** {.tip .newLanguage}    
 > If your code isn't going to respond to or log the exception in any way, don't catch the exception in the first place.
 
 Throwing a new exception will replace the previous exception, so only do this if you're using an exception specific to your application (and make sure to set the ``InnerException`` property of your new exception to the previous exception.
 
-> **Tip:** {.tip .newLanguage} 
+> **Tip** {.tip .newLanguage}    
 > It is common to log exceptions that occur, so that you can review them later and improve the program to avoid them, if possible.
 
 ### Throwing Exceptions
@@ -344,7 +344,7 @@ public bool SetMemberBirthday(int memberId, DateTime birthday)
 }
 ```
 
-> **Tip:** {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}    
 > When you throw an exception, there is always the chance that the exception will go unhandled, so be careful to throw exceptions only when it feels appropriate.
 
 ## Creating Your Own Exceptions

@@ -221,7 +221,7 @@ public void AddOrder(Order order)
 }
 ```
 
-> **Tip:** {.tip .newLanguage}
+> **Tip** {.tip .newLanguage}    
 > Encapsulating collections is difficult, because even if the collection is readonly, its contents often aren't. If client code can change the collection's elements, it breaks encapsulation, and often you want the objects in the collection to also be readonly. Sometimes the only way to achieve this is to use a custom type for this purpose (which may not be worth the effort).
 
 ### Encapsulating Infrastructure
@@ -249,7 +249,7 @@ Implementing an interface from a class is done just like inheriting from a class
 public class InMemoryProductRepository : BaseRepository, IProductRepository
 ```
 
-> **Tip:** {.tip .java}
+> **Tip** {.tip .java}    
 > C# interfaces function identically to Java interfaces, however, C# uses the ``:`` operator instead of Java's ``implements`` keyword.
 
 A class that lists an interface in its definition must implement all of that interface's members or a compilation error will occur.
