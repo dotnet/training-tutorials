@@ -128,17 +128,17 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
 
 The `GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person` tells C# that you want to use the `Person` class declared in the `GettingStartedTutorials.CSharp.NamespaceLesson.Models` namespace.
 
-> **Tip** {.tip .visualstudio}
+> **Tip:** {.tip .visualstudio}
 > If you run this code in Visual Studio, the `using System;` line will appear somewhat faded, since it is not used in this code.
 
-> **Tip** {.tip .visualstudiocode}
+> **Tip:** {.tip .visualstudiocode}
 > If you run this code in Visual Studio Code, it will underline the `using System;`, since it is not used in this code.
 
 ### Declaring Namespace to be in Scope
 
 Sometimes you want to make a namespace available in your code by adding it to the current scope. You do this by declaring that intent at the top of your file in a *using statement*. Just type the `using` keyword followed by the namespace name you want to include in the current scope.
 
-> **Tip** {.tip .java}
+> **Tip:** {.tip .java}
 > In C#, the `using` keyword works similarly to how the `import` keyword from Java works.
 
 ```{.snippet}
@@ -189,5 +189,5 @@ By declaring the namespace to be in scope, C# knows that the `Person` class used
 > You can specify a special name to use for one of your duplicately named classes in the current scope with a special type of using statement. `using NamespacePerson = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person;` will let you use `NamespacePerson` in your program, so C# knows which `Person` class you intend to use.
     
 
-> **Tip** {.tip .c}
+> **Tip:** {.tip .c}
 > The `using` statement locally renaming a type should feel similar to how `typedef` works in c++.

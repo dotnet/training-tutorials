@@ -44,10 +44,10 @@ class Program
 
 Each of the above methods creates an instance of a ``DateTime``.
 
-> **Tip** {.tip .newLanguage }
+> **Tip:** {.tip .newLanguage }
 > The ``DateTime.Now`` and ``DateTime.Today`` properties are *static*, which means you can access them without having an instance of a DateTime. No matter where you access these properties, their value will be read from the current time according to the machine's system clock.
 
-> **Tip** {.tip .REPL}
+> **Tip:** {.tip .REPL}
 > You can use the C# ``nameof`` function to get a string representing the name of a C# construct.
 
 ## Formatting Dates and Times
