@@ -22,7 +22,7 @@ class Program
 }
 ```
 
-> **Tip** {.tip .newLanguage }
+> ###Tip {.tip .newLanguage }
 > It's programming tradition that the first program one writes in a new language print out the phrase, "Hello World".
 
 You can change this greeting to be more personalized by using a variable. On the line above this one, you can add a variable that holds your name, like this:
