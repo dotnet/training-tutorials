@@ -182,10 +182,10 @@ namespace GettingStartedTutorials.CSharp.NamespaceLesson.Models
 
 By declaring the namespace to be in scope, C# knows that the `Person` class used in the example is the one from the `GettingStartedTutorials.CSharp.NamespaceLesson.Models` namespace.
 
-### Note { .note }
+> **Note** { .note }    
 > If more than one class of the same name is included in the same scope, you will need to disambiguate the scenario by specifying all or part of the namespace. In our example, `NamespaceLesson.Models.Person` would be enough. 
 
-### Note { .note }
+> **Note** { .note }    
 > You can specify a special name to use for one of your duplicately named classes in the current scope with a special type of using statement. `using NamespacePerson = GettingStartedTutorials.CSharp.NamespaceLesson.Models.Person;` will let you use `NamespacePerson` in your program, so C# knows which `Person` class you intend to use.
     
 

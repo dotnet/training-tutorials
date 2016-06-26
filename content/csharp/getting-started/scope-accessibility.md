@@ -45,7 +45,7 @@ public class Program
 
 Notice that each loop has a variable named `message`. Since each variable exists within the scope of the loop it's declared in, we're allowed to use the same names for them. By the time we reach the second `for` loop, all variables declared in the first loop are gone. In fact, the scope of the variables declared in these loops is just one iteration through the loop. This means that each time through the loop, we're getting a new instance of `string` named `message`.
 
-### Note {.note}
+> **Note** {.note}    
 > A special circumstance exists for variables declared within the `for` loop's declaration. You may have noticed that there are also two `i` variables declared. These have a slightly modified block-level scope. They also only exist within their respective loop, however, these persist through iterations of the loop. That's how you're able to modify the variable's value and have the change persist the next time through the loop (allowing it to count up).
 
 If, outside the `for` loop, you tried to access a variable created inside the loop, you would receive a compiler error. The following code is an example that will generate this error:
@@ -353,7 +353,7 @@ Like `protected`, `internal` is more accessible than `private`, but less than `p
 > **Tip** {.tip .vb}    
 > The `internal` access modifier is the C# equivalent of the `Friend` access modifier in Visual Basic.
 
-### Note {.note}
+> **Note** {.note}    
 > The `internal` and `protected` may be used in combination. Doing this will create the union of the two allowances rather than the limitations, meaning access is provided to inheriting classes as well as within the same assembly.
 
 ## Next Steps

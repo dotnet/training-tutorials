@@ -110,7 +110,7 @@ namespace ConsoleApplication
 }
 ```
 
-### Note {.note}
+> **Note** {.note}    
 > C# also includes *bitwise* logical operators, ``&`` (AND), ``|`` (OR). These are used to perform binary comparisons of numeric values, and generally aren't used directly for conditional expressions. The ``^`` (XOR) operator can be used with both boolean and integral operands.
 
 Logical operations are applied left to right, and will *short-circuit*. That is, if the left operand of an ``&&`` operator is false, the right operand will not be evaluated. This is often important, since the operands themselves may be method calls, not variables. You'll learn more about methods in [lesson 12](methods.md).

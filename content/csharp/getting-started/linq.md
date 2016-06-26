@@ -191,7 +191,7 @@ public class Person
 }
 ```
 
-### Note {.note}
+> **Note** {.note}    
 > You can *chain* the `Skip` and `Take` methods to skip one or more items and take the next ones.
 
 ## Changing Each Item in Collections
@@ -458,7 +458,7 @@ public class Person
 }
 ```
 
-### Note {.note}
+> **Note** {.note}    
 > There is a `First` extension method that will function the same as `FirstOrDefault` but will return a `System.InvalidOperationException` if there are no elements that match your criteria.
 
 ### LastOrDefault
@@ -511,7 +511,7 @@ public class Person
 ```
 
 
-### Note {.note}
+> **Note** {.note}    
 > As `First` is to `FirstOrDefault`, there is also a `Last` method, which will return a `System.InvalidOperationException` if there are no elements that match your criteria.
 
 ###SingleOrDefault
@@ -561,7 +561,7 @@ public class Person
 }
 ```
 
-### Note {.note}
+> **Note** {.note}    
 > The `Single` extension method functions the same as `SingleOrDefault`, however, in addition to throwing an exception for too many items matching the expression, it will also throw a `System.InvalidOperationException` if there are no items matching.
 
 ## Finding Data About Collections

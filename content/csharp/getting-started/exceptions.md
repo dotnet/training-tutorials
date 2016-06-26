@@ -113,7 +113,7 @@ public List<People> GetAllCustomersByAge(int age)
 
 When throwing exceptions, you use the ``throw`` keyword to indicate that you're throwing an exception followed by the ``Exception`` object you're throwing. In the example above, the exception object is being created on the same line on which it's thrown. Also notice that a specific type was used here, the ``ArgumentOutOfRangeException``. This means that anyone catching the exception knows that an argument received was not within the expected range. Some exception types, like the ``ArgumentOutOfRangeException``, take additional arguments in their constructors. For the various exceptions that derive from the ``System.ArgumentException``, like this example, the constructor takes an error message and the name of the argument containing the invalid value.
 
-### Note {.note}
+> **Note** {.note}    
 >Never throw ``System.Exception``, ``System.SystemException``, or ``ApplicationException`` directly; use more specific standard exceptions or custom exceptions. This allows callers to choose which exceptions they can handle instead of needing to respond to all exceptions.
 
 ### The Finally Block
@@ -177,7 +177,7 @@ finally
 // Code here will run only if no exceptions are thrown
 ```
 
-### Note {.note}
+> **Note** {.note}    
 >In most cases, resources that need to be cleaned up will use .NET's ``IDisposable`` interface, and can be wrapped in a [using block](https://msdn.microsoft.com/en-us/library/yh598w02.aspx).
 
 ### Throwing From Catch Blocks
@@ -296,7 +296,7 @@ public class Program
 }
 ```
 
-### Note {.note}
+> **Note** {.note}    
 >The order of the catch blocks is important; only one catch block can catch an exception. The first catch block that can handle the exception will execute; any others are ignored.
 
 In some instances you may want to handle more than one type of specific exception the same way and their common exception ancestor class is only ``System.Exception``. In order to that, you use the ``when`` clause followed by a condition explaining when you want to use that catch block. It looks like this:

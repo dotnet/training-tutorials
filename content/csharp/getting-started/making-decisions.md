@@ -241,7 +241,7 @@ class Program
 
 In the example above, you can see how multiple different ``case`` labels (in this case, 1, 2, and 3) can be applied to a single switch section ("You guessed low").
 
-### Note {.note}
+> **Note** {.note}    
 > ``uint`` is an *unsigned* integer type, which cannot hold negative values.
 
 ## Next Steps
