@@ -54,7 +54,7 @@ class Program
 > **Tip** {.tip .newLanguage }    
 > You can think of an array as being like an egg carton or pill organizer. A weekly pill organizer typically has 7 spaces of equal size, while an egg carton has two rows of 6 spaces each. Array locations are often referred to as *cells*.
 
-> **Tip** {.tip .c}    
+> **Tip** {.tip .cpp}    
 > Unlike in c++, arrays in C# aren't just pointers to an initial location in memory. These arrays are full objects in their own right, inheriting from System.Object and having members like `Length`. C# keeps handles those details behind the scenes.
 
 Array values are referenced by an *index*. C# array indexes start with 0, and values are accessed by passing the index to the array using square braces (``[`` ``]``).
@@ -214,10 +214,10 @@ Arrays are a built-in C# type with a lot of utility, but with certain limitation
 > **Tip** {.tip .java}    
 > Unlike in Java, behind the scenes, C# creates custom code for generics you use. This means that there is no behind-the-scenes casting like in Java. There is a custom list type create for your type `T`. In Java, it is just a wrapper around the `ArrayList` and casting the objects for you.
 
-> **Tip** {.tip .c}    
+> **Tip** {.tip .cpp}    
 > Don't let the name confuse you, the C# `List<T>` is more closely related to the `vector<T>` from c++. The C# equivalent of `list<T>` is called `LinkedList<T>`. 
 
-> **Tip** {.tip .c}    
+> **Tip** {.tip .cpp}    
 > Like c++ does for templates, behind the scenes, C# creates custom code for generics you use. Unlike c++ templates, C# is very strict about the types, so using any members of a `T` requires telling the compiler something about the type. 
 
 Lists do not have a fixed size. Unless the computer running your code runs out of memory, you can always add another element to a ``List``. This makes them more flexible than arrays. Generic lists are defined in the ``System.Collections.Generic`` namespace; you may need to add a ``using`` statement for the samples below to work in your application.
