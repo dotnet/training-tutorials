@@ -17,3 +17,4 @@
 - [When and How to use Exceptions](exceptions.md)
 - [Testing Your Code](testing.md)
 - [Common Patterns and Antipatterns](patterns-antipatterns.md)
+- [Appendix: Troubleshooting](troubleshooting.md)
