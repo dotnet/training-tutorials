@@ -32,7 +32,7 @@ class Program
 }
 ```
 
-### Note {.note}
+> **Note** {.note}    
 > In C#, you can add a *line comment* to any line by using to forward slashes: ``//``. Any thing on that line following these characters will be ignored.
 
 If you need an *empty* string, you can create one in two different ways:

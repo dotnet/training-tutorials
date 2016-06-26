@@ -403,7 +403,7 @@ public class Person
 
 The two expressions above return the same item whether the predicate is in the `Where` or the `FirstOrDefault`. Skipping the `Where` is more concise, and can improve readability of your code.
 
-###Note {.note}
+> **Note** {.note}    
 > The "OrDefault" means, if no elements in the queried data match the expression passed into the method, the returning object will be `null`.
 
 ```{.snippet}
@@ -702,7 +702,7 @@ public class Person
 }
 ```
 
-###Note {.note }
+> **Note** {.note }    
 > Using `Any` is a clearer way of checking if elements exist than checking if the count of a list is greater than 0 as shown in this example:
 
 ```c#
