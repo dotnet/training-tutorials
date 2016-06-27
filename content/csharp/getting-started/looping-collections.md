@@ -14,6 +14,7 @@ foreach(var item in myList)
 ```
 ```{.REPL}
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleApplication
 {
@@ -78,6 +79,7 @@ for(int i = 0; i < numbers.Length; i++)
 ```
 ```{.REPL}
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleApplication
 {
@@ -118,6 +120,7 @@ while(index < myList.Count)
 ```
 ```{.REPL}
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleApplication
 {
