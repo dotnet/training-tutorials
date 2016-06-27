@@ -42,7 +42,7 @@ public class Person
 ## Finding Items in Collections
 At some point, you're going to need to find items in a collection that meet specific criteria. LINQ provides you with extension methods like `Where`, `Skip`, and `Take` to make this easy.
 
-###Where
+### Where
 The `Where` extension method is the most commonly used. It can be used to filter elements from a collection based on certain criteria. For example, say you wanted to filter the list of people based on whether or not they are above the age of 30, it would look something like this:
 
 ```{.snippet}
@@ -93,7 +93,7 @@ public class Person
 
 As you can see, the `Where` method takes in a lambda expression as a *predicate* (a statement evaluating to either `true` or `false`) to be applied to each item in the list of people. In this scenario, every person's `Age` property is checked to see if it is greater than 30. If the result of the expression is `true`, the current item is added to an an object of type `IEnumerable<T>`. This new `IEnumerable<T>` will be an "IEnumerable of Person" `IEnumerable<Person>`, because the `List` it came from was made of `Person` objects.
 
-###Skip
+### Skip
 Sometimes you will want to ignore the first items in a collection and include only what remains. You can do this by using the aptly-named `Skip` method.
 
 ```{.snippet}
@@ -142,7 +142,7 @@ public class Person
 }
 ```
 
-###Take
+### Take
 The opposite of the `Skip` extension method is the `Take` extension method. `Take` will return the first items in the collection including a number of items equal to the number passed as an argument to the method.
 
 ```{.snippet}
@@ -308,7 +308,7 @@ public class FullName
 ## Finding One Item in Collections
 Up to this point, our results are always collections of objects. While useful, there will be times you will want to get just one object from the collection. In this lesson, you will see the `FirstOrDefault`, `LastOrDefault`, and `SingleOrDefault` extension methods from LINQ. These are three of the more commonly used LINQ methods for obtaining one item from a collection.
 
-###FirstOrDefault
+### FirstOrDefault
 The `FirstOrDefault` extension method will return the first element of a set of data. If there are no elements that match your criteria, the result will be the default value type for the object (usually `null`). 
 
 ```{.snippet}
@@ -514,7 +514,7 @@ public class Person
 > **Note** {.note}    
 > As `First` is to `FirstOrDefault`, there is also a `Last` method, which will return a `System.InvalidOperationException` if there are no elements that match your criteria.
 
-###SingleOrDefault
+### SingleOrDefault
 The `SingleOrDefault` extension method will return the only occurrence of an item matching your expression. If none match your criteria, the default value of your type will be returned. `SingleOrDefault` functions much like `FirstOrDefault`, but if more than one item matches your predicate, a `System.InvalidOperationException` will be thrown.
 
 ```{.snippet}
@@ -567,7 +567,7 @@ public class Person
 ## Finding Data About Collections
 There are extension methods that allow you to determine if or how many items will satisfy an expression. 
 
-###Count
+### Count
 The `Count` extension method returns the number of items in the data over which you're iterating as an `int`.
 
 ```{.snippet}
@@ -654,7 +654,7 @@ public class Person
 }
 ```
 
-###Any
+### Any
 The `Any` extension method checks a set of data and return a boolean value indicating whether any items in the collection match your predicate. This is commonly used when checking if a list has any elements before performing some other action on the list.
 
 ```{.snippet}
@@ -716,7 +716,7 @@ if (people.Any()) //This is better
 }
 ```
 
-###All
+### All
 The `All` extension method is similar to `Any`, but it returns a boolean only when all elements in the collection satisfy your expression.
 
 ```{.snippet}
