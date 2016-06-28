@@ -36,6 +36,10 @@ namespace ConsoleApplication
 }
 ```
 
+> **Tip** {.tip .newLanguage }    
+> A *method* is a named group of individual commands the program will run. You'll learn more about creating [methods](methods.md) in a bit.
+
+
 ### Program.cs
 
 *Program.cs* is a (usually small) text file. Its file extension is "cs" because it contains C# source code. When you build the program from a command prompt, the ``dotnet build`` tool will build all of the files that end in ".cs" using the C# compiler. Although it's a small program, there are a number of important bits of syntax in it that you should understand. First, remember that C# is case-sensitive, so keywords won't work unless they're lowercase, and other named elements within the source code must exactly match the case of the element being referenced.
@@ -45,7 +49,7 @@ The first line of the program is
 using System;
 ```
 
-The ``using`` statement is a programmer convenience. It allows us to refer to elements that exist within the listed *namespace* (in this case, ``System``) without prefixing them with the namespace name. What's a namespace? A namespace is a way of organizing programming constructs. They're similar to folders or directories in your file system. You don't have to use them, but they make it much easier to find and organize things. The reason this program includes the ``System`` namespace is that the ``Console`` type (used to print "Hello World!") is in that namespace. If the ``using`` statement were removed, the ``Console.WriteLine`` statement would need to include the namespace, becoming ``System.Console.WriteLine". Using statements must end with a semicolon (``;``). In C#, most statements that aren't defining a scope end with a semicolon.
+The ``using`` statement is a programmer convenience. It allows us to refer to elements that exist within the listed *namespace* (in this case, ``System``) without prefixing them with the namespace name. What's a namespace? A namespace is a way of organizing programming constructs. They're similar to folders or directories in your file system. You don't have to use them, but they make it much easier to find and organize things. The reason this program includes the ``System`` namespace is that the ``Console`` type (used to print "Hello World!") is in that namespace. If the ``using`` statement were removed, the ``Console.WriteLine`` statement would need to include the namespace, becoming ``System.Console.WriteLine``. Using statements must end with a semicolon (``;``). In C#, most statements that aren't defining a scope end with a semicolon.
 
 After the ``using`` statements, the code declares its namespace:
 ```c#
