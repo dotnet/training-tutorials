@@ -51,7 +51,7 @@ dotnet test
 
 ## Writing Your First Test
 
-For this test, look back at the [methods lesson](methods.md), and your `ExtensionMethods` class.
+For this test, look back at the [methods lesson](methods), and your `ExtensionMethods` class.
 
 ```c#
 public static class ExtensionMethods

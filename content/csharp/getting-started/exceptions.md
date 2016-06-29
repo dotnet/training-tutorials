@@ -254,7 +254,7 @@ public class Program
 Taking this approach will preserve the previous exception, so very little is lost by logging what happened.
 
 ## Catching Specific Exceptions
-In the previous examples, you usually saw ``catch (System.Exception)``, which uses polymorphism, the programming concept you learned about from the lesson on [Objects and Classes](class-objects.md). Knowing that, you also know that you can pass any exception that inherits from ``System.Exception``, and it can be used there as well. If you want to be more specific you can be. Our ``System.FormatException`` did exactly that.
+In the previous examples, you usually saw ``catch (System.Exception)``, which uses polymorphism, the programming concept you learned about from the lesson on [Objects and Classes](class-objects). Knowing that, you also know that you can pass any exception that inherits from ``System.Exception``, and it can be used there as well. If you want to be more specific you can be. Our ``System.FormatException`` did exactly that.
 
 When you catch a specific exception, it will only catch the exceptions of that specific type (or ones that inherit from it). That means that catching ``System.FormatException`` will not catch any ``System.Exception`` exceptions that are thrown. If you want to handle both, differently, you would do this:
 

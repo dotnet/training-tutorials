@@ -351,7 +351,7 @@ Finally, if you need to create an array from a list, you can call the ``ToArray`
 
 ## Next Steps
 
-Write a simple program that lets the user manage a list of elements. It can be a grocery list, "to do" list, etc. Refer to [Looping Based on a Logical Expression](looping-logical-expression.md) if necessary to see how to implement an infinite loop. Each time through the loop, ask the user to perform an operation, and then show the current contents of their list. The operations available should be Add, Remove, and Clear. The syntax should be as follows:
+Write a simple program that lets the user manage a list of elements. It can be a grocery list, "to do" list, etc. Refer to [Looping Based on a Logical Expression](looping-logical-expression) if necessary to see how to implement an infinite loop. Each time through the loop, ask the user to perform an operation, and then show the current contents of their list. The operations available should be Add, Remove, and Clear. The syntax should be as follows:
 
     + some item
     - some item

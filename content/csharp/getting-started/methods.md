@@ -7,7 +7,7 @@ So far in this tutorial, you've only been working within one method of your own,
 
 ## Declaring Methods
 
-There are two main kinds of methods in C#: *static* methods and *instance* methods. A static method is global to the program, and is called off of the type it is associated with. You learned about these kinds of methods in [the Hello World lesson](hello-world.md), since the ``Main`` method you've seen so much of is static. Instance methods are attached to an object instance. They can only be called if they are invoked from a non-null instance of an object of the appropriate type. Two objects of the same type will run the same code for a given instance method, but each method will have access to that object's internal state, so the results may be very different.
+There are two main kinds of methods in C#: *static* methods and *instance* methods. A static method is global to the program, and is called off of the type it is associated with. You learned about these kinds of methods in [the Hello World lesson](hello-world), since the ``Main`` method you've seen so much of is static. Instance methods are attached to an object instance. They can only be called if they are invoked from a non-null instance of an object of the appropriate type. Two objects of the same type will run the same code for a given instance method, but each method will have access to that object's internal state, so the results may be very different.
 
 If you're writing a method that will only operate on the parameters being passed into it, you can typically declare it as a ``static`` method. Otherwise, your methods should be instance methods (which is the default if you don't add the ``static`` keyword).
 
@@ -384,11 +384,11 @@ public class Program
 
 Notice that the expression method, ``twentyFive``, is able to use the other variables in its expression. 
 
-Lambda expressions can be very useful in describing simple functions. Two ways in which they are commonly used is for *predicates* and *selectors*, which return a bool and an object respectively. You'll see these in action in [Introducing LINQ](linq.md), the lesson covering language integrated queries (LINQ).
+Lambda expressions can be very useful in describing simple functions. Two ways in which they are commonly used is for *predicates* and *selectors*, which return a bool and an object respectively. You'll see these in action in [Introducing LINQ](linq), the lesson covering language integrated queries (LINQ).
 
 ## Extension Methods
 
-There is a special kind of static method which allows you to extend your existing type with new functionality without modifying the class itself. This is often useful when dealing with classes provided by other assemblies. These types of methods are called *Extension Methods*, and you'll get to see them used extensively in the [Introducing LINQ](linq.md) lesson. Extension Methods are *static* methods of one class that behave like *instance* methods of another class. The key difference between extension methods and other static methods is using a special `this` parameter whose type is the class to be extended. In the following example, an extension method is created that will add five to the value of an integer and return the result:
+There is a special kind of static method which allows you to extend your existing type with new functionality without modifying the class itself. This is often useful when dealing with classes provided by other assemblies. These types of methods are called *Extension Methods*, and you'll get to see them used extensively in the [Introducing LINQ](linq) lesson. Extension Methods are *static* methods of one class that behave like *instance* methods of another class. The key difference between extension methods and other static methods is using a special `this` parameter whose type is the class to be extended. In the following example, an extension method is created that will add five to the value of an integer and return the result:
 
 ```{.snippet}
 public static class ExtensionMethods
@@ -456,8 +456,8 @@ If you attempt to use this extension method on a non-integer type, you will rece
     error CS1929: 'string' does not contain a definition for 'PlusFive' and the best extension method overload 'ExtensionMethods.PlusFive(int)' requires a receiver of type 'int'
 
 > **Tip** {.note}    
-> Before using an extension method, your code will require a `using` statement for the namespace of your static class containing the extension method (if different from where you're accessing the extension method). You will learn more about these in the lesson on [Understanding Namespaces](namespaces.md).
+> Before using an extension method, your code will require a `using` statement for the namespace of your static class containing the extension method (if different from where you're accessing the extension method). You will learn more about these in the lesson on [Understanding Namespaces](namespaces).
 
 ## Next Steps
 
-In [lesson 10](arrays-collections.md) you wrote a program to manage a list of items, responding to different commands the user typed. Use what you've learned about methods to break up that program into several methods, each responsible for a different part of the program. You might create methods to determine the action to take based on the user's input, and to perform each action. Don't worry if your methods are very short (even one line) - the point is for you to get comfortable taking code from one long method and moving it into smaller methods, while still keeping your code working.
+In [lesson 10](arrays-collections) you wrote a program to manage a list of items, responding to different commands the user typed. Use what you've learned about methods to break up that program into several methods, each responsible for a different part of the program. You might create methods to determine the action to take based on the user's input, and to perform each action. Don't worry if your methods are very short (even one line) - the point is for you to get comfortable taking code from one long method and moving it into smaller methods, while still keeping your code working.

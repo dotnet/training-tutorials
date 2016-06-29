@@ -15,7 +15,7 @@ public class Program
 }
 ```
 
-Defining classes in C# is very straightforward. You'll usually want the class to be accessible anywhere, so you'll declare it as ``public``. You'll learn more about how these modifiers work in the [next lesson](scope-accessibility.md). Next, the ``class`` keyword is specified, followed by a valid C# name for the class. That's all that's required to define a simple class.
+Defining classes in C# is very straightforward. You'll usually want the class to be accessible anywhere, so you'll declare it as ``public``. You'll learn more about how these modifiers work in the [next lesson](scope-accessibility). Next, the ``class`` keyword is specified, followed by a valid C# name for the class. That's all that's required to define a simple class.
 
 To instantiate, or create an instance of, a class, you use the ``new`` keyword. Within a console application's ``static`` main method, you don't have access the ``Program``'s non-static members (if any). However, you can create an instance of ``Program`` from within the ``Main`` method, and then work with that instance and its members. For example:
 
@@ -89,7 +89,7 @@ The default implementation of ``ToString`` is to simply display the full name of
 
 ## Properties and Fields
 
-Classes have *members*, which consist of methods, properties, and fields. You learned about methods in the [previous lesson](methods.md). You saw an example of a field in the previous section, in which a ``versionNumber`` integer was added to the ``Program`` class. *Fields* are types that are attached to a class. They track the state of the class, and separate instances of the same class will each track the data of their fields independently. *Properties* provide a way for other objects to access state from an object in a controlled manner. Unlike fields, which are essentially just variables, properties are methods and can add additional behavior around manipulating the state of an object.
+Classes have *members*, which consist of methods, properties, and fields. You learned about methods in the [previous lesson](methods). You saw an example of a field in the previous section, in which a ``versionNumber`` integer was added to the ``Program`` class. *Fields* are types that are attached to a class. They track the state of the class, and separate instances of the same class will each track the data of their fields independently. *Properties* provide a way for other objects to access state from an object in a controlled manner. Unlike fields, which are essentially just variables, properties are methods and can add additional behavior around manipulating the state of an object.
 
 For example, suppose you have a class representing a speedometer, which can display values from 0 to 120. You implement the class using a field to represent the current speed:
 
