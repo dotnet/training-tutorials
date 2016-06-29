@@ -37,7 +37,7 @@ namespace ConsoleApplication
 ```
 
 > **Tip** {.tip .newLanguage }    
-> A *method* is a named group of individual commands the program will run. You'll learn more about creating [methods](methods.md) in a bit.
+> A *method* is a named group of individual commands the program will run. You'll learn more about creating [methods](methods) in a bit.
 
 
 ### Program.cs
@@ -93,7 +93,7 @@ After the ``Console.WriteLine`` statement, there are three closing curly braces 
 
 ## Troubleshooting
 
-Especially if you create the initial program by hand, rather than from a template, it can be easy to make small mistakes that result in errors when you compile the application. You'll find a list of common errors in the [troubleshooting lesson](troubleshooting.md).
+Especially if you create the initial program by hand, rather than from a template, it can be easy to make small mistakes that result in errors when you compile the application. You'll find a list of common errors in the [troubleshooting lesson](troubleshooting).
 
 ## Next Steps
 
