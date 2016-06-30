@@ -141,10 +141,10 @@ public static void DoWork()
 {
     for (int i = 0; i < 10; i++)
     {
-        Console.Writeline(i);
+        Console.WriteLine(i);
     }
     int i = 777; // Compiler error here
-    Console.Writeline(i);
+    Console.WriteLine(i);
 }
 ```
 ```{.REPL}
