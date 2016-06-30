@@ -203,7 +203,7 @@ public class Person
 
 ### Composition
 
-Fields and properties provide a way for you to *compose* your objects from other objects. This gives you a powerful way to add and share properties and behavior between objects. For instance, let's say you needed to mail things to people and companies as part of your program. You could put all of th necessary properties on both the ``Person`` and ``Company`` classes:
+Fields and properties provide a way for you to *compose* your objects from other objects. This gives you a powerful way to add and share properties and behavior between objects. For instance, let's say you needed to mail things to people and companies as part of your program. You could put all of the necessary properties on both the ``Person`` and ``Company`` classes:
 
 ```c#
 public class Person
