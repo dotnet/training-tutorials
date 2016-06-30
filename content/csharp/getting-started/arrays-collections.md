@@ -3,7 +3,7 @@ by [Steve Smith](http://deviq.com/me/steve-smith)
 
 ## Arrays
 
-You can store multiple variables of a particulare type in an *array* data structure. 
+You can store multiple variables of a particular type in an *array* data structure. 
 
 ### Creating Arrays
 
