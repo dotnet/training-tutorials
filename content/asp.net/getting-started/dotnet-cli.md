@@ -1,14 +1,9 @@
 # Working with the dotnet Command Line Interface (CLI)
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## dotnet
 
-In the [previous lesson](lesson-01.md), you used the ``dotnet`` command line interface (CLI) to create, build, and run your first ASP.NET Core app. In this lesson, you'll learn a little more about this tool.
+In the [previous lesson](your-first.md), you used the ``dotnet`` command line interface (CLI) to create, build, and run your first ASP.NET Core app. In this lesson, you'll learn a little more about this tool.
 
 To get started, open a new console window and type:
 
@@ -17,17 +12,23 @@ To get started, open a new console window and type:
 You should see something like the following:
 
     > dotnet --help
-    .NET Command Line Tools (1.0.0-preview1-002702)
-    Usage: dotnet [common-options] [command] [arguments]
+    .NET Command Line Tools (1.0.0-preview2-003121)
+    Usage: dotnet [host-options] [command] [arguments] [common-options]
 
     Arguments:
-    [command]     The command to execute
-    [arguments]   Arguments to pass to the command
+    [command]             The command to execute
+    [arguments]           Arguments to pass to the command
+    [host-options]        Options specific to dotnet (host)
+    [common-options]      Options common to all commands
 
-    Common Options (passed before the command):
-    -v|--verbose  Enable verbose output
-    --version     Display .NET CLI Version Number
-    --info        Display .NET CLI Info
+    Common options:
+    -v|--verbose          Enable verbose output
+    -h|--help             Show help
+
+    Host options (passed before the command):
+    -v|--verbose          Enable verbose output
+    --version             Display .NET CLI Version Number
+    --info                Display .NET CLI Info
 
     Common Commands:
     new           Initialize a basic .NET project
@@ -58,10 +59,8 @@ As you can see, you can use this command to create a number of different kinds o
 
 - Console
 - Web
-- Library
-- xUnit Test
-
-**Note**: The current version of the ``dotnet`` CLI only supports console applications.
+- Library (Lib)
+- xUnit Test (xunittest)
 
 ### dotnet restore
 
@@ -106,7 +105,7 @@ In order to build an executable application, you need to ensure the project is c
 
 Running help on the ``build`` command yields:
 
-    > dotnet build --help
+    > dotnet build -h
     .NET Builder
 
     Usage: dotnet build [arguments] [options]
@@ -134,7 +133,7 @@ The ``-c`` option lets you specify a configuration to use. It defaults to ``Debu
 
 Most of the time, you can skip explicitly building your application, and just use ``dotnet run`` to run it. This will build the application if changes have occurred since it was last built and, either way, will run the application.
 
-    > dotnet run --help
+    > dotnet run -h
     .NET Run Command
 
     Usage: dotnet run [options] [[--] <arg>...]]
@@ -145,7 +144,8 @@ Most of the time, you can skip explicitly building your application, and just us
     -c|--configuration  Configuration under which to build
     -p|--project        The path to the project to run (defaults to the current directory). Can be a path to a project.json or a project directory
 
-**Note:** ``dotnet run`` can only be used in the context of projects, not assemblies.
+> **Note** {.note}    
+> ``dotnet run`` can only be used in the context of projects, not assemblies.
 
 ### dotnet [assemblyname]
 
@@ -170,8 +170,8 @@ Any NuGet dependencies of the project being packed are added to the *nuspec* fil
 
 ## dotnet test
 
-The *test* command is used to run a suite of tests defined in the project, using the configured test runner. You'll learn more about this command in [lesson 18](lesson-18.md) of this tutorial.
+The *test* command is used to run a suite of tests defined in the project, using the configured test runner. You'll learn more about this command in the[Testing ASP.NET Core Apps](testing-aspnetcore.md) lesson.
 
 ## Next Steps
 
-Using the commands you already learned in the previous lesson, create, restore, build, and run a new C# console application. Next, use ``dotnet [assemblyname]`` to run the program using its produced output (which you'll find in a subfolder).
+Using the commands you already learned in the previous lesson, create, restore, build, and run a new C# web application.  Next, use ``dotnet [assemblyname]`` to run the program using its produced output. (which you'll find in a subfolder - look in *bin/Debug/netcoreapp1.0/* for a *.dll* file).
