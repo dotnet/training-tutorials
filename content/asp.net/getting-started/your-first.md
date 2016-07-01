@@ -1,25 +1,20 @@
 # Your First ASP.NET Core App
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-#### Sample Files
-Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
 ## Install .NET Core
 
 If you don't already have it installed, make sure you have .NET Core installed along with whatever tooling you'd like to use (for instance, Visual Studio Code or Visual Studio). You can download everything you need from [here](https://microsoft.com/net/core).
 
 ## Create a New Console Application
 
-In this lesson, you'll create a new ASP.NET Core web app from a standard .NET Core console application. Along the way, you'll work with a few command line tools and some files that may be new to you. For now, just follow along. You'll learn more about how these things work in subsequent lessons.
+In this lesson, you'll create a new ASP.NET Core web app from a standard .NET Core console application. Along the way, you'll work with a few command line tools and some files that may be new to you. For now, just follow along. You'll learn more about how these things work in subsequent lessons. This lesson will help you understand how an ASP.NET Core web app works, since you'll see how to construct one from a console application. If you just want to quickly create a new ASP.NET app, you can do so with ``dotnet new -t web``.
 
 Open a command prompt and create a new folder for your first ASP.NET Core application. Navigate to that folder and type:
 
     > dotnet new
     Created new C# project in (path)
 
-This command produces a simple "Hello World" console application, which produces two files:
+This command produces a simple "Hello World" console application, which includes two files:
 
 - Program.cs: Your program
 - project.json: Project information, including dependencies on other packages
@@ -30,6 +25,9 @@ You can run the application immediately to confirm it works. First, run the ``do
     > dotnet run
     Hello World!
 
+> **Note** {.note}    
+> If you run ``dotnet run`` without ``dotnet restore``, you will get an error stating that your project is missing a lock file, and indicating that you must first run ``dotnet restore``.
+
 ## Convert the Console App into an ASP.NET Core App
 
 To modify this program to be an ASP.NET Core app, you need to add a dependency. Open *project.json* in your editor and add a dependency on "Microsoft.AspNetCore.Server.Kestrel", as shown:
@@ -38,17 +36,24 @@ To modify this program to be an ASP.NET Core app, you need to add a dependency. 
 {
   "version": "1.0.0-*",
   "buildOptions": {
+    "debugType": "portable",
     "emitEntryPoint": true
   },
   "dependencies": {
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.0-rc2-3002702"
+    "Microsoft.NETCore.App":{
+      "version":"1.0.0",
+      "type":"platform"
     },
-    "Microsoft.AspNetCore.Server.Kestrel":"1.0.0-rc2-final"
+    "Microsoft.AspNetCore.Server.Kestrel":"1.0.0"
   },
   "frameworks": {
     "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      },
       "imports": "dnxcore50"
     }
   }
@@ -123,4 +128,6 @@ You can modify the response to be HTML with the following:
 
 ```c#
 context.Response.ContentType="text/html";
-``` 
+```
+
+You can format the output to include HTML tags by modifying *Startup.cs* and the "Hello from ASP.NET Core!" string. Try changing it to "Hello from <strong>ASP.NET Core!</strong>".
