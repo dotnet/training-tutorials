@@ -134,8 +134,8 @@ public class Speedometer
         }
         set 
         {
-            if(newSpeed < 0) return;
-            if(newSpeed > 120) return;
+            if(value < 0) return;
+            if(value > 120) return;
             
             // value is a keyword used in setters representing the new value
             _currentSpeed = value; 
