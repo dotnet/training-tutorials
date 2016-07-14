@@ -1,8 +1,6 @@
 # Understanding Required ASP.NET Core Files
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
-See the [Issue](https://github.com/dotnet/training-tutorials/issues/48) to claim this lesson and/or view what should be included in it.
-
 ## Program.cs
 
 In the [first lesson](your-first.md), you saw how to take a console application and convert it into an ASP.NET Core web app. Part of that process involved updating the ``Main`` method in *Program.cs* to configure and run a *host*. ASP.NET apps must run within a host, and this host is typically configured in a ``Main`` method. Once configured, you won't typically need to update this file very often going forward. A very simple, minimal example would be:
@@ -28,7 +26,11 @@ namespace ConsoleApplication
 }
 ```
 
-Note that the above class references the ``Startup`` type, which is where you configure your individual app.
+### Note { .note }
+> The above class references the ``Startup`` type in the call to ``.UseStartup<T>()``, which is where you configure your individual app.
+
+> **Tip** {.tip .newLanguage }    
+> The ``UseStartup<T>`` method is a generic method which accepts a type in place of T when called. [Learn more about generics in C#](https://msdn.microsoft.com/en-us/library/512aeb7t.aspx).
 
 ## Startup.cs
 
@@ -63,7 +65,7 @@ The ``app.Run`` method configures middleware, which you'll learn more about in t
 
 ### ConfigureServices
 
-The ``ConfigureServices`` method in the ``Startup`` class is optional. You use it to populate the services *container* used by ASP.NET Core. This container provides requested services to objects within your app through a process called [dependency injection](http://deviq.com/dependency-injection/). The container is represented by the ``IServiceCollection`` parameter that is passed into the ``ConfigureServices`` method. ASP.NET Core provides and requests many services itself, and uses the same infrastructure you will use in your app. Many built-in as well as third-party features require certain services to work properly, and you'll often see a particular package (for instance, MVC) adding services in ``ConfigureServices`` and also being configured in ``Configure``.
+The ``ConfigureServices`` method in the ``Startup`` class is optional. You use it to populate the services *container* used by ASP.NET Core. This container provides requested services to objects within your app through a process called [dependency injection](http://deviq.com/dependency-injection/). The container is represented by the ``IServiceCollection`` parameter that is passed into the ``ConfigureServices`` method. ASP.NET Core provides and requests many services itself, and uses the same infrastructure you will use in your app. Many built-in as well as third-party features require the addition and sometimes configuration of certain services to work properly. You'll often see a particular package (for instance, MVC) adding services in ``ConfigureServices`` and then also being configured in ``Configure``.
 
 Some packages will require many different services. Rather than requiring many statements to register each service individually, helper methods are added. By convention, these helper methods follow a naming pattern of ``Add[Package]``. So, for example, to add the services needed by MVC, you would add the statement ``services.AddMvc();`` to ``ConfigureServices``.
 
@@ -71,8 +73,8 @@ Some packages will require many different services. Rather than requiring many s
 
 Your ASP.NET Core app also requires a project file. However, most of the time you won't need to work with this file directly, and in any case its structure will be changing before .NET Core's tooling (which includes the command line interface as well as editors like VS Code and Visual Studio) are finalized. For now, you'll notice a *project.json* and probably a *project.json.lock* file in your application folder.
 
-To include support for certain features in your ASP.NET Core app, you may need to add additional packages to your app. This is currently done by modifying the *dependencies* section of the *project.json* file. When this is required, the tutorial instructions will walk you through what's required.
+To include support for certain features in your ASP.NET Core app you may need to add additional packages. This is currently done by modifying the *dependencies* section of the *project.json* file. When this is required, the tutorial instructions will walk you through what's required.
 
 ## Next Steps
 
-In the next lesson, you'll learn how to customize responses from your ASP.NET Core app based on the client's request.
+In the next lesson, you'll learn how to customize responses from your ASP.NET Core app based on the client's request, so that your app can do something more interesting than just always return the same message regardless of which path is requested.
