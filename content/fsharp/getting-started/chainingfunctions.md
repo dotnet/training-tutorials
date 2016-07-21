@@ -110,6 +110,7 @@ let splitCommas (x:string) =
 Now that you've separated the data by commas, you need to find the maximum variance between the opening and closing days. You accomplish that using the List.maxBy function, which finds the maximum item in a List based a given comparison function. You use a comparison function of (fun x -> abs(float x.[1] - float x.[4])) to find the maximum variance. Note that abs is a function for calculating absolute value, and float is a function to parse a floating point number from a string. The x.[1] and x.[4] calls get the second and fifth elements in the array, respectively (in F# array indexing is zero-based).
 
 Finally, you project the date from the maximum row using List.map and a projection function of (fun x -> x.[0]).
+
 Putting it all together, you get six simple lines of code that solve a complex problem.
 
 ```fsharp
