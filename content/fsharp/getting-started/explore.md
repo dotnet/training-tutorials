@@ -1,4 +1,5 @@
-# Explore F#
+Explore F#
+======
 
 "***F# developers regularly solve problems in days that would take weeks using more traditional languages...***" Finance Trading Company
 
@@ -30,6 +31,7 @@ F# makes it easier to write functional programs, which eliminates complex time a
 "*The idea of integrating internet-scale information services directly into the program's variable and type space that is in F# 3.0 is probably the most innovative programming language idea I have heard of in a decade.*", -Dr. James R. Cordy, Queen's University, Canada
 
 A growing trend in the theory and practice of programming is the interaction between programming and rich information spaces. From databases and web services, to the semantic web and cloud-based data, the need to integrate programming with heterogeneous, connected, richly structured, streaming, and evolving information sources is ever-increasing.
+
 The new type provider mechanism in F# 3.0 makes F# a uniquely extensible and adaptable data-rich language. Using type providers, F# programmers can integrate a wide range of information spaces and emerging industry data standards. Over time, we expect to see a number of new type provider projects samples, community projects, internal enterprise utilities, or products which each configure F# for use in a particular domain. So, not only would you have a near-seamless programming experience using SQL, OData and WSDL sources (to name a few), but anyone could create type providers that work against NoSQL data, semantic web data stores, social network graphs, scientific data repositories, data markets, SharePoint, WMI, streaming data, and high-performance cloud data stores. To learn more, [read the F# 3.0 white paper from Microsoft Research](research.microsoft.com/pubs/173076/information-rich-themes-v4.pdf).
 
 ## Learning F#
@@ -57,16 +59,19 @@ On Windows 7, Windows 8 and Azure
 F# is a first-class language in Visual Studio, a powerful integrated development environment that supports many languages, including C# and JavaScript. You can download a free Express edition of Visual Studio and add F# to it. You can also download a full free trial of Visual Studio to get started. If you are a student or academic, then you can also get Visual Studio via the Dreamspark program.
 On Mac OS X, Linux, Android, iOS and GPGPU
 For using F# on these platforms, see the instructions provided by The F# Open Source Group.
-Contributing to F#
-F# has a vibrant and active community who contribute to many aspects of the language and who actively develop its cross-platform capabilities, tools and libraries. From local meetups, user groups, discussion forums and code sharing sites, it's easy to get involved. You can actively contribute to F# by creating F# code on this site and sharing it with your friends. You can also contribute to F# as a cross-platform language by joining The F# Open Source Group and helping to develop the cross-platform capabilities and tools for the language. Further F# communities are:
-The F# Software Foundation
-The F# Open Source Group
-Microsoft F# forum
-F# on Stack Overflow
-#fsharp on Twitter
-F# on DeveloperFusion
-F# Community Samples
-F# Snippets
-NuGet packages related to F#
-CodePlex packages related to F#
-GitHub packages related to F#
+
+## Contributing to F#
+F# has a vibrant and active community who contribute to many aspects of the language and who actively develop its cross-platform capabilities, tools and libraries. From local meetups, user groups, discussion forums and code sharing sites, it's easy to get involved. 
+
+You can actively contribute to F# by creating F# code on this site and sharing it with your friends. You can also contribute to F# as a cross-platform language by joining The F# Open Source Group and helping to develop the cross-platform capabilities and tools for the language. Further F# communities are:
+* The F# Software Foundation
+* The F# Open Source Group
+* Microsoft F# forum
+* F# on Stack Overflow
+* #fsharp on Twitter
+* F# on DeveloperFusion
+* F# Community Samples
+* F# Snippets
+* NuGet packages related to F#
+* CodePlex packages related to F#
+* GitHub packages related to F#
