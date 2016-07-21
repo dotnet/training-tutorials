@@ -32,7 +32,7 @@ The active patterns feature offers a way to customize the F# pattern matching sy
 
 ## The Norm Active Pattern
 
-This example uses an active pattern to find a vector or versor within a given list.
+This example uses an active pattern to find a vector or [versor](https://en.wikipedia.org/wiki/Versor) within a given list.
 ```fsharp
 let (|Norm|) (a:float, b:float, c:float) = 
     sqrt(a*a + b*b + c*c)
