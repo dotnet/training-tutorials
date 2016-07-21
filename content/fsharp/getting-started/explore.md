@@ -44,26 +44,49 @@ There are also many F# tutorials available online that complement the interactiv
 Here are a number of talks and screencasts that will help you learn more about F#. 
 
 [Webinar: Try F# for Big and Broad Data](https://www.microsoft.com/en-us/research/video/webinar-try-f-for-big-and-broad-data/)
+
 *Christophe Poulain, Don Syme, Evelyne Viegas and Kenji Takeda, Microsoft Research*
+
 This webinar shows how to use the Try F# tutorials to solve real-world scenarios, including analytical programming, and information-rich programming that is encountered in finance and data science. At the end of the webinar, viewers will be able to bring the web of data to their fingertips through type providers, write code in the browser, and share it with the rest of the community. 
 
-Functional first programming in an information-rich world
+[Functional first programming in an information-rich world](https://www.microsoft.com/en-us/research/video/phd-functional-first-programming-in-an-information-rich-world/)
+
 *Kenji Takeda, Microsoft Research*
 
-In this talk we explore how the design and features of the F# language provides developers with ways to elegantly make use of the world of typed data and services on the web, cloud and in the enterprise. Teaching F#: From numerical expressions to 3D graphicsTomas Petricek, University of Cambridge
+In this talk we explore how the design and features of the F# language provides developers with ways to elegantly make use of the world of typed data and services on the web, cloud and in the enterprise. 
 
-The talk discusses how to teach the essential functional concept - composability. It starts with an easy to understand example, numerical expressions, and then moves to more exciting examples using a library for composing 3D graphics. Teaching programming language concepts with F#Peter Sestoft, ITU Copenhagen, Denmark
+[Teaching F#: From numerical expressions to 3D graphics](http://www.viddler.com/v/aca9839f)
 
-In the lecture, Peter introduces the curriculum, lecture plan and lecture notes for the course "Programs as data" that uses the functional programming concepts in F# to teach students programming language concepts and implementation details. F# 3.0 - Information Rich ProgrammingDonna Malayeri, F# Program Manager
+*Tomas Petricek, University of Cambridge*
 
-F# 3.0 is the first language to bring integrated support for Information Rich Programming. F# Type Providers and F# Queries greatly simplify data-rich analytical programming, allowing programmers to easily access and manipulate a variety of data sources. This lecture introduces these exciting new features and how they can be used to leverage technologies such as OData, WSDL services, and Windows Azure Marketplace. Introduction to F# (C9 Lectures)Don Syme, MSR Cambridge, UK
+The talk discusses how to teach the essential functional concept - composability. It starts with an easy to understand example, numerical expressions, and then moves to more exciting examples using a library for composing 3D graphics. 
+
+[Teaching programming language concepts with F#](https://channel9.msdn.com/Tags/peter-sestoft)
+
+*Peter Sestoft, ITU Copenhagen, Denmark*
+
+In the lecture, Peter introduces the curriculum, lecture plan and lecture notes for the course "Programs as data" that uses the functional programming concepts in F# to teach students programming language concepts and implementation details. 
+
+[F# 3.0 - Information Rich Programming](https://channel9.msdn.com/Blogs/Charles/C9-Lectures-Donna-Malayeri-F-30-Information-Rich-Programming-1-of-1)
+
+*Donna Malayeri, F# Program Manager*
+
+F# 3.0 is the first language to bring integrated support for Information Rich Programming. F# Type Providers and F# Queries greatly simplify data-rich analytical programming, allowing programmers to easily access and manipulate a variety of data sources. This lecture introduces these exciting new features and how they can be used to leverage technologies such as OData, WSDL services, and Windows Azure Marketplace. 
+
+[Introduction to F# (C9 Lectures)](https://channel9.msdn.com/Blogs/David+Gristwood/An-Introduction-to-F-with-Don-Syme-1-of-4)
+
+*Don Syme, MSR Cambridge, UK*
 
 Three part series of introductory video lectures by Don Syme, a leading contributor to the F# language. Don introduces functional concepts such as functional data structures and pattern matching, imperative features of F#, and the F# object model.
-Installing F#
+
+## Installing F#
+
 To use F# outside of this learning environment choose from the following options:
-On Windows 7, Windows 8 and Azure
+
+### On Windows 7, Windows 8 and Azure
 F# is a first-class language in Visual Studio, a powerful integrated development environment that supports many languages, including C# and JavaScript. You can download a free Express edition of Visual Studio and add F# to it. You can also download a full free trial of Visual Studio to get started. If you are a student or academic, then you can also get Visual Studio via the Dreamspark program.
-On Mac OS X, Linux, Android, iOS and GPGPU
+
+### On Mac OS X, Linux, Android, iOS and GPGPU
 For using F# on these platforms, see the instructions provided by The F# Open Source Group.
 
 Contributing to F#
