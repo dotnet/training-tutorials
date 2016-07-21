@@ -59,7 +59,7 @@ let isMe x =
 chrisTest isMe
 ```
 
-chrisTest is a simple higher order function that executes a test against a string value. The isMe function checks to see if a string is equal to "Chris". Passing `isChris` to `chrisTest` passes the string "Chris" as an argument to the `isChris" function, and returns the result of "it is Chris!". You'll see some examples of more useful higher ordered functions in the next lesson.
+`chrisTest` is a simple higher order function that executes a test against a string value. The isMe function checks to see if a string is equal to "Chris". Passing `isChris` to `chrisTest` passes the string "Chris" as an argument to the `isChris" function, and returns the result of "it is Chris!". You'll see some examples of more useful higher ordered functions in the next lesson.
 
 ## Lambda Functions
 Since it is so common to create small helper functions in F# programming, F# also provides a special syntax for creating in-line functions. These functions are called lambdas, or lambda functions.
