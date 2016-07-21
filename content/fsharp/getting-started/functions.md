@@ -59,7 +59,7 @@ let isMe x =
 chrisTest isMe
 ```
 
-`chrisTest` is a simple higher order function that executes a test against a string value. The isMe function checks to see if a string is equal to "Chris". Passing `isChris` to `chrisTest` passes the string "Chris" as an argument to the `isChris" function, and returns the result of "it is Chris!". You'll see some examples of more useful higher ordered functions in the next lesson.
+`chrisTest` is a simple higher order function that executes a test against a string value. The `isMe` function checks to see if a string is equal to "Chris". Passing `isChris` to `chrisTest` passes the string "Chris" as an argument to the `isChris" function, and returns the result of "it is Chris!". You'll see some examples of more useful higher ordered functions in the next lesson.
 
 ## Lambda Functions
 Since it is so common to create small helper functions in F# programming, F# also provides a special syntax for creating in-line functions. These functions are called lambdas, or lambda functions.
@@ -69,7 +69,7 @@ let add = (fun x y -> x + y)
 add 2 2
 ```
 
-This add function is the same as the one defined earlier, but the declaration happened in one line. Lambdas are also known as anonymous functions because you aren't required to bind them to a name with let.
+This add function is the same as the one defined earlier, but the declaration happened in one line. Lambdas are also known as anonymous functions because you aren't required to bind them to a name with `let`.
 ```fsharp
 let twoTest test =
     test 2
@@ -77,7 +77,7 @@ let twoTest test =
 twoTest (fun x -> x < 0)
 ```
 
-The above snippet uses an anonymous lambda to pass a negativity check to twoTest.
+The above snippet uses an anonymous lambda to pass a negativity check to `twoTest`.
 
 ## Summary
 In this lesson, you continued your journey in F# by exploring the flexibility of functions. You now know how to create and call functions in F#. You've seen how whitespace sensitivity can cut down on the ceremony of curly braces and return statements. You learned how functions are values that can be nested and passed as arguments. You also created your first lambda function to master F#'s one line function syntax. You've learned enough to be dangerous, and in the next lesson, you'll build on this knowledge to solve a more complicated problem.
