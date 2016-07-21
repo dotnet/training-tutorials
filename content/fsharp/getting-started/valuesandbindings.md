@@ -14,6 +14,7 @@ let unlucky = lucky + 6
 ```
 
 You should see `val unlucky : int = 13` in the Output Window. The REPL used the value of lucky from the first statement that you entered to calculate your new result.
+
 Don't be afraid to use the REPL to execute code that you're curious about as you go through this tutorial. The samples are designed to guide you through the basics of the language, but you can learn much more by exploring on your own. If you ever get yourself into a state that you want to get out of, you can reset the session by clicking in the Script Window and pressing *Ctrl+Shift+R* on Windows, *Command+R* on OS X. You can also reload your browser to restart your session. Note that reloading will also clear the Script Window, so be careful to copy your script somewhere else if you don't want to lose your work.
 
 ## Values and Bindings
