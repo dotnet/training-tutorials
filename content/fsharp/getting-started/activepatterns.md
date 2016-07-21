@@ -27,8 +27,11 @@ You can try changing the values of the input list in order observe different beh
 * Check different conditions through a set of rules
 
 Unfortunately not all of these beautiful things can be used straight away with objects. Why? Simply because objects are .NET objects, and they follow rules that depend on the Common Language Runtime (CLR) and not just F#. Moreover the set of predicates you can express using out of the box features is not entirely satisfactory, so the language has a very powerful feature called active patterns.
+
 The active patterns feature offers a way to customize the F# pattern matching syntax in a general way. As with all powerful mechanisms, you should use it wisely (it has been said that with great power comes great responsibility). The core idea is to consent to introduce in the pattern a label (with or without arguments) that cause the invocation of a function defined with a special syntax. This can be used for any kind of computation and to deal with any type including objects.
-The Norm Active Pattern
+
+## The Norm Active Pattern
+
 This example uses an active pattern to find a vector or versor within a given list.
 let (|Norm|) (a:float, b:float, c:float) = 
     sqrt(a*a + b*b + c*c)
