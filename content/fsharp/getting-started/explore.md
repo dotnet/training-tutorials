@@ -41,8 +41,14 @@ To learn more about F# or to teach it, you can find more information in one of t
 There are also many F# tutorials available online that complement the interactive Try F# tutorials available on this web site. Find out more on the Learn F# page at F# Developer Center .
 
 ### F# Screencasts & Talks
-Here are a number of talks and screencasts that will help you learn more about F#. Webinar: Try F# for Big and Broad DataChristophe Poulain, Don Syme, Evelyne Viegas and Kenji Takeda, Microsoft Research
-This webinar shows how to use the Try F# tutorials to solve real-world scenarios, including analytical programming, and information-rich programming that is encountered in finance and data science. At the end of the webinar, viewers will be able to bring the web of data to their fingertips through type providers, write code in the browser, and share it with the rest of the community. Functional first programming in an information-rich worldKenji Takeda, Microsoft Research
+Here are a number of talks and screencasts that will help you learn more about F#. 
+
+[Webinar: Try F# for Big and Broad Data](https://www.microsoft.com/en-us/research/video/webinar-try-f-for-big-and-broad-data/)
+*Christophe Poulain, Don Syme, Evelyne Viegas and Kenji Takeda, Microsoft Research*
+This webinar shows how to use the Try F# tutorials to solve real-world scenarios, including analytical programming, and information-rich programming that is encountered in finance and data science. At the end of the webinar, viewers will be able to bring the web of data to their fingertips through type providers, write code in the browser, and share it with the rest of the community. 
+
+Functional first programming in an information-rich world
+*Kenji Takeda, Microsoft Research*
 
 In this talk we explore how the design and features of the F# language provides developers with ways to elegantly make use of the world of typed data and services on the web, cloud and in the enterprise. Teaching F#: From numerical expressions to 3D graphicsTomas Petricek, University of Cambridge
 
@@ -60,7 +66,8 @@ F# is a first-class language in Visual Studio, a powerful integrated development
 On Mac OS X, Linux, Android, iOS and GPGPU
 For using F# on these platforms, see the instructions provided by The F# Open Source Group.
 
-## Contributing to F#
+Contributing to F#
+------
 F# has a vibrant and active community who contribute to many aspects of the language and who actively develop its cross-platform capabilities, tools and libraries. From local meetups, user groups, discussion forums and code sharing sites, it's easy to get involved. 
 
 You can actively contribute to F# by creating F# code on this site and sharing it with your friends. You can also contribute to F# as a cross-platform language by joining The F# Open Source Group and helping to develop the cross-platform capabilities and tools for the language. Further F# communities are:
