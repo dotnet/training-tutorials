@@ -2,8 +2,12 @@
 by Microsoft Research
 
 Pattern matching is a major feature of F# and once you use it you won't want to live without it. When you have a value, you can deconstruct it and bind with names in such a seamless way that you will forget all the code you would have needed in other programming languages.
+
 Here is a simple example that looks for specific vectors in a list of triples:
-Searching in a List with Pattern Matching
+
+## Searching in a List with Pattern Matching
+
+```fsharp
 let input = [ (1., 2., 0.); (2., 1., 1.); (3., 0., 1.) ]
 let rec search lst =
   match lst with
@@ -14,12 +18,14 @@ let rec search lst =
   | _ :: tail -> search tail
   | [] -> printfn "done."
 search input
-Load
+```
+
 You can try changing the values of the input list in order observe different behaviors of the search function. What we mainly appreciate here is the ability to do four things at once:
-Unpack the list in a head and tail
-Give a sort of template to the head value (a triple whose first argument is a float)
-Bind an element of the head triple to a name (in this case z)
-Check different conditions through a set of rules
+* Unpack the list in a head and tail
+* Give a sort of template to the head value (a triple whose first argument is a float)
+* Bind an element of the head triple to a name (in this case z)
+* Check different conditions through a set of rules
+
 Unfortunately not all of these beautiful things can be used straight away with objects. Why? Simply because objects are .NET objects, and they follow rules that depend on the Common Language Runtime (CLR) and not just F#. Moreover the set of predicates you can express using out of the box features is not entirely satisfactory, so the language has a very powerful feature called active patterns.
 The active patterns feature offers a way to customize the F# pattern matching syntax in a general way. As with all powerful mechanisms, you should use it wisely (it has been said that with great power comes great responsibility). The core idea is to consent to introduce in the pattern a label (with or without arguments) that cause the invocation of a function defined with a special syntax. This can be used for any kind of computation and to deal with any type including objects.
 The Norm Active Pattern
