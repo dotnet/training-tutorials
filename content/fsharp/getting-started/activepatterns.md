@@ -33,15 +33,20 @@ The active patterns feature offers a way to customize the F# pattern matching sy
 ## The Norm Active Pattern
 
 This example uses an active pattern to find a vector or versor within a given list.
+```fsharp
 let (|Norm|) (a:float, b:float, c:float) = 
     sqrt(a*a + b*b + c*c)
 let v = (1., 0., 0.)
 match v with
 | Norm(1.) -> printfn "Versor found!"
 | Norm(n) -> printfn "Simple vector with norm %f" n
-Load
+```
+
 Sometimes you may want to classify values, for instance vector vs. versor:
-Classification with Patterns
+
+## Classification with Patterns
+
+```fsharp
 let (|Vector|Versor|) 
     (a:float, b:float, c:float) = 
     if sqrt(a*a + b*b + c*c) = 1. then Versor 
@@ -50,9 +55,13 @@ let v = (1., 0., 0.)
 match v with
 | Versor -> printfn "Versor found!"
 | Vector -> printfn "Is a vector"
-Load
+```
+
 You can also define incomplete classification patterns. The following pattern matches the string itself to determine whether it is a palindrome (whether the string is the same when read left-to-right and right-to-left):
-Incomplete Classification
+
+## Incomplete Classification
+
+```fsharp
 let rec isPalindrome (s:string) 
     (fromidx:int) (toidx:int) =
   if s = null then false
@@ -67,7 +76,10 @@ match "aba" with
 | PALINDROME(v) -> printfn "The string %s is palindrome" v
 | "Antonio" -> printfn "Hello Antonio"
 | _ -> printfn "Not a special string!"
-Load
+```
+
 In this case, the returned value is an option addressing the problem of what should be returned in case of a non-palindrome string.
+
 In this latter example we used an active pattern whose completion time is dependent upon the input string's length. This kind of pattern should be used with care since the user of your pattern has the right to expect that the time necessary for computing a pattern is constant as it is for standard patterns.
+
 Active patterns are ideal if you want to define a rule-based sub-language in F#: you can define patterns to match against any kind of value and use names depending on a particular domain. F# will let you bind the value returned by your pattern as if it were a native F# type preserving the beauty of pattern matching inside the language.
