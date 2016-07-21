@@ -97,6 +97,7 @@ stockData
 ```
 
 The whole computation occurs in just six lines of code, but there is a lot of power in those simple six lines. Let's review each part in detail.
+
 First, you need to break apart the list into its comma separated parts. You accomplish that by defining a helper function.
 
 ```fsharp
