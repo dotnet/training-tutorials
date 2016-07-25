@@ -1,9 +1,12 @@
 # Understanding Required ASP.NET Core Files
 by [Steve Smith](http://deviq.com/me/steve-smith)
 
+You can run most of the examples in this tutorial in your browser. However, if you want to install and run ASP.NET Core apps on your own machine, refer to the appendix lessons on [installing and getting started with ASP.NET Core](your-first.md) and [working with the dotnet command line interface (or CLI)](dotnet-cli.md).
+
 ## Program.cs
 
-In the [first lesson](your-first.md), you saw how to take a console application and convert it into an ASP.NET Core web app. Part of that process involved updating the ``Main`` method in *Program.cs* to configure and run a *host*. ASP.NET apps must run within a host, and this host is typically configured in a ``Main`` method. Once configured, you won't typically need to update this file very often going forward. A very simple, minimal example would be:
+
+ASP.NET Core apps require a *host*, which is built using a ``WebHostBuilder``. This is typically done in the program's entry point, which is typically located in the ``Main`` method in *Program.cs* file. Once configured, you won't typically need to update this file very often going forward. A very simple, minimal example would be:
 
 ```c#
 using System;
@@ -61,7 +64,7 @@ namespace ConsoleApplication
 }
 ```
 
-The ``app.Run`` method configures middleware, which you'll learn more about in the next lesson. In addition to configuring your app's request pipeline, the ``Configure`` method is also used to (surprise!) configure other aspects of the app. It's here that you'll add support for diagnostics, logging, error handling, routing, and frameworks like MVC. These packages often have helper methods that follow a naming pattern of ``Use[Package]``, which is used to configure them within the ``Configure`` method. For example, configuring MVC is done with the ``app.UseMvc();`` statement. You'll see examples of these packages in later lessons in this tutorial. 
+The ``app.Run`` method configures *middleware*, which you'll learn more about in the next lesson. In addition to configuring your app's request pipeline, the ``Configure`` method is also used to (surprise!) configure other aspects of the app. It's here that you'll add support for diagnostics, logging, error handling, routing, and frameworks like MVC. These packages often have helper methods that follow a naming pattern of ``Use[Package]``, which is used to configure them within the ``Configure`` method. For example, configuring MVC is done with the ``app.UseMvc();`` statement. You'll see examples of these packages in later lessons in this tutorial. 
 
 ### ConfigureServices
 

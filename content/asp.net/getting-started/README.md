@@ -9,8 +9,6 @@ This tutorial is aimed at people who are learning ASP.NET Core for the first tim
 
 This tutorial will cover the following topics:
 
-- [Your First ASP.NET Core App](your-first.md)
-- [Working with the dotnet Command Line Interface (CLI)](dotnet-cli.md)
 - [Understanding Required ASP.NET Core Files](files.md)
 - [Using Basic Middleware to Output Responses](middleware-basic.md)
 - [Serving Static Files](static-files.md)
@@ -31,3 +29,5 @@ This tutorial will cover the following topics:
 - [Working with ASP.NET Core MVC Views](views.md)
 - [Understanding ASP.NET Core MVC Filters](filters.md)
 - [Working with Data in your ASP.NET Core App](data.md)
+- [Appendix: Installing ASP.NET Core](your-first.md)
+- [Appendix: Working with the dotnet Command Line Interface (CLI)](dotnet-cli.md)
