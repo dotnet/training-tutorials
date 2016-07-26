@@ -1,28 +1,34 @@
 Troubleshooting F#
 =====
 ## Common Errors
-In software development, attention to detail is critical. Small mistakes can cause an otherwise correct program to fail to build, much less run. The rules of a programming language like: the keywords it uses, the order in which they can appear, whether or not they're case sensitive, and how to define scopes and statements are collectively referred to as the language's syntax. Syntax errors are usually caught when you build the program, and will result in errors that you'll need to understand in order to correct. To demonstrate some of these errors, so you will know how to address them when you see them in later programs you write, you can intentionally introduce problems in your Program.cs file.
+In software development, attention to detail is critical. Small mistakes can cause an otherwise correct program to fail to build, much less run. The rules of a programming language like: the keywords it uses, the order in which they can appear, whether or not they're case sensitive, and how to define scopes and statements are collectively referred to as the language's syntax. Syntax errors are usually caught when you build the program, and will result in errors that you'll need to understand in order to correct. To demonstrate some of these errors, so you will know how to address them when you see them in later programs you write, you can intentionally introduce problems in your Program.fs file.
 
 ### Don’t use parentheses when calling a function
 In F#, whitespace is the standard separator for function parameters. You will rarely need to use parentheses, and in particular, do not use parentheses when calling a function.
 
+```fsharp
 let add x y = x + y
 let result = add (1 2)  //wrong
     // error FS0003: This value is not a function and cannot be applied
 let result = add 1 2    //correct
+```
 
 ### Don’t mix up tuples with multiple parameters
 If it has a comma, it is a tuple. And a tuple is one object not two. So you will get errors about passing the wrong type of parameter, or too few parameters.
 
+```fsharp
 addTwoParams (1,2)  // trying to pass a single tuple rather than two args
    // error FS0001: This expression was expected to have type
    //               int but here has type 'a * 'b    
-The compiler treats (1,2) as a generic tuple, which it attempts to pass to "addTwoParams". Then it complains that the first parameter of addTwoParams is an int, and we're trying to pass a tuple.
+```
+The compiler treats `(1,2)` as a generic tuple, which it attempts to pass to "`addTwoParams`". Then it complains that the first parameter of `addTwoParams` is an int, and we're trying to pass a tuple.
 
 If you attempt to pass two arguments to a function expecting one tuple, you will get another obscure error.
 
+```fsharp
 addTuple 1 2   // trying to pass two args rather than one tuple
   // error FS0003: This value is not a function and cannot be applied
+```
 
 ### Watch out for too few or too many arguments
 The F# compiler will not complain if you pass too few arguments to a function (in fact “partial application” is an important feature), but if you don’t understand what is going on, you will often get strange “type mismatch” errors later.
@@ -36,28 +42,37 @@ This is a very important topic – it is critical that you understand how partia
 ### Use semicolons for list separators
 In the few places where F# needs an explicit separator character, such as lists and records, the semicolon is used. Commas are never used. (Like a broken record, I will remind you that commas are for tuples).
 
+```fsharp
 let list1 = [1,2,3]    // wrong! This is a ONE-element list containing 
                        // a three-element tuple
 let list1 = [1;2;3]    // correct
 
 type Customer = {Name:string, Address: string}  // wrong
 type Customer = {Name:string; Address: string}  // correct
-Don’t use ! for not or != for not-equal
+```
+
+### Don’t use ! for not or != for not-equal
 The exclamation point symbol is not the “NOT” operator. It is the deferencing operator for mutable references. If you use it by mistake, you will get the following error:
 
+```fsharp
 let y = true
 let z = !y
 // => error FS0001: This expression was expected to have 
 //    type 'a ref but here has type bool    
+```
 The correct construction is to use the “not” keyword. Think SQL or VB syntax rather than C syntax.
 
+```fsharp
 let y = true
 let z = not y       //correct
+```
 And for “not equal”, use “<>”, again like SQL or VB.
-
+```fsharp
 let z = 1 <> 2      //correct
-Don’t use = for assignment
-If you are using mutable values, the assignment operation is written "<-". If you use the equals symbol you might not even get an error, just an unexpected result.
+```
+
+# Don’t use = for assignment
+If you are using mutable values, the assignment operation is written "`<-`". If you use the equals symbol you might not even get an error, just an unexpected result.
 
 let mutable x = 1
 x = x + 1          // returns false. x is not equal to x+1 
