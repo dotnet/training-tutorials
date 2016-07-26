@@ -1,26 +1,17 @@
 Troubleshooting F#
 =====
-As the saying goes, “if it compiles, it's correct”, but it can be extremely frustrating just trying to get the code to compile at all! So this page is devoted to helping you troubleshoot your F# code.
+## Common Errors
+In software development, attention to detail is critical. Small mistakes can cause an otherwise correct program to fail to build, much less run. The rules of a programming language like: the keywords it uses, the order in which they can appear, whether or not they're case sensitive, and how to define scopes and statements are collectively referred to as the language's syntax. Syntax errors are usually caught when you build the program, and will result in errors that you'll need to understand in order to correct. To demonstrate some of these errors, so you will know how to address them when you see them in later programs you write, you can intentionally introduce problems in your Program.cs file.
 
-I will first present some general advice on troubleshooting and some of the most common errors that beginners make. After that, I will describe each of the common error messages in detail, and give examples of how they can occur and how to correct them.
-
-(Jump to the error numbers)
-
-General guidelines for troubleshooting
-By far the most important thing you can do is to take the time and effort to understand exactly how F# works, especially the core concepts involving functions and the type system. So please read and reread the series "thinking functionally" and "understanding F# types", play with the examples, and get comfortable with the ideas before you try to start doing serious coding. If you don’t understand how functions and types work, then the compiler errors will not make any sense.
-
-If you are coming from an imperative language such as C#, you may have developed some bad habits by relying on the debugger to find and fix incorrect code. In F#, you will probably not get that far, because the compiler is so much stricter in many ways. And of course, there is no tool to “debug” the compiler and step through its processing. The best tool for debugging compiler errors is your brain, and F# forces you to use it!
-
-Nevertheless, there are a number of extremely common errors that beginners make, and I will quickly go through them.
-
-Don’t use parentheses when calling a function
+### Don’t use parentheses when calling a function
 In F#, whitespace is the standard separator for function parameters. You will rarely need to use parentheses, and in particular, do not use parentheses when calling a function.
 
 let add x y = x + y
 let result = add (1 2)  //wrong
     // error FS0003: This value is not a function and cannot be applied
 let result = add 1 2    //correct
-Don’t mix up tuples with multiple parameters
+
+### Don’t mix up tuples with multiple parameters
 If it has a comma, it is a tuple. And a tuple is one object not two. So you will get errors about passing the wrong type of parameter, or too few parameters.
 
 addTwoParams (1,2)  // trying to pass a single tuple rather than two args
@@ -32,7 +23,8 @@ If you attempt to pass two arguments to a function expecting one tuple, you will
 
 addTuple 1 2   // trying to pass two args rather than one tuple
   // error FS0003: This value is not a function and cannot be applied
-Watch out for too few or too many arguments
+
+### Watch out for too few or too many arguments
 The F# compiler will not complain if you pass too few arguments to a function (in fact “partial application” is an important feature), but if you don’t understand what is going on, you will often get strange “type mismatch” errors later.
 
 Similarly the error for having too many arguments is typically “This value is not a function” rather than a more straightforward error.
@@ -41,7 +33,7 @@ The “printf” family of functions is very strict in this respect. The argumen
 
 This is a very important topic – it is critical that you understand how partial application works. See the series "thinking functionally" for a more detailed discussion.
 
-Use semicolons for list separators
+### Use semicolons for list separators
 In the few places where F# needs an explicit separator character, such as lists and records, the semicolon is used. Commas are never used. (Like a broken record, I will remind you that commas are for tuples).
 
 let list1 = [1,2,3]    // wrong! This is a ONE-element list containing 
