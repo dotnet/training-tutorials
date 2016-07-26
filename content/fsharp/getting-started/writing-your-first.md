@@ -1,5 +1,5 @@
 # Writing Your First F# Program
-by [Steve Smith](http://deviq.com/me/steve-smith)
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 ## Getting and Installing .NET
 
@@ -51,7 +51,7 @@ let main argv =
 
 ```
 
-It's tradition in programming to have your first program in a new language or platform display "Hello World!". You can run your new C# application by typing ``dotnet restore``, which will bring in any dependencies it has via [NuGet](http://nuget.org), and then type ``dotnet run``:
+It's tradition in programming to have your first program in a new language or platform display "Hello World!". You can run your new F# application by typing ``dotnet restore``, which will bring in any dependencies it has via [NuGet](http://nuget.org), and then type ``dotnet run``:
 
     dotnet restore
     (packages are restored)
@@ -60,22 +60,22 @@ It's tradition in programming to have your first program in a new language or pl
     Hello World!
 
 You can also build your application using ``dotnet build``. Calling ``dotnet run`` will automatically build the application if necessary (or if all files are up to date, it will just run the application).
+<!--
+## Creating an Application Using Visual Studio (this functionality hasn't been added yet)
 
-## Creating an Application Using Visual Studio
-
-To create your first C# application in Visual Studio, start by creating a new project. You can do this from the Start screen, or use the menu and select File -> New -> Project.
+To create your first F# application in Visual Studio, start by creating a new project. You can do this from the Start screen, or use the menu and select File -> New -> Project.
 
 ![File-New Project](images/vs-file-new-project.png)
 
-The *New Project* dialog appears. In the left menu, select Templates, Visual C#, .NET Core. Then choose to create a Console Application (.NET Core):
+The *New Project* dialog appears. In the left menu, select Templates, Visual F#, .NET Core. Then choose to create a Console Application (.NET Core):
 ![New Project Dialog](images/vs-new-project-dialog-console.png)
 
-Once the project loads, the editor will open *Program.cs*, which contains an empty program. Inside the { } braces,
+Once the project loads, the editor will open *Program.fs*, which contains an empty program. Inside the { } braces,
 ![Add Code Here](images/add-code-here.png)
 
 add a line that reads ``Console.WriteLine("Hello World!");``
 
-Remember that C# is a case-sensitive language, so make sure you capitalize the 'C' in Console and the 'W' and 'L' in 'WriteLine'. Now you can build the project by selecting Build -> Build Solution from the main menu or using the Ctrl+Shift+B shortcut. To run the program, use the Ctrl+F5 shortcut (or Debug -> Start Without Debugging) to start the program without debugging. You should see a new console dialog appear, with the following text:
+Remember that F# is a case-sensitive language, so make sure you capitalize the 'C' in Console and the 'W' and 'L' in 'WriteLine'. Now you can build the project by selecting Build -> Build Solution from the main menu or using the Ctrl+Shift+B shortcut. To run the program, use the Ctrl+F5 shortcut (or Debug -> Start Without Debugging) to start the program without debugging. You should see a new console dialog appear, with the following text:
 
 ![Hello World Output](images/hello-world-output.png)
 
@@ -89,14 +89,14 @@ From the window that appears, type
 You should see the following output:
 
 ![Command Line Output](images/vs-command-line-output.png)
-
+-->
 ## Creating an Application Using Visual Studio Code
 
 To get started using Visual Studio Code, the simple approach is to create the new application using the command prompt. Follow the instructions above in the *Creating an Application Using the Command Line Interface (CLI)* section. Then, open Visual Studio Code and in the menu select File -> Open Folder.
 
 ![VS Code Open Folder](images/vs-code-open-folder.png)
 
-Click on *Program.cs* in the EXPLORER tab to edit it:
+Click on *Program.fs* in the EXPLORER tab to edit it:
 
 ![VS Code Program.cs](images/vs-code-program.png)
 
