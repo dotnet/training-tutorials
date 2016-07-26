@@ -98,7 +98,7 @@ To get started using Visual Studio Code, the simple approach is to create the ne
 
 Click on *Program.fs* in the EXPLORER tab to edit it:
 
-![VS Code Program.cs](images/vs-code-program.png)
+![VS Code Program.cs](images/vs-code-program.PNG)
 
 You can configure tasks to debug or run your program in Visual Studio Code, but that's beyond this lesson. For now, to run the application after you make changes (and save them) in Visual Studio Code, simply use ``dotnet run`` from the command line.
 
