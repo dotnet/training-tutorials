@@ -71,13 +71,14 @@ And for “not equal”, use “<>”, again like SQL or VB.
 let z = 1 <> 2      //correct
 ```
 
-# Don’t use = for assignment
+### Don’t use = for assignment
 If you are using mutable values, the assignment operation is written "`<-`". If you use the equals symbol you might not even get an error, just an unexpected result.
 
 let mutable x = 1
 x = x + 1          // returns false. x is not equal to x+1 
 x <- x + 1         // assigns x+1 to x 
-Watch out for hidden tab characters
+
+### Watch out for hidden tab characters
 The indenting rules are very straightforward, and it is easy to get the hang of them. But you are not allowed to use tabs, only spaces.
 
 let add x y =   
@@ -85,7 +86,7 @@ let add x y =
 // => error FS1161: TABs are not allowed in F# code 
 Be sure to set your editor to convert tabs to spaces. And watch out if you are pasting code in from elsewhere. If you do run into persistent problems with a bit of code, try removing the whitespace and re-adding it.
 
-Don’t mistake simple values for function values
+### Don’t mistake simple values for function values
 If you are trying to create a function pointer or delegate, watch out that you don’t accidentally create a simple value that has already been evaluated.
 
 If you want a parameterless function that you can reuse, you will need to explicitly pass a unit parameter, or define it as a lambda.
@@ -101,7 +102,7 @@ let randomFn() =  r.Next()  //correct
 let randomFn   =  fun () -> r.Next()  //correct
 See the series "thinking functionally" for more discussion of parameterless functions.
 
-Tips for troubleshooting "not enough information" errors
+### Tips for troubleshooting "not enough information" errors
 The F# compiler is currently a one-pass left-to-right compiler, and so type information later in the program is unavailable to the compiler if it hasn't been parsed yet.
 
 A number of errors can be caused by this, such as “FS0072: Lookup on object of indeterminate type” and “FS0041: A unique overload for could not be determined”. The suggested fixes for each of these specific cases are described below, but there are some general principles that can help if the compiler is complaining about missing types or not enough information. These guidelines are:
@@ -112,8 +113,9 @@ Annotate as needed. One common trick is to add annotations until everything work
 Do try to avoid annotating if possible. Not only is it not aesthetically pleasing, but it makes the code more brittle. It is a lot easier to change types if there are no explicit dependencies on them.
 
 
-F# compiler errors
-A listing of common errors, ordered by error number
+## F# compiler errors
+*A listing of common errors, ordered by error number*
+
 Here is a list of the major errors that seem to me worth documenting. I have not documented any errors that are self explanatory, only those that seem obscure to beginners.
 
 I will continue to add to the list in the future, and I welcome any suggestions for additions.
