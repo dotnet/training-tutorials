@@ -1,5 +1,5 @@
-# Troubleshooting F#
-
+Troubleshooting F#
+=====
 As the saying goes, “if it compiles, it's correct”, but it can be extremely frustrating just trying to get the code to compile at all! So this page is devoted to helping you troubleshoot your F# code.
 
 I will first present some general advice on troubleshooting and some of the most common errors that beginners make. After that, I will describe each of the common error messages in detail, and give examples of how they can occur and how to correct them.
