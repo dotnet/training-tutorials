@@ -1,5 +1,5 @@
 # Operator Definition and Overloading
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Operator overloading is a feature available in many programming languages. In F# not only can you overload existing operators, you can actually define new ones. The ability to define infix operators provides you with a greater degree of control over the syntax of your programs, making it possible to create expressions that are better suited to the problem at hand.
 A brilliant example of this is the ubiquitous F# forward pipe operator (indicated as |>), which is not native in the language, but is instead defined as part of the F# library. The forward pipe operator is defined as follows:

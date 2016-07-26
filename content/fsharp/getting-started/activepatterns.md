@@ -1,5 +1,5 @@
 # Active Patterns
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Pattern matching is a major feature of F# and once you use it you won't want to live without it. When you have a value, you can deconstruct it and bind with names in such a seamless way that you will forget all the code you would have needed in other programming languages.
 

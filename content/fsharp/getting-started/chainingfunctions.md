@@ -1,5 +1,5 @@
 # Chaining Functions with the Forward Pipe Operator
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 In the last lesson, you learned to create simple functions. You can create fairly sophisticated procedural programs with just this knowledge, but F# becomes truly powerful when you combine simple functions to build more complex computations. In this lesson, you'll learn to go beyond the fundamentals of F# to solve more interesting problems.
 

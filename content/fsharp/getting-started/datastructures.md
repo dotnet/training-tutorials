@@ -1,5 +1,5 @@
 # Chaining Functions with the Forward Pipe Operator
-by Microsofr Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Now that you know how to perform some interesting computations in F#, you need a more sophisticated way to store the results of those computations to pass from function to function. F# provides many different ways to represent data including a full object oriented type system, but in this lesson, you'll learn about the most lightweight options.
 

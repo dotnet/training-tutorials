@@ -1,5 +1,5 @@
 # A Little Bit of Currying
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 If you have a background in any of the popular programming languages, it may seem strange that function arguments in F# are passed without parentheses, and are separated by spaces rather than commas. Let's explore the essence of this notation to fully understand the implications, and the options you have when programming your F# abstractions. Consider the following function:
 

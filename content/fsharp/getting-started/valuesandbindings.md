@@ -1,5 +1,5 @@
 # Bindings and Values and REPLs! Oh My!
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 With Try F#, writing your first line of F# code is much easier than it is with many other languages. To get started, try typing the following code into the Script Window and pressing the *run* button or, *ctrl+enter*. If you don't feel like typing, you can also press the *load* and *run* button to execute the code.
 

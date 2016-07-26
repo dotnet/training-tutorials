@@ -1,5 +1,5 @@
 # Fun with Functional Functions
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Now that you've taken your first steps in F#, it's time to introduce one of the most basic, yet most powerful building blocks of F#: functions. In the previous lesson, you saw how you can use let to bind a name to a value, but you can also use let to bind a name to a function.
 

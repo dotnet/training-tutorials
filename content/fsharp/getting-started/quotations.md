@@ -1,5 +1,5 @@
 # Quotations: Leveraging the Language Parser to Define Your Own Language
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 In a programmer's life (perhaps also in yours) the opportunity arises to develop a program that manipulates another program. Usually this is done for the purpose of automating some tedious task at hand in the normal development lifecycle. Eventually you'll end up writing an interpreter of some language where the ability to define a special syntax provides more freedom and flexibility than a library from an existing programming language.
 F# allows you to quote a fragment of program that returns a value representing it:

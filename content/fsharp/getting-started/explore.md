@@ -1,4 +1,5 @@
 Explore F#
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 ======
 
 "***F# developers regularly solve problems in days that would take weeks using more traditional languages...***" Finance Trading Company

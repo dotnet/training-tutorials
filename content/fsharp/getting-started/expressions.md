@@ -1,5 +1,5 @@
 # Computation Expressions
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Now that we have learned how to customize language syntax by means of currying, operator definition, and active patterns, we can grasp the basics of a powerful mechanism known as computation expressions. You can use computation expressions to alter the standard evaluation rule of the language and define sub-languages that model certain programming patterns.
 
