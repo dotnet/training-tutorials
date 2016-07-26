@@ -74,16 +74,19 @@ let z = 1 <> 2      //correct
 ### Don’t use = for assignment
 If you are using mutable values, the assignment operation is written "`<-`". If you use the equals symbol you might not even get an error, just an unexpected result.
 
+```fsharp
 let mutable x = 1
 x = x + 1          // returns false. x is not equal to x+1 
 x <- x + 1         // assigns x+1 to x 
-
+```
 ### Watch out for hidden tab characters
 The indenting rules are very straightforward, and it is easy to get the hang of them. But you are not allowed to use tabs, only spaces.
 
+```fsharp
 let add x y =   
 {tab}x + y   
 // => error FS1161: TABs are not allowed in F# code 
+```
 Be sure to set your editor to convert tabs to spaces. And watch out if you are pasting code in from elsewhere. If you do run into persistent problems with a bit of code, try removing the whitespace and re-adding it.
 
 ### Don’t mistake simple values for function values
@@ -91,6 +94,7 @@ If you are trying to create a function pointer or delegate, watch out that you d
 
 If you want a parameterless function that you can reuse, you will need to explicitly pass a unit parameter, or define it as a lambda.
 
+```fsharp
 let reader = new System.IO.StringReader("hello")
 let nextLineFn   =  reader.ReadLine()  //wrong
 let nextLineFn() =  reader.ReadLine()  //correct
@@ -100,6 +104,7 @@ let r = new System.Random()
 let randomFn   =  r.Next()  //wrong
 let randomFn() =  r.Next()  //correct
 let randomFn   =  fun () -> r.Next()  //correct
+```
 See the series "thinking functionally" for more discussion of parameterless functions.
 
 ### Tips for troubleshooting "not enough information" errors
