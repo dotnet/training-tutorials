@@ -1,5 +1,5 @@
 # Getting Started with F# 
-by Microsoft Research
+by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 ## Who Should Read This
 
