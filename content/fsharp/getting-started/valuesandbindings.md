@@ -10,7 +10,12 @@ let lucky = 3 + 4
 
 Nice job! You have just executed your first line of F# code. If everything went smoothly, the Output Window should have printed `val lucky : int = 7`. Behind the scenes, Try F# executed your simple program using what is known as a Read Evaluate Print Loop (REPL). If you've done any programming in a language with a REPL, you know that they are handy tools to have for exploratory programming. The REPL will remember the result of each command that you give it, so you can build up programs incrementally instead of having to run them all at once. Execute the following code to see how it works. You can execute just one line of code by highlighting it in the Script Window and clicking the *run* button or pressing *Ctrl+Enter*.
 
-```fsharp
+```{.snippet}
+let unlucky = lucky + 6
+```
+```{.REPL}
+let lucky = 3 + 4
+
 let unlucky = lucky + 6
 ```
 
