@@ -1,4 +1,5 @@
 # Computation Expressions
+
 by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Now that we have learned how to customize language syntax by means of currying, operator definition, and active patterns, we can grasp the basics of a powerful mechanism known as computation expressions. You can use computation expressions to alter the standard evaluation rule of the language and define sub-languages that model certain programming patterns.
@@ -20,7 +21,7 @@ let N = seq {
         yield !n
         n := !n + 1
 }
-N |> Seq.take(10) |> Seq.iter 
+N |> Seq.take(10) |> Seq.iter
     (fun v -> printfn "%d" v)
 ```
 
@@ -34,9 +35,9 @@ How is it possible for the sequence syntax to alter the semantics of the languag
 
 ```fsharp
 let n = ref 0
-seq.While ((fun () -> true), 
+seq.While ((fun () -> true),
     seq.Delay (fun () ->
-        seq.Combine(seq.Yield(!n), 
+        seq.Combine(seq.Yield(!n),
             seq.Delay(fun() -> n := !n + 1))))
 ```
 
@@ -66,7 +67,7 @@ type AgeBuilder() =
 let age = new AgeBuilder()
 
 let willBeThere a y =
-  age { 
+  age {
     let! current = PossiblyAlive a
     let! future = PossiblyAlive (y + a)
 
@@ -81,7 +82,7 @@ If you play with the `willBeThere` function, you'll find out that you will only 
 
 ```fsharp
 let willBeThere2 a y =
-  age.Delay(fun () -> 
+  age.Delay(fun () ->
     age.Bind(PossiblyAlive a, fun current ->
       age.Bind(PossiblyAlive (y+a), fun future ->
         age.Return(future))))

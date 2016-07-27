@@ -1,10 +1,12 @@
 # Operator Definition and Overloading
+
 by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Operator overloading is a feature available in many programming languages. In F# not only can you overload existing operators, you can actually define new ones. The ability to define infix operators provides you with a greater degree of control over the syntax of your programs, making it possible to create expressions that are better suited to the problem at hand.
 A brilliant example of this is the ubiquitous F# forward pipe operator (indicated as |>), which is not native in the language, but is instead defined as part of the F# library. The forward pipe operator is defined as follows:
 
 ## The Forward Pipe Operator Definition
+
 let (|>) x f = f x
 Load
 The operator is infix and simply indicates that the argument comes before the function that should receive it. Note that in F# all functions take one argument (as discussed in the previous lesson on currying), thus the operator can be applied to all functions.
@@ -12,6 +14,7 @@ F# defines a grammar for operators that allows you to combine a sequence of symb
 Although the definition of new operators can lead to more concise code, defining new operators should be undertaken with care since this practice has the potential to obfuscate code. An example of this can be seen in regular expressions, which can be effective when paired with a lightweight syntax (as also seen in Perl). Let's see how to define operators to simplify the use of regular expressions in F#:
 
 ## Regular Expression Operators
+
 open System.Text.RegularExpressions
 
 //test match
@@ -26,10 +29,11 @@ Load
 Now let's test these operators:
 
 ## Test of Operators
+
 let input = "F# 3.0 is a very cool programming language"
 if input ^? @"F# [\d\.]+" then
   let m = input ^! @"F# ([\d\.]+)"
-  printfn "matched %d groups and the F# version is %s" 
+  printfn "matched %d groups and the F# version is %s"
      !@m (m^@1)
 Load
 Two things are missing from the typical Perl usage: a syntax for substitution and the ability to specify regex options such as ignore case (typically indicated by letters like i, s, and g). We can easily extend our definition to allow specifying a string with options:
@@ -69,11 +73,12 @@ The syntax we used to introduce new operators can be also be used to redefine th
 Operator overloading is possible only for some operators (see Operator Overloading (F#) for more information), and it must be done within the type definition. For instance here is an implementation of the Point type which defines the sum operator among points without disrupting any other types:
 
 ## Overloading an Operator Within a Type
+
 type Point(x:float, y:float) =
   member this.X = x
   member this.Y = y
 
-  static member (+) (p1:Point, p2:Point) = 
+  static member (+) (p1:Point, p2:Point) =
       new Point(p1.X + p2.X, p1.Y+p2.Y)
 
 let p1, p2 = new Point(0., 1.), new Point(1.,1.)

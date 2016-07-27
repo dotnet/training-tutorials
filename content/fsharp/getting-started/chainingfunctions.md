@@ -1,9 +1,11 @@
 # Chaining Functions with the Forward Pipe Operator
+
 by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 In the last lesson, you learned to create simple functions. You can create fairly sophisticated procedural programs with just this knowledge, but F# becomes truly powerful when you combine simple functions to build more complex computations. In this lesson, you'll learn to go beyond the fundamentals of F# to solve more interesting problems.
 
 ## F# Lists
+
 One of the best ways to experience the power of combining functions is to perform computations across a set of data. In F#, one of the ways to store a data set is to use a List. F# supports a lightweight list creation syntax.
 
 ```fsharp
@@ -19,6 +21,7 @@ let firstHundred = [0..100]
 As you probably expected, the Output Window reveals that firstHundred is a list containing the numbers zero through one hundred. If you have a Computer Science background, note that F# lists are singly linked lists.
 
 ## Working with Lists
+
 F# provides a suite of functions for working with data in lists. You can see all of these methods by typing List followed by a . to bring up intellisense. The List module provides some powerful methods for operation on elements in a list.
 
 ```fsharp
@@ -32,17 +35,18 @@ List.map executes a mapping function on all of the values in a list and projects
 
 ```fsharp
 let firstHundred = [0..100]
-List.map (fun x -> x * 2) 
+List.map (fun x -> x * 2)
     (List.filter (fun x -> x % 2 = 0) firstHundred)
 ```
 
 In this example, the List.filter excludes all of the odd numbers from firstHundred before List.map doubles them. The result is a new list containing the first 50 even numbers doubled.
 
 ## Introducing the Forward Pipe Operator
+
 Chaining together the higher ordered functions in the List module is powerful, but it quickly becomes difficult to read if you have to nest multiple functions on the same line.
 
 ```fsharp
-List.sum (List.map (fun x -> x * 2) 
+List.sum (List.map (fun x -> x * 2)
     (List.filter (fun x -> x % 2 = 0) [0..100]))
 ```
 
@@ -62,7 +66,7 @@ Believe it or not, you now possess enough F# skills to solve some fairly complic
 ```fsharp
 //"Date,Open,High,Low,Close,Volume,Adj Close"
 let stockData =
-    [ 
+    [
       "2012-03-30,32.40,32.41,32.04,32.26,31749400,32.26";
       "2012-03-29,32.06,32.19,31.81,32.12,37038500,32.12";
       "2012-03-28,32.52,32.70,32.04,32.19,41344800,32.19";
@@ -124,4 +128,5 @@ stockData
 ```
 
 ## Summary
+
 In this lesson, you learned to chain functions to perform complicated computations. You explored the power of higher ordered functions in the List module, learned how to better express your program's intent with the forward pipe operator, and built a program to analyze stock data. The basics that you gathered in this lesson will serve you well as you continue in your F# journey. Although these basics may seem simple, mastering the simple will allow you to take on the complex with ease. Give yourself a pat on the back; you've just learned how to express complicated computations in just a few lines of code!

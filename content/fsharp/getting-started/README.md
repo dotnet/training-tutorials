@@ -1,4 +1,5 @@
-# Getting Started with F# 
+# Getting Started with F#
+
 by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 ## Who Should Read This
@@ -21,4 +22,4 @@ This tutorial will cover the following topics:
 
 <!-- [Installing .NET and Tools](writing-your-first.md) -->
 <!-- [Types and Variables w/Console.ReadLine](types-variables-user-input.md) -->
-<!-- [Troubleshooting](troubleshooting.md) --> 
+<!-- [Troubleshooting](troubleshooting.md) -->
