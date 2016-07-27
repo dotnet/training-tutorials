@@ -4,7 +4,10 @@ by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 With Try F#, writing your first line of F# code is much easier than it is with many other languages. To get started, try typing the following code into the Script Window and pressing the *run* button or, *ctrl+enter*. If you don't feel like typing, you can also press the *load* and *run* button to execute the code.
 
-```fsharp
+```{.snippet}
+let lucky = 3 + 4
+```
+```{.REPL}
 let lucky = 3 + 4
 ```
 
@@ -27,14 +30,22 @@ Don't be afraid to use the REPL to execute code that you're curious about as you
 
 Now that you're a master of executing F# code, let's take a closer look at the results of the statements that you executed. You can intuitively observe that the REPL allowed you to do basic math, but there are also some less obvious things to note. First and foremost is the `let` keyword. `let` is used to bind a name to a value in F#. If you've programmed in other languages, you might expect that you can change the value of this binding, but you'd be wrong. Execute the following code to see what happens when you try to modify a `let` binding.
 
-```fsharp
+```{.snippet}
+let duplicated = "original value"
+let duplicated = "new value"
+```
+```{.REPL}
 let duplicated = "original value"
 let duplicated = "new value"
 ```
 
 You get a duplicate definition error because `let` bindings are *immutable* in F#. It is similar to declaring a variable `const` or `final` in other languages. Immutable bindings make your code simpler and easier to reason about, and they should be natural to you if you're coming from a math background. However, if you've programmed in other languages, you might be wondering if you can create a binding that you can modify. F# does allow for mutable bindings, but you must be explicit about declaring them.
 
-```fsharp
+```{.snippet}
+let mutable modifiable = "original value"
+modifiable <- "new value"
+```
+```{.REPL}
 let mutable modifiable = "original value"
 modifiable <- "new value"
 ```
@@ -43,11 +54,17 @@ The `mutable` keyword denotes that `modifiable` is a mutable binding, and the as
 Shadowing
 As you build up a program in the REPL, you may want to overwrite a let binding that you previously made. You can do that using a technique called shadowing. Execute the following two code snippets separately for an example of how to do that.
 
-```fsharp
+```{.snippet}
+let shadowed = "original value"
+```
+```{.REPL}
 let shadowed = "original value"
 ```
 
-```fsharp
+```{.snippet}
+let shadowed = "new value"
+```
+```{.REPL}
 let shadowed = "new value"
 ```
 
@@ -57,7 +74,12 @@ By running the two snippets separately, you avoided the duplicate definition err
 
 Between the REPL and the lightweight let syntax, it's easy to mistake F# for a dynamically typed language like Ruby or Python. However, F# is actually a statically typed language like C#, Java, and C++. Look closely at the output of the following snippet.
 
-```fsharp
+```{.snippet}
+let anInt = 10
+let aFloat = 20.0
+let aString = "I'm a string!"
+```
+```{.REPL}
 let anInt = 10
 let aFloat = 20.0
 let aString = "I'm a string!"
@@ -69,20 +91,29 @@ The Output Window shows the types of each binding along with its value. For exam
 
 Sometimes you may want to print a message to users of your programs. In F#, you can do that with `printfn`.
 
-```fsharp
+```{.snippet}
+printfn "hello world from Try F#!"
+```
+```{.REPL}
 printfn "hello world from Try F#!"
 ```
 
 The above code snippet prints a beautiful message to the Output Window. You can also use `printfn` statements to debug your programs by printing values. You do that using special formatting characters.
 
-```fsharp
+```{.snippet}
+printfn "The answer is %d" 42
+```
+```{.snippet}
 printfn "The answer is %d" 42
 ```
 
 `%d` tells `printfn` to insert an integer value into the output string, so F# will print "The answer is 42" in the Output Window.
 Console logging is common to almost every programming language, but F# has a feature that you might not expect. In F#, your formatting strings are type checked against their arguments to avoid programming mistakes. For example, the following will result in an error.
 
-```fsharp
+```{.snippet}
+printfn "The answer is %d" "not an integer!"
+```
+```{.snippet}
 printfn "The answer is %d" "not an integer!"
 ```
 
