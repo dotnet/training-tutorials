@@ -61,7 +61,7 @@ It's tradition in programming to have your first program in a new language or pl
 
 You can also build your application using ``dotnet build``. Calling ``dotnet run`` will automatically build the application if necessary (or if all files are up to date, it will just run the application).
 <!--
-## Creating an Application Using Visual Studio (this functionality hasn't been added yet)
+## Creating an Application Using Visual Studio (this functionality WON'T BE ADDED UNTIL VS "15")
 
 To create your first F# application in Visual Studio, start by creating a new project. You can do this from the Start screen, or use the menu and select File -> New -> Project.
 
