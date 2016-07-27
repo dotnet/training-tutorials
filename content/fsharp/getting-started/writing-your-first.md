@@ -1,9 +1,10 @@
 # Writing Your First F# Program
+
 by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 ## Getting and Installing .NET
 
-If you haven't already installed .NET, you'll need to do so. .NET runs on Windows, Linux, and Mac and can be used to build apps on mobile platforms including iOS and Android. To get started, navigate to http://dot.net and download the appropriate .NET Core SDK Installer for your system.
+If you haven't already installed .NET, you'll need to do so. .NET runs on Windows, Linux, and Mac and can be used to build apps on mobile platforms including iOS and Android. To get started, navigate to <http://dot.net> and download the appropriate .NET Core SDK Installer for your system.
 
 You can also [download the tools](https://www.microsoft.com/net/download#tools) needed to get started, including free tools like Visual Studio Community, Visual Studio Code, and Xamarin Studio.
 
@@ -32,6 +33,7 @@ You should see output like the following:
 > Created new F# project in {your folder}.
 
 If you view the files in your current folder, you should see:
+
 - Program.fs
 - project.json
 - NuGet.Config
@@ -44,7 +46,7 @@ If you view the files in your current folder, you should see:
 open System
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     printfn "Hello World!"
     printfn "%A" argv
     0 // return an integer exit code
@@ -90,6 +92,7 @@ You should see the following output:
 
 ![Command Line Output](images/vs-command-line-output.png)
 -->
+
 ## Creating an Application Using Visual Studio Code
 
 To get started using Visual Studio Code, the simple approach is to create the new application using the command prompt. Follow the instructions above in the *Creating an Application Using the Command Line Interface (CLI)* section. Then, open Visual Studio Code and in the menu select File -> Open Folder.

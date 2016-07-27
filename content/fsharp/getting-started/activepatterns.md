@@ -1,4 +1,5 @@
 # Active Patterns
+
 by [Microsoft Research](https://www.microsoft.com/en-us/research/)
 
 Pattern matching is a major feature of F# and once you use it you won't want to live without it. When you have a value, you can deconstruct it and bind with names in such a seamless way that you will forget all the code you would have needed in other programming languages.
@@ -11,9 +12,9 @@ Here is a simple example that looks for specific vectors in a list of triples:
 let input = [ (1., 2., 0.); (2., 1., 1.); (3., 0., 1.) ]
 let rec search lst =
   match lst with
-  | (1., _, z) :: tail -> 
+  | (1., _, z) :: tail ->
       printfn "found x=1. and z=%f" z; search tail
-  | (2., _, _) :: tail -> 
+  | (2., _, _) :: tail ->
       printfn "found x=2."; search tail
   | _ :: tail -> search tail
   | [] -> printfn "done."
@@ -21,6 +22,7 @@ search input
 ```
 
 You can try changing the values of the input list in order observe different behaviors of the search function. What we mainly appreciate here is the ability to do four things at once:
+
 * Unpack the list in a head and tail
 * Give a sort of template to the head value (a triple whose first argument is a float)
 * Bind an element of the head triple to a name (in this case z)
@@ -33,8 +35,9 @@ The active patterns feature offers a way to customize the F# pattern matching sy
 ## The Norm Active Pattern
 
 This example uses an active pattern to find a vector or [versor](https://en.wikipedia.org/wiki/Versor) within a given list.
+
 ```fsharp
-let (|Norm|) (a:float, b:float, c:float) = 
+let (|Norm|) (a:float, b:float, c:float) =
     sqrt(a*a + b*b + c*c)
 let v = (1., 0., 0.)
 match v with
@@ -47,9 +50,9 @@ Sometimes you may want to classify values, for instance vector vs. versor:
 ## Classification with Patterns
 
 ```fsharp
-let (|Vector|Versor|) 
-    (a:float, b:float, c:float) = 
-    if sqrt(a*a + b*b + c*c) = 1. then Versor 
+let (|Vector|Versor|)
+    (a:float, b:float, c:float) =
+    if sqrt(a*a + b*b + c*c) = 1. then Versor
         else Vector
 let v = (1., 0., 0.)
 match v with
@@ -62,15 +65,15 @@ You can also define incomplete classification patterns. The following pattern ma
 ## Incomplete Classification
 
 ```fsharp
-let rec isPalindrome (s:string) 
+let rec isPalindrome (s:string)
     (fromidx:int) (toidx:int) =
   if s = null then false
   elif toidx - fromidx < 2 then true
-  elif s.[fromidx] = s.[(toidx - 1)] then 
+  elif s.[fromidx] = s.[(toidx - 1)] then
       isPalindrome s (fromidx + 1) (toidx - 1)
   else false
-let (|PALINDROME|_|) (s:string) = 
-    if isPalindrome s 0 s.Length then Some s 
+let (|PALINDROME|_|) (s:string) =
+    if isPalindrome s 0 s.Length then Some s
         else None
 match "aba" with
 | PALINDROME(v) -> printfn "The string %s is palindrome" v
