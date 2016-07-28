@@ -111,6 +111,7 @@ let randomFn   =  fun () -> r.Next()  //correct
 ```
 
 ### Tips for troubleshooting "not enough information" errors
+
 The F# compiler is currently a one-pass left-to-right compiler, and so type information later in the program is unavailable to the compiler if it hasn't been parsed yet.
 
 A number of errors can be caused by this, such as “FS0072: Lookup on object of indeterminate type” and “FS0041: A unique overload for could not be determined”. The suggested fixes for each of these specific cases are described below, but there are some general principles that can help if the compiler is complaining about missing types or not enough information. These guidelines are:
@@ -142,6 +143,7 @@ Here is a list of the major errors that have been documented. No errors have bee
 * FS0588: Block following this 'let' is unfinished
 
 ### FS0001: The type 'X' does not match the type 'Y'
+
 This is probably the most common error you will run into. It can manifest itself in a wide variety of contexts, so the most common problems have been grouped together with examples and fixes. Do pay attention to the error message, as it is normally quite explicit about what the problem is.
 
 | Error message | Possible causes |
@@ -161,6 +163,7 @@ This is probably the most common error you will run into. It can manifest itself
 | This expression was expected to have type (monadic type) but here has type 'b * 'c | L. let! error in computation expressions. |
 
 #### A. Can’t mix ints and floats
+
 Unlike C# and most imperative languages, ints and floats cannot be mixed in expressions. You will get a type error if you attempt this:
 
 ```fsharp
@@ -264,6 +267,7 @@ printfn "hello %s" 1.0
 //                  but here has type float    
 
 #### F. Inconsistent return types in branches or matches
+
 A common mistake is that if you have a branch or match expression, then every branch MUST return the same type. If not, you will get a type error.
 
 let f x = 
@@ -301,6 +305,7 @@ let f x =
   else I 42
 
 #### G. Watch out for type inference effects buried in a function
+
 A function may cause an unexpected type inference that ripples around your code. For example, in the following, the innocent print format string accidentally causes doSomething to expect a string.
 
 let doSomething x = 
@@ -315,6 +320,7 @@ The fix is to check the function signatures and drill down until you find the gu
 
 
 #### H. Have you used a comma instead of space or semicolon?
+
 If you are new to F#, you might accidentally use a comma instead of spaces to separate function arguments:
 
 // define a two parameter function
@@ -334,6 +340,7 @@ System.String.Compare("a","b")
 System.String.Compare "a" "b"
 
 #### I. Tuples must be the same type to be compared or pattern matched
+
 Tuples with different types cannot be compared. Trying to compare a tuple of type int * int, with a tuple of type int * string results in an error:
 
 let  t1 = (0, 1)
@@ -365,6 +372,7 @@ let result = f z
 //                  The type 'int' does not match the type 'string'
 
 #### J. Don’t use ! as the “not” operator
+
 If you use ! as a “not” operator, you will get a type error mentioning the word “ref”.
 
 let y = true
@@ -377,6 +385,7 @@ let y = true
 let z = not y   //correct
 
 #### K. Operator precedence (especially functions and pipes)
+
 If you mix up operator precedence, you may get type errors. Generally, function application is highest precedence compared to other operators, so you get an error in the case below:
 
 String.length "hello" + "world"
@@ -431,7 +440,8 @@ type wrapBuilder() =
         match wrapper with
         | Wrapped(innerThing) -> func innerThing
 
-FS0003: This value is not a function and cannot be applied
+### FS0003: This value is not a function and cannot be applied
+
 This error typically occurs when passing too many arguments to a function.
 
 let add1 x = x + 1
@@ -444,7 +454,8 @@ let (!!) x y = x + y
 1 !! 2                // failed !! cannot be used as an infix operator
 // error FS0003: This value is not a function and cannot be applied
 
-FS0008: This runtime coercion or type test involves an indeterminate type
+### FS0008: This runtime coercion or type test involves an indeterminate type
+
 You will often see this when attempting to use “:?” operator to match on a type.
 
 let detectType v =
@@ -467,7 +478,8 @@ let detectTypeBoxed v =
 detectTypeBoxed 1
 detectTypeBoxed 3.14
 
-FS0010: Unexpected identifier in binding
+### FS0010: Unexpected identifier in binding
+
 Typically caused by breaking the "offside" rule for aligning expressions in a block.
 
 //3456789
@@ -480,7 +492,8 @@ The fix is to align the code correctly!
 See also FS0588: Block following this 'let' is unfinished for another issue caused by alignment.
 
 
-FS0010: Incomplete structured construct
+### FS0010: Incomplete structured construct
+
 Often occurs if you are missing parentheses from a class constructor:
 
 type Something() =
@@ -508,11 +521,11 @@ namespace Customer  // FS0010: Incomplete structured construct
 // declare a type
 type Person= {First:string; Last:string}
 
-FS0013: The static coercion from type X to Y involves an indeterminate type
-This is generally caused by implic
+### FS0013: The static coercion from type X to Y involves an indeterminate type
 
 
-FS0020: This expression should have type 'unit'
+### FS0020: This expression should have type 'unit'
+
 This error is commonly found in two situations:
 
 Expressions that are not the last expression in the block
@@ -739,5 +752,3 @@ let f =
              // error FS0588: Block following this 
              // 'let' is unfinished
 The fix is to align the code correctly.
-
-See also FS0010: Unexpected identifier in binding for another issue caused by alignment.
