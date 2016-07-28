@@ -41,7 +41,7 @@ Similarly the error for having too many arguments is typically “This value is 
 
 The “printf” family of functions is very strict in this respect. The argument count must be exact.
 
-This is a very important topic – it is critical that you understand how partial application works. See the series "thinking functionally" for a more detailed discussion.
+This is a very important topic – it is critical that you understand how partial application works.
 
 ### Use semicolons for list separators
 In the few places where F# needs an explicit separator character, such as lists and records, the semicolon is used. Commas are never used. (commas are for tuples).
@@ -109,7 +109,6 @@ let randomFn   =  r.Next()  //wrong
 let randomFn() =  r.Next()  //correct
 let randomFn   =  fun () -> r.Next()  //correct
 ```
-See the series "thinking functionally" for more discussion of parameterless functions.
 
 ### Tips for troubleshooting "not enough information" errors
 The F# compiler is currently a one-pass left-to-right compiler, and so type information later in the program is unavailable to the compiler if it hasn't been parsed yet.
@@ -125,7 +124,7 @@ Do try to avoid annotating if possible. Not only is it not aesthetically pleasin
 ## F# compiler errors
 *A listing of common errors, ordered by error number*
 
-Here is a list of the major errors that seem to me worth documenting. No errors have been documented that are self explanatory, only those that seem obscure to beginners.
+Here is a list of the major errors that have been documented. No errors have been documented that are self explanatory, only those that seem obscure to beginners.
 
 FS0001: The type 'X' does not match the type 'Y'
 FS0003: This value is not a function and cannot be applied
@@ -145,22 +144,21 @@ FS0588: Block following this 'let' is unfinished
 FS0001: The type 'X' does not match the type 'Y'
 This is probably the most common error you will run into. It can manifest itself in a wide variety of contexts, so the most common problems have been grouped together with examples and fixes. Do pay attention to the error message, as it is normally quite explicit about what the problem is.
 
-Error message	Possible causes
-The type 'float' does not match the type 'int'	A. Can’t mix floats and ints
-The type 'int' does not support any operators named 'DivideByInt'	A. Can’t mix floats and ints.
-The type 'X' is not compatible with any of the types	B. Using the wrong numeric type.
-This type (function type) does not match the type (simple type). Note: function types have a arrow in them, like 'a -> 'b.	C. Passing too many arguments to a function.
-This expression was expected to have (function type) but here has (simple type)	C. Passing too many arguments to a function.
-This expression was expected to have (N part function) but here has (N-1 part function)	C. Passing too many arguments to a function.
-This expression was expected to have (simple type) but here has (function type)	D. Passing too few arguments to a function.
-This expression was expected to have (type) but here has (other type)	E. Straightforward type mismatch.
-F. Inconsistent returns in branches or matches.
-G. Watch out for type inference effects buried in a function.
-Type mismatch. Expecting a (simple type) but given a (tuple type). Note: tuple types have a star in them, like 'a * 'b.	H. Have you used a comma instead of space or semicolon?
-Type mismatch. Expecting a (tuple type) but given a (different tuple type).	I. Tuples must be the same type to be compared.
-This expression was expected to have type 'a ref but here has type X	J. Don’t use ! as the “not” operator.
-The type (type) does not match the type (other type)	K. Operator precedence (especially functions and pipes).
-This expression was expected to have type (monadic type) but here has type 'b * 'c	L. let! error in computation expressions.
+| Error message | Possible causes |
+|---------------|:---------------:|
+| The type 'float' does not match the type 'int' | A. Can’t mix floats and ints |
+| The type 'int' does not support any operators named 'DivideByInt'	| A. Can’t mix floats and ints. |
+| The type 'X' is not compatible with any of the types | B. Using the wrong numeric type. |
+| This type (function type) does not match the type (simple type). Note: function types have a arrow in them, like 'a -> 'b. | C. Passing too many arguments to a function. |
+| This expression was expected to have (function type) but here has (simple type) | C. Passing too many arguments to a function. |
+| This expression was expected to have (N part function) but here has (N-1 part function) | C. Passing too many arguments to a function. |
+| This expression was expected to have (simple type) but here has (function type) | D. Passing too few arguments to a function. |
+| This expression was expected to have (type) but here has (other type) | E. Straightforward type mismatch. F. Inconsistent returns in branches or matches. G. Watch out for type inference effects buried in a function. |
+| Type mismatch. Expecting a (simple type) but given a (tuple type). Note: tuple types have a star in them, like 'a * 'b. | H. Have you used a comma instead of space or semicolon? |
+| Type mismatch. Expecting a (tuple type) but given a (different tuple type). | I. Tuples must be the same type to be compared. |
+| This expression was expected to have type 'a ref but here has type X | J. Don’t use ! as the “not” operator. |
+| The type (type) does not match the type (other type) | K. Operator precedence (especially functions and pipes). |
+| This expression was expected to have type (monadic type) but here has type 'b * 'c | L. let! error in computation expressions. |
 
 A. Can’t mix ints and floats
 Unlike C# and most imperative languages, ints and floats cannot be mixed in expressions. You will get a type error if you attempt this:
