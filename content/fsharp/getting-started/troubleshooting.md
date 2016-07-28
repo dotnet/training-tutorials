@@ -126,22 +126,22 @@ Do try to avoid annotating if possible. Not only is it not aesthetically pleasin
 
 Here is a list of the major errors that have been documented. No errors have been documented that are self explanatory, only those that seem obscure to beginners.
 
-FS0001: The type 'X' does not match the type 'Y'
-FS0003: This value is not a function and cannot be applied
-FS0008: This runtime coercion or type test involves an indeterminate type
-FS0010: Unexpected identifier in binding
-FS0010: Incomplete structured construct
-FS0013: The static coercion from type X to Y involves an indeterminate type
-FS0020: This expression should have type 'unit'
-FS0030: Value restriction
-FS0035: This construct is deprecated
-FS0039: The field, constructor or member X is not defined
-FS0041: A unique overload for could not be determined
-FS0049: Uppercase variable identifiers should not generally be used in patterns
-FS0072: Lookup on object of indeterminate type
-FS0588: Block following this 'let' is unfinished
+* FS0001: The type 'X' does not match the type 'Y'
+* FS0003: This value is not a function and cannot be applied
+* FS0008: This runtime coercion or type test involves an indeterminate type
+* FS0010: Unexpected identifier in binding
+* FS0010: Incomplete structured construct
+* FS0013: The static coercion from type X to Y involves an indeterminate type
+* FS0020: This expression should have type 'unit'
+* FS0030: Value restriction
+* FS0035: This construct is deprecated
+* FS0039: The field, constructor or member X is not defined
+* FS0041: A unique overload for could not be determined
+* FS0049: Uppercase variable identifiers should not generally be used in patterns
+* FS0072: Lookup on object of indeterminate type
+* FS0588: Block following this 'let' is unfinished
 
-FS0001: The type 'X' does not match the type 'Y'
+### FS0001: The type 'X' does not match the type 'Y'
 This is probably the most common error you will run into. It can manifest itself in a wide variety of contexts, so the most common problems have been grouped together with examples and fixes. Do pay attention to the error message, as it is normally quite explicit about what the problem is.
 
 | Error message | Possible causes |
@@ -160,25 +160,37 @@ This is probably the most common error you will run into. It can manifest itself
 | The type (type) does not match the type (other type) | K. Operator precedence (especially functions and pipes). |
 | This expression was expected to have type (monadic type) but here has type 'b * 'c | L. let! error in computation expressions. |
 
-A. Can’t mix ints and floats
+#### A. Can’t mix ints and floats
 Unlike C# and most imperative languages, ints and floats cannot be mixed in expressions. You will get a type error if you attempt this:
 
+```fsharp
 1 + 2.0  //wrong
    // => error FS0001: The type 'float' does not match the type 'int'
+```
+
 The fix is to cast the int into a float first:
 
+```fsharp
 float 1 + 2.0  //correct
+```
+
 This issue can also manifest itself in library functions and other places. For example, you cannot do “average” on a list of ints.
 
+```fsharp
 [1..10] |> List.average   // wrong
    // => error FS0001: The type 'int' does not support any 
    //    operators named 'DivideByInt'
+```
+
 You must cast each int to a float first, as shown below:
 
+```fsharp
 [1..10] |> List.map float |> List.average  //correct 
 [1..10] |> List.averageBy float  //correct (uses averageBy)
+```
 
-B. Using the wrong numeric type
+#### B. Using the wrong numeric type
+
 You will get a “not compatible” error when a numeric cast failed.
 
 printfn "hello %i" 1.0  // should be a int not a float
