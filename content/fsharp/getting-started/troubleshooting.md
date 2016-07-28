@@ -44,7 +44,7 @@ The “printf” family of functions is very strict in this respect. The argumen
 This is a very important topic – it is critical that you understand how partial application works. See the series "thinking functionally" for a more detailed discussion.
 
 ### Use semicolons for list separators
-In the few places where F# needs an explicit separator character, such as lists and records, the semicolon is used. Commas are never used. (Like a broken record, I will remind you that commas are for tuples).
+In the few places where F# needs an explicit separator character, such as lists and records, the semicolon is used. Commas are never used. (commas are for tuples).
 
 ```fsharp
 let list1 = [1,2,3]    // wrong! This is a ONE-element list containing 
@@ -125,9 +125,7 @@ Do try to avoid annotating if possible. Not only is it not aesthetically pleasin
 ## F# compiler errors
 *A listing of common errors, ordered by error number*
 
-Here is a list of the major errors that seem to me worth documenting. I have not documented any errors that are self explanatory, only those that seem obscure to beginners.
-
-I will continue to add to the list in the future, and I welcome any suggestions for additions.
+Here is a list of the major errors that seem to me worth documenting. No errors have been documented that are self explanatory, only those that seem obscure to beginners.
 
 FS0001: The type 'X' does not match the type 'Y'
 FS0003: This value is not a function and cannot be applied
@@ -145,7 +143,7 @@ FS0072: Lookup on object of indeterminate type
 FS0588: Block following this 'let' is unfinished
 
 FS0001: The type 'X' does not match the type 'Y'
-This is probably the most common error you will run into. It can manifest itself in a wide variety of contexts, so I have grouped the most common problems together with examples and fixes. Do pay attention to the error message, as it is normally quite explicit about what the problem is.
+This is probably the most common error you will run into. It can manifest itself in a wide variety of contexts, so the most common problems have been grouped together with examples and fixes. Do pay attention to the error message, as it is normally quite explicit about what the problem is.
 
 Error message	Possible causes
 The type 'float' does not match the type 'int'	A. Can’t mix floats and ints
