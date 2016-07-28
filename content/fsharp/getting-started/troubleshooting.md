@@ -174,7 +174,7 @@ The fix is to cast the int into a float first:
 float 1 + 2.0  //correct
 ```
 
-This issue can also manifest itself in library functions and other places. For example, you cannot do “average” on a list of ints.
+This issue can also manifest itself in library functions and other places. For example, you cannot do “`average`” on a list of ints.
 
 ```fsharp
 [1..10] |> List.average   // wrong
@@ -193,23 +193,33 @@ You must cast each int to a float first, as shown below:
 
 You will get a “not compatible” error when a numeric cast failed.
 
+```fsharp
 printfn "hello %i" 1.0  // should be a int not a float
   // error FS0001: The type 'float' is not compatible 
   //               with any of the types byte,int16,int32...
+```
+
 One possible fix is to cast it if appropriate.
 
+```fsharp
 printfn "hello %i" (int 1.0)
+```
 
-C. Passing too many arguments to a function
+#### C. Passing too many arguments to a function
+
+```fsharp
 let add x y = x + y
 let result = add 1 2 3
 // ==> error FS0001: The type ''a -> 'b' does not match the type 'int'
+```
+
 The clue is in the error.
 
 The fix is to remove one of the arguments!
 
-Similar errors are caused by passing too many arguments to printf.
+Similar errors are caused by passing too many arguments to `printf`.
 
+```fsharp
 printfn "hello" 42
 // ==> error FS0001: This expression was expected to have type 'a -> 'b    
 //                   but here has type unit    
@@ -221,31 +231,39 @@ printfn "hello %i" 42 43
 printfn "hello %i %i" 42 43 44
 // ==> Error FS0001: Type mismatch. Expecting a  'a -> 'b -> 'c -> 'd    
 //                   but given a 'a -> 'b -> unit   
+```
 
-D. Passing too few arguments to a function
+#### D. Passing too few arguments to a function
+
 If you do not pass enough arguments to a function, you will get a partial application. When you later use it, you get an error because it is not a simple type.
 
+```fsharp
 let reader = new System.IO.StringReader("hello");
 
 let line = reader.ReadLine        //wrong but compiler doesn't complain
 printfn "The line is %s" line     //compiler error here!
 // ==> error FS0001: This expression was expected to have type string    
 //                   but here has type unit -> string    
+```
+
 This is particularly common for some .NET library functions that expect a unit parameter, such as ReadLine above.
 
-The fix is to pass the correct number of parameters. Check the type of the result value to make sure that it is indeed a simple type. In the ReadLine case, the fix is to pass a () argument.
+The fix is to pass the correct number of parameters. Check the type of the result value to make sure that it is indeed a simple type. In the `ReadLine` case, the fix is to pass a `()` argument.
 
+```fsharp
 let line = reader.ReadLine()      //correct
 printfn "The line is %s" line     //no compiler error 
+```
 
-E. Straightforward type mismatch
+#### E. Straightforward type mismatch
+
 The simplest case is that you have the wrong type, or you are using the wrong type in a print format string.
 
 printfn "hello %s" 1.0
 // => error FS0001: This expression was expected to have type string    
 //                  but here has type float    
 
-F. Inconsistent return types in branches or matches
+#### F. Inconsistent return types in branches or matches
 A common mistake is that if you have a branch or match expression, then every branch MUST return the same type. If not, you will get a type error.
 
 let f x = 
@@ -282,7 +300,7 @@ let f x =
   if x > 1 then S "hello"
   else I 42
 
-G. Watch out for type inference effects buried in a function
+#### G. Watch out for type inference effects buried in a function
 A function may cause an unexpected type inference that ripples around your code. For example, in the following, the innocent print format string accidentally causes doSomething to expect a string.
 
 let doSomething x = 
@@ -296,7 +314,7 @@ doSomething 1
 The fix is to check the function signatures and drill down until you find the guilty party. Also, use the most generic types possible, and avoid type annotations if possible.
 
 
-H. Have you used a comma instead of space or semicolon?
+#### H. Have you used a comma instead of space or semicolon?
 If you are new to F#, you might accidentally use a comma instead of spaces to separate function arguments:
 
 // define a two parameter function
@@ -315,7 +333,7 @@ System.String.Compare("a","b")
 // incorrect
 System.String.Compare "a" "b"
 
-I. Tuples must be the same type to be compared or pattern matched
+#### I. Tuples must be the same type to be compared or pattern matched
 Tuples with different types cannot be compared. Trying to compare a tuple of type int * int, with a tuple of type int * string results in an error:
 
 let  t1 = (0, 1)
@@ -346,7 +364,7 @@ let result = f z
 //                  but given a int * string    
 //                  The type 'int' does not match the type 'string'
 
-J. Don’t use ! as the “not” operator
+#### J. Don’t use ! as the “not” operator
 If you use ! as a “not” operator, you will get a type error mentioning the word “ref”.
 
 let y = true
@@ -358,7 +376,7 @@ The fix is to use the “not” keyword instead.
 let y = true
 let z = not y   //correct
 
-K. Operator precedence (especially functions and pipes)
+#### K. Operator precedence (especially functions and pipes)
 If you mix up operator precedence, you may get type errors. Generally, function application is highest precedence compared to other operators, so you get an error in the case below:
 
 String.length "hello" + "world"
@@ -380,7 +398,7 @@ Again, the fix is to use parentheses.
 
 let result = 42 + ([1..10] |> List.sum)
 
-L. let! error in computation expressions (monads)
+#### L. let! error in computation expressions (monads)
 Here is a simple computation expression:
 
 type Wrapper<'a> = Wrapped of 'a
