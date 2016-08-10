@@ -309,7 +309,7 @@ The access modifiers used in this example are `public`, `private`, and `protecte
 > **Tip** {.tip .cpp}    
 > Instead of grouping members of classes with the same access level, C# includes the access modifier for each member.
 
-Notice that the access modifiers are the first word in the declaration of the classes, methods, and prtoperties. This holds for most cases, however, you'll notice one exception to this in the example:
+Notice that the access modifiers are the first word in the declaration of the classes, methods, and properties. This holds for most cases, however, you'll notice one exception to this in the example:
 
 ```c#
 protected string FirstName { get; private set; }
