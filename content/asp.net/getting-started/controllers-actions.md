@@ -39,7 +39,7 @@ Finally, we have a method named `Index` and, along with our class named `PersonC
 > Note that you can actually visit the `PersonController` if you run your app at this time and navigate to `~/Person` in the browser, but you will see an error because we haven't yet added a [view](views.md). You can, however, create a breakpoint in your controller on the `return View();` statement, which would allow you see execution flow through to that point.
 
 ## Routing for Controllers and Actions
-When configured, a route is a pattern that is matched against an incoming request that helps the framework determine which controller and action should be invoked to respond to the caller. The [routing](routing.md) configured in the [project template](mvc.md) faciliates this, and you don't need to wire up anything custom to make your project work provided you follow the default convetion. Here are some examples of how your application will respond:
+When configured, a route is a pattern that is matched against an incoming request that helps the framework determine which controller and action should be invoked to respond to the caller. The [routing](routing.md) configured in the [project template](mvc.md) faciliates this, and you don't need to wire up anything custom to make your project work provided you follow the default convention. Here are some examples of how your application will respond:
 
 | Route           | Controller | Action  | Reason                                                                                                                                    |
 |-----------------|------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------|
@@ -73,7 +73,7 @@ public class PersonController : Controller
 }
 ```
 
-In the above scenario, the route assumes the controller's attribute and the action is built upon it. You can also override the base of the route for the action if you prepend the route with a forward slash:
+In the above scenario, the action assumes the controller's route and builds upon it. You can also override the base for that specific action if you prepend the route with a forward slash:
 
 ```c#
     [Route("peeps")]
@@ -93,7 +93,7 @@ In the above scenario, the route assumes the controller's attribute and the acti
     }
 ```
 
-Routes can get tricky to debug, so use the judiciously and know how they affect incoming requests in your app.  For example, someone looking at the above controller might make assumptions about the `Index` action, given the default route confiruration on the project; however, with the attributes applied as above, a request to `/person/index` would give them a `404 Not Found`.  Read more about routes [here](routing.md). 
+Routes can get tricky to debug, so use them judiciously and know how they affect incoming requests in your app.  For example, someone looking at the above controller might make assumptions about the `Index` action, given the default route confiruration on the project; however, with the attributes applied as above, a request to `/person/index` would give them a `404 Not Found`.  Read more about routes [here](routing.md). 
 
 ## Controller Helpers and Result Objects 
 In addition to the actions that you write yourself, you're also privy to the host of helper methods that are built into the base controller that you inherit from. These methods help to formulate a repsonse after you've completed any validation, service access or processing required. We've already looked at one as part of the samples above, but let's have another quick look:
