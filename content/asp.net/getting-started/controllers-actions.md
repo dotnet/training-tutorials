@@ -6,13 +6,13 @@ Download a ZIP containing this tutorial's sample files:
 - [Completed Version (Pending)] - Includes the completed versions of all MVC tutorials
 
 ## Controllers and Actions in ASP.NET Core
-As we talked about in the [last tutorial](mvc.md), a _controller_ is where we put the logic needed to respond to incoming requests. Each incoming request is evaluated and mapped into a specific action on a controller by virtue of its HTTP verb, path and querystring through a process called [routing](routing.md).
+As we talked about in the [last tutorial](mvc.md), a _controller_ is where we put the logic needed to respond to incoming requests. Each incoming request is evaluated and mapped into a specific action on a controller by virtue of its HTTP verb, path and query string through a process called [routing](routing.md).
 
 Controllers are classes that typically inherit from `Microsoft.AspNetCore.Mvc.Controller` and reside in a folder called `Controllers` in the root of your project.  Controllers are used to group together a set of related concerns, usually associated to each other by a business concept or entity.  These concerns might be related to displaying or updating data and are implemented in methods called _actions_.  
 
 Actions are responsible for ensuring that incoming requests are valid and that appropriate responses are returned to the client, typically building up and sending a model to a [view](views.md) for rendering. You can put whatever logic is required in an action to respond accordingly to requests, but the purpose of controllers and actions is to help separate view rendering from business logic, not to provide a place to put your business logic. Business logic should be located in services that are passed into your controller using [dependency injection](controller-dependencies.md). 
 
-Each action has a role in constructing a proper HTTP response to the client, but you don't have to go it alone; the Framework has a number of features that will help you do so. You can start to  explore those features by creating a new class in the controllers folder called `PersonController`. Update the class so that it appears as below:
+Each action has a role in constructing a proper HTTP response to the client, but you don't have to do all this work on your own; the Framework has a number of features that will help you along the way. You can start to explore those features by creating a new class in the controllers folder called `PersonController`. Update the class so that it appears as below:
 
 ```c#
 using Microsoft.AspNetCore.Mvc;
@@ -34,9 +34,9 @@ Secondly, we use one of the most common controller helpers in the action when we
 
 Next, we have a return type of `IActionResult` giving us a flexible way to generate all different types of HTTP responses, from the typical `200 OK` to more complex responses like `302 Permanent Redirect` and a whole host of others.  These responses can be created using controller helpers, which we'll examine in greater detail later in this lesson.
 
-Finally, we have a method named `Index` and, along with our class named `PersonController`, users are now able to request the URL `person/`. This works because of the conventions and defaults of the framework and project template through a mechanism called routing.
+Finally, we have a method named `Index` and, along with our class named `PersonController`, users are now able to request the URL `person/`. This works because of the conventions and defaults of the framework and project template.
 
-> Note that you can actually visit the `PersonController` if you run your app at this time and navigate to `~/Person` in the browser, but you will see an error because we haven't yet added a [view](views.md). You can, however, create a breakpoint in your controller on the `return View();` statement, which would allow you see execution flow through to that point.
+> Note that you can actually visit the `PersonController` if you run your app at this time and navigate to `/Person` in the browser, but you will see an error because we haven't yet added a [view](views.md). You can, however, create a breakpoint in your controller on the `return View();` statement, which would allow you see execution flow through to that point.
 
 ## Routing for Controllers and Actions
 When configured, a route is a pattern that is matched against an incoming request that helps the framework determine which controller and action should be invoked to respond to the caller. The [routing](routing.md) configured in the [project template](mvc.md) faciliates this, and you don't need to wire up anything custom to make your project work provided you follow the default convention. Here are some examples of how your application will respond:
@@ -49,7 +49,7 @@ When configured, a route is a pattern that is matched against an incoming reques
 | /Person/Index/6 | Person     | Index   | The `Index` action on the `Person` controller will be invoked and the parameter `id`, if present, will be set to 6.                         |
 
 ## Attribute routes
-When the globally-configured routes do not work for you you can override the defaults on a per-controller or per-action basis using routing attributes. For instance, you could decorate your `PersonController` with the following attribute to change the route from `/person` to `/peeps`:
+When the globally-configured routes do not suit your needs you can override the defaults on a per-controller or per-action basis using routing attributes. For instance, you could decorate your `PersonController` with the following attribute to change the route from `/person` to `/peeps`:
 
 ```c#
 [Route("peeps")]
@@ -105,7 +105,7 @@ public IActionResult Index()
 }
 ```        
 
-The call to the helper method `View` above gives you an easy way to say, "I'm done processing here, and now I would like the user to see the page related to this action."  The framework takes over, maintains the state of any properties you've set on the controller and renders a view following the conventions we covered earlier.
+The call to the helper method `View` above gives you an easy way to say, "I'm done processing here, and now I would like the user to see the page related to this action."  The framework takes over, maintains the state of any properties you've set on the controller and renders a view following the default naming and location conventions we covered earlier.
 
 Just like `View`, there are other helpers that will make the lifting easier on the controller.
 
