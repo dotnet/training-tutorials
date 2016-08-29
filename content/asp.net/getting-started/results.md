@@ -26,7 +26,7 @@ public IActionResult Edit()
 ``` 
 
 ## Returning Data with WebAPI
-The distiction between controllers that are using in HTML-based applications and those used for the purpose of serving data to other software clients has grown quite thin. The same base class can be used for both purposes, but you'll find that organizing your controllers for purpose will help to keep your app easier to maintain. 
+The distiction between controllers that are used in HTML-based applications and those used for the purpose of serving data to other software clients has grown quite thin. The same base class can be used for both purposes, but you'll find that organizing your controllers for purpose will help to keep your app easier to maintain. 
 
 Let's start with a simple class for our Person API:
 
@@ -38,7 +38,7 @@ public class PersonApiController : Controller
 }
 ``` 
 
-The class has a route on it that has `api` at it's base URL and accepts an optional `id` parameter ([more about routing](routing.md)). WebAPI takes some of work away required to serialize your data that you wish to return.  This allows you to do something like the following, returning a simple type to your client:
+The class has a route on it that has `api` at its base URL and accepts an optional `id` parameter ([more about routing](routing.md)). The framework takes away some of work required to serialize your data that you wish to return, allowing you to do something like the following and returning a simple type to your client:
 
 ```c#
 public Person Get(int id)
@@ -80,7 +80,7 @@ public IActionResult Get(int id)
 
 Now, by using `IActionResult`, we have the flexibility to introduce alternate paths to respond to the request. We use the helper methods of the base `Controller` class to generate results based on the request. In the event that an invalid ID is presented, we can return an HTTP 400 signalling the client made an error. When we can't locate the record via the service, we return an HTTP 404 saying that the resource cannot be found. Finally, the HTTP 200 status code is explicitly set with with `Ok(person)` invocation. 
 
-You can read in more detail about the use of `IActionResult` in the context of Web API on the [ASP.NET Docs Site](TBD: aspnet/Docs#1327).  
+You can read in more detail about the use of `IActionResult` in the context of Web API on the [ASP.NET Docs Site](https://docs.asp.net/en/latest/mvc/models/formatting.html).  
 
 ## Next Steps
 
