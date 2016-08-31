@@ -1,18 +1,19 @@
 # Injecting Dependencies into Controllers
-by [Steve Smith](http://deviq.com/me/steve-smith)
+by [James Chambers](http://jameschambers.com)
 
 #### Sample Files
 Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
-
-See the [Issue](https://github.com/dotnet/training-tutorials/issues/63) to claim this lesson and/or view what should be included in it.
+- [Completed Version (Pending)] - Includes the completed versions of all MVC tutorials
 
 ## First Header
 
-Start the lesson here.
 
-...
+
+
+Show how Controllers can follow Explicit Dependencies Principle and request their dependencies via their constructor.
+Show how to configure services in ConfigureServices (going beyond what's in lesson 8).
+Demonstrate how to use a configured service to perform some work for a view-based controller and for an API method.
+Note that dependencies should be small and focused on only UI concerns. Business logic should go into other classes and should be injected. This makes both controllers and business classes easier to test (see next lesson).
 
 
 ## Next Steps
