@@ -59,24 +59,59 @@ public class PersonController : Controller
 }
 ```  
 
-This spiralling effect is why we tend to practice the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) and avoid leaking dependencies across multiple classes: we want as few reasons as possible to have to change our code. 
+This spiralling effect is why we tend to practice the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) and avoid leaking dependencies across and between  classes: we want as few reasons as possible to have to change our code. 
 
-Do we care if the database connection is real or not? Do we want to know in this (and every) class how to setup the database connection? Do we want the responsibility of creating the service? "Probably not," is the likely answer to all of these.
+Do we care if the database connection is to a real database or not for the purpose of, say, a unit test? Do we want to know in this (and every) class how to setup the database connection? Do we want the responsibility of creating the service? "Probably not," is the likely answer to all of these.
 
 If our controller _needs_ to access the `PersonService` our only other option is to force whichever code is creating an instace of the `PersonController` to provide it to us. This is a pattern known as [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control), and it allows us to push the creation of dependencies outside of our controller proper.  It also gives us the beneficial side effect of _explicitly_ stating our dependencies, for no code can instantiate our class without providing them to us through our public constructor.  
 
 ## The Explicit Dependencies Principle 
-Let's flip that code on its head now to see what that will look like:
+Let's flip that code on its head now to see what that will look like, requiring our dependencies to be passed in:
 
+```c#
+public class PersonController : Controller
+{
+    private IPersonService _personService;
 
+    public PersonController(IPersonService personService)
+    {
+        _personService = personService;
+    }
+}
+``` 
 
-Show how Controllers can follow Explicit Dependencies Principle and request their dependencies via their constructor.
+That is _much_ cleaner. Now, the only thing our constructor is responsible for is explicitly declaring that it requires an instance of an object that conforms to the public contract of the `IPersonService` interface. This greatly reduces the number of reasons that might come up for us to change our class, lets other callers know what is required to instantiate our controller and paves the way for simplified testing mechanisms.
+
+But, in the context of ASP.NET Core MVC, how are these constructor parameters provided? This is where we answer the call of the _Inversion of Control_ pattern with another: _Dependency Injection_.
 
 ## Configuring Your Application
-Show how to configure services in ConfigureServices (going beyond what's in lesson 8).
+[Dependency Injection]() provides a mechanism for an application to resolve dependencies at runtime without requiring knowledge of how to do so when the application is being coded or tested. It typically requires a container of some sort - a bucket that contains all the mappings - so that it has somewhere to look as objects are being created. ASP.NET Core provides such a container, and any services you need throughout your application should be configured there during your startup process.
+
+Now that our `PersonController` needs nothing but an `IPersonService` to be created, we have to either register an instance of thst service or instruct the framework on how to instantiate one on it's own. To do this we have to return to the `Startup` class and edit the the `ConfigureServices` method (which is included as part of the application template) so that it knows how to build the dependencies for us.  
+
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add framework services.
+    services.AddSingleton<IAddressVerificationService, AddressVerificationService>();
+    services.AddScoped<IPersonService, PersonService>();
+    services.AddMvc();
+}
+```
+
+One of the interesting things to note here is that the `IAddressVerificationService` dependency for the `PersonService` is also registered. At runtime, as the framework creates our controller, it will ask the dependency injection container for an `IPersonService`, which in turn requires an  `IAddressVerificationService`. The entire chain of dependencies is resolved for us automatically.
+
+For each service we add to the container we have to make a decision about the lifetime of that object.  There are three types of supported lifetimes:
+
+ - **Transient** - created everytime a dependency request for this type is made. It has the implication that if a single incoming HTTP request asks for mulitple instances of this type, there will one of these objects created for each dependency.
+ - **Scoped** - dependencies which can be shared throughout the HTTP request lifetime. The first dependency resolution for this type will result in an instance being created that is shared for all dependencies throughout the execution of the HTTP request.
+ - **Singleton** - only one instance is created for use throughout the lifetime of the application. All resolutions of the type will be served with the same instance.
+
+Thus, in our above `ConfigureServices` method, there will be one instance of the `AddressVerificationService` created for use throughout our entire application, and the `PersonService` will be created once for each incoming HTTP request, as required.
 
 ## Using a Service In Your Controllers
-Demonstrate how to use a configured service to perform some work for a view-based controller...
+Returning to our `PersonController` we can now make use of our service in one of our actions and pass the data it provides on to our view.
+
 
 ## Using a Service In Your API
 ...and for an API method.
