@@ -110,13 +110,36 @@ For each service we add to the container we have to make a decision about the li
 Thus, in our above `ConfigureServices` method, there will be one instance of the `AddressVerificationService` created for use throughout our entire application, and the `PersonService` will be created once for each incoming HTTP request, as required.
 
 ## Using a Service In Your Controllers
-Returning to our `PersonController` we can now make use of our service in one of our actions and pass the data it provides on to our view.
+Returning to our `PersonController` we can now make use of our service in one of our actions and pass the data it provides on to our view. Remember that we get a different kind of [data injected](sending-data.md) into our actions through model binding, and here we'll take advantage of that from a route token:
 
+```c#
+public IActionResult Index(int id)
+{
+    var person = _personService.GetById(id);
+    return View(person);
+}
+```
+
+Here, the `id` comes from the route token, the `_personService` was injected into our controller, and we pass the data to the view through a controller helper method called `View`.
 
 ## Using a Service In Your API
-...and for an API method.
+Likewise, when we strip away the concerns we need not know about from our API controllers, we get the same benefit of being able to construct a simple response after invoking our service method.
+
+```c#
+[Route("api/person")]
+public IActionResult Get()
+{
+    var people = _personService.GetAllPeople();
+    return Ok(people);
+}
+```
+
+The call to `Ok` in this case will take the collection we get from the service, serialize it as JSON and wrap it with an HTTP 200 response.
 
 ## Next Steps
-Note that dependencies should be small and focused on only UI concerns. Business logic should go into other classes and should be injected. This makes both controllers and business classes easier to test (see next lesson).
+This lesson built on top of these other concepts which you may wish to review:
+ - [Sending Data to Controllers](sending-data.md) 
+ - [Routing](routing.md)
+ - [Controller Actions](controller-actions.md)
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+Most of what we've learned so far will prepare the response for the client as requested. Before we dive into how to [render an HTML result](views.md) as part of our processing, let's first look at how to ensure our controllers are doing what we expect of them via [unit testing](testing-aspnetcore.md).
