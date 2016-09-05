@@ -134,7 +134,7 @@ public IActionResult Get()
 }
 ```
 
-The call to `Ok` in this case will take the collection we get from the service, serialize it as JSON and wrap it with an HTTP 200 response.
+The call to `Ok` in this case will take the collection we get from the service, serialize it as JSON and wrap it with an HTTP 200 response. Our API is able to return the anticipated text result without much code at all.
 
 ## Next Steps
 This lesson built on top of these other concepts which you may wish to review:
