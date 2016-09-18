@@ -149,7 +149,7 @@ public class ExtensionMethodsPlusFiveShould
     {
         //Arrange
         int input = 10;
-        int expectedResult = 0;
+        int expectedResult = 15;
 
         //Act
         int actualResult = input.PlusFive();
