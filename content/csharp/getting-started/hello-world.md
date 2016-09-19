@@ -49,7 +49,7 @@ The first line of the program is
 using System;
 ```
 
-The ``using`` statement is a programmer convenience. It allows us to refer to elements that exist within the listed *namespace* (in this case, ``System``) without prefixing them with the namespace name. What's a namespace? A namespace is a way of organizing programming constructs. They're similar to folders or directories in your file system. You don't have to use them, but they make it much easier to find and organize things. The reason this program includes the ``System`` namespace is that the ``Console`` type (used to print "Hello World!") is in that namespace. If the ``using`` statement were removed, the ``Console.WriteLine`` statement would need to include the namespace, becoming ``System.Console.WriteLine``. Using statements must end with a semicolon (``;``). In C#, most statements that aren't defining a scope end with a semicolon.
+The ``using`` statement is a programmer convenience. It allows us to refer to elements that exist within the listed *namespace* (in this case, ``System``) without prefixing them with the namespace name. What's a namespace? A namespace is a way of organizing programming constructs. They're similar to folders or directories in your file system. You don't have to use them, but they make it much easier to find and organize things. The reason this program includes the ``System`` namespace is that the ``Console`` type (used to print "Hello World!") is in that namespace. If the ``using`` statement were removed, the ``Console.WriteLine`` statement would need to include the namespace, becoming ``System.Console.WriteLine``. ``using`` statements must end with a semicolon (``;``). In C#, most statements that aren't defining a scope end with a semicolon.
 
 After the ``using`` statements, the code declares its namespace:
 ```c#
@@ -76,7 +76,7 @@ Next, the ``static`` keyword marks this method as global and associated with the
 
 The ``void`` keyword indicates that this method doesn't return a value. The method is named *Main*. 
 
-Finally, inside of parentheses (``(`` and ``)``, the method defines any *parameters* it requires. In this case, the method has no parameters, but a command line program might accept arguments by specifying a parameter of type *string array*. This parameter is typically defined as ``string[] args``, where *args* in this case is short for *arguments*. Arguments correspond to parameters. A method defines the parameters it requires; when calling a method, the values passed to its parameters are referred to as arguments. Like namespaces and classes, methods have scope defined by curly braces.
+Finally, inside of parentheses (``(`` and ``)``), the method defines any *parameters* it requires. In this case, the method has no parameters, but a command line program might accept arguments by specifying a parameter of type *string array*. This parameter is typically defined as ``string[] args``, where *args* in this case is short for *arguments*. Arguments correspond to parameters. A method defines the parameters it requires; when calling a method, the values passed to its parameters are referred to as arguments. Like namespaces and classes, methods have scope defined by curly braces.
 
 A class can contain many methods, which are one kind of *member* of that class.
 
@@ -89,7 +89,7 @@ You've already learned that ``Console`` is a type inside of the ``System`` names
 
 Inside of the parentheses, the program is passing in "Hello World!" to the method. This is an *argument*, and will be used by the ``WriteLine`` method internally. C# defines a number of built-in types, one of which is a *string*. A string is a series of text characters. In this case, the program is passing the string ``"Hello World!"`` as an argument to the ``WriteLine`` method, which has defined a string parameter type. At the end of the line, the statement ends with a semicolon.
 
-After the ``Console.WriteLine`` statement, there are three closing curly braces ``}``. These close the scopes for the ``Main`` method, the ``Program`` class, and the ``ConsoleApplication`` namespace, respectively. Note that the program uses indentation to make it easy to see which elements of the code belong to which scope. This is a good practice to follow, and will make it much easier for you (or others) to quickly read and understand the code you write.
+After the ``Console.WriteLine`` statement, there are three closing curly braces (``}``). These close the scopes for the ``Main`` method, the ``Program`` class, and the ``ConsoleApplication`` namespace, respectively. Note that the program uses indentation to make it easy to see which elements of the code belong to which scope. This is a good practice to follow, and will make it much easier for you (or others) to quickly read and understand the code you write.
 
 ## Troubleshooting
 
