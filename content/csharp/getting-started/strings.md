@@ -105,7 +105,7 @@ class Program
 
 If you try to work with the members of an object that isn't set (one that is null), your program will throw a ``NullReferenceException`` with a message "Object reference not set to an instance of an object". These are very common, and often very frustrating, errors in C# applications. You can mitigate them by ensuring you're always setting a default value to your instances rather than allowing them to remain null.
 
-You can check to see if a string value is null by comparing it to null (for instance, ``(nullstring == null)`` would evaluate to ``true``). There are also some built-in helper functions for detecting whether a string is either null or empty. Both ``(String.IsNullOrEmpty(emptyString))`` and ``(String.IsNullOrEmpty(nullString))`` would return ``true`` as well. This demonstrates another common pattern in C#, which is the use of static *extension methods* on a type for functionality that is useful to apply to null instances of the type. You will learn more about extension methods in [Defining and Calling Methods](methods).
+You can check to see if a string value is null by comparing it to null (for instance, ``(nullstring == null)`` would evaluate to ``true``). There are also some built-in helper functions for detecting whether a string is either null or empty. Both ``(String.IsNullOrEmpty(emptyString))`` and ``(String.IsNullOrEmpty(nullString))`` would return ``true`` as well. This demonstrates another common pattern in C#, which is the use of static *extension methods* on a type for functionality that is useful to apply to null instances of the type. You will learn more about extension methods in [Defining and Calling Methods](methods) lesson.
 
 ## String Operations
 
@@ -200,7 +200,7 @@ Note in the last example that multiple methods are chained together, such that t
 
 ## Replacing Parts of Strings
 
-A frequent scenario when working with strings is the construction of a string that is composed of some fixed parts, and a part that is variable. You saw in the last lesson how you could construct such a string using ``$"Hello {name}!`` syntax. This is known as *string interpolation*, and is a new feature in C# 6. The same string can also be constructed using concatenation (`` "Hello " + name + "!"``). Strings also support rich formatting, which at its simplest allows for this kind of replacement. To use string formatting, you specify a format string, which includes special placeholder values, and pass the format string and the replacement values to the ``Format`` method. Finally, you can use the ``Replace`` function to replace part of a string with another string. Consider the following examples:
+A frequent scenario when working with strings is the construction of a string that is composed of some fixed parts, and a part that is variable. You saw in the [last lesson](types-variables) how you could construct such a string using ``$"Hello {name}!`` syntax. This is known as *string interpolation*, and is a new feature in C# 6. The same string can also be constructed using concatenation (`` "Hello " + name + "!"``). Strings also support rich formatting, which at its simplest allows for this kind of replacement. To use string formatting, you specify a format string, which includes special placeholder values, and pass the format string and the replacement values to the ``Format`` method. Finally, you can use the ``Replace`` method to replace part of a string with another string. Consider the following examples:
 
 ```{.snippet}
 string name = "Steve";
