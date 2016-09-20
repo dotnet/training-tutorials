@@ -63,7 +63,7 @@ class Program
 }
 ```
 
-In this example, when ``someCondition`` is true, the value of sum will be 30. Otherwise, it will be 20. However, based on the indentation, the reader might think that the ``sum = sum * 2`` line only occurs when the if condition is true, which isn't the case. If that's the correct behavior, the code should be rewritten as:
+In this example, when ``someCondition`` is true, the value of sum will be 30. Otherwise, it will be 20. However, based on the indentation, the reader might think that the ``sum = sum * 2`` line only occurs when the ``if`` condition is true, which isn't the case. If that's the correct behavior, the code should be rewritten as:
 
 ```{class=snippet}
 var sum = 10;
@@ -96,7 +96,7 @@ class Program
 }
 ```
 
-Now the above code will print a sum of 30 when the if condition evaluates to true, or the original sum value of 10 otherwise.
+Now the above code will print a sum of 30 when the ``if`` condition evaluates to true, or the original sum value of 10 otherwise.
 
 > **Tip** {.tip .newLanguage}    
 > It's a good idea to follow a standard code formatting convention when programming. Such conventions often vary, even between similar languages. In C#, for instance, it's recommended that opening curly braces always start on their own line, indented to match their associated keyword. Closing curly braces should also appear on their own line, indented to match their opening brace.
@@ -251,7 +251,7 @@ Your program can create a random number between 1 and 3 with the following code:
 int correctNumber = new Random().Next(4);
 ```
 
-Write a program that generates a random number between 1 and 3 and asks the user to guess what the number is. Tell the user if they guess low, high, or get the correct answer. Also, tell the user if their answer is outside of the range of numbers that are valid guesses (less than 1 or more than 3). You can convert the user's typed answer from a string to an int using this code:
+Write a program that generates a random number between 1 and 3 and asks the user to guess what the number is. Tell the user if they guess low, high, or get the correct answer. Also, tell the user if their answer is outside of the range of numbers that are valid guesses (less than 1 or more than 3). You can convert the user's typed answer from a ``string`` to an ``int`` using this code:
 
 ```c#
 int guessedNumber = int.Parse(Console.ReadLine());
