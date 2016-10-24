@@ -13,4 +13,16 @@ This tutorial is meant for those new or unfamiliar to EF Core, but if you alread
 
 If you know what you're looking for, feel free to browse by topic on the side. If not, welcome! Let's get started together!
 
-## Prerequisites for this tuorial
+## Prerequisites for this tutorial
+
+This tutorial assumes a knowledge of other programming concepts, including: 
+
+* Basic programming concepts 
+* C# (see the [interactive C# tutorial](https://www.microsoft.com/net/tutorials/csharp/getting-started))
+* Relational database concepts
+	- SQL-type databases will be the focus of this tutorial, though other databases function with EF Core
+* LINQ statements (see this [interactive tutorial](https://www.microsoft.com/net/tutorials/csharp/getting-started/linq) for an introduction to LINQ) 
+
+If you're a new to these topics, you can check out their tutorials. If you're only a little rusty, we'll remind you of the relevant aspects along the way.
+
+Now, let's get started!
