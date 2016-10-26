@@ -12,7 +12,6 @@ You should understand the following concepts before starting this tutorial: 
 
 * C# (see the [interactive C# tutorial](https://www.microsoft.com/net/tutorials/csharp/getting-started))
 * Relational database concepts
-	- SQL-type databases will be the focus of this tutorial, though other databases function with EF Core
 * LINQ statements (see this [interactive tutorial](https://www.microsoft.com/net/tutorials/csharp/getting-started/linq) for an introduction to LINQ)
 
 ## Table of Contents
