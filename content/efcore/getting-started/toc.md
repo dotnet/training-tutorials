@@ -1,0 +1,2 @@
+- Introduction to Entity Framework Core
+- Adding Entity Framework Core to a Project
