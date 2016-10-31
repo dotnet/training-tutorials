@@ -7,3 +7,5 @@ This tutorial is meant for those new to Entity Framework (EF) Core, as it covers
 ## Topics Covered
 
 This tutorial will cover the following topics:
+- Introduction to Entity Framework Core
+- Adding Entity Framework Core to a Project
