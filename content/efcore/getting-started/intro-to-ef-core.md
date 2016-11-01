@@ -1,0 +1,5 @@
+# Intro to EF Core
+
+Entity Framework Core (EF Core) is a lightweight, extensible, and cross-platform version of Entity Framework. Entity Framework is an object-relational mapper (O/RM) that enables .NET developers to work with a database using .NET objects. This allows developers to create and manage databases without most of the data-access code that developers usually need to write. 
+
+EF Core and the latest version of Entity Framework (EF6.x) differ in the features they support. A comparison of the features supported by each can be found on the [feature comparison page](https://docs.efproject.net/en/latest/efcore-vs-ef6/features.html) of the docs. If you want help determining which version is best for your project, check out the ["Which One Is Right for You?"](https://docs.efproject.net/en/latest/efcore-vs-ef6/choosing.html) page.
