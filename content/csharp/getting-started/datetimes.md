@@ -45,7 +45,7 @@ class Program
 Each of the above methods creates an instance of a ``DateTime``.
 
 > **Tip** {.tip .newLanguage }    
-> The ``DateTime.Now`` and ``DateTime.Today`` properties are *static*, which means you can access them without having an instance of a DateTime. No matter where you access these properties, their value will be read from the current time according to the machine's system clock.
+> The ``DateTime.Now`` and ``DateTime.Today`` properties are *static*, which means you can access them without having an instance of a ``DateTime``. No matter where you access these properties, their value will be read from the current time according to the machine's system clock.
 
 > **Tip** {.tip .REPL}    
 > You can use the C# ``nameof`` function to get a string representing the name of a C# construct.
@@ -58,7 +58,7 @@ Learn more about [custom date and time format strings](https://msdn.microsoft.co
 
 ## Getting to Parts of Dates and Times
 
-DateTime types have many properties you can use to access different individual components of the date or time, such as the month, day, year, hour, minute, etc. The following sample demonstrates some of these properties:
+``DateTime`` type has many properties you can use to access different individual components of the date or time, such as the month, day, year, hour, minute, etc. The following sample demonstrates some of these properties:
 
 ```{.snippet}
 var someTime = new DateTime(2016,7,1,11,10,9); // 1 July 2016 11:10:09 AM
@@ -124,4 +124,4 @@ The first line of code creates a new ``DateTime`` instance for January 1st of th
 
 Write a simple program that defines a variable representing a birth date and calculates how many days old the person with that birth date is currently. 
 
-For extra credit, output the date of their next 10,000 day (about 27 years) anniversary. Note: once you figure out their age in days, you can calculate the days until the next anniversary using ``int daysToNextAnniversary = 10000 - (days % 10000);``
+For extra credit, output the date of their next 10,000 day (about 27 years) anniversary. Note: once you figure out their age in days, you can calculate the days until the next anniversary using ``int daysToNextAnniversary = 10000 - (days % 10000);``.
