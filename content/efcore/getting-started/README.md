@@ -12,4 +12,5 @@ This tutorial is aimed at people who are learning EF Core for the first time. Mo
 ## Topics Covered
 
 This tutorial will cover the following topics:
-- [Intro to EF Core](what-is-ef-core.md)
+- [Intro to EF Core](intro-to-ef-core.md)
+- [Installing EF Core](installing-ef-core.md)
