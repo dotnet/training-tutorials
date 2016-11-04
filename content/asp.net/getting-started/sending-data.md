@@ -9,19 +9,19 @@ Download a ZIP containing this tutorial's sample files:
 There are different data sources that your app will rely on throughout the course of execution. There is application-level data which is typically stored in configuration. We also have services, often injected by the framework, which can be called with or without parameters to fetch data. We've talked about [configuration](configuration.md) and will cover [dependency injection](controller-dependencies.md) in a future lesson, but here we will focus on the parameters that are passed into our Actions and how those values are populated.  
 
 ## Understanding the Data Sources
-In a simplified view, there are a few parts to a typical HTTP request that you are likely familiar with. We have the query string, which is everything that comes after the `?` character in a URL. You might see it in in a request where a parameter is named and it's value is inline, something like:
+In a simplified view, you are likely familiar with a few parts to a typical HTTP request. We have the query string, which is everything that comes after the `?` character in a URL. You might see it in in a request where a parameter is named and its value is inline, something like:
 
-    http://portal.aplineskihouse.com/user/view?id=100
+    http://localhost:5000/user/view?id=100
 
 The URL is not limited to the query string, however; you can have parameters as part of the URL that are extracted via your configured [routing](routing.md) rules. In that case, your URL might look something more like the following:
 
-    http://portal.aplineskihouse.com/user/view/100
+    http://localhost:5000/user/view/100
 
 A body of the request may optionally contain a `form-data` section of the request. This allows for another key-value transport mechanism for the client, typically the method of choice for default HTML form submission.
 
-Form aside, the `BODY` of the request may come more into play specifically when you're working with HTTP verbs like `POST` or `PUT` and using non-HTTP formats. The body can be more expressive than just the `form-data` as it can contain payload of your design, and it can follow standard object notation such as XML or JSON.
+Form aside, the `BODY` of the request may come more into play specifically when you're working with HTTP verbs like `POST` or `PUT` and using alternate formats. The body can be more expressive than just the `form-data` as it can contain payload of your design, and it can follow standard object notation such as XML or JSON.
 
-By nature and by virtue HTTP and HTML do not provide a strongly-typed context that a language can make use of. These data sources are simple, text-based inputs to our application and are typically thought of as key-value pairs. Without some kind of support, you would need to manually inspect all of the sources, extract the values and then cast them to the appropriate object types in your application. This is where "model binding" comes in to play, and makes light work of the task of working with the key-value pairs. 
+By nature and by virtue HTTP and HTML do not provide a strongly-typed context that a language can make use of. These data sources are simple, text-based inputs to our application and are typically thought of as key-value pairs. Without some kind of support, you would need to manually inspect all of the sources, extract the values and then cast them to the appropriate object types in your application. This is where "model binding" comes into play, and makes light work of the task of working with the key-value pairs. 
 
 ## Model Binding in ASP.NET Core MVC
 **Model binding** is the process through which those key-value pairs get evaluated for appropriate mapping to parameters on our controller actions. Depending on where those values are located and which types you are using as parameters, you need to be aware of how MVC will try to make those mappings for you. Consider the following signature of an action on our `PersonController`:
@@ -93,7 +93,7 @@ Another point to make with the binding process is that you essentially get one o
 ## Next Steps
 
  - Review the [routing](routing.md) concepts to understand how to extract tokens that can be used in the model binding process.
- - Have a look again at [configuration](configuration.md) or read ahed into [dependency injection](controller-dependencies.md) if you are interested in getting environment- or application-level data into your controller.
+ - Have a look again at [configuration](configuration.md) or read ahead into [dependency injection](controller-dependencies.md) if you are interested in getting environment- or application-level data into your controller.
  - Experiment with the sample project to see the different model binding in action. Be sure to set breakpoints so that you can inspect the values of the parameters as your action is entered.
 
 
