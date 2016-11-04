@@ -14,7 +14,10 @@ public IActionResult Index()
 }
 ``` 
 
-As [previously discussed](controllers-actions.md), the call to `View()` signals the framework to continue processing the request, and it will do so with a default convention. It assumes that the name of the action will have a corresponding view at `Views/Person/Index.cshtml`. 
+As [previously discussed](controllers-actions.md), the call to `View()` signals the framework to continue processing the request, and it will do so with a default convention. It expects that a view with a name corresponding to the action ("Index") will be found in a folder corresponding to the name of the controller ("Person") in the "Views" folder. In this case, `Views/Person/Index.cshtml`. 
+
+### Note { .note }
+> The default convention actually goes further to specify that if a view is not found in the view directory for the controller that it will try to find the view in the `Views/Shared/` folder as a fall-back. This works for both "action name as convention", as we see above, as well as "explicit viewname string parameter" mechanisms of specifying the view name, such as in `View("Index")`.
 
 You can also specify the name of a view explicitly. This is handy when you have two actions that may need to use the same view, for example, a create form and an edit form. Instead of using the name "Edit" to find a view, it will instead look for a filename with a _cshtml_ extension that matches the parameter you provide. 
 
@@ -38,7 +41,7 @@ public class PersonApiController : Controller
 }
 ``` 
 
-The class has a route on it that has `api` at its base URL and accepts an optional `id` parameter ([more about routing](routing.md)). The framework takes away some of work required to serialize your data that you wish to return, allowing you to do something like the following and returning a simple type to your client:
+The class has a route on it that has `api` at its base URL and accepts an optional `id` parameter ([more about routing](routing.md)). The framework takes away some of work required to serialize your data that you wish to return, allowing you to return a simple type to your client:
 
 ```c#
 public Person Get(int id)
@@ -78,11 +81,11 @@ public IActionResult Get(int id)
 }
 ```
 
-Now, by using `IActionResult`, we have the flexibility to introduce alternate paths to respond to the request. We use the helper methods of the base `Controller` class to generate results based on the request. In the event that an invalid ID is presented, we can return an HTTP 400 signalling the client made an error. When we can't locate the record via the service, we return an HTTP 404 saying that the resource cannot be found. Finally, the HTTP 200 status code is explicitly set with with `Ok(person)` invocation. 
+Now, by using `IActionResult`, we have the flexibility to introduce alternate paths to respond to the request. We use the helper methods of the base `Controller` class to generate results based on the request. In the event that an invalid ID is presented, we can return an HTTP 400 signaling the client made an error. When we can't locate the record via the service, we return an HTTP 404 saying that the resource cannot be found. Finally, the HTTP 200 status code is explicitly set with with `Ok(person)` invocation. 
 
-You can read in more detail about the use of `IActionResult` in the context of Web API on the [ASP.NET Docs Site](https://docs.asp.net/en/latest/mvc/models/formatting.html).  
+You can read in more detail about the use of `IActionResult` in the context of Web API on the [ASP.NET Docs Site](https://docs.asp.net/en/latest/mvc/models/formatting.html).  You can also learn how to make these policies explicit and encapsulate them in filters in [this MSDN article] (https://msdn.microsoft.com/en-us/magazine/mt767699.aspx?f=255&MSPPError=-2147217396).
 
 ## Next Steps
 
- - That that you know how to push data out as the result of an action, you might want to skip ahead to [views](views.md) to see how to start rendering some HTML for the client.
+ - Now that you know how to push data out as the result of an action, you might want to skip ahead to [views](views.md) to see how to start rendering some HTML for the client.
  - You may have observed the use of the `_personService` suggested in this tutorial. You can learn more about how that object came to be initialized by reading about [controller depencies](controller-dependencies.md).
