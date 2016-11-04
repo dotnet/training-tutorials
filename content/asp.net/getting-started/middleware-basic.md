@@ -101,7 +101,7 @@ public void Configure(IApplicationBuilder app)
 
 This code adds another ``app.Run`` statement, which checks the ``Request.Path`` to see if it starts with ``/all``. If so, it lists all of the quotations. Unfortunately, **this code doesn't work**. When you visit the root of the site, you see random quotes, just as before. However, when you visit ``/all``, you still only see the random quote behavior, not the list of quotations. Remember what you learned earlier - ``app.Run`` is an endpoint for your app's request pipeline. When the request pipeline encounters an endpoint and returns, it doesn't enter any other configured pipelines. There are two ways you can address this in this sample. First, you can put all of the logic into a single call to ``app.Run``. Alternately, you can keep the original random quotation ``app.Run`` statement, and configure a new *branch* in your request pipeline by using ``app.Map``.
 
-The ``app.Map`` method takes a path string and an ``Action<IApplicationBuilder>`` function, which you use to configure a new, separate branch of the request pipeline that is only executed if the path matches. It's still important that you order your request delegates properly - if a catch-all ``app.Run`` handles the request before the ``app.Map`` is configured, the latter will never be executed for any requests.
+The ``app.Map`` method takes a path string and an ``Action<IApplicationBuilder>`` function, which you use to configure a new, separate branch of the request pipeline that is only executed if the path matches. It's still important that you order your request delegates properly - if a catch-all ``app.Run`` handles the request before the ``app.Map`` is configured, the latter will never be executed for any requests. The correct order is shown below:
 
 ```c#
 public class Startup
@@ -139,7 +139,7 @@ app.Use(async (context, next) =>
 ```
 
 > **Note** {.note}    
-> Avoid writing to Response headers in middleware if you're not certain that other middleware hasn't already begun writing to the response (in which case, the headers will already have been sent to the client).
+> Avoid writing to Response headers in middleware if you're not certain that other middleware hasn't already begun writing to the response (in which case, the headers will already have been sent to the client). In particular, use caution when writing to the Response after having called other middleware (in the example above, aftet the ``await next();`` statement).
 
 ## Next Steps
 
