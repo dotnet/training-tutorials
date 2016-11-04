@@ -51,7 +51,7 @@ namespace ConsoleApplication
 }
 ```
 
-With this in place, you should be able to run the app and see the favicon image displayed. If it's not displayed, you can also verify it's being served by requesting it directly (e.g. http://localhost:5000/favicon.ico).
+With this in place, you should be able to run the app and see the favicon image displayed. If it's not displayed, you can also verify it's being served by requesting it directly (e.g. http://localhost:5000/favicon.ico). Note the " icon to the left of the URL in the browser tab below:
 
 ![Browser with favicon](images/browser-favicon.png)
 
