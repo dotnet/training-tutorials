@@ -10,6 +10,9 @@ namespace ConsoleApplication
     {
         public void Configure(IApplicationBuilder app)
         {
+            // app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.Use(async (context, next) => 
             {   
                 context.Response.ContentType="text/html";
@@ -40,7 +43,4 @@ namespace ConsoleApplication
             });
         }
     }
-
-
-
 }
