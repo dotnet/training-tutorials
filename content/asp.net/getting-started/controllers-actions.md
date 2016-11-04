@@ -45,7 +45,7 @@ When configured, a route is a pattern that is matched against an incoming reques
 |-----------------|------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | /               | Home       | Index   | There is nothing specified in the route that can be mapped. The defaults are used: `Home` for the controller and `Index` for the action.  |
 | /Home/Contact   | Home       | Contact | Both the controller and action are specified in the route.                                                                                |
-| /Person         | Person     | Index   | Whilethe controller is specified, the action is not; thus the default `Index` will be used.                                                |
+| /Person         | Person     | Index   | While the controller is specified, the action is not; thus the default `Index` will be used.                                                |
 | /Person/Index/6 | Person     | Index   | The `Index` action on the `Person` controller will be invoked and the parameter `id`, if present, will be set to 6.                         |
 
 ## Attribute routes
@@ -59,7 +59,7 @@ public class PersonController : Controller
 }
 ```
 
-Likewise, an action can be setup to use a different route if you apply an action to it, for instance, with the above `peeps` route set on the controller, you can have `peeps/favs` as the route for the action below with the following route applied:
+Likewise, an action can be setup to use a different route if you apply an attribute to it, for instance, with the above `peeps` route set on the controller, you can have `peeps/favs` as the route for the action below with the following route applied:
 
 ```c#
 [Route("peeps")]
@@ -93,10 +93,10 @@ In the above scenario, the action assumes the controller's route and builds upon
     }
 ```
 
-Routes can get tricky to debug, so use them judiciously and know how they affect incoming requests in your app.  For example, someone looking at the above controller might make assumptions about the `Index` action, given the default route confiruration on the project; however, with the attributes applied as above, a request to `/person/index` would give them a `404 Not Found`.  Read more about routes [here](routing.md). 
+Routes can get tricky to debug, so use them judiciously and know how they affect incoming requests in your app.  For example, someone looking at the above controller might make assumptions about the `Index` action, given the default route configuration on the project; however, with the attributes applied as above, a request to `/person/index` would give them a `404 Not Found`.  Read more about routes [here](routing.md). 
 
 ## Controller Helpers and Result Objects 
-In addition to the actions that you write yourself, you're also privy to the host of helper methods that are built into the base controller that you inherit from. These methods help to formulate a repsonse after you've completed any validation, service access or processing required. We've already looked at one as part of the samples above, but let's have another quick look:
+In addition to the actions that you write yourself, you're also privy to the host of helper methods that are built into the base controller that you inherit from. These methods help to formulate a response after you've completed any validation, service access or processing required. We've already looked at one as part of the samples above, but let's have another quick look:
 
 ```c#
 public IActionResult Index()
@@ -107,16 +107,16 @@ public IActionResult Index()
 
 The call to the helper method `View` above gives you an easy way to say, "I'm done processing here, and now I would like the user to see the page related to this action."  The framework takes over, maintains the state of any properties you've set on the controller and renders a view following the default naming and location conventions we covered earlier.
 
-Just like `View`, there are other helpers that will make the lifting easier on the controller.
+Just like `View`, there are other helpers that will help you return appropriate and meaningful responses from your actions.
 
- - **Redirection**- You can use `Redirect`, `LocalRedirect`, `RedirectToRoute` and other similar methods in your actions for the purpose of forwarding users on to other location, for example, after a login.   
- - **Standard Response Types**- When you are working at more of an API level or need more granular control over building the response, you can use pre-built classes like `OkResult` or `NotFoundResult` to convey the results of your processing.   
+ - **Redirection**- You can use `Redirect`, `LocalRedirect`, `RedirectToRoute` and other similar methods in your actions for the purpose of forwarding users on to another location, for example, after a login.   
+ - **Standard Response Types**- When you are working at more of an API level or need more granular control over building the response, you can use methods like `Ok` or `NotFound` to convey the results of your processing.   
  - **Json**- If you want to control the way your data is returned, perhaps decorating an object in order to better interoperate with another service or client, you can manually build JSON responses. 
  - **PartialView**- When you only need to render part of a page without the overhead of a layout, typically used in AJAX scenarios where only a portion of the page is fetched from the server.   
- - **ViewBag, ViewData**- These are containers that are backed by the same key/value pairs in a dictionary. `ViewData` uses a string for a key, whereas `ViewBag` is a `dynamic` that allows you to the dictionary as though the keys were property names.  
+ - **ViewBag, ViewData**- These are containers that are backed by the same key/value pairs in a dictionary. `ViewData` uses a string for a key, whereas `ViewBag` is a `dynamic` that allows you to the dictionary as though the keys were property names.  While these are not explicitly methods or result objects, they can help you in the presentation of data in your views.
 
 ## Next Steps
 
- - You'll be getting an error if you try to get to an action that doesn't have a corresponding view. Views will be covered in the [next lesson](views.md).
+ - You'll get an error if you try to get to an action that doesn't have a corresponding view. Views will be covered in the [next lesson](views.md).
  - Actions can return different types of results, especially when using the helper methods. Try using the browser developer tools (usually accessed by hitting F12) and experiment with different result types.
- - Experiment with different route attribute settings and read more about [routing](routing.md).   
+ - Try using different route attribute settings and read more about [routing](routing.md).   
