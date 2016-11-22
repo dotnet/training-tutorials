@@ -22,7 +22,7 @@ dotnet new            # Initialize .NET Core project (generates Startup.cs and p
   
 ## Add EF Core to Project 
  
-To add EF Core to your project, you need to list it as a dependency in your `project.json` file. You need to add the appropriate package for your database provider as well. See [Database Providers](https://docs.efproject.net/en/latest/providers/index.html) in the docs for a full listing of available database providers. In this example, we use Sqlite. 
+To add EF Core to your project, you need to list it as a dependency in your `project.json` file. You need to add the appropriate package for your database provider as well. See [Database Providers](https://docs.microsoft.com/en-us/ef/core/providers/) in the docs for a full listing of available database providers. In this example, we use Sqlite. 
  
 ```json 
 "dependencies": 
