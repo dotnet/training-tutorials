@@ -10,7 +10,9 @@ Download a ZIP containing this tutorial's sample files:
 
 ASP.NET Core can be used to serve static files, such as images, scripts, HTML files, and more. This functionality is encapsulated in middleware that can be added to any ASP.NET Core app. Once added, files located in the ``wwwroot`` folder (the *web root*) of the root of the app will be accessible via web requests. By default the web root folder is a subfolder of the app's *content root*, which defaults to where the app's assemblies are located.
 
-Working from the [previous lesson](middleware-basic.md) random quotation sample, add support for serving static files by adding ``app.UseStaticFiles();`` in the ``Configure`` method in ``Startup``. It's important to place this statement in the right location in the request pipeline - if it is placed after the ``app.Run`` statement, it will never be reached since that middleware is a catch-all endpoint. In this case, the statement can be the first item in the pipeline:
+Working from the [previous lesson](middleware-basic.md) random quotation sample, add support for serving static files by adding ``app.UseStaticFiles();`` in the ``Configure`` method in ``Startup``. It's important to place this statement in the right location in the request pipeline - if it is placed after the ``app.Run`` statement, it will never be reached since that middleware is a catch-all endpoint. Likewise, if you're using [MVC](mvc.md), it won't call any middlware appearing after it, so you'll need to configure static files before the call to MVC as well. The static files middleware will quickly allow requests that don't match a configured path on disk to proceed to the next configured middleware in the pipeline.
+
+In this case, the ``UseStaticFiles`` statement can be the first item in the pipeline:
 
 ```c#
 public void Configure(IApplicationBuilder app)
