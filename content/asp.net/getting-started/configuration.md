@@ -8,13 +8,10 @@ Download a ZIP containing this tutorial's sample files:
 
 See the [Issue](https://github.com/dotnet/training-tutorials/issues/51) to claim this lesson and/or view what should be included in it.
 
-## First Header
+## Adding Support for Configuration
 
-Start the lesson here.
-
-...
+So far the Quotes app you're building hasn't needed any configuration values. However, most real apps need to store some values related to their configuration somewhere, typically in a file that's deployed with the app. ASP.NET Core has a very extensible configuration system, allowing you to choose from a variety of built-in configuration sources or to customize your own. You're not limited to a particular file or file format, and you can even add configuration values directly from your code.
 
 
 ## Next Steps
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.

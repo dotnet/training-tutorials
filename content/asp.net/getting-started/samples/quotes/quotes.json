@@ -1,0 +1,7 @@
+{
+    "Quotes": [
+        { "author": "someone", "quote": "quote1" },
+        { "author": "someone2", "quote": "quote2" },
+        { "author": "someone3", "quote": "quote3" }
+    ]
+}

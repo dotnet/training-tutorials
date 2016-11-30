@@ -5,7 +5,7 @@ namespace ConsoleApplication
 {
     public static class QuotationStore
     {
-        public static List<Quotation> Quotations {get; private set;}
+        public static List<Quotation> Quotations {get; set;}
 
         static QuotationStore()
         {
