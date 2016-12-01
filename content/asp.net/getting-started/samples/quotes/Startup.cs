@@ -31,13 +31,10 @@ namespace ConsoleApplication
         public void Configure(IApplicationBuilder app, 
             IOptions<List<Quotation>> quoteOptions)
         {
+            //app.UseStatusCodePages("text/plain","HTTP Status Code: {0}");
+            app.UseStatusCodePagesWithRedirects("~/{0}.html");
+            app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
-
-            app.Use(async (context, next) => 
-            {   
-                context.Response.ContentType="text/html";
-                await next();
-            });
 
             var quotes = quoteOptions.Value;
             if(quotes != null) 
@@ -62,10 +59,10 @@ namespace ConsoleApplication
                     }
             }));
 
-            app.Run(context =>
+            app.Map("/random", builder => builder.Run(async context =>
             {
-                return context.Response.WriteAsync(QuotationStore.RandomQuotation().ToString());
-            });
+                await context.Response.WriteAsync(QuotationStore.RandomQuotation().ToString());
+            }));
         }
     }
 }
