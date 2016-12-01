@@ -3,14 +3,34 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace ConsoleApplication
 {
     public class Startup
     {
-        public void Configure(IApplicationBuilder app)
+        public Startup(IHostingEnvironment env)
         {
-            // app.UseDefaultFiles();
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("quotes.json", optional: false, reloadOnChange: true);
+
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; set;}
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddOptions();
+            services.Configure<List<Quotation>>(Configuration.GetSection("Quotes"));
+        }
+
+        public void Configure(IApplicationBuilder app, 
+            IOptions<List<Quotation>> quoteOptions)
+        {
             app.UseStaticFiles();
 
             app.Use(async (context, next) => 
@@ -19,7 +39,12 @@ namespace ConsoleApplication
                 await next();
             });
 
-            // next steps solution
+            var quotes = quoteOptions.Value;
+            if(quotes != null) 
+            {
+                QuotationStore.Quotations = quotes;
+            }
+
             app.Map("/quote", builder => builder.Run(async context =>
             {
                 var id = int.Parse(context.Request.Path.ToString().Split('/')[1]);
