@@ -46,6 +46,8 @@ public void Configure(IApplicationBuilder app,
 }
 ```
 
+Ultimately the app can be refactored so that the ``QuotationStore`` isn't static, and can accept the configured quotes through dependency injection itself. The current design works, but isn't ideal since any code can manipulate the ``Quotations`` property, violating the principle of [encapsulation](http://deviq.com/encapsulation/).
+
 ## Setting up Options
 
 In order for the options pattern to work, you first need to add options support in ``ConfigureServices``. Then, you need to add the options value to the services container. You can specify the value of the options directly, or you can specify that it should be loaded from configuration, as the following code demonstrates:
@@ -70,6 +72,8 @@ It's important when using a file for your configuration that you format it appro
 }
 ```
 
-
 ## Next Steps
 
+Since the configuration options needed in this lesson were inside of the ``Startup`` class, the method could have directly accessed the settings from the ``Configuration`` property. Modify the code to use this approach, and consider whether you prefer it to the use of the options pattern in this instance. 
+
+Note that in most situations, such as using configuration options from controllers, middleware, or filters, your code won't have direct access to a configuration instance.
