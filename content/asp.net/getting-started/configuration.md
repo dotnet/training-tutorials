@@ -27,6 +27,20 @@ public IConfigurationRoot Configuration { get; set;}
 
 In this code, the constructor uses an ``IHostingEnvironment`` instance to set the base configuration path to the content root path (the root of the project). Then, it specifies that configuration will come from a required JSON file, ``quotes.json``. The result of the ``Build`` method is stored in the ``Configuration`` property, which is accessible from elsewhere in ``Startup``.
 
+Note that for the above code to compile, you'll need to be sure to include these namespaces:
+
+```c#
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+```
+
+You'll also need to reference these packages:
+
+* Microsoft.Extensions.Configuration.Json
+* Microsoft.Extensions.Options.ConfigurationExtensions
+
+
 ## Accessing Configuration Values as Options
 
 ASP.NET Core uses the [options pattern](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration#options-config-objects) to access configuration values in a strongly-typed manner. Once configured, strongly typed values may be requested from any type or method that supports [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) (which includes most ASP.NET Core types, as well as the ``Configure`` method in ``Startup``, as you'll see in a moment). To use the pattern, simply request an instance of ``IOptions<T>`` where ``T`` is the type you're trying to access from configuration. Currently, the quotes app stores its data in a hard-coded ``List<Quotation>`` in ``QuotationStore``. To load these quotes from a configuration source, an instance of ``IOptions<List<Quotation>>`` is used. To access the strongly-typed value, use the ``Value`` property.
