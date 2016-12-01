@@ -28,7 +28,8 @@ namespace ConsoleApplication
             services.Configure<List<Quotation>>(Configuration.GetSection("Quotes"));
         }
 
-        public void Configure(IApplicationBuilder app, IOptions<List<Quotation>> quoteOptions)
+        public void Configure(IApplicationBuilder app, 
+            IOptions<List<Quotation>> quoteOptions)
         {
             app.UseStaticFiles();
 

@@ -1,7 +1,7 @@
 {
     "Quotes": [
-        { "author": "someone", "quote": "quote1" },
-        { "author": "someone2", "quote": "quote2" },
-        { "author": "someone3", "quote": "quote3" }
+        { "author": "Ralph Johnson", "quote": "Before software can be reusable it first has to be usable." },
+        { "author": "Albert Einstein", "quote": "Make everything as simple as possible, but not simpler." },
+        { "author": "Dwight Eisenhower", "quote": "I have always found that plans are useless, but planning is indispensable." }
     ]
 }
