@@ -14,7 +14,7 @@ One of the most challenging and often frustrating parts of writing software is f
 
 To demonstrate an error in the current quotes app, run the app and navigate to `/quote/0`. You should see the first quote (either in the ``QuotationStore`` or being read from the `quotes.json` file). Likewise, `/quote/1` and `/quote/2` should display the second and third quotes. However, unless you've added more quotes, there are no more quote beyond these three. Trying to navigate to `/quote/3` (the fourth quote - any number larger 2 will behave similarly) will yield an HTTP 500 error and a blank page. 
 
-![Blank Page](images/blank-page.png)
+![Blank Page](images/blank-error.png)
 
 In this case, you've probably already guessed that the problem is that you're trying to access an item in the collection that's outside the bounds of the collection. But errors aren't always so apparent. The developer exception page will make the problem much easier to find.  This middleware will display detailed exception information any time an exception occurs as part of a request. It's recommended that you only enable this middleware during development; you'll learn more about this in the [environments lesson](environments.md).
 
