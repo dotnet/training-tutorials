@@ -10,7 +10,15 @@ See the [Issue](https://github.com/dotnet/training-tutorials/issues/65) to claim
 
 ## First Header
 
-Start the lesson here.
+Enhance the application that's being built by leveraging some view features:
+
+ViewStart
+ViewImports
+Layout
+Partials
+Passing viewmodels into views (@model attribute in view)
+No need to go into huge depth with these. Refer to docs for more.
+https://docs.asp.net/en/latest/mvc/views/index.html
 
 ...
 
