@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using REPLHelper;
 
 public class LibraryContext : DbContext
 {
@@ -8,6 +9,6 @@ public class LibraryContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Filename=Library.db");
+        optionsBuilder.UseSqlite(DBHelper.GetReadonlyDbConnectionString());
     }
 }
