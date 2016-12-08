@@ -26,7 +26,8 @@ For this lesson, we will use a small database to allow you to try querying on yo
 | 15     | 8        | Murder on the Orient Express    | Mystery          | 1934            | 
 | 16     | 1        | The Call of the Wild            | Adventure        | 1903            | 
 | 17     | 4        | Death Comes for the Archbishop  | Historical       | 1927            | 
-    
+
+
 ### Authors 
 | AuthorId | FirstName  | LastName  | 
 |----------|------------|-----------| 
@@ -46,12 +47,14 @@ For this lesson, we will use a small database to allow you to try querying on yo
  
 Let's say we want to get all of the books from our database in a C# application. Normally, we would have to write a database query in a domain-specific language, such as SQL, and then we would have to manually map the results of this query to C# objects. With EF Core, this process is much easier because it takes care of the data access code for us. 
  
-```c# 
+```{.snippet}
 using (var context = new LibraryContext()) 
 { 
     var books = context.Books.ToList(); 
 } 
-``` 
+```
+:::repl{data-name=loading-all-entities}
+:::
  
 In order to interact with the database via EF Core, we must first create an instance of our context (`LibraryContext`). Notice that we create the context with the `using` keyword. This automatically disposes the context after the using block has finished executing. Alternatively, we could manually call `LibraryContext.dispose()`, but the `using` method is more convenient and readable. It is imperative that we dispose of the context after we are finished using it because it holds an open connection to the database. 
  
@@ -61,14 +64,16 @@ Once we have an instance of the context, we can use it to interact with the data
  
 Loading all of the entities from a database is useful, but there are many use cases where we only want to load a subset of the entities from the database. For example, we may want to filter books by author or genre. EF Core allows us to filter entities via the `Where` extension method. Let's look at an example where we retrieve all Historical books from the database. 
  
-```c# 
+```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
     var books = context.Books 
         .Where(b => b.Genre == "Historical") 
         .ToList(); 
 } 
-``` 
+```
+:::repl{data-name=filtering-entities}
+:::
  
 We use a lambda expression within the `Where` method to detect if the `Genre` property of each book is equal to "Historical". Books that meet the criteria of the lambda expression will be included in the final result, while books that do not will be excluded. 
  
@@ -78,12 +83,14 @@ We could retrieve all of the books like in the previous example and then filter 
  
 Both of our examples so far have shown how to retrieve a collection of entities. Let's look at how to retrieve a single entity based on a unique identifier. 
  
-```c# 
+```{.snippet}
 using (var context = new LibraryContext()) 
 { 
     var book = context.Books 
         .Single(b => b.Id == 1); 
 } 
-``` 
+```
+:::repl{data-name=loading-single-entity}
+:::
  
 In this example, we use the `Single` extension method to find the book with an `Id` of 1. Note that we do not need to call `ToList()` because `Single` returns a single entity. It is important to only use `Single` with unique identifiers because if multiple entities meet the success criteria a `System.InvalidOperationException` will be thrown. 
