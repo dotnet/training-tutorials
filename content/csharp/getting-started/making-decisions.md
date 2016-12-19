@@ -18,9 +18,9 @@ static void Greet(string name)
 ```{class=REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         Greet(""); // try calling this with "", null, and your name as arguments
     }
@@ -47,9 +47,9 @@ Console.WriteLine(sum);
 ```{class=REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         bool someCondition = false; // try it with both true and false values
 
@@ -78,9 +78,9 @@ Console.WriteLine(sum);
 ```{class=REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         bool someCondition = false;
 
@@ -125,9 +125,9 @@ else
 ```{class=REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         Console.WriteLine("What is the capital of Ohio?");
         var answer = "your answer here"; // change this to your answer
@@ -213,9 +213,9 @@ switch (guessedNumber)
 ```{class=REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         uint guessedNumber = 1; // try different numbers to see resulting behavior
         switch (guessedNumber)

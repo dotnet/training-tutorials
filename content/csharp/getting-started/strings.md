@@ -18,16 +18,16 @@ string string2 = "Hello";
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
-    string string1; // current value is null
-    string1 = "Hello";
+        string string1; // current value is null
+        string1 = "Hello";
 
-    string string2 = "Hello";
-    Console.WriteLine(string1);
-    Console.WriteLine(string2);
+        string string2 = "Hello";
+        Console.WriteLine(string1);
+        Console.WriteLine(string2);
     }
 }
 ```
@@ -44,9 +44,9 @@ string empty2 = String.Empty;
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string empty1 = "";
         string empty2 = String.Empty;
@@ -84,9 +84,9 @@ Console.WriteLine($"1st string is {emptyString.Length} characters long.");
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string emptyString = String.Empty;
         string nullString = null;
@@ -119,9 +119,9 @@ string combined = one + two; // "abc123"
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string one = "abc";
         string two = "123";
@@ -145,9 +145,9 @@ string lower2 = "Another Test".ToLower(); // another test
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string original = "Test string";
         string capital = original.ToUpper(); // TEST STRING
@@ -174,9 +174,9 @@ string shortversion = input.Trim().Substring(0,3); // "Ste"
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string input = " Steve "; // has a space at the start and end.
         string clean1 = input.TrimStart(); // "Steve "
@@ -213,9 +213,9 @@ string greet4 = greetTemplate.Replace("**NAME**", name); // Hello Steve!
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string name = "Steve";
         string greet1 = $"Hello {name}!"; // Hello Steve!

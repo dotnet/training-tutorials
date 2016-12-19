@@ -19,9 +19,9 @@ var someDay = DateTime.Parse("7/1/2016");
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         var currentTime = DateTime.Now; // current time
         var today = DateTime.Today; // current date - time is midnight
@@ -72,9 +72,9 @@ int second = someTime.Second; // 9
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         var someTime = new DateTime(2016,7,1,11,10,9); // 1 July 2016 11:10:09 AM
         int year = someTime.Year; // 2016
@@ -107,9 +107,9 @@ Console.WriteLine($"There are {duration.TotalDays} days left in the year");
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         DateTime nextYear = new DateTime(DateTime.Today.Year+1, 1, 1);
         TimeSpan duration = nextYear - DateTime.Today;

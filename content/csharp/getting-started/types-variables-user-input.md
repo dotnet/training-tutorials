@@ -18,9 +18,9 @@ Console.WriteLine("Hello World!");
 ```{class=REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
 		Console.WriteLine("Hello World!");
     }
@@ -38,9 +38,9 @@ var name = "Steve"; // use your name here
 ```{class=REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
 		var name = "Steve"; // use your name here
 		Console.WriteLine("Hello World!");
@@ -61,9 +61,9 @@ Console.WriteLine($"Hello {name}!");
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
 		var name = "Steve"; // use your name here
 		Console.WriteLine($"Hello {name}!");
