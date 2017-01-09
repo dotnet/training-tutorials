@@ -311,7 +311,7 @@ catch (Exception ex) when (ex is MemberNameNotFoundException || ex is FormatExce
 }
 ```
 
-By restricting in this way, we're able to reuse more code, while ignoring exception types we're not prepared to handle.
+By restricting in this way, you're able to reuse more code, while ignoring exception types you're not prepared to handle.
 
 ## When to Avoid Throwing and Catching
 It is important that you only throw exceptions when it's appropriate, when your code is in an unintended situation. If the situation seems likely, but requires taking a certain action, just handle it using normal application flow control elements like ``if`` statements. 
