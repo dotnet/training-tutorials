@@ -2,46 +2,8 @@
  
 In this lesson, you'll learn how to use querying to fetch one or more items from your database. EF Core uses LINQ to query data, so it is important that you understand LINQ before going through this lesson. Check out the [LINQ lesson](../../csharp/getting-started/linq.md) in the C# Interactive Tutorial if you need a refresher. 
  
-## Example database 
- 
-For this lesson, we will use a small database to allow you to try querying on your own. The database has two tables, Books and Authors, and the data is as follows: 
- 
-### Books 
-| BookId | AuthorId | Title                           | Genre            | PublicationYear | 
-|--------|----------|---------------------------------|------------------|-----------------| 
-| 1      | 9        | Mrs. Dalloway                   | Literary         | 1925            | 
-| 2      | 6        | The Mysterious Island           | Science Fiction  | 1874            | 
-| 3      | 7        | The Blazing World               | Science Fiction  | 1666            | 
-| 4      | 1        | The Scarlet Plague              | Science Fiction  | 1912            | 
-| 5      | 8        | The Secret Adversary            | Mystery          | 1922            | 
-| 6      | 6        | An Antarctic Mystery            | Mystery          | 1897            | 
-| 7      | 5        | My Bondage and My Freedom       | Narrative        | 1855            | 
-| 8      | 3        | The Count of Monte Cristo       | Adventure        | 1845            | 
-| 9      | 10       | Minnie's Sacrifice              | Historical       | 1869            | 
-| 10     | 4        | My Antonia                      | Historical       | 1918            | 
-| 11     | 4        | O Pioneers!                     | Historical       | 1913            | 
-| 12     | 2        | Adventures of Huckleberry Finn  | Satire           | 1884            | 
-| 13     | 2        | The Adventures of Tom Sawyer    | Satire           | 1876            | 
-| 14     | 10       | Iola Leroy                      | Historical       | 1892            | 
-| 15     | 8        | Murder on the Orient Express    | Mystery          | 1934            | 
-| 16     | 1        | The Call of the Wild            | Adventure        | 1903            | 
-| 17     | 4        | Death Comes for the Archbishop  | Historical       | 1927            | 
-
-
-### Authors 
-| AuthorId | FirstName  | LastName  | 
-|----------|------------|-----------| 
-| 1        | Jack       | London    | 
-| 2        | Mark       | Twain     | 
-| 3        | Alexandre  | Dumas     | 
-| 4        | Willa      | Cather    |  
-| 5        | Frederick  | Douglass  | 
-| 6        | Jules      | Vern      | 
-| 7        | Margaret   | Cavendish | 
-| 8        | Agatha     | Christie  | 
-| 9        | Virginia   | Woolf     | 
-| 10       | Frances    | Harper    | 
-| 11       | Stephen    | Crane     | 
+> **Note** {.note} 
+> If you want to see the contents of the database or how our entities relate to each other, please refer to the [Database Reference](tutorial-database-reference.md) and [Model Reference](tutorial-model-reference.md) pages.
  
 ## Loading All Entities 
  
