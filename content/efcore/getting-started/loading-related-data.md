@@ -1,7 +1,7 @@
 # Loading Related Data  
  
 > **Note** {.note} 
-> If you want to see the contents of the database or how our entities relate to each other, please refer to the [Database Reference](database-reference.md) and [Model Reference](model-reference) pages. 
+> If you want to see the contents of the database or how our entities relate to each other, please refer to the [Database Reference](tutorial-database-reference.md) and [Model Reference](tutorial-model-reference.md) pages.
  
 ## Single Layer Inclusion 
  

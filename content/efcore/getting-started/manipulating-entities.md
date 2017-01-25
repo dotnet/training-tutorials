@@ -2,6 +2,9 @@
  
 Four operations that we often perform on a record in a database are create, read, update, and delete (commonly referred to as "CRUD" operations). We walked through how to read records from a database in the [Querying Data](querying.md) tutorial. Now let's learn how to perform the other CRUD operations which allow us to manipulate records in the database. 
  
+> **Note** {.note} 
+> If you want to see the contents of the database or how our entities relate to each other, please refer to the [Database Reference](tutorial-database-reference.md) and [Model Reference](tutorial-model-reference.md) pages.
+ 
 ## Adding Entities to a Database 
  
 Let's first look at how to create a new record in the database. In the following example, we create a new author and add it to the database: 
