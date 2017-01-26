@@ -11,7 +11,7 @@ When loading an entity from the database, EF Core will automatically include pro
 using (var context = new LibraryContext()) 
 { 
 	var book = context.Books 
-		.Single(b => b.BookId == 1); 
+		.Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=field-not-included} 
@@ -24,21 +24,21 @@ using (var context = new LibraryContext())
 { 
 	var book = context.Books  
 		.Include(b => b.Author)
-		.Single(b => b.BookId == 1); 
+		.Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=include-method} 
 :::
  
-You can also include multiple non-primitive type properties at once by calling the `Include` method multiple times. For example, we can include the `Editions` and `Authors` properties of the `Book` entity like so:  
+You can also include multiple non-primitive type properties at once by calling the `Include` method multiple times. For example, we can include the `CheckoutRecords` and `Author` properties of the `Book` entity like so:  
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
 	var book = context.Books 
-		.Include(b => b.Editions) 
+		.Include(b => b.CheckoutRecords) 
 		.Include(b => b.Author)
-		.Single(b => b.BookId == 1); 
+		.Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=multiple-include-methods} 
@@ -46,45 +46,45 @@ using (var context = new LibraryContext())
  
 ## Multi-layer Inclusion 
  
-Now, what happens if one of the properties we include also has non-primitive type properties? By default, they won't be loaded from the database, but we can tell EF Core to load them using the `ThenInclude` method. For example, we can load the publisher information for the editions of a book like so: 
+Now, what happens if one of the properties we include also has non-primitive type properties? By default, they won't be loaded from the database, but we can tell EF Core to load them using the `ThenInclude` method. For example, we can determine all of the readers who have checked out a specific book by using `Include` to load the book's checkout records and then using `ThenInclude` to load the reader associated with each checkout record as shown below:
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
 	var book = context.Book 
-		.Include(b => b.Editions) 
-			.ThenInclude(e => e.Publisher)
-		.Single(b => b.BookId == 1) ; 
+		.Include(b => b.CheckoutRecords) 
+			.ThenInclude(c => c.Reader)
+		.Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=then-include-method} 
 :::
  
-We can also chain `ThenInclude` calls to include deeper layers of related data. For example, if we want to find out the publisher information for the different editions of Fredrick Douglass' books in this library, we will need to chain `ThenInclude` calls to get the book, edition, and publisher information. 
+We can also chain `ThenInclude` calls to include deeper layers of related data. For example, if we want to find out all of the readers who have checked out books written by Frederick Douglass, we will need to chain `ThenInclude` calls to get the associated books, checkout records, and reader information.
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
 	var author = context.Authors 
 		.Include(a => a.Books) 
-			.ThenInclude(b => b.Editions) 
-				.ThenInclude(e => e.Publisher)
+			.ThenInclude(b => b.CheckoutRecords) 
+				.ThenInclude(c => c.Reader)
 		.Single(a => a.LastName == "Douglass"); 
 } 
 ``` 
 :::repl{data-name=then-include-method-chain} 
 :::
  
-A mix of `Include` and `ThenInclude` commands can also be chained together to include related data from multiple layers across related entities. In the following example, we are looking for the author, editions, and edition publishers of _The Call of the Wild_. 
+A mix of `Include` and `ThenInclude` commands can also be chained together to include related data from multiple layers across related entities. In the following example, we chain together `Include` and `ThenInclude` commands to load the author of _Murder on the Orient Express_, as well as all of the readers who have checked it out.
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-	var book = context.Books 
-		.Include(b => b.Editions) 
-			.ThenInclude(e => e.Publisher) 
-		.Include(b => b.Author)		
-		.Single(b => b.Title.Contains("Call of the Wild")); 
+	var book = context.Books
+        .Include(c => c.CheckoutRecords)
+            .ThenInclude(r => r.Reader)
+        .Include(b => b.Author)
+        .Single(b => b.Title.Contains("Orient Express"));
 } 
 ``` 
 :::repl{data-name=include-and-then-include-method-chain} 
@@ -154,20 +154,20 @@ using (var context = new LibraryContext())
 :::repl{data-name=count-method} 
 :::
  
-Likewise, we can find the year of the oldest edition of a book using the `Min` method: 
+Likewise, we can find the most recent date a specific book was checked out using the `Max` method: 
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
     var book = context.Books
-        .Single(b => b.Title == "The Scarlet Plague"); 
+        .Single(b => b.Title.Contains("Orient Express")); 
  
-    var year = context.Entry(book) 
-        .Collection(b => b.Editions) 
+    var mostRecentCheckout = context.Entry(book) 
+        .Collection(b => b.CheckoutRecords) 
         .Query() 
-        .Min(e => e.Year); 
+        .Max(c => c.CheckoutDate); 
 } 
 ``` 
-:::repl{data-name=min-method} 
+:::repl{data-name=max-method} 
 :::
  

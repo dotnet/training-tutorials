@@ -8,17 +8,17 @@ public class Program
     {
         using (var context = new LibraryContext())
         {
-            var author = context.Authors
-                .Include(a => a.Books)
-                    .ThenInclude(b => b.Editions)
-                        .ThenInclude(e => e.Publisher)
+            var author = context.Authors 
+                .Include(a => a.Books) 
+			        .ThenInclude(b => b.CheckoutRecords) 
+				        .ThenInclude(c => c.Reader)
                 .Single(a => a.LastName == "Douglass");
 
             foreach (Book book in author.Books)
             {
-                foreach (Edition edition in book.Editions)
+                foreach (CheckoutRecord checkoutRecord in book.CheckoutRecords)
                 {
-                    Console.WriteLine("{0}: {1} - {2}", book.Title, edition.Year, edition.Publisher.Name);
+                    Console.WriteLine("{0}: Due {1} - {2} {3}", book.Title, checkoutRecord.DueDate.ToString("MMMM dd, yyyy"), checkoutRecord.Reader.FirstName, checkoutRecord.Reader.LastName);
                 }
             }
         }

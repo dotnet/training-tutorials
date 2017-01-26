@@ -9,7 +9,7 @@ public class Program
         {
             var book = context.Books.First();
 
-            Console.WriteLine(String.Format("Original Book - {0}: {1}", book.BookId, book.Title));
+            Console.WriteLine(String.Format("Original Book - {0}: {1}", book.Id, book.Title));
 
             book.Title = "Frankenstein: or, The Modern Prometheus";
             context.SaveChanges();
@@ -19,7 +19,7 @@ public class Program
             var updatedBook = context.Books
                 .Single(b => b.Title.Contains("Frankenstein"));
 
-            Console.WriteLine(String.Format("Updated Book - {0}: {1}", updatedBook.BookId, updatedBook.Title));
+            Console.WriteLine(String.Format("Updated Book - {0}: {1}", updatedBook.Id, updatedBook.Title));
         }
     }
 }

@@ -9,7 +9,7 @@ public class Program
         {
             var untrackedBook = new Book()
             {
-                BookId = 1,
+                Id = 1,
                 Title = "Frankenstein: or, The Modern Prometheus",
                 Genre = "Science Fiction",
                 PublicationYear = 1818
@@ -19,9 +19,9 @@ public class Program
             context.SaveChanges();
 
             var updatedBook = context.Books
-                .Single(b => b.BookId == 1);
+                .Single(b => b.Id == 1);
 
-            Console.WriteLine("{0}: {1}, {2} {3}", updatedBook.BookId, updatedBook.Title, updatedBook.Genre, updatedBook.PublicationYear);
+            Console.WriteLine("{0}: {1}, {2} {3}", updatedBook.Id, updatedBook.Title, updatedBook.Genre, updatedBook.PublicationYear);
         }
     }
 }

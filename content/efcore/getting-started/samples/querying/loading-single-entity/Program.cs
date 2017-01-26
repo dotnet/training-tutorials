@@ -9,7 +9,7 @@ public class Program
         using (var context = new LibraryContext())
         {
             var book = context.Books
-                .Single(b => b.BookId == 1);
+                .Single(b => b.Id == 1);
             Console.WriteLine(book.Title);
         }
     }

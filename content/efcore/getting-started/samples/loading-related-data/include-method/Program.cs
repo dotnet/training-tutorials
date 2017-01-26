@@ -10,7 +10,7 @@ public class Program
         {
             var book = context.Books
                 .Include(b => b.Author)
-                .Single(b => b.BookId == 1);
+                .Single(b => b.Id == 1);
                 
             Console.WriteLine("{0} - {1} {2}", book.Title, book.Author.FirstName, book.Author.LastName);
         }

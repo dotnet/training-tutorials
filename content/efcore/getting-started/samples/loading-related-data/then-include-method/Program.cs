@@ -9,13 +9,13 @@ public class Program
         using (var context = new LibraryContext())
         {
             var book = context.Books
-                .Include(b => b.Editions)
-                    .ThenInclude(e => e.Publisher)
-                .Single(b => b.BookId == 1);
+                .Include(b => b.CheckoutRecords)
+                    .ThenInclude(c => c.Reader)
+                .Single(b => b.Id == 1); 
 
-            foreach (Edition edition in book.Editions)
+            foreach (CheckoutRecord checkoutRecord in book.CheckoutRecords)
             {
-                Console.WriteLine("{0} - {1}", edition.Book.Title, edition.Publisher.Name);
+                Console.WriteLine("{0} - {1} {2}", checkoutRecord.Book.Title, checkoutRecord.Reader.FirstName, checkoutRecord.Reader.LastName);
             }
         }
     }

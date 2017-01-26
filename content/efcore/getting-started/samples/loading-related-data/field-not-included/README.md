@@ -7,5 +7,6 @@ This code example demonstrates how EF Core loads entities from a database and th
 - [LibraryContext.cs](../../shared/LibraryContext.cs)
 - [Author.cs](../../shared/Author.cs)
 - [Book.cs](../../shared/Book.cs)
-- [Edition.cs](../../shared/Edition.cs)
-- [Publisher.cs](../../shared/Publisher.cs)
+- [CheckoutRecord.cs](../../shared/CheckoutRecord.cs)
+- [Reader.cs](../../shared/Reader.cs)
+- [Address.cs](../../shared/Address.cs)
