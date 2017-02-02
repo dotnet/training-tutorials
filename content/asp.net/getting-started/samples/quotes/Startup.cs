@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 
 namespace ConsoleApplication
 {
@@ -15,7 +16,8 @@ namespace ConsoleApplication
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("quotes.json", optional: false, reloadOnChange: true);
+                .AddJsonFile("quotes.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
         }
@@ -29,8 +31,10 @@ namespace ConsoleApplication
         }
 
         public void Configure(IApplicationBuilder app, 
-            IOptions<List<Quotation>> quoteOptions)
+            IOptions<List<Quotation>> quoteOptions,
+            ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //app.UseStatusCodePages("text/plain","HTTP Status Code: {0}");
             app.UseStatusCodePagesWithRedirects("~/{0}.html");
             app.UseDeveloperExceptionPage();
