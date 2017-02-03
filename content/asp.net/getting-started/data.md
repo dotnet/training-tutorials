@@ -1,12 +1,25 @@
 # Working with Data in your ASP.NET Core App
-by [Steve Smith](http://deviq.com/me/steve-smith)
+by [James Chambers](http://jameschambers.com)
 
 #### Sample Files
 Download a ZIP containing this tutorial's sample files:
-- [Initial Version] - Use this as a starting point when following along with the tutorial yourself
-- [Completed Version] - Includes the completed versions of all samples
+- [Completed Version (Pending)] - Includes the completed versions of all MVC tutorials
 
-See the [Issue](https://github.com/dotnet/training-tutorials/issues/67) to claim this lesson and/or view what should be included in it.
+
+
+Introduce Entity Framework Core
+
+Show how to add to project
+Show how to configure In Memory provider
+Show how to configure for SQL Server (but don't put this in our demo)
+Show how request EF directly from Controller
+Talk about why this is a bad idea due to directly coupling to implementation details
+Show how to pull EF code into a Repository and request the IRepository from Controller
+Show how to use some LINQ with EF to query data
+Possible source of data - 404s to the application. See:
+https://msdn.microsoft.com/en-us/magazine/mt707525.aspx
+
+
 
 ## First Header
 
