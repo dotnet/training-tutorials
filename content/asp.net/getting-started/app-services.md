@@ -151,14 +151,45 @@ After making this change, you can modify the `Configure` method to request an in
     }
 ```
 
-You can build the app at this point, and it should compile. However, it will fail when run because the implementation of `IQuotationStore` has not yet been registered in `ConfigureServices`.
+You can build the app at this point, and it should compile. However, it will fail when run because the implementation of `IQuotationStore` has not yet been registered in `ConfigureServices`:
+
+```
+Unhandled Exception: System.Exception: Could not resolve a service of type 'ConsoleApplication.IQuotationStore' for the parameter 'quotationStore' of method 'Configure' on type 'ConsoleApplication.Startup'. ---> System.InvalidOperationException: No service for type 'ConsoleApplication.IQuotationStore' has been registered.
+```
+
+To correct this issue, you need to configure the service in `ConfigureServices`.
 
 ## Registering the Service
 
+You register the services your app will use in the `ConfigureServices` method, in *Startup.cs*. To configure the `QuotationStore` service to be used whenever an `IQuotationStore` instance is requested, you can use the following code:
 
+```c#
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddOptions();
+        services.Configure<List<Quotation>>(Configuration.GetSection("Quotes"));
 
+        // add this line
+        services.AddSingleton<IQuotationStore,QuotationStore>();
+    }
+```
 
+With the above line added to the app, you should be able to run it and see quotes displayed when you access the various middleware endpoints (e.g. `/all`).
+
+ASP.NET Core has a built-in dependency container, which is used internally by the framework as well as by your app. This container is used to instantiate framework components like middleware, [controllers](controller-dependencies.md), and [filters](filters.md), as well as the `Startup` class and its `Configure` method. The container provides any requested dependencies when it instantiates these types (or calls `Configure`). Services are added to the container in `ConfigureServices` by calling `services.Add[lifetime]`, where `[lifetime]` is either *Transient*, *Scoped*, or *Singleton*.
+
+Transient instances are newly instantiated each time they are requested from the container, either directly or as a dependency of a type the container is supplying. Most services fall into this category, and can be created, called, and then discarded.
+
+Scoped instances are created once per web request to the app. Subsequent references to the type from the container within the same web request will access the same instance.
+
+Singleton instances are created once per app restart. Once created, the same instance is used for the life of the application. You can instantiate and supply the instance in `ConfigureServices` if desired:
+
+```c#
+    services.AddSingleton<ISomeService>(new ServiceImplementation());
+```
+
+You can learn more about the [dependency container and ASP.NET Core's support for dependency injection in the official docs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection).
 
 ## Next Steps
 
-Give the reader some additional exercises/tasks they can perform to try out what they've just learned.
+In the last lesson, you learned how to adding [logging](logging.md) to your app. Update the QuotationStore implementation so that it requests an instance of an `ILoggerFactory` and performs some logging as part of its implementation. Notice that you're able to add this functionality without directly referencing a specific logger or using the 'new' keyword to create a specific implementation.

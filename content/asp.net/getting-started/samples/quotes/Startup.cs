@@ -29,6 +29,7 @@ namespace ConsoleApplication
         {
             services.AddOptions();
             services.Configure<List<Quotation>>(Configuration.GetSection("Quotes"));
+            services.AddSingleton<IQuotationStore,QuotationStore>();
         }
 
         public void Configure(IApplicationBuilder app, 
