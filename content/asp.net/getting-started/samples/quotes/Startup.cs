@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +32,7 @@ namespace ConsoleApplication
         }
 
         public void Configure(IApplicationBuilder app, 
-            IOptions<List<Quotation>> quoteOptions,
+            IQuotationStore quotationStore,
             ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
@@ -40,22 +41,16 @@ namespace ConsoleApplication
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
 
-            var quotes = quoteOptions.Value;
-            if(quotes != null) 
-            {
-                QuotationStore.Quotations = quotes;
-            }
-
             app.Map("/quote", builder => builder.Run(async context =>
             {
                 var id = int.Parse(context.Request.Path.ToString().Split('/')[1]);
-                var quote = QuotationStore.Quotations[id];
+                var quote = quotationStore.List().ToList()[id];
                 await context.Response.WriteAsync(quote.ToString());
             }));
 
             app.Map("/all", builder => builder.Run(async context =>
             {
-                foreach(var quote in QuotationStore.Quotations)
+                foreach(var quote in quotationStore.List())
                     {
                         await context.Response.WriteAsync("<div>");
                         await context.Response.WriteAsync(quote.ToString());
@@ -65,7 +60,7 @@ namespace ConsoleApplication
 
             app.Map("/random", builder => builder.Run(async context =>
             {
-                await context.Response.WriteAsync(QuotationStore.RandomQuotation().ToString());
+                await context.Response.WriteAsync(quotationStore.RandomQuotation().ToString());
             }));
         }
     }

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
+using System.Linq;
 
 namespace ConsoleApplication
 {
-    public static class QuotationStore : IQuotationStore
+    public class QuotationStore : IQuotationStore
     {
         private static List<Quotation> _quotations {get; set;}
 
@@ -19,7 +21,7 @@ namespace ConsoleApplication
 
         private List<Quotation> DefaultQuotations()
         {
-            Quotations = new List<Quotation>()
+            return new List<Quotation>()
             {
                 new Quotation() { 
                     Quote="Measuring programming progress by lines of code is like measuring aircraft building progress by weight.", 
@@ -41,7 +43,7 @@ namespace ConsoleApplication
         public Quotation RandomQuotation()
         {
             Random rnd = new Random(DateTime.Now.Millisecond);
-            return _quotations[rnd.Next(0,Quotations.Count)];
+            return _quotations[rnd.Next(0,_quotations.Count)];
         }
     }
 }

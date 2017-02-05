@@ -85,7 +85,7 @@ With an interface extracted, you can refactor the static `QuotationStore` to imp
 
         private List<Quotation> DefaultQuotations()
         {
-            Quotations = new List<Quotation>()
+            return new List<Quotation>()
             {
                 new Quotation() { 
                     Quote="Measuring programming progress by lines of code is like measuring aircraft building progress by weight.", 
@@ -107,18 +107,51 @@ With an interface extracted, you can refactor the static `QuotationStore` to imp
         public Quotation RandomQuotation()
         {
             Random rnd = new Random(DateTime.Now.Millisecond);
-            return _quotations[rnd.Next(0,Quotations.Count)];
+            return _quotations[rnd.Next(0,_quotations.Count)];
         }
     }
 ```
 
 ## Using the Service
 
-After making this change, you can modify the `Configure` method to request an instance of `IQuotationStore` as a parameter. ASP.NET Core will provide the instance when the method is executed (if it's been registered, which you'll do in a moment). The refactored `Configure` method no longer requires `quoteOptions`, since the initialization code for the quotes has been encapsulated in the service itself.
+After making this change, you can modify the `Configure` method to request an instance of `IQuotationStore` as a parameter. ASP.NET Core will provide the instance when the method is executed (if it's been registered, which you'll do in a moment). The refactored `Configure` method no longer requires `quoteOptions`, since the initialization code for the quotes has been encapsulated in the service itself. The slightly simplified `Configure` method that now uses `IQuotationStore` is shown below:
 
-// show refactored Configure method
+```c#
+    public void Configure(IApplicationBuilder app, 
+        IQuotationStore quotationStore,
+        ILoggerFactory loggerFactory)
+    {
+        loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+        //app.UseStatusCodePages("text/plain","HTTP Status Code: {0}");
+        app.UseStatusCodePagesWithRedirects("~/{0}.html");
+        app.UseDeveloperExceptionPage();
+        app.UseStaticFiles();
 
-// build and run - you'll get an error
+        app.Map("/quote", builder => builder.Run(async context =>
+        {
+            var id = int.Parse(context.Request.Path.ToString().Split('/')[1]);
+            var quote = quotationStore.List().ToList()[id];
+            await context.Response.WriteAsync(quote.ToString());
+        }));
+
+        app.Map("/all", builder => builder.Run(async context =>
+        {
+            foreach(var quote in quotationStore.List())
+                {
+                    await context.Response.WriteAsync("<div>");
+                    await context.Response.WriteAsync(quote.ToString());
+                    await context.Response.WriteAsync("</div>");
+                }
+        }));
+
+        app.Map("/random", builder => builder.Run(async context =>
+        {
+            await context.Response.WriteAsync(quotationStore.RandomQuotation().ToString());
+        }));
+    }
+```
+
+You can build the app at this point, and it should compile. However, it will fail when run because the implementation of `IQuotationStore` has not yet been registered in `ConfigureServices`.
 
 ## Registering the Service
 
