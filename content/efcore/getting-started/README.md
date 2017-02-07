@@ -15,6 +15,7 @@ This tutorial will cover the following topics:
 
 - [Intro to EF Core](intro-to-ef-core.md)
 - [Installing EF Core](installing-ef-core.md)
+- [Understanding Data Models](understanding-data-models.md)
 - [Querying Data](querying.md)
 - [Loading Related Data](loading-related-data.md)
 - [Manipulating Entities](manipulating-entities.md)
