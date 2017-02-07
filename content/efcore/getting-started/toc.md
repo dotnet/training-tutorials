@@ -3,3 +3,5 @@
 - [Querying Data](querying.md)
 - [Loading Related Data](loading-related-data.md)
 - [Manipulating Entities](manipulating-entities.md)
+- [Appendix: Data Model Reference](tutorial-model-reference.md)
+- [Appendix: Database Reference](tutorial-database-reference.md)

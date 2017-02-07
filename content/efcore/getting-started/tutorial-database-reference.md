@@ -1,4 +1,5 @@
-# Database Tables 
+# Database Reference
+This document details the data contained within the example database used throughout this tutorial.
  
 ## Authors  
  
