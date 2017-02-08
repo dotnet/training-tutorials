@@ -8,7 +8,9 @@ Download a ZIP containing this tutorial's sample files:
 
 ## Introduction
 
-Your ASP.NET Core app will likely depend on a number of services. These services perform important functionality for the app. Almost anything your app does could be encapsulated in a service, but the most important operations to isolate are those that work with infrastructure outside the scope of your app. For instance, if your app stores data in a database, or reads data in from an online API, these operations would benefit from being encapsulated in services rather than being performed directly from the app. ASP.NET Core is built on the premise of modularity, and includes built-in functionality for registering services your app requires and making these services available to classes within your app. You register services your app will need in the `ConfigureServices` method in *Startup.cs*. Your classes that depend on these services then request them by declaring parameters in their constructors. Writing classes such that they explicitly request their dependencies is said to follow the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/), which is closely related to the [Dependency Inversion Principle](http://deviq.com/dependency-inversion-principle/).
+Your ASP.NET Core app will likely depend on a number of services. These services perform important functionality for the app. Almost anything your app does could be encapsulated in a service, but the most important operations to isolate are those that work with infrastructure outside the scope of your app. For instance, if your app stores data in a database, or reads data in from an online API, these operations would benefit from being encapsulated in services rather than being performed directly from the app.
+
+ASP.NET Core is built on the premise of modularity, and includes built-in functionality for registering services your app requires and making these services available to classes within your app. You register services your app will need in the `ConfigureServices` method in *Startup.cs*. Your classes that depend on these services then request them by declaring parameters in their constructors. Writing classes such that they explicitly request their dependencies is said to follow the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/), which is closely related to the [Dependency Inversion Principle](http://deviq.com/dependency-inversion-principle/).
 
 The current sample app you've seen uses a static `QuotationStore` to access quotes from a fixed collection. Working with this static class tightly couples your app to this implementation. If you want to easily test your code, or swap in a different implementation for how quotes are accessed, you would need to edit all of the code that directly references `QuotationStore` (this violates the [Open/Closed Principle](http://deviq.com/open-closed-principle/)). To improve this design, making it more loosely coupled and closer to how ASP.NET Core expects apps to be written, you can [refactor](http://deviq.com/refactoring/) the `QuotationStore` into a non-static service that implements an interface.
 
@@ -66,7 +68,7 @@ Now is a good time to clean up this code a bit. Initializing the quotation store
     }
 ```
 
-With an interface extracted, you can refactor the static `QuotationStore` to implement the interface. You can pull the initialization logic into `QuotationStore`'s constructor.
+With an interface extracted, you can refactor the static `QuotationStore` to implement the interface. You can pull the initialization logic into `QuotationStore`'s constructor and leverage the [options pattern](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration#using-options-and-configuration-objects) to set up the class's default data.
 
 ```c#
     public class QuotationStore : IQuotationStore
@@ -122,7 +124,6 @@ After making this change, you can modify the `Configure` method to request an in
         ILoggerFactory loggerFactory)
     {
         loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-        //app.UseStatusCodePages("text/plain","HTTP Status Code: {0}");
         app.UseStatusCodePagesWithRedirects("~/{0}.html");
         app.UseDeveloperExceptionPage();
         app.UseStaticFiles();
@@ -178,6 +179,8 @@ With the above line added to the app, you should be able to run it and see quote
 
 ASP.NET Core has a built-in dependency container, which is used internally by the framework as well as by your app. This container is used to instantiate framework components like middleware, [controllers](controller-dependencies.md), and [filters](filters.md), as well as the `Startup` class and its `Configure` method. The container provides any requested dependencies when it instantiates these types (or calls `Configure`). Services are added to the container in `ConfigureServices` by calling `services.Add[lifetime]`, where `[lifetime]` is either *Transient*, *Scoped*, or *Singleton*.
 
+### Service lifetimes
+
 Transient instances are newly instantiated each time they are requested from the container, either directly or as a dependency of a type the container is supplying. Most services fall into this category, and can be created, called, and then discarded.
 
 Scoped instances are created once per web request to the app. Subsequent references to the type from the container within the same web request will access the same instance.
@@ -192,4 +195,4 @@ You can learn more about the [dependency container and ASP.NET Core's support fo
 
 ## Next Steps
 
-In the last lesson, you learned how to adding [logging](logging.md) to your app. Update the QuotationStore implementation so that it requests an instance of an `ILoggerFactory` and performs some logging as part of its implementation. Notice that you're able to add this functionality without directly referencing a specific logger or using the 'new' keyword to create a specific implementation.
+In the last lesson, you learned how to add [logging](logging.md) to your app. Update the QuotationStore implementation so that it requests an instance of an `ILoggerFactory` and performs some logging as part of its implementation. Notice that you're able to add this functionality without directly referencing a specific logger or using the 'new' keyword to create a specific implementation.
