@@ -147,7 +147,7 @@ public IActionResult Index()
 > **Note** {.note} 
 > Controllers are supposed to be concerned about views, about validating application input and assembling the components required to render a web page for the user. So why are we talking to the database in a controller? The DI piece makes it easy in this case, but it doesn't make it right. The biggest problem here is that our view and our controller have become tightly coupled to the underlying data entities, which will cause problems down the road. Be sure to check the Next Steps at the end of this article for ideas on how to improve this technical debt by using repositories or the mediator pattern.
 
-To see your data rendered in the browser at runtime you're going to need a [view](views.md). We'll follow [standard convention](controllers-actions.md) here, so add a `ViewErrors` folder under your `Views` directory in the project and add a new view called `Index.cshtml`. The requisite code to render a table of errors is as follows:
+To see your data rendered in the browser at runtime you're going to need a [view](views.md). You'll follow [standard convention](controllers-actions.md) here, so add a `ViewErrors` folder under your `Views` directory in the project and add a new view called `Index.cshtml`. The requisite code to render a table of errors is as follows:
 
 ```html
 @model IEnumerable<MvcBasics.Data.ErrorInformation>
