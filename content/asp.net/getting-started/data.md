@@ -15,7 +15,7 @@ By using a pre-built library you can avoid having to write a lot of the data acc
 
 ## Configuring a Database Provider
 
-With a goal of making it easier to use EF across our project, you can take a cue from what you learned about [Dependency Injection](controller-dependencies.md) and register our service with the DI container. To do this, you'll add a class that inherits from `DbContext`, one of the primary abstractions in Entity Framework. 
+With a goal of making it easier to use EF across your project, you can take a cue from what you learned about [Dependency Injection](controller-dependencies.md) and register your service with the DI container. To do this, you'll add a class that inherits from `DbContext`, one of the primary abstractions in Entity Framework. 
 
 In this example, you're creating an in-memory database that will be used to track error messages while the application is running.  Create a `Data` folder in your project and add the following classes:
 
@@ -46,7 +46,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();
 }
 ```
-You may have noticed that the `ErrorContext` class has a constructor that accepts a generic `DbContextOptions<T>` parameter. This is what allows the framework to assemble our dependencies at runtime.  You'll note in the call to `AddDbContext` that there is a lambda expression where the application is configured to use an in memory database. This pattern, combined with the constructor, provides the abstraction required to separate the configuration needed to talk to a database from the objects used to manipulate it. 
+You may have noticed that the `ErrorContext` class has a constructor that accepts a generic `DbContextOptions<T>` parameter. This is what allows the framework to assemble dependency chains at runtime.  You'll note in the call to `AddDbContext` that there is a lambda expression where the application is configured to use an in memory database. This pattern, combined with the constructor, provides the abstraction required to separate the configuration needed to talk to a database from the objects used to manipulate it. 
 
 You could just as easily store a connection string in your [application configuration](configuration.md) and connect your context to a SQL database. Rather than using the `Microsoft.EntityFrameworkCore.InMemory` package above you'd use `Microsoft.EntityFrameworkCore.SqlServer` instead, and your call in `ConfigureServices` would look similar to the following:
 
@@ -94,7 +94,7 @@ public async Task Invoke(HttpContext httpContext)
 }
 ```
 
-There are two important things to note about our data and our context after the application waits for the call `_next` to complete. First, whenever it sees an HTTP status code at or above 400 it creates a new `ErrorInformation` object on the fly and adds it to the `DbSet<ErrorInformation>` property that is defined in the context. Secondly, a call is made to `SaveChangesAsync` to commit the new row to the table.
+There are two important things to note about the data and the context after the application waits for the call `_next` to complete. First, whenever it sees an HTTP status code at or above 400 it creates a new `ErrorInformation` object on the fly and adds it to the `DbSet<ErrorInformation>` property that is defined in the context. Secondly, a call is made to `SaveChangesAsync` to commit the new row to the table.
 
 To bring the logging online you have to wire in the middleware, which you've [seen before](middleware-basic.md). The intent here is to wrap the execution around the MVC pipeline to capture the errors. To do so, add it to the `Configure` method in your `Startup` class, just before the call to `app.UseMvc()`. You can use the extension method that was created for you in the templated middleware class:
 
@@ -123,7 +123,7 @@ All that's left to do is for you to cause some errors! The easiest way to do thi
 
 ## Displaying Data in A View
 
-Now add a new controller called `ViewErrorsController` to your project in the `Controllers` folder and add a constructor that accepts an instance of our `ErrorContext` as well as the corresponding backing field.
+Now add a new controller called `ViewErrorsController` to your project in the `Controllers` folder and add a constructor that accepts an instance of your `ErrorContext` as well as the corresponding backing field.
 
 ```c#
 private readonly ErrorContext _context;
@@ -147,7 +147,7 @@ public IActionResult Index()
 > **Note** {.note} 
 > Controllers are supposed to be concerned about views, about validating application input and assembling the components required to render a web page for the user. So why are we talking to the database in a controller? The DI piece makes it easy in this case, but it doesn't make it right. The biggest problem here is that our view and our controller have become tightly coupled to the underlying data entities, which will cause problems down the road. Be sure to check the Next Steps at the end of this article for ideas on how to improve this technical debt by using repositories or the mediator pattern.
 
-To see our data rendered in our browser at runtime you're going to need a [view](views.md). We'll follow [standard convention](controllers-actions.md) here, so add a `ViewErrors` folder under your `Views` directory in the project and add a new view called `Index.cshtml`. The requisite code to render a table of errors is as follows:
+To see your data rendered in the browser at runtime you're going to need a [view](views.md). We'll follow [standard convention](controllers-actions.md) here, so add a `ViewErrors` folder under your `Views` directory in the project and add a new view called `Index.cshtml`. The requisite code to render a table of errors is as follows:
 
 ```html
 @model IEnumerable<MvcBasics.Data.ErrorInformation>
