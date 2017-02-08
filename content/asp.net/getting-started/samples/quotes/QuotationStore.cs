@@ -1,15 +1,27 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
+using System.Linq;
 
 namespace ConsoleApplication
 {
-    public static class QuotationStore
+    public class QuotationStore : IQuotationStore
     {
-        public static List<Quotation> Quotations {get; set;}
+        private static List<Quotation> _quotations {get; set;}
 
-        static QuotationStore()
+        public QuotationStore(IOptions<List<Quotation>> quoteOptions)
         {
-            Quotations = new List<Quotation>()
+            _quotations = quoteOptions.Value;
+            if(_quotations == null)
+            {
+                // if nothing configured, use default in code
+                _quotations = DefaultQuotations();
+            }
+        }
+
+        private List<Quotation> DefaultQuotations()
+        {
+            return new List<Quotation>()
             {
                 new Quotation() { 
                     Quote="Measuring programming progress by lines of code is like measuring aircraft building progress by weight.", 
@@ -23,10 +35,15 @@ namespace ConsoleApplication
             };
         }
 
-        public static Quotation RandomQuotation()
+        public IEnumerable<Quotation> List()
+        {
+            return _quotations.AsEnumerable();
+        }
+
+        public Quotation RandomQuotation()
         {
             Random rnd = new Random(DateTime.Now.Millisecond);
-            return Quotations[rnd.Next(0,Quotations.Count)];
+            return _quotations[rnd.Next(0,_quotations.Count)];
         }
     }
 }
