@@ -67,7 +67,20 @@ TODO: show a unit test on an action method, and how it doesn't test routes or at
 
 ## Configuring a Test Server
 
-A Tes
+The ``TestServer`` type is in the ``Microsoft.AspNetCore.TestHost`` package and namespace. You'll need to add that package to your test project before you can use it. Once you've done so, you can configure an instance of a ``TestServer`` in much the same way that you configure a host for your ASP.NET Core app, using ``WebHostBuilder``. A simple example:
+
+```c#
+    var builder = new WebHostBuilder()
+        .UseStartup<Startup>();
+    
+    var testServer = new TestServer(builder);
+```
+
+Once you've configured and instantiated a server, you can easily start working with it using the standard ``HttpClient`` class. The ``TestServer`` has a built-in method that will create a pre-configured client ready to connect to it:
+
+```c#
+    var client = testServer.CreateClient();
+```
 
 ## Testing Simple Middleware-Based ASP.NET Core Apps
 
