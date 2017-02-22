@@ -48,7 +48,7 @@ public interface IPaymentProcessorAdapter
 
 public StwipeAdapter : IPaymentProcessorAdapter
 {
-    public void ProcessPayment(string merchantId, string cardNumber, string expiration, 
+    public bool ProcessPayment(string merchantId, string cardNumber, string expiration, 
                         decimal amount)
     {
         var provider = new StwipeProvider(merchantId);
@@ -58,7 +58,7 @@ public StwipeAdapter : IPaymentProcessorAdapter
 
 public PaySalAdapter : IPaymentProcessorAdapter
 {
-    public void ProcessPayment(string merchantId, 
+    public bool ProcessPayment(string merchantId, 
         string cardNumber, string expiration, 
         decimal amount)
     {
