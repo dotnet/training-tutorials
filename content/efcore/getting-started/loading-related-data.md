@@ -95,7 +95,7 @@ using (var context = new LibraryContext())
 > **Note** {.note}
 > Explicit Loading support was introduced in EF Core 1.1.0. If you are using an earlier release, the functionality in this section will not be available.
 
-In the previous section, we used *eager loading* which loads the related data from the database as part of the initial database query. Another option is to use *explicit loading* which retrieves the related data separately from the original database query. This allows us to query and filter the related entities before loading them into memory, so we only pull the necessary information from the database. 
+In the previous section, we used **eager loading** which loads the related data from the database as part of the initial database query. Another option is to use **explicit loading** which retrieves the related data separately from the original database query. This allows us to query and filter the related entities before loading them into memory, so we only pull the necessary information from the database. 
  
 To use explicit loading, we first use the context's `Entry` method to specify the entity that we want to load related data for. Then, we use the `Collection` and `Reference` methods to specify the related data to load for the entity. `Collection` is used when retrieving multiple items, and `Reference` is used for single items. Finally, we use the `Load` method to actually load the data from the database.  
  
