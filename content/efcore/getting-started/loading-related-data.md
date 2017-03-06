@@ -10,8 +10,8 @@ When loading an entity from the database, EF Core will automatically include pro
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-	var book = context.Books 
-		.Single(b => b.Id == 1); 
+    var book = context.Books 
+        .Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=field-not-included} 
@@ -22,9 +22,9 @@ We need to explicitly tell EF Core if we want to load a non-primitive type like 
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-	var book = context.Books  
-		.Include(b => b.Author)
-		.Single(b => b.Id == 1); 
+    var book = context.Books  
+        .Include(b => b.Author)
+        .Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=include-method} 
@@ -35,10 +35,10 @@ You can also include multiple non-primitive type properties at once by calling t
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-	var book = context.Books 
-		.Include(b => b.CheckoutRecords) 
-		.Include(b => b.Author)
-		.Single(b => b.Id == 1); 
+    var book = context.Books 
+        .Include(b => b.CheckoutRecords) 
+        .Include(b => b.Author)
+        .Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=multiple-include-methods} 
@@ -51,10 +51,10 @@ Now, what happens if one of the properties we include also has non-primitive typ
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-	var book = context.Book 
-		.Include(b => b.CheckoutRecords) 
-			.ThenInclude(c => c.Reader)
-		.Single(b => b.Id == 1); 
+    var book = context.Book 
+        .Include(b => b.CheckoutRecords) 
+            .ThenInclude(c => c.Reader)
+        .Single(b => b.Id == 1); 
 } 
 ``` 
 :::repl{data-name=then-include-method} 
@@ -65,11 +65,11 @@ We can also chain `ThenInclude` calls to include deeper layers of related data. 
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-	var author = context.Authors 
-		.Include(a => a.Books) 
-			.ThenInclude(b => b.CheckoutRecords) 
-				.ThenInclude(c => c.Reader)
-		.Single(a => a.LastName == "Douglass"); 
+    var author = context.Authors 
+        .Include(a => a.Books) 
+            .ThenInclude(b => b.CheckoutRecords) 
+                .ThenInclude(c => c.Reader)
+        .Single(a => a.LastName == "Douglass"); 
 } 
 ``` 
 :::repl{data-name=then-include-method-chain} 
@@ -80,7 +80,7 @@ A mix of `Include` and `ThenInclude` commands can also be chained together to in
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-	var book = context.Books
+    var book = context.Books
         .Include(c => c.CheckoutRecords)
             .ThenInclude(r => r.Reader)
         .Include(b => b.Author)
@@ -163,7 +163,7 @@ using (var context = new LibraryContext())
         .Single(b => b.Title.Contains("Orient Express")); 
  
     var mostRecentCheckout = context.Entry(book) 
-        .Collection(b => b.CheckoutRecords) 
+        .Collection(b => b.CheckoutRecords)
         .Query() 
         .Max(c => c.CheckoutDate); 
 } 

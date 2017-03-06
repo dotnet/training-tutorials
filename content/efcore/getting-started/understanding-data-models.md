@@ -15,16 +15,16 @@ Let's look at an example. Imagine we are creating a library application. What ty
 ```{C#} 
 public class Book 
 { 
-	public int Id { get; set; } 
-	public string Title { get; set; } 
-	public int PublicationYear { get; set; } 
+    public int Id { get; set; } 
+    public string Title { get; set; } 
+    public int PublicationYear { get; set; } 
 } 
  
 public class Reader 
 { 
-	public int Id { get; set; } 
-	public string FirstName { get; set; } 
-	public string LastName { get; set; } 
+    public int Id { get; set; } 
+    public string FirstName { get; set; } 
+    public string LastName { get; set; } 
 } 
 ```
  
@@ -36,8 +36,8 @@ After defining our entities, we next need to register them with EF Core. We do t
 ```{C#} 
 public class LibraryContext : DbContext 
 { 
-	public DbSet<Book> Books { get; set; } 
-	public DbSet<Reader> Readers { get; set; } 
+    public DbSet<Book> Books { get; set; } 
+    public DbSet<Reader> Readers { get; set; } 
 } 
 ``` 
  
