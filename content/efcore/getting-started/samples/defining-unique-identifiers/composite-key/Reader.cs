@@ -6,6 +6,5 @@ public class Reader
     public string FirstName { get; set; }
     public string LastName { get; set; }
 
-    public Address Address { get; set; }
     public List<CheckoutRecord> CheckoutRecords { get; set; }
 }
