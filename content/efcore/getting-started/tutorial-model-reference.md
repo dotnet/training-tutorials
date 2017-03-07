@@ -3,7 +3,7 @@ This document contains the entity class definitions for the example data model u
 
 ## Author.cs
  
-```{.snippet} 
+```c#
 using System.Collections.Generic;
 
 public class Author 
@@ -18,7 +18,7 @@ public class Author
  
 ## Book.cs
  
-```{.snippet} 
+```c# 
 using System.Collections.Generic;
 
 public class Book 
@@ -35,7 +35,7 @@ public class Book
  
 ## CheckoutRecord.cs 
  
-```{.snippet} 
+```c#
 using System;
 
 public class CheckoutRecord
@@ -52,7 +52,7 @@ public class CheckoutRecord
  
 ## Reader.cs
  
-```{.snippet} 
+```c#
 public class Reader
 {
     public int Id { get; set; }
@@ -65,7 +65,7 @@ public class Reader
 
 ## Address.cs 
  
-```{.snippet} 
+```c#
 public class Address
 {
     public int Id { get; set; }
