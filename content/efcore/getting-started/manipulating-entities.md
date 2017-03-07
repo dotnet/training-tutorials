@@ -1,6 +1,6 @@
 # Manipulating Entities 
  
-Four operations that we often perform on a record in a database are create, read, update, and delete (commonly referred to as "CRUD" operations). We walked through how to read records from a database in the [Querying Data](querying.md) tutorial. Now let's learn how to perform the other CRUD operations which allow us to manipulate records in the database. 
+Four operations that we often perform on a record in a database are create, read, update, and delete (commonly referred to as "CRUD" operations). We walked through how to read records from a database in the [Querying Data](querying.md) lesson. In this lesson, we'll learn how to perform the other CRUD operations which allow us to manipulate records in the database. 
  
 > **Note** {.note}  
 > If you want to see the contents of the database or how our entities relate to each other, please refer to the [Database Reference](tutorial-database-reference.md) and [Model Reference](tutorial-model-reference.md) pages.
