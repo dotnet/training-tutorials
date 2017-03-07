@@ -14,11 +14,11 @@ while (currentGuess != numberToGuess)
 {
     Console.WriteLine("Guess the number (1 to 100): ");
     currentGuess = int.Parse(Console.ReadLine());
-    if(currentGuess < numberToGuess)
+    if (currentGuess < numberToGuess)
     {
         Console.WriteLine("You guessed too low! Try again!");
     }
-    if(currentGuess > numberToGuess)
+    if (currentGuess > numberToGuess)
     {
         Console.WriteLine("You guessed too high! Try again!");
     }
@@ -58,12 +58,12 @@ while (true) // this sets up an infinite loop, since true will always evaluate t
 {
     Console.WriteLine("Guess the number (1 to 100): ");
     int currentGuess = int.Parse(Console.ReadLine());
-    if(currentGuess==numberToGuess) break;
-    if(currentGuess < numberToGuess)
+    if (currentGuess==numberToGuess) break;
+    if (currentGuess < numberToGuess)
     {
         Console.WriteLine("You guessed too low! Try again!");
     }
-    if(currentGuess > numberToGuess)
+    if (currentGuess > numberToGuess)
     {
         Console.WriteLine("You guessed too high! Try again!");
     }
@@ -94,12 +94,12 @@ public static void Main()
     Console.WriteLine("Enter a number:");
     int number = int.Parse(Console.ReadLine());
     Console.Write("Factors: ");
-    if(number > 1) // convert this to while
+    if (number > 1) // convert this to while
     {
         int candidateFactor = 2;
-        if(candidateFactor <= number) // convert this to while
+        if (candidateFactor <= number) // convert this to while
         {
-            if(number % candidateFactor == 0) // found a factor
+            if (number % candidateFactor == 0) // found a factor
             {
                 Console.Write(candidateFactor);
                 // divide number by the factor you found and assign this back to number

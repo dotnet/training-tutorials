@@ -120,7 +120,7 @@ Logical expressions are grouped using parentheses, which modify their order of o
 ```{.snippet}
 int a = 5;
 int b = 10;
-if((a < b) && (b < 20))
+if ((a < b) && (b < 20))
 {
     // do something
 }
@@ -136,7 +136,7 @@ namespace ConsoleApplication
         {
             int a = 5;
             int b = 10;
-            if((a < b) && (b < 20))
+            if ((a < b) && (b < 20))
             {
                 Console.WriteLine("I'm in here!");
             }
@@ -155,7 +155,7 @@ A boolean (``bool``) variable is often referred to as a *flag*. Flags can be use
 ```{.snippet}
 int x = 10;
 bool isPositive = x > 0;
-if(isPositive)
+if (isPositive)
 {
     // do something
 }
@@ -171,7 +171,7 @@ namespace ConsoleApplication
         {
             int x = 10;
             bool isPositive = x > 0;
-            if(isPositive)
+            if (isPositive)
             {
                 Console.WriteLine("I'm in here!");
             }
@@ -180,7 +180,7 @@ namespace ConsoleApplication
 }
 ```
 
-Often, programs will include complex conditional logic, and it can be helpful to simplify some or all of this complexity into named variables. Flags can be attached to objects as *properties*, such that you can test for their value as part of the object itself (example: ``if(x.IsPositive)``. However, when writing *object-oriented* programs, it's often better to [avoid using flags](http://deviq.com/flags-over-objects/), since they can lead to program designs that are more procedural and don't encapsulate behavior effectively within objects. You'll learn more about object design in the [Encapsulation and Object-Oriented Design](encapsulation-oop) lesson.
+Often, programs will include complex conditional logic, and it can be helpful to simplify some or all of this complexity into named variables. Flags can be attached to objects as *properties*, such that you can test for their value as part of the object itself (example: ``if (x.IsPositive)``. However, when writing *object-oriented* programs, it's often better to [avoid using flags](http://deviq.com/flags-over-objects/), since they can lead to program designs that are more procedural and don't encapsulate behavior effectively within objects. You'll learn more about object design in the [Encapsulation and Object-Oriented Design](encapsulation-oop) lesson.
 
 > **Tip** {.tip .newLanguage}    
 > It's a typical convention to name boolean variables with an "Is" or "is" prefix, since this makes it clear the variable is a boolean and also makes reading conditional statements more clear as well. Avoid naming flags negatively (example: "IsNotPositive"), since this can become confusing, especially when the flag is negated with the ``!`` operator.
