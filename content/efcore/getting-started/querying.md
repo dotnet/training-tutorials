@@ -57,4 +57,4 @@ using (var context = new LibraryContext())
 :::repl{data-name=loading-single-entity}
 :::
  
-In this example, we use the `Single` extension method to find the book with an `Id` of 1. Note that we do not need to call `ToList()` because `Single` returns a single entity. It is important to only use `Single` with unique identifiers because if multiple entities meet the success criteria a `System.InvalidOperationException` will be thrown. 
+In this example, we use the `Single` extension method to find the book with an `Id` of 1. Note that we do not need to call `ToList` because `Single` returns a single entity. It is important to only use `Single` with unique identifiers because if multiple entities meet the success criteria a `System.InvalidOperationException` will be thrown. 

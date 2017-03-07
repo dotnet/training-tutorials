@@ -7,7 +7,7 @@ Four operations that we often perform on a record in a database are create, read
  
 ## Adding Entities to a Database 
  
-Let's first look at how to create a new record in the database. In the following example, we create a new author and add it to the database: 
+Let's first look at how to create a new record in the database. In the following example, we create a new `Author` and add it to the database: 
   
 ```{.snippet}
 using (var context = new LibraryContext()) 
