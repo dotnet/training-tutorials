@@ -1,6 +1,6 @@
 # Loading Related Data  
  
-> **Note** {.note} 
+> **Note** {.note}  
 > If you want to see the contents of the database or how our entities relate to each other, please refer to the [Database Reference](tutorial-database-reference.md) and [Model Reference](tutorial-model-reference.md) pages.
  
 ## Single Layer Inclusion 
@@ -92,7 +92,7 @@ using (var context = new LibraryContext())
  
 ## Explicit Loading 
   
-> **Note** {.note}
+> **Note** {.note}  
 > Explicit Loading support was introduced in EF Core 1.1.0. If you are using an earlier release, the functionality in this section will not be available.
 
 In the previous section, we used **eager loading** which loads the related data from the database as part of the initial database query. Another option is to use **explicit loading** which retrieves the related data separately from the original database query. This allows us to query and filter the related entities before loading them into memory, so we only pull the necessary information from the database. 

@@ -28,7 +28,7 @@ public class Reader
 } 
 ```
  
-> **NOTE** {.note}  
+> **Note** {.note}  
 > We will be using this library example throughout the tutorial. It is very simple at the moment, but we will be adding more data members and entities in later lessons to make it more like a full-fledged library application. 
  
 After defining our entities, we next need to register them with EF Core. We do this by first extending the abstract class [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext), which serves as the connection between our C# code and database. Then we add our entities as `DbSet` properties to the context as shown below: 
