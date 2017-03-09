@@ -3,6 +3,7 @@
 - [Understanding Data Models](understanding-data-models.md)
 - [Generating Databases and Data Models](generating-databases-and-data-models.md)
 - [Defining Unique Identifiers](defining-unique-identifiers.md)
+- [Defining Entity Relationships](defining-entity-relationships.md)
 - [Querying Data](querying.md)
 - [Loading Related Data](loading-related-data.md)
 - [Manipulating Entities](manipulating-entities.md)
