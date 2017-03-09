@@ -58,6 +58,7 @@ Id    | City       | State
 ------|------------|---------
 1     | Springview | Nebraska
 2     | Thurston   | Nebraska
-3     | Austin     | Texas   
+3     | Holstein   | Nebraska   
 4     | Gurley     | Nebraska
 5     | Lincoln    | Nebraska
+6     | Harrison   | Nebraska
