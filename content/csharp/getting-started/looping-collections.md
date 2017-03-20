@@ -7,7 +7,7 @@ In earlier lessons, you learned about ``while`` loops and ``for`` loops. Althoug
 
 ```{.snippet}
 var myList = new List<string>(){ "one", "two", "three" };
-foreach(var item in myList)
+foreach (var item in myList)
 {
     Console.WriteLine(item);
 }
@@ -23,7 +23,7 @@ namespace ConsoleApplication
         public static void Main()
         {
             var myList = new List<string>(){ "one", "two", "three" };
-            foreach(var item in myList)
+            foreach (var item in myList)
             {
                 Console.WriteLine(item);
             }
@@ -63,7 +63,7 @@ The ``for`` loop can be used to iterate over an array or list, using its length 
 ```{.snippet}
 // List<T>
 var myList = new List<int>() { 43, 55, 100 };
-for(int i = 0; i < myList.Count; i++)
+for (int i = 0; i < myList.Count; i++)
 {
     // access current element of the list with index of i
     Console.WriteLine(myList[i]);
@@ -71,7 +71,7 @@ for(int i = 0; i < myList.Count; i++)
 
 // array
 int[] numbers = new[] { 2, 3, 5, 7 };
-for(int i = 0; i < numbers.Length; i++)
+for (int i = 0; i < numbers.Length; i++)
 {
     // access current element of the array with index of i
     Console.WriteLine(numbers[i]);
@@ -89,7 +89,7 @@ namespace ConsoleApplication
         {
             // List<T>
             var myList = new List<int>() { 43, 55, 100 };
-            for(int i = 0; i < myList.Count; i++)
+            for (int i = 0; i < myList.Count; i++)
             {
                 // access current element of the list with index of i
                 Console.WriteLine(myList[i]);
@@ -97,7 +97,7 @@ namespace ConsoleApplication
 
             // array
             int[] numbers = new[] { 2, 3, 5, 7 };
-            for(int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 // access current element of the array with index of i
                 Console.WriteLine(numbers[i]);
@@ -112,7 +112,7 @@ You can also use a ``while`` loop, and your own indexer variable. The example be
 ```{.snippet}
 var myList = new List<int>() { 10, 20, 30 };
 int index = 0;
-while(index < myList.Count)
+while (index < myList.Count)
 {
     Console.WriteLine(myList[index]);
     index++;
@@ -130,7 +130,7 @@ namespace ConsoleApplication
         {
             var myList = new List<int>() { 10, 20, 30 };
             int index = 0;
-            while(index < myList.Count)
+            while (index < myList.Count)
             {
                 Console.WriteLine(myList[index]);
                 index++;

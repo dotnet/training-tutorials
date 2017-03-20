@@ -35,7 +35,7 @@ public class Program
             Console.WriteLine(customer.Name);
             Console.WriteLine("Orders:");
             orders = customer.Orders;
-            while(orders.Count > 0)
+            while (orders.Count > 0)
             {
                 Console.WriteLine(orders[0].OrderNumber);
                 orders.RemoveAt(0); // don't write code like this
@@ -88,7 +88,7 @@ public class Program
             Console.WriteLine(customer.Name);
             Console.WriteLine("Orders:");
             orders = customer.Orders;
-            while(orders.Count > 0)
+            while (orders.Count > 0)
             {
                 Console.WriteLine(orders[0].OrderNumber);
                 orders.RemoveAt(0); // don't write code like this
@@ -178,7 +178,7 @@ public ReadOnlyCollection<Order> Orders
 { 
     get
     {
-        if(_ordersView == null)
+        if (_ordersView == null)
         {
             _ordersView = new ReadOnlyCollection<Order>(_orders);
         }
@@ -283,25 +283,25 @@ The following method shows an example of violating Tell, Don't Ask. This method 
 ```c#
 public string ConstructCustomerName(Customer customer)
 {
-    if(customer == null) return;
+    if (customer == null) return;
     string name = "";
-    if(!String.IsNullOrEmpty(customer.Title)
+    if (!String.IsNullOrEmpty(customer.Title)
     {
         name += customer.Title + " ";
     }
-    if(!String.IsNullOrEmpty(customer.FirstName)
+    if (!String.IsNullOrEmpty(customer.FirstName)
     {
         name += customer.FirstName + " ";
     }
-    if(!String.IsNullOrEmpty(customer.MiddleName)
+    if (!String.IsNullOrEmpty(customer.MiddleName)
     {
         name += customer.MiddleName + " ";
     }
-    if(!String.IsNullOrEmpty(customer.LastName)
+    if (!String.IsNullOrEmpty(customer.LastName)
     {
         name += customer.LastName + " ";
     }    
-    if(!String.IsNullOrEmpty(customer.Suffix)
+    if (!String.IsNullOrEmpty(customer.Suffix)
     {
         name += customer.Suffix;
     }

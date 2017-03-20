@@ -98,11 +98,11 @@ When someone buys something from the store, there's a method somewhere that is r
 public void ProcessCard(string cardNumber, string expiration, decimal amount)
 {
     IPaymentProcessorAdapter adapter = null;
-    if(PaymentProvider = "Stwipe")
+    if (PaymentProvider = "Stwipe")
     {
         adapter = new StwipeAdapter();
     }
-    else if(PaymentProvider = "PaySal")
+    else if (PaymentProvider = "PaySal")
     {
         adapter = new PaySalAdapter();
     } 
@@ -126,11 +126,11 @@ public void ProcessCard(string cardNumber, string expiration, decimal amount)
 
 private IPaymentProcessorAdapter GetPaymentAdapter()
 {
-    if(PaymentProvider = "Stwipe")
+    if (PaymentProvider = "Stwipe")
     {
         adapter = new StwipeAdapter();
     }
-    else if(PaymentProvider = "PaySal")
+    else if (PaymentProvider = "PaySal")
     {
         adapter = new PaySalAdapter();
     } 
@@ -153,11 +153,11 @@ public PaymentProcessorAdapterFactory : IPaymentProcessorAdapterFactory
 {
     public IPaymentProcessorAdapter Create(string providerName)
     {
-        if(PaymentProvider = "Stwipe")
+        if (PaymentProvider = "Stwipe")
         {
             adapter = new StwipeAdapter();
         }
-        else if(PaymentProvider = "PaySal")
+        else if (PaymentProvider = "PaySal")
         {
             adapter = new PaySalAdapter();
         } 
@@ -288,7 +288,7 @@ public sealed class OrderProcessor
         get
         {
             // bad code - do not do this
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = new OrderProcessor();
             }

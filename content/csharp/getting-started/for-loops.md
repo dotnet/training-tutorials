@@ -140,7 +140,7 @@ Although most ``for`` loops start from a known value and increment by one until 
 
 ```{.snippet}
 Console.WriteLine("Countdown started...");
-for(int i=10; i > 0; i--)
+for (int i=10; i > 0; i--)
 {
     Console.WriteLine(i);
 }
@@ -154,7 +154,7 @@ public class Program
     public static void Main()
     {
         Console.WriteLine("Countdown started...");
-        for(int i=10; i > 0; i--)
+        for (int i=10; i > 0; i--)
         {
             Console.WriteLine(i);
         }

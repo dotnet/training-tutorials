@@ -62,7 +62,7 @@ public class Program
 
         //There will be two Persons in this variable: the "Steve" Person and the "Jane" Person
         var peopleOverTheAgeOf30 = people.Where(x => x.Age > 30);
-        foreach(var person in peopleOverTheAgeOf30)
+        foreach (var person in peopleOverTheAgeOf30)
         {
             Console.WriteLine(person.FirstName);
         }
@@ -113,7 +113,7 @@ public class Program
 
         //Will ignore Eric and Steve in the list of people
         IEnumerable<Person> afterTwo = people.Skip(2);
-        foreach(var person in afterTwo)
+        foreach (var person in afterTwo)
         {
             Console.WriteLine(person.FirstName);
         }
@@ -162,7 +162,7 @@ public class Program
 
         //Will only return Eric and Steve from the list of people
         IEnumerable<Person> takeTwo = people.Take(2);
-        foreach(var person in takeTwo)
+        foreach (var person in takeTwo)
         {
             Console.WriteLine(person.FirstName);
         }
@@ -212,7 +212,7 @@ public class Program
         var people = GenerateListOfPeople();
         
         IEnumerable<string> allFirstNames = people.Select(x => x.FirstName);
-        foreach(var firstName in allFirstNames)
+        foreach (var firstName in allFirstNames)
         {
             Console.WriteLine(firstName);
         }
@@ -270,7 +270,7 @@ public class Program
         var people = GenerateListOfPeople();
         
         IEnumerable<FullName> allFullNames = people.Select(x => new FullName { First = x.FirstName, Last = x.LastName });
-        foreach(var fullName in allFullNames)
+        foreach (var fullName in allFullNames)
         {
             Console.WriteLine($"{fullName.Last}, {fullName.First}");
         }

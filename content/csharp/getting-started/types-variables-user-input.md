@@ -87,7 +87,7 @@ When the expression inside of the parentheses is true, the program block immedia
 
 ```c#
 var name = "World";
-if(args.Length > 0)
+if (args.Length > 0)
 {
     name = args[0];
 }

@@ -10,7 +10,7 @@ You can use ``if`` statements for all kinds of things in your programs. One comm
 ```{class=snippet}
 static void Greet(string name)
 {
-    if(String.IsNullOrEmpty(name)) return;
+    if (String.IsNullOrEmpty(name)) return;
 
     Console.WriteLine($"Hello, {name}!");
 }
@@ -27,7 +27,7 @@ class Program
 
     static void Greet(string name)
     {
-        if(String.IsNullOrEmpty(name)) return;
+        if (String.IsNullOrEmpty(name)) return;
 
         Console.WriteLine($"Hello, {name}!");
     }
@@ -38,7 +38,7 @@ However, it can cause confusion if you don't use curly braces around the stateme
 
 ```{class=snippet}
 var sum = 10;
-if(someCondition)
+if (someCondition)
     sum = sum + 5;
     sum = sum * 2;
 
@@ -54,7 +54,7 @@ class Program
         bool someCondition = false; // try it with both true and false values
 
         var sum = 10;
-        if(someCondition)
+        if (someCondition)
             sum = sum + 5;
             sum = sum * 2;
 
@@ -67,7 +67,7 @@ In this example, when ``someCondition`` is true, the value of sum will be 30. Ot
 
 ```{class=snippet}
 var sum = 10;
-if(someCondition)
+if (someCondition)
 {
     sum = sum + 5;
     sum = sum * 2;
@@ -85,7 +85,7 @@ class Program
         bool someCondition = false;
 
         var sum = 10;
-        if(someCondition)
+        if (someCondition)
         {
             sum = sum + 5;
             sum = sum * 2;
@@ -113,7 +113,7 @@ For example, let's say you're writing a simple guessing game. You ask the user a
 ```{class=snippet}
 Console.WriteLine("What is the capital of Ohio?");
 var answer = Console.ReadLine();
-if(answer.ToLower() == "columbus")
+if (answer.ToLower() == "columbus")
 {
     Console.WriteLine("Correct!");
 }
@@ -131,7 +131,7 @@ class Program
     {
         Console.WriteLine("What is the capital of Ohio?");
         var answer = "your answer here"; // change this to your answer
-        if(answer.ToLower() == "columbus")
+        if (answer.ToLower() == "columbus")
         {
             Console.WriteLine("Correct!");
         }
@@ -147,13 +147,13 @@ Of course, sometimes the decisions your program needs to make are a little more 
 
 ```c#
 // two values, x and y, are being compared
-if(x < y)
+if (x < y)
 {
     return -1;
 }
 else
 {
-    if(x == y)
+    if (x == y)
     {
         return 0;
     }
@@ -168,7 +168,7 @@ As you can see, these kinds of nested conditionals can get quite long to write o
 
 ```c#
 // two values, x and y, are being compared
-if(x < y)
+if (x < y)
 {
     return -1;
 }

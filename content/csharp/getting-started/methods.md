@@ -73,7 +73,7 @@ The above code could be greatly simplified by using methods:
 DisplayHeader();
 DisplayMenu();
 
-switch(ReadCommand())
+switch (ReadCommand())
 // additional code omitted
 ```
 ```{.REPL}
