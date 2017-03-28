@@ -18,7 +18,7 @@ dotnet ef migrations add [migration name]
 Finally, we would run the [dotnet-ef-database-update](https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet#dotnet-ef-database-update) command to execute the database-creation code. 
  
 ``` 
-dotnet ef migrations update  
+dotnet ef database update  
 ``` 
   
 After running the above command, we will have a new database that exactly matches our data model. You can run the example below to see what the resulting database schema would look like. It runs the migration commands for you in the cloud so you can test your model in-browser.
@@ -45,7 +45,7 @@ If we ever need to make changes to our data model in the future, migrations can 
  
 ``` 
 dotnet ef migrations add [migration name]  
-dotnet ef migrations update  
+dotnet ef database update 
 ``` 
   
 Anytime we make changes to the data model, we will need to add and run a new migration for the changes to be reflected in our database. 
