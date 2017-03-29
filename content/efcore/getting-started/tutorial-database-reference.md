@@ -9,27 +9,27 @@ Id   | FirstName  | LastName
 2    | Mark       | Twain   
 3    | Willa      | Cather   
 4    | Frederick  | Douglass
-7    | Agatha     | Christie
-8    | Virginia   | Woolf   
-9    | Frances    | Harper  
-10   | Stephen    | Crane   
+5    | Agatha     | Christie
+6    | Virginia   | Woolf   
+7    | Frances    | Harper  
+8    | Stephen    | Crane   
  
 ## Books  
  
 Id   | AuthorId | Title                           | Genre            | PublicationYear
 -----|----------|---------------------------------|------------------|----------------
-1    | 9        | Mrs Dalloway                    | Literary         | 1925           
+1    | 6        | Mrs Dalloway                    | Literary         | 1925           
 2    | 1        | The Scarlet Plague              | Science Fiction  | 1912           
-3    | 8        | The Secret Adversary            | Mystery          | 1922           
-4    | 5        | My Bondage and My Freedom       | Narrative        | 1855           
-5    | 4        | My Antonia                      | Historical       | 1918           
-6    | 4        | O Pioneers!                     | Historical       | 1913           
+3    | 5        | The Secret Adversary            | Mystery          | 1922           
+4    | 4        | My Bondage and My Freedom       | Narrative        | 1855           
+5    | 3        | My Antonia                      | Historical       | 1918           
+6    | 3        | O Pioneers!                     | Historical       | 1913           
 7    | 2        | Adventures of Huckleberry Finn  | Satire           | 1884           
 8    | 2        | The Adventures of Tom Sawyer    | Satire           | 1876           
-9    | 10       | Iola Leroy                      | Historical       | 1892           
-10   | 8        | Murder on the Orient Express    | Mystery          | 1934           
+9    | 7        | Iola Leroy                      | Historical       | 1892           
+10   | 5        | Murder on the Orient Express    | Mystery          | 1934           
 11   | 1        | The Call of the Wild            | Adventure        | 1903           
-12   | 4        | Death Comes for the Archbishop  | Historical       | 1927           
+12   | 3        | Death Comes for the Archbishop  | Historical       | 1927           
      
 ## Checkout Records
 
