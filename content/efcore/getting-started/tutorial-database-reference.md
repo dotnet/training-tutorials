@@ -43,22 +43,22 @@ Id   | BookId | ReaderId | CheckoutDate | ReturnDate | DueDate
 
 ## Readers
 
-Id   | AddressId | FirstName  | LastName   
------|-----------|------------|------------
-1    | 1         | Andrew     | Salami     
-2    | 2         | Rebecca    | Dahlman    
-3    | 3         | Ryan       | Helmoski   
-4    | 4         | Melia      | Deakin     
-5    | 5         | David      | Mikhayelyan
-6    | 6         | Aryn       | Huck       
+Id   | FirstName  | LastName   
+-----|------------|------------
+1    | Andrew     | Salami     
+2    | Rebecca    | Dahlman    
+3    | Ryan       | Helmoski   
+4    | Melia      | Deakin     
+5    | David      | Mikhayelyan
+6    | Aryn       | Huck       
 
 ## Addresses
  
-Id    | City       | State   
-------|------------|---------
-1     | Springview | Nebraska
-2     | Thurston   | Nebraska
-3     | Holstein   | Nebraska   
-4     | Gurley     | Nebraska
-5     | Lincoln    | Nebraska
-6     | Harrison   | Nebraska
+Id    | ReaderId | City       | State   
+------|----------|------------|---------
+1     | 1        | Springview | Nebraska
+2     | 2        | Thurston   | Nebraska
+3     | 3        | Holstein   | Nebraska   
+4     | 4        | Gurley     | Nebraska
+5     | 5        | Lincoln    | Nebraska
+6     | 6        | Harrison   | Nebraska
