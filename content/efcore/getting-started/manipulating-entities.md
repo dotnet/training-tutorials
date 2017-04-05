@@ -1,6 +1,6 @@
 # Manipulating Entities 
  
-Four operations that we often perform on a record in a database are create, read, update, and delete (commonly referred to as "CRUD" operations). We walked through how to read records from a database in the [Querying Data](querying.md) lesson. In this lesson, we'll learn how to perform the other CRUD operations which allow us to manipulate records in the database. 
+Four operations that we often perform on a record in a database are Create, Read, Update, and Delete (commonly referred to as "CRUD" operations). We walked through how to read records from a database in the [Querying Data](querying.md) lesson. In this lesson, we'll learn how to perform the other CRUD operations which allow us to manipulate records in the database. 
  
 > **Note** {.note}  
 > If you want to see the contents of the database or how our entities relate to each other, please refer to the [Database Reference](tutorial-database-reference.md) and [Model Reference](tutorial-model-reference.md) pages.
@@ -93,7 +93,7 @@ using (var context = new LibraryContext())
 ``` 
 :::repl{data-name=updating-entities} 
 ::: 
- 
+
 Notice we did not have to tell EF Core that the entity had been changed to update its values. This is because the book we retrieved from the database is a **tracked entity**, meaning EF Core will keep track of any changes made to it. EF Core will continue to track changes made to the entity until the context is disposed, which occurs automatically when leaving the `using` block. To learn more about tracked entities, check out the ["Tracking vs. No-Tracking"](https://docs.microsoft.com/en-us/ef/core/querying/tracking) page in the docs. 
  
 Suppose you want to update an untracked entity. As long as the untracked entity has the same primary key as the record in the database, you can accomplish this using the `DbSet`'s `Update` method. In the following example, we update the book with a primary key of `1`: 
@@ -132,7 +132,7 @@ using (var context = new LibraryContext())
  
 ## Deleting Related Data 
  
-In the previous example, we were able to successfully delete a book, but what happened to that book's checkout records? The short answer is it depends. The way that EF Core handles deletion of an entity with related data depends on several factors including whether the related data is tracked, how EF Core is configured, and how the database is configured. To learn more about the available behaviors and how to configure a certain behavior, check out the [Cascade Delete]() lesson.  
+In the previous example, we were able to successfully delete a book, but what happened to that book's checkout records? The short answer is it depends. The way that EF Core handles deletion of an entity with related data depends on several factors including whether the related data is tracked, how EF Core is configured, and how the database is configured. To learn more about the available behaviors and how to configure a certain behavior, check out the Configuring Deletion lesson.  
  
 > **Note** {.note}  
-> The Cascade Delete lesson has not been added yet. For now, please refer to the [Cascade Delete](https://docs.microsoft.com/en-us/ef/core/saving/cascade-delete) page in the docs.
+> The Configuring Deletion lesson has not been added yet. For now, please refer to the [Cascade Delete](https://docs.microsoft.com/en-us/ef/core/saving/cascade-delete) page in the docs.
