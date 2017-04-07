@@ -1,10 +1,10 @@
 # Configuring Different Environments
-by [Eric Fleming](https://ericflemingblog.wordpress.com)
+by [Eric Fleming](http://deviq.com/me/eric-fleming/)
 
 In ASP.NET Core controlling application behavior across multiple environments, such as developement, staging, and production, has been improved through the expanded use of environment variables. Environment variables are used to indicate which environment the application is running in, and can be detected programmatically allowing the application to be configured appropriately.
 
 ## Environment Based Settings Files
-The constructor of the Startup class, found below, provides the ability to use more than one appsettings.json file by leveraging these environment variables. Since the `appsettings` configurations are [read in the order they are specified](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration), the general `appsettings` configuration will be loaded first, followed by an environment specific `appsettings` configuration.
+The constructor of the Startup class, found below, provides the ability to use more than one appsettings.json file by leveraging these environment variables. Since the `appsettings` configurations are [read in the order they are specified](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration), the general `appsettings` configuration will be loaded first, followed by an environment specific `appsettings` configuration. Keep in mind, if a setting exists in multiple settings files the **last settings file loaded will win**. 
 
 ```c#
 public Startup(IHostingEnvironment env)
@@ -24,13 +24,13 @@ The following loads the environment specific `appsettings.json` configuration;
 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
 ```
  
-where `{env.EnvironmentName}` corresponds to the environment variable `ASPNETCORE_ENVIRONMENT`. When using Visual Studio, the value for the `ASPNETCORE_ENVIRONMENT` variable can be found in your project's debug profiles show below:
+where `{env.EnvironmentName}` corresponds to the value of the environment variable `ASPNETCORE_ENVIRONMENT`. When using Visual Studio, the value for the `ASPNETCORE_ENVIRONMENT` variable can be found in your project's debug profiles show below:
 
 ![Project properties debug](images/project-properties-debug.png)
 
 and should be set to `Development` by default.
 
-Environment variables will be updated throughout the environments; for example, on Staging the environment variable will likely be set to `Staging`, and for production it will likely be set to `Production`.
+Environment variables can be configured for each environment in which the application may be deployed; for example, on Staging the environment variable will likely be set to `Staging`, and for production it will likely be set to `Production`.
 
 > Note: On Windows or macOS, environment names are not case sensitive meaning `DEVELOPMENT`, `Development` and `development` will all provide you the same result. On Linux, since it is a case sensitive OS by default, assuming case sensitivity for environment variables is encouraged.
 
@@ -148,6 +148,6 @@ export ASPNETCORE_ENVIRONMENT=Development
 
  Machine level environment variables are set in the .bashrc or .bash_profile file. Edit the file using any text editor and add the following statment.
 
- ```powershell
+ ```bash
  export ASPNETCORE_ENVIRONMENT=Development
  ```
