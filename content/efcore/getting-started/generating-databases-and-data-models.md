@@ -13,7 +13,7 @@ dotnet ef migrations add [migration name]
 ``` 
  
 > **Note** {.note}  
-> If the above command fails with the error message, `No executable found matching command "dotnet-ef"`, make sure `Microsoft.EntityFrameworkCore.Tools` has been installed for your project, as shown in the [Installing EF Core](installing-ef-core.md) lesson. Also ensure you are running the command from the directory that contains your `project.json` file. 
+> If the above command fails with the error message, `No executable found matching command "dotnet-ef"`, make sure `Microsoft.EntityFrameworkCore.Tools` has been installed for your project, as shown in the [Installing EF Core](installing-ef-core.md) appendix. Also ensure you are running the command from the directory that contains your `project.json` file. 
   
 Finally, we would run the [dotnet-ef-database-update](https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet#dotnet-ef-database-update) command to execute the database-creation code. 
  
@@ -52,7 +52,7 @@ Anytime we make changes to the data model, we will need to add and run a new mig
  
 ## Generating a Data Model from an Existing Database 
   
-We can also have EF Core automatically generate a data model from an existing database. First, we create an EF Core project by following the steps in the [Installing EF Core](installing-ef-core.md) lesson. Once the project is ready-to-go, we navigate to the directory that contains the `project.json` file in command line. Next, we run the [dotnet-ef-dbcontext-scaffold](https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold) command to create a model from the existing database. 
+We can also have EF Core automatically generate a data model from an existing database. First, we create an EF Core project by following the steps in the [Installing EF Core](installing-ef-core.md) appendix. Once the project is ready-to-go, we navigate to the directory that contains the `project.json` file in command line. Next, we run the [dotnet-ef-dbcontext-scaffold](https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold) command to create a model from the existing database. 
  
 ``` 
 dotnet ef dbcontext scaffold <DB connection string> <DB provider namespace> 

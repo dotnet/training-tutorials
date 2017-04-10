@@ -14,7 +14,6 @@ This tutorial is for people who are learning EF Core for the first time. Advance
 This tutorial will cover the following topics:
 
 - [Intro to EF Core](intro-to-ef-core.md)
-- [Installing EF Core](installing-ef-core.md)
 - [Understanding Data Models](understanding-data-models.md)
 - [Generating Databases and Data Models](generating-databases-and-data-models.md)
 - [Defining Unique Identifiers](defining-unique-identifiers.md)
@@ -22,5 +21,6 @@ This tutorial will cover the following topics:
 - [Querying Data](querying.md)
 - [Loading Related Data](loading-related-data.md)
 - [Manipulating Entities](manipulating-entities.md)
+- [Appendix: Installing EF Core](installing-ef-core.md)
 - [Appendix: Data Model Reference](tutorial-model-reference.md)
 - [Appendix: Database Reference](tutorial-database-reference.md)
