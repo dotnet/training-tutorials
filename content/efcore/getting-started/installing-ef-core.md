@@ -29,7 +29,9 @@ To add EF Core to your project, you need to list it as a dependency in your `csp
     Version="1.0.0" />
 ```
 
-You also must add the appropriate package for your database provider as a dependency. See [Database Providers](https://docs.microsoft.com/en-us/ef/core/providers/) in the docs for a full listing of available database providers. In this example, we use SQLite:
+You also must add the appropriate package for your database provider as a dependency. See [Database Providers](https://docs.microsoft.com/en-us/ef/core/providers/) in the docs for a full listing of available database providers.
+
+In this example, we use SQLite:
 
 ```{xml}
 <PackageReference Include="Microsoft.NETCore.App" Version="1.0.0" />
