@@ -2,7 +2,7 @@
 
 ## Who Should Read This
 
-This tutorial is aimed at people who are learning EF Core for the first time. More advanced functionality is covered in the [docs](https://docs.microsoft.com/en-us/ef/). Before beginning this tutorial, you should understand the following topics: 
+This tutorial is for people who are learning EF Core for the first time. Advanced functionality is covered in the [docs](https://docs.microsoft.com/en-us/ef/). Before beginning this tutorial, you should understand the following topics: 
 
 - C# (see [Getting Started with C#](https://www.microsoft.com/net/tutorials/csharp/getting-started)) 
 - Relational database concepts 

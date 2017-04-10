@@ -48,7 +48,7 @@ using (var context = new LibraryContext())
  
 ## Multi-layer Inclusion 
  
-Now, what happens if one of the properties we include also has non-primitive type properties? By default, they won't be loaded from the database, but we can tell EF Core to load them using the `ThenInclude` method. For example, we can determine all of the readers who have checked out a specific book by using `Include` to load the book's checkout records and then using `ThenInclude` to load the reader associated with each checkout record as shown below:
+Now, what happens if one of the properties we include also has non-primitive type properties? By default, they won't be loaded from the database, but we can tell EF Core to load them using the `ThenInclude` method. For example, we can determine all of the readers who have checked out a specific book by using `Include` to load the book's checkout records, followed by using `ThenInclude` to load the reader associated with each checkout record as shown below:
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
