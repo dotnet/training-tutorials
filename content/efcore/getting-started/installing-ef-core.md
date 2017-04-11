@@ -25,8 +25,8 @@ dotnet new console
 To add EF Core to your project, you need to list it as a dependency in your `csproj` file:
 
 ```{xml}
-<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite"
-    Version="1.0.0" />
+<PackageReference Include="Microsoft.EntityFrameworkCore.Design"
+    Version="1.1.1" PrivateAssets="All" />
 ```
 
 You also must add the appropriate package for your database provider as a dependency. See [Database Providers](https://docs.microsoft.com/en-us/ef/core/providers/) in the docs for a full listing of available database providers.
@@ -34,7 +34,8 @@ You also must add the appropriate package for your database provider as a depend
 In this example, we use SQLite:
 
 ```{xml}
-<PackageReference Include="Microsoft.NETCore.App" Version="1.0.0" />
+<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite"
+    Version="1.0.0" />
 ```
 
 To add EF Core functionality to the [.NET Core Command-Line Interface](https://docs.microsoft.com/en-us/dotnet/articles/core/tools/), you need to add the EF Core tools package to the tools section of your `csproj`.
@@ -58,7 +59,6 @@ After adding these packages, your `csproj` should look similar to this example:
     Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
     Version="1.1.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.NETCore.App" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup> 
     <DotNetCliToolReference
