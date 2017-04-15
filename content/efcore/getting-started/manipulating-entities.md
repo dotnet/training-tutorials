@@ -94,7 +94,7 @@ using (var context = new LibraryContext())
 :::repl{data-name=updating-entities} 
 ::: 
 
-Notice we did not have to tell EF Core that the entity had been changed to update its values. This is because the book we retrieved from the database is a **tracked entity**, meaning EF Core will keep track of any changes made to it. EF Core will continue to track changes made to the entity until the context is disposed, which occurs automatically when leaving the `using` block. To learn more about tracked entities, check out the ["Tracking vs. No-Tracking"](https://docs.microsoft.com/en-us/ef/core/querying/tracking) page in the docs. 
+Notice we did not have to tell EF Core that the entity had been changed to update its values. This is because the book we retrieved from the database is a **tracked entity**, meaning EF Core will keep track of any changes made to it. EF Core will continue to track changes made to the entity until the context is disposed, which occurs automatically when leaving the `using` block. To learn more about tracked entities, check out the [Tracking vs. No-Tracking](https://docs.microsoft.com/en-us/ef/core/querying/tracking) page in the docs. 
  
 Suppose you want to update an untracked entity. As long as the untracked entity has the same primary key as the record in the database, you can accomplish this using the `DbSet`'s `Update` method. In the following example, we update the book with a primary key of `1`: 
  
