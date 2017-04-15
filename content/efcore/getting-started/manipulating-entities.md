@@ -132,7 +132,4 @@ using (var context = new LibraryContext())
  
 ## Deleting Related Data 
  
-In the previous example, we were able to successfully delete a book, but what happened to that book's checkout records? The short answer is it depends. The way that EF Core handles deletion of an entity with related data depends on several factors including whether the related data is tracked, how EF Core is configured, and how the database is configured. To learn more about the available behaviors and how to configure a certain behavior, check out the Configuring Deletion lesson.  
- 
-> **Note** {.note}  
-> The Configuring Deletion lesson has not been added yet. For now, please refer to the [Cascade Delete](https://docs.microsoft.com/en-us/ef/core/saving/cascade-delete) page in the docs.
+In the previous example, we were able to successfully delete a book, but what happened to that book's checkout records? The short answer is it depends. The way that EF Core handles deletion of an entity with related data depends on several factors including whether the related data is tracked, how EF Core is configured, and how the database is configured. By default, EF Core will delete any tracked dependents of the principal entity when it is deleted. This is known as **cascade deletion** because the deletion is cascaded down to the dependents. There are other deletion behaviors, but they are too advanced for this tutorial. For more information on these behaviors, see the ["Cascade Delete"](https://docs.microsoft.com/en-us/ef/core/saving/cascade-delete) page in the docs.
