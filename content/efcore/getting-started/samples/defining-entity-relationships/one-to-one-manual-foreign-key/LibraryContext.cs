@@ -12,7 +12,7 @@ public class LibraryContext : DbContext
         modelBuilder.Entity<Reader>()  
             .HasOne(r => r.Address) 
             .WithOne(a => a.Reader)  
-            .HasForeignKey<Address>(a => a.ReaderId); 
+            .HasForeignKey<Address>(a => a.ReaderId);
     }  
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
