@@ -18,7 +18,7 @@ public class Program
             var addedAuthor = context.Authors
                 .Single(a => a.LastName.Contains("Shelley"));
 
-            Console.WriteLine("{0}: {1} {2}", addedAuthor.Id, addedAuthor.FirstName, addedAuthor.LastName);
+            Console.WriteLine("New Author: {0} {1}", addedAuthor.FirstName, addedAuthor.LastName);
         }
     }
 }

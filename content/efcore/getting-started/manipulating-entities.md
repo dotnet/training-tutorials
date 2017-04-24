@@ -31,7 +31,7 @@ Notice that we do not specify the `Id` property before adding the author to the 
  
 ## Adding Related Data 
  
-In the previous example, we added an author without any books to the database. Now we want to add an author and their books to the database. To add related entities like this to the database using EF Core we simply call the `Add` method on the parent entity. It will then automatically add the parent’s related entities to the database. In the following example, we add an author and their books to the database by simply adding the author: 
+In the previous example, we added an author without any books to the database. Now we want to add an author and their books to the database. To add related entities like this to the database using EF Core we simply call the `Add` method on the parent entity. It will then automatically add the parent’s related entities to the database. In the following example, we add a new author and their books to the database by simply adding the author:
  
 ```{.snippet}
 using (var context = new LibraryContext()) 
@@ -81,13 +81,15 @@ using (var context = new LibraryContext())
  
 ## Updating Entities in a Database 
  
-Next, let's look at how to update records that are already in the database. In the following example, we update the title of the first book in the database: 
+Next, let's look at how to update records that are already in the database. For example, we might discover that one of our books was catalogued incorrectly. _Mrs Dalloway_ should be _To the Lighthouse_. To fix this, we update the title and publication year of the book:
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-    var book = context.Books.First(); 
-    book.Title = "Frankenstein: or, The Modern Prometheus"; 
+    var book = context.Books
+        .Single(b => b.Title == "Mrs Dalloway"); 
+    book.Title = "To the Lighthouse";
+    book.PublicationYear = 1927;
     context.SaveChanges(); 
 } 
 ``` 
@@ -96,19 +98,20 @@ using (var context = new LibraryContext())
 
 Notice we did not have to tell EF Core that the entity had been changed to update its values. This is because the book we retrieved from the database is a **tracked entity**, meaning EF Core will keep track of any changes made to it. EF Core will continue to track changes made to the entity until the context is disposed, which occurs automatically when leaving the `using` block. To learn more about tracked entities, check out the [Tracking vs. No-Tracking](https://docs.microsoft.com/en-us/ef/core/querying/tracking) page in the docs. 
  
-Suppose you want to update an untracked entity. As long as the untracked entity has the same primary key as the record in the database, you can accomplish this using the `DbSet`'s `Update` method. In the following example, we update the book with a primary key of `1`: 
+Suppose you want to update an untracked entity. As long as the untracked entity has the same primary key as the record in the database, you can accomplish this using the `DbSet`'s `Update` method. In the following example, we update the title, genre, and publication year of the book with an `Id` of 1 without tracking the entity: 
  
 ```{.snippet} 
 using (var context = new LibraryContext()) 
 { 
-    var book = new Book() 
+    var untrackedBook = new Book() 
     { 
         Id = 1, 
-        Title = "Frankenstein: or, The Modern Prometheus", 
-        Genre = "Science Fiction", 
-        PublicationYear = 1818 
+        Title = "To the Lighthouse",
+        Genre = "Literary",
+        PublicationYear = 1927 
     };
-    context.Books.Update(book); 
+	
+    context.Books.Update(untrackedBook); 
     context.SaveChanges(); 
 } 
 ``` 

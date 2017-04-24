@@ -26,7 +26,9 @@ public class Program
                 .Include(b => b.Author)
                 .Single(b => b.Title.Contains("Badge"));
 
-            Console.WriteLine("{0}: {1}, {2} {3}", addedBook.Id, addedBook.Title, addedBook.Author.FirstName, addedBook.Author.LastName);
+            Console.WriteLine("-- Added new book to existing author --");
+            Console.WriteLine("Book: {0}", addedBook.Title);
+            Console.WriteLine("Author: {0} {1}", author.FirstName, author.LastName);
         }
     }
 }

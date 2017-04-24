@@ -12,9 +12,10 @@ public class Program
                 .Where(b => b.Genre == "Historical")
                 .ToList();
 
+            Console.WriteLine("Historical books in library:");
             foreach (Book book in books)
             {
-                Console.WriteLine(String.Format("{0} - {1}", book.Title, book.Genre));
+                Console.WriteLine(book.Title);
             }
         }
     }

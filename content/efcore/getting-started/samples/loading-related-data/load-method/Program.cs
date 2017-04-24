@@ -9,15 +9,19 @@ public class Program
         {
             var author = context.Authors
                 .Single(a => a.LastName == "Twain");
-
+			
+            Console.WriteLine("-- Eagerly Loaded Author --");
+            Console.WriteLine("{0} {1}", author.FirstName, author.LastName);
+			
             context.Entry(author)
                 .Collection(a => a.Books)
                 .Load();
-				
-			foreach (Book book in author.Books)
-			{
-				Console.WriteLine(book.Title);
-			}
+			
+            Console.WriteLine("-- Explicitly loaded the author's books --");
+            foreach (Book book in author.Books)
+            {
+                Console.WriteLine(book.Title);
+            }
         }
     }
 }

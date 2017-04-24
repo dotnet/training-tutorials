@@ -16,9 +16,11 @@ public class Program
 
             foreach (Book book in author.Books)
             {
+                Console.WriteLine("Book: {0}", book.Title);
+                Console.WriteLine("Checkout Records:");
                 foreach (CheckoutRecord checkoutRecord in book.CheckoutRecords)
                 {
-                    Console.WriteLine("{0}: Due {1} - {2} {3}", book.Title, checkoutRecord.DueDate.ToString("MMMM dd, yyyy"), checkoutRecord.Reader.FirstName, checkoutRecord.Reader.LastName);
+                    Console.WriteLine("Checked out by {0} {1} on {2}", checkoutRecord.Reader.FirstName, checkoutRecord.Reader.LastName, checkoutRecord.CheckoutDate.ToString("MMMM dd, yyyy"));
                 }
             }
         }

@@ -10,7 +10,7 @@ public class Program
         {
             var book = context.Books
                 .Single(b => b.Id == 1);
-            Console.WriteLine(book.Title);
+            Console.WriteLine("First book: {0}", book.Title);
         }
     }
 }

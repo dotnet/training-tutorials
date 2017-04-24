@@ -16,7 +16,7 @@ public class Program
                 .Query() 
                 .Max(c => c.CheckoutDate); 
 
-            Console.WriteLine("Earliest Checkout: {0}", mostRecentCheckout.ToString("MMMM dd, yyyy"));
+            Console.WriteLine("Most Recent Checkout: {0}", mostRecentCheckout.ToString("MMMM dd, yyyy"));
         }
     }
 }
