@@ -248,7 +248,7 @@ In the example above, you can see how multiple different ``case`` labels (in thi
 
 Your program can create a random number between 1 and 3 with the following code:
 ```c#
-int correctNumber = new Random().Next(4);
+int correctNumber = new Random().Next(3) + 1;
 ```
 
 Write a program that generates a random number between 1 and 3 and asks the user to guess what the number is. Tell the user if they guess low, high, or get the correct answer. Also, tell the user if their answer is outside of the range of numbers that are valid guesses (less than 1 or more than 3). You can convert the user's typed answer from a ``string`` to an ``int`` using this code:
