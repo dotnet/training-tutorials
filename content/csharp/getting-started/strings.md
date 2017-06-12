@@ -243,7 +243,9 @@ Now it's your turn. Create some code that will take two string variables and bui
 > **Tip** {.tip .CLI }    
 > Note that you can pass multi-word arguments on the command line by wrapping them in quotes. For example, ``dotnet run "Hello **NAME**!" Steve``.
 
-For a little extra credit, support an optional third variable than can be set to either 'loud' or 'quiet'. When loud, change whatever the greeting is to all UPPERCASE. If quiet, change it to all lowercase. If the third variable is null or empty, the greeting should remain unchanged.
+For a little extra credit, support an optional third variable that can be set to either 'loud' or 'quiet'.
+When loud, change whatever the greeting is to all UPPERCASE. If quiet, change it to all lowercase.
+If the third variable is null or empty, the greeting should remain unchanged.
 
 > **Tip** {.tip .newLanguage }    
 > Remember you don't have to define the greeting before the name; if you declare the name variable first, you can use string interpolation in your greeting (example greeting value: ``$"Hello, {name}!"``).
