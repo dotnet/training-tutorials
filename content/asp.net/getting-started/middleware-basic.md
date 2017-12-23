@@ -23,7 +23,7 @@ Then, add a class to represent the source of the quotations. Specify a few quote
 ```c#
 public static class QuotationStore
 {
-    public static IEnumerable<Quotation> Quotations {get; private set;}
+    public static IList<Quotation> Quotations {get; private set;}
 
     static QuotationStore()
     {
