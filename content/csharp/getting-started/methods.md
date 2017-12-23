@@ -160,7 +160,7 @@ Methods can accept parameters, which can be used to modify their behavior. Param
 > **Tip** {.tip .java}    
 > The params array works the same way that *varargs* do in Java. Instead of `sum(int... list)`, just use `Sum(params int[] list)`.
 
-The name of a method, combined with the types of its parameters, must be unique within the class to which the method belongs. This is known as as the method's *signature*. You will see an error when you build your program if you have two methods with the same name and set of parameter types, even if the return types are different or the parameers have different names. For example, having the following two methods within the same class would generate an error at compile time:
+The name of a method, combined with the types of its parameters, must be unique within the class to which the method belongs. This is known as as the method's *signature*. You will see an error when you build your program if you have two methods with the same name and set of parameter types, even if the return types are different or the parameters have different names. For example, having the following two methods within the same class would generate an error at compile time:
 
 ```{.snippet}
 string GetValue(string fileName)
