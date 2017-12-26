@@ -26,7 +26,7 @@ public void Configure(IApplicationBuilder app)
 ### Note { .note }
 > Before you can use the ``UseStaticFiles`` extension, you must add the static files nuget package to the project: "Microsoft.AspNetCore.StaticFiles".
 
-By default, browers will make requests for a *favicon.ico* file whenever an HTML request is made. This icon is displayed in the browser's tab or header view. By default the browser expects this file to be in the root of the web site. Having added support for static files to the quotations app, providing a valid favicon just requires adding a *wwwroot* folder to the root of the app, and placing an image file called *favicon.ico* in this folder. You can download a sample file [here](samples/quotes/wwwroot/favicon.ico).
+By default, browsers will make requests for a *favicon.ico* file whenever an HTML request is made. This icon is displayed in the browser's tab or header view. By default the browser expects this file to be in the root of the web site. Having added support for static files to the quotations app, providing a valid favicon just requires adding a *wwwroot* folder to the root of the app, and placing an image file called *favicon.ico* in this folder. You can download a sample file [here](samples/quotes/wwwroot/favicon.ico).
 
 After adding the *wwwroot* folder and *favicon.ico* file, the app should run, but you may (depending on how you run the app) that the icon isn't being sent by the app when requested. If you run the app from the command line using ``dotnet run``, by default the *content root* of the app will be ``\bin\Debug\netcoreapp1.0\``, not the folder where your project files are located. To address this, update *Program.cs* to specify the current folder as content root:
 
@@ -63,4 +63,4 @@ You can add other kinds of files to the *wwwroot* folder. The most common are HT
 
 ## Next Steps
 
-Try adding a static HTML file to the *wwwroot* folder. You should be able to request it by name. Add support for default files and name your HTML file *defult.html*. Confirm that the file is served when you navigate to the root of your app.
+Try adding a static HTML file to the *wwwroot* folder. You should be able to request it by name. Add support for default files and name your HTML file *default.html*. Confirm that the file is served when you navigate to the root of your app.
