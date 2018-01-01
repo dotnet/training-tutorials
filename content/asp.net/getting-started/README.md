@@ -3,7 +3,7 @@ by [Steve Smith](http://deviq.com/me/steve-smith)
 
 ## Who Should Read This
 
-This tutorial is aimed at people who are learning ASP.NET Core for the first time. Familiarity with C# is assumed. If you're new to C#, you may wish to go through the [Getting Started with C#](../../../content/csharp/getting-started/intro.md) tutorial before beginning this one.
+This tutorial is aimed at people who are learning ASP.NET Core for the first time. Familiarity with C# is assumed. If you're new to C#, you may wish to go through the [Getting Started with C#](../../../content/csharp/getting-started/README.md) tutorial before beginning this one.
 
 ## Topics Covered
 
