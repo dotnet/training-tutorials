@@ -63,7 +63,7 @@ This spiraling effect is why we tend to practice the [Single Responsibility Prin
 
 Do we care if the database connection is to a real database or not for the purpose of, say, a unit test? Do we want to know in this (and every) class how to setup the database connection? Do we want the responsibility of creating the service? "Probably not," is the likely answer to all of these.
 
-If our controller _needs_ to access the `PersonService` our only other option is to force whichever code is creating an instace of the `PersonController` to provide it to us. This is a pattern known as [Inversion of Control](http://deviq.com/inversion-of-control/), and it allows us to push the creation of dependencies outside of our controller proper.  It also gives us the beneficial side effect of _explicitly_ stating our dependencies, for no code can instantiate our class without providing them to us through our public constructor.  This is known as the [Explicit Dependencies Principle] (http://deviq.com/explicit-dependencies-principle/).
+If our controller _needs_ to access the `PersonService` our only other option is to force whichever code is creating an instance of the `PersonController` to provide it to us. This is a pattern known as [Inversion of Control](http://deviq.com/inversion-of-control/), and it allows us to push the creation of dependencies outside of our controller proper.  It also gives us the beneficial side effect of _explicitly_ stating our dependencies, for no code can instantiate our class without providing them to us through our public constructor.  This is known as the [Explicit Dependencies Principle] (http://deviq.com/explicit-dependencies-principle/).
 
 ## The Explicit Dependencies Principle 
 Let's flip that code on its head now to see what that will look like, requiring our dependencies to be passed in:
@@ -103,7 +103,7 @@ One of the interesting things to note here is that the `IAddressVerificationServ
 
 For each service we add to the container we have to make a decision about the lifetime of that object.  There are three types of supported lifetimes:
 
- - **Transient** - created every time a dependency request for this type is made. It has the implication that if a single incoming HTTP request asks for mulitple instances of this type, there will one of these objects created for each dependency.
+ - **Transient** - created every time a dependency request for this type is made. It has the implication that if a single incoming HTTP request asks for multiple instances of this type, there will be one of these objects created for each dependency.
  - **Scoped** - dependencies which can be shared throughout the HTTP request lifetime. The first dependency resolution for this type will result in an instance being created that is shared for all dependencies throughout the execution of the HTTP request.
  - **Singleton** - only one instance is created for use throughout the lifetime of the application. All resolutions of the type will be served with the same instance.
 
