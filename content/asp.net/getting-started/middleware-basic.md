@@ -139,7 +139,7 @@ app.Use(async (context, next) =>
 ```
 
 > **Note** {.note}    
-> Avoid writing to Response headers in middleware if you're not certain that other middleware hasn't already begun writing to the response (in which case, the headers will already have been sent to the client). In particular, use caution when writing to the Response after having called other middleware (in the example above, aftet the ``await next();`` statement).
+> Avoid writing to Response headers in middleware if you're not certain that other middleware hasn't already begun writing to the response (in which case, the headers will already have been sent to the client). In particular, use caution when writing to the Response after having called other middleware (in the example above, after the ``await next();`` statement).
 
 ## Next Steps
 
