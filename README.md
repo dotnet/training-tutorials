@@ -44,7 +44,7 @@ We welcome contributions and corrections to these tutorials. We will build out a
  4. Create a pull request from it to the master branch of https://github.com/dotnet/training-tutorials
  5. Leave some handy comments
 
-We ask that authors of significant changes sign the [.NET Foundation Contribution License Agreement](http://cla2.dotnetfoundation.org). This project has adopted the code of conduct defined by the [Contributor Covenant](http://contributor-covenant.org/)
+We ask that authors of significant changes sign the [.NET Foundation Contribution License Agreement](https://cla.dotnetfoundation.org). This project has adopted the code of conduct defined by the [Contributor Covenant](http://contributor-covenant.org/)
 to clarify expected behavior in our community.
 For more information see the [.NET Foundation Code of Conduct](http://www.dotnetfoundation.org/code-of-conduct).
 
