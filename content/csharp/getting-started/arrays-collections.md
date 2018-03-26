@@ -26,9 +26,9 @@ int[] otherIntegers = new [] { 1, 3, 5, 7, 9 }; // you can omit `int` and just s
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         int[] someIntegers = new int[3]; // holds 3 elements, with indexes of 0, 1, and 2.
         // uninitialized elements of a declared array hold the default value for the type (in this case 0).
@@ -72,9 +72,9 @@ int[,] someTable = { { 1, 2, 3 }, { 4, 5, 6 } }; // you can fill a multi-dimensi
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         int[,] eggCarton = new int[2,6]; // a typical egg carton can be thought of as a 2x6 array
         Console.WriteLine(eggCarton[0,0]); // one "corner" of the array
@@ -96,9 +96,9 @@ jaggedArray[0] = new int[2] { 1, 2 }; // set values of first array
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         int[][] jaggedArray = new int[4][]; // define first dimension
         jaggedArray[0] = new int[2] { 1, 2 }; // set values of first array
@@ -131,9 +131,9 @@ someIntegers[3] = 3; // EXCEPTION
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         int[] someIntegers = { 1, 2, 3 };
 
@@ -167,9 +167,9 @@ string[] colors = input.Split(','); // note single quotes, which are used to def
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string input = "red,blue,yellow,green";
         string[] colors = input.Split(','); // note single quotes, which are used to define literal character (``char``) values
@@ -189,9 +189,9 @@ Console.WriteLine(output);
 ```{.REPL}
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         string input = "red,blue,yellow,green";
         string[] colors = input.Split(','); // note single quotes, which are used to define literal character (``char``) values
@@ -237,9 +237,9 @@ List<string> colorList = new List<string>(colors); // initialize the list from a
 using System;
 using System.Collections.Generic;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         List<int> someInts = new List<int>(); // declares an empty list
         someInts.Add(2);  // the list now has one item in it: {2}
@@ -273,9 +273,9 @@ colors.Clear(); // colors is now an empty list
 using System;
 using System.Collections.Generic;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         List<string> colors = new List<string>() { "black", "white", "gray" };
         colors.Remove("black");
@@ -308,9 +308,9 @@ colors.ForEach(Console.WriteLine); // equivalent to ForEach(c => Console.WriteLi
 using System;
 using System.Collections.Generic;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         var colors = new List<string>() { "blue", "green", "yellow" };
         colors.ForEach(Console.WriteLine); // equivalent to ForEach(c => Console.WriteLine(c)) 
@@ -334,9 +334,9 @@ Console.WriteLine(String.Join(",", colors));
 using System;
 using System.Collections.Generic;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         var colors = new List<string>() { "blue", "green", "yellow" };
         Console.WriteLine(String.Join(",", colors));
