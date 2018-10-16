@@ -10,9 +10,7 @@ Download a ZIP containing this tutorial's sample files:
 
 You may have noticed so far that to map a particular URL to an action has required the use of ``app.Map``. This maps the URL based on what it starts with. But what if we want to perform more advanced matching? This is where ``routing`` comes in to play.
 
-Fundamentally, ``routing`` is the process of matching incoming requests to handlers for those requests. To get started with ``routing``, we need to add the proper dependency to our project. So simply add a ``using Microsoft.AspNetCore.Routing`` to the top of your ``Startup.cs`` file. And now that we have the needed middleware ``RouterMiddleware``, we are all set on dependencies.
-
-## Configuring Routing with Existing Middleware
+Fundamentally, ``routing`` is the process of matching incoming requests to handlers for those requests. To get started with ``routing``, we need to add the proper dependency to our project. So simply add a ``using Microsoft.AspNetCore.Routing`` to the top of your ``Startup.cs`` file.
 
 Next, we need to add the proper entry to the ``ConfigureServices`` method as follows:
 
@@ -23,7 +21,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-In order to add routed, we first need a ``RouteHandler`` to tell the router what to do when a matching route is found. In the ``Configure`` method, we can replace this code...
+## Configuring Routing with Existing Middleware
+
+In order to add a route, we first need a ``RouteHandler`` to tell the router what to do when a matching route is found. In the ``Configure`` method, we can replace this code...
 
 ```c#
 app.Map("/quote", builder => builder.Run(async context =>
