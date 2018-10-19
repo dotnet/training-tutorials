@@ -37,7 +37,7 @@ namespace ConsoleApplication
 ```
 
 > **Tip** {.tip .newLanguage }    
-> A *method* is a named group of individual commands the program will run. You'll learn more about creating [methods](methods) in a bit.
+> A *method* is a named group of individual commands the program will run. You'll learn more about creating [methods](methods.md) in a bit.
 
 
 ### Program.cs
