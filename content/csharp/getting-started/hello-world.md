@@ -56,7 +56,7 @@ After the ``using`` statements, the code declares its namespace:
 namespace ConsoleApplication
 ```
 
-Again, it's a good idea to use namespaces to keep larger codebases organized. ``namespace`` is a language keyword; *ConsoleApplication* is an identifier. In this case, the ``ConsoleApplication`` namespace has only one element in it (the ``Program`` class), but this would  grow as the program grew in complexity. Namespaces use curly braces (``{`` and ``}``) to denote which types belong within the namespace. Namespaces are optional; you'll frequently see they're omitted from the small samples shown in this tutorial.
+Again, it's a good idea to use namespaces to keep larger codebases organized. ``namespace`` is a language keyword; *ConsoleApplication* is an identifier. In this case, the ``ConsoleApplication`` namespace has only one element in it (the ``Program`` class), but this would  grow as the program becomes more complex. Namespaces use curly braces (``{`` and ``}``) to denote which types belong within the namespace. Namespaces are optional; you'll frequently see they're omitted from the small samples shown in this tutorial.
 
 Inside the namespace's scope (defined by its curly braces), a ``class`` called "Program" is created:
 ```c#
