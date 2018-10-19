@@ -21,20 +21,6 @@ namespace ConsoleApplication
     }
 }
 ```
-```{.REPL}
-using System;
-
-namespace ConsoleApplication
-{
-    public class Program
-    {
-        public static void Main()
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
-```
 
 > **Tip** {.tip .newLanguage }    
 > A *method* is a named group of individual commands the program will run. You'll learn more about creating [methods](methods) in a bit.
